@@ -1,6 +1,8 @@
 import React, { createContext, useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
+
 import { translateField } from '../utils/translations'
+import { samplePlants } from '../utils/sampleData'
 
 export const PlantContext = createContext()
 
@@ -19,6 +21,8 @@ export const PlantProvider = (props) => {
 		const storedPlants = JSON.parse(localStorage.getItem('plants'))
 		if (storedPlants) {
 			setPlants(storedPlants)
+		} else {
+			setPlants(samplePlants)
 		}
 	}, [])
 
@@ -73,7 +77,12 @@ export const PlantProvider = (props) => {
 	 * @param {Object} updatedPlant - Objeto de la planta actualizada.
 	 * @param {string} changeDescription - Descripción del cambio realizado.
 	 */
-	const updatePlant = (updatedPlant, changeDescription) => {
+	const updatePlant = (
+		updatedPlant,
+		changeDescription,
+		wateringData,
+		products
+	) => {
 		const updatedPlants = plants.map((plant) =>
 			plant.id === updatedPlant.id ? { ...plant, ...updatedPlant } : plant
 		)
@@ -90,6 +99,27 @@ export const PlantProvider = (props) => {
 			if (updatedPlant[key] !== selectedPlant[key]) {
 				changes.push(`${translateField(key)}: ${updatedPlant[key]}`)
 			}
+		}
+
+		// Registrar datos del riego
+		if (wateringData) {
+			if (wateringData.amount)
+				changes.push(`Cantidad de agua: ${wateringData.amount} ml`)
+			wateringData.productsUsed.forEach((productUsed) => {
+				if (productUsed.product) {
+					const product = products.find((p) => p.id === productUsed.product)
+					if (product)
+						changes.push(
+							`Producto: ${product.name} (${productUsed.productAmount} ml)`
+						)
+				}
+			})
+			if (wateringData.ph) changes.push(`pH del agua: ${wateringData.ph}`)
+			if (wateringData.ec) changes.push(`EC del agua: ${wateringData.ec}`)
+			if (wateringData.temperature)
+				changes.push(`Temperatura: ${wateringData.temperature} °C`)
+			if (wateringData.humidity)
+				changes.push(`Humedad: ${wateringData.humidity} %`)
 		}
 
 		if (changes.length > 0) {
