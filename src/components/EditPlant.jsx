@@ -1,40 +1,21 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { PlantContext } from '../context/PlantContext'
+import useEditPlantForm from '../hooks/useEditPlantForm'
 
 /**
  * Componente para editar los detalles de una planta específica.
  */
 const EditPlant = () => {
 	const { selectedPlant, updatePlant, addNote } = useContext(PlantContext)
-	const [plantData, setPlantData] = useState({})
-	const [note, setNote] = useState('')
-	const [showAdvancedFields, setShowAdvancedFields] = useState(false)
-
-	useEffect(() => {
-		if (selectedPlant) {
-			setPlantData(selectedPlant)
-		}
-	}, [selectedPlant])
-
-	/**
-	 * Maneja los cambios en los campos del formulario.
-	 * @param {Event} e - Evento de cambio del formulario.
-	 */
-	const handleChange = (e) => {
-		const { name, value, type, checked } = e.target
-		setPlantData({
-			...plantData,
-			[name]: type === 'checkbox' ? checked : value,
-		})
-	}
-
-	/**
-	 * Maneja los cambios en el campo de notas.
-	 * @param {Event} e - Evento de cambio del campo de notas.
-	 */
-	const handleNoteChange = (e) => {
-		setNote(e.target.value)
-	}
+	const {
+		plantData,
+		note,
+		showAdvancedFields,
+		handleChange,
+		handleNoteChange,
+		toggleAdvancedFields,
+		setNote,
+	} = useEditPlantForm(selectedPlant)
 
 	/**
 	 * Maneja el envío del formulario para guardar los cambios en la planta.
@@ -156,10 +137,7 @@ const EditPlant = () => {
 					placeholder="Añadir una nota"
 				/>
 			</label>
-			<button
-				type="button"
-				onClick={() => setShowAdvancedFields(!showAdvancedFields)}
-			>
+			<button type="button" onClick={toggleAdvancedFields}>
 				{showAdvancedFields
 					? 'Ocultar Campos Avanzados'
 					: 'Mostrar Campos Avanzados'}

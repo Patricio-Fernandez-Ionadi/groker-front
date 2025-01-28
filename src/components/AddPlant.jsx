@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { PlantContext } from '../context/PlantContext'
 import { calculateEstimatedChange } from '../utils/dateUtils'
+import { validatePlantData } from '../utils/validation'
 
 /**
  * Componente para añadir una nueva planta al inventario.
@@ -31,26 +32,14 @@ const AddPlant = () => {
 	}
 
 	/**
-	 * Valida los campos del formulario.
-	 * @returns {boolean} - True si todos los campos son válidos, false en caso contrario.
-	 */
-	const validateForm = () => {
-		const newErrors = {}
-		if (!plantData.entryDate)
-			newErrors.entryDate = 'La fecha de ingreso es obligatoria'
-		if (!plantData.name)
-			newErrors.name = 'El nombre de la planta es obligatorio'
-		setErrors(newErrors)
-		return Object.keys(newErrors).length === 0
-	}
-
-	/**
 	 * Maneja el envío del formulario para añadir una planta.
 	 * @param {Event} e - Evento de envío del formulario.
 	 */
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		if (validateForm()) {
+		const validationErrors = validatePlantData(plantData)
+		setErrors(validationErrors)
+		if (Object.keys(validationErrors).length === 0) {
 			const estimatedChange = calculateEstimatedChange(plantData)
 			addPlant({ ...plantData, estimatedChange })
 			setPlantData({
@@ -58,6 +47,7 @@ const AddPlant = () => {
 				name: '',
 				genetic: 'N/A', // Restablecer la genética por defecto
 				stage: 'Vegetativo', // Restablecer a la etapa inicial por defecto
+				estimatedChange: '',
 				potSize: '',
 				isFinalPot: false,
 			})
