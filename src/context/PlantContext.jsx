@@ -105,6 +105,55 @@ export const PlantProvider = (props) => {
 		setHistory(plantToUpdate.history)
 	}
 
+	/**
+	 * Añade una nota a una planta en el inventario.
+	 * @param {string} plantId - ID de la planta.
+	 * @param {string} note - Nota a añadir.
+	 */
+	const addNote = (plantId, note) => {
+		const updatedPlants = plants.map((plant) => {
+			if (plant.id === plantId) {
+				const today = new Date().toLocaleDateString()
+				const lastHistoryEntry = plant.history[plant.history.length - 1]
+
+				if (lastHistoryEntry && lastHistoryEntry.date === today) {
+					lastHistoryEntry.changes.push(`Nota: ${note}`)
+				} else {
+					plant.history.push({ date: today, changes: [`Nota: ${note}`] })
+				}
+			}
+			return plant
+		})
+
+		setPlants(updatedPlants)
+		const plantToUpdate = updatedPlants.find((plant) => plant.id === plantId)
+		setSelectedPlant(plantToUpdate)
+		setHistory(plantToUpdate.history)
+	}
+
+	/**
+	 * Elimina una nota de una planta en el inventario.
+	 * @param {string} plantId - ID de la planta.
+	 * @param {number} historyIndex - Índice del historial.
+	 * @param {number} noteIndex - Índice de la nota.
+	 */
+	const deleteNote = (plantId, historyIndex, noteIndex) => {
+		const updatedPlants = plants.map((plant) => {
+			if (plant.id === plantId) {
+				plant.history[historyIndex].changes.splice(noteIndex, 1)
+				if (plant.history[historyIndex].changes.length === 0) {
+					plant.history.splice(historyIndex, 1)
+				}
+			}
+			return plant
+		})
+
+		setPlants(updatedPlants)
+		const plantToUpdate = updatedPlants.find((plant) => plant.id === plantId)
+		setSelectedPlant(plantToUpdate)
+		setHistory(plantToUpdate.history)
+	}
+
 	return (
 		<PlantContext.Provider
 			value={{
@@ -114,6 +163,8 @@ export const PlantProvider = (props) => {
 				selectedPlant,
 				selectPlant,
 				updatePlant,
+				addNote,
+				deleteNote,
 				history,
 				viewMode,
 			}}

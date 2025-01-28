@@ -5,8 +5,9 @@ import { PlantContext } from '../context/PlantContext'
  * Componente para editar los detalles de una planta específica.
  */
 const EditPlant = () => {
-	const { selectedPlant, updatePlant } = useContext(PlantContext)
+	const { selectedPlant, updatePlant, addNote } = useContext(PlantContext)
 	const [plantData, setPlantData] = useState({})
+	const [note, setNote] = useState('')
 	const [showAdvancedFields, setShowAdvancedFields] = useState(false)
 
 	useEffect(() => {
@@ -28,6 +29,14 @@ const EditPlant = () => {
 	}
 
 	/**
+	 * Maneja los cambios en el campo de notas.
+	 * @param {Event} e - Evento de cambio del campo de notas.
+	 */
+	const handleNoteChange = (e) => {
+		setNote(e.target.value)
+	}
+
+	/**
 	 * Maneja el envío del formulario para guardar los cambios en la planta.
 	 * @param {Event} e - Evento de envío del formulario.
 	 */
@@ -38,6 +47,10 @@ const EditPlant = () => {
 				.map((key) => `${key}: ${plantData[key]}`)
 				.join(', ')}`
 			updatePlant(plantData, changeDescription)
+			if (note.trim()) {
+				addNote(selectedPlant.id, note.trim())
+				setNote('')
+			}
 		}
 	}
 
@@ -133,6 +146,15 @@ const EditPlant = () => {
 					onChange={handleChange}
 				/>
 				Bajo observación
+			</label>
+			<label>
+				Notas:
+				<textarea
+					name="note"
+					value={note}
+					onChange={handleNoteChange}
+					placeholder="Añadir una nota"
+				/>
 			</label>
 			<button
 				type="button"
