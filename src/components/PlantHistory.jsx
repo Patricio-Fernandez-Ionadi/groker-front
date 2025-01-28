@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { PlantContext } from '../context/PlantContext'
+import { formatDate } from '../utils/dateUtils'
 
 /**
  * Componente que muestra el historial de cambios de una planta específica.
@@ -16,7 +17,7 @@ const PlantHistory = () => {
 			<h2>Historial de la Planta</h2>
 			{history.map((entry, historyIndex) => (
 				<div key={historyIndex}>
-					<h3>{entry.date}</h3>
+					<h3>{formatDate(entry.date)}</h3>
 					<ul>
 						{entry.changes.map((change, noteIndex) => (
 							<li key={noteIndex}>
