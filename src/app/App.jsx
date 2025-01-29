@@ -26,21 +26,25 @@ const App = () => {
 		<ProductProvider>
 			<div>
 				<h1>Gestión de Inventario de Cultivos</h1>
-				<button onClick={() => setShowAddPlantForm(!showAddPlantForm)}>
-					{showAddPlantForm ? 'Cerrar' : 'Nuevo Ingreso'}
-				</button>
+
+				<div>
+					<button onClick={() => setShowAddPlantForm(!showAddPlantForm)}>
+						{showAddPlantForm ? 'Cerrar' : 'Nuevo Ingreso'}
+					</button>
+
+					<button onClick={() => setShowAddProductForm(!showAddProductForm)}>
+						{showAddProductForm ? 'Cerrar' : 'Añadir Producto'}
+					</button>
+
+					<button onClick={() => setShowProductList(!showProductList)}>
+						{showProductList
+							? 'Ocultar Inventario de Productos'
+							: 'Ver Inventario de Productos'}
+					</button>
+				</div>
+
 				{showAddPlantForm && <AddPlant />}
-
-				<button onClick={() => setShowAddProductForm(!showAddProductForm)}>
-					{showAddProductForm ? 'Cerrar' : 'Añadir Producto'}
-				</button>
 				{showAddProductForm && <AddProduct />}
-
-				<button onClick={() => setShowProductList(!showProductList)}>
-					{showProductList
-						? 'Ocultar Inventario de Productos'
-						: 'Ver Inventario de Productos'}
-				</button>
 				{showProductList && <ProductList />}
 
 				<PlantList />

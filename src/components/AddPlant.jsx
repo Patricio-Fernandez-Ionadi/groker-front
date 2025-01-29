@@ -52,64 +52,71 @@ const AddPlant = () => {
 
 	return (
 		<form onSubmit={handleSubmit}>
-			<label>
-				Fecha de ingreso:
-				<input
-					type="date"
-					name="entryDate"
-					value={plantData.entryDate}
-					onChange={handleChange}
-					placeholder="Fecha de ingreso"
-				/>
-				{errors.entryDate && <span className="error">{errors.entryDate}</span>}
-			</label>
-			<label>
-				Nombre de la planta:
-				<input
-					type="text"
-					name="name"
-					value={plantData.name}
-					onChange={handleChange}
-					placeholder="Nombre de la planta"
-				/>
-				{errors.name && <span className="error">{errors.name}</span>}
-			</label>
-			<label>
-				Genética:
-				<input
-					type="text"
-					name="genetic"
-					value={plantData.genetic}
-					onChange={handleChange}
-					placeholder="Genética"
-				/>
-			</label>
-			<label>
-				Etapa:
-				<select name="stage" value={plantData.stage} onChange={handleChange}>
-					<option value="Vegetativo">Vegetativo</option>
-					<option value="Floracion">Floración</option>
-				</select>
-			</label>
-			<label>
-				Tamaño de la maceta:
-				<input
-					type="text"
-					name="potSize"
-					value={plantData.potSize}
-					onChange={handleChange}
-					placeholder="Tamaño de la maceta"
-				/>
-			</label>
-			<label>
-				<input
-					type="checkbox"
-					name="isFinalPot"
-					checked={plantData.isFinalPot}
-					onChange={handleChange}
-				/>
-				Maceta final
-			</label>
+			<div>
+				<label>
+					Fecha de ingreso:
+					<input
+						type="date"
+						name="entryDate"
+						value={plantData.entryDate}
+						onChange={handleChange}
+						placeholder="Fecha de ingreso"
+					/>
+					{errors.entryDate && (
+						<span className="error">{errors.entryDate}</span>
+					)}
+				</label>
+				<label>
+					Nombre de la planta:
+					<input
+						type="text"
+						name="name"
+						value={plantData.name}
+						onChange={handleChange}
+						placeholder="Nombre de la planta"
+					/>
+					{errors.name && <span className="error">{errors.name}</span>}
+				</label>
+				<label>
+					Genética:
+					<input
+						type="text"
+						name="genetic"
+						value={plantData.genetic}
+						onChange={handleChange}
+						placeholder="Genética"
+					/>
+				</label>
+			</div>
+			<div>
+				<label>
+					Etapa:
+					<select name="stage" value={plantData.stage} onChange={handleChange}>
+						<option value="Vegetativo">Vegetativo</option>
+						<option value="Floracion">Floración</option>
+					</select>
+				</label>
+
+				<label>
+					Tamaño de la maceta:
+					<input
+						type="text"
+						name="potSize"
+						value={plantData.potSize}
+						onChange={handleChange}
+						placeholder="Tamaño de la maceta"
+					/>
+				</label>
+				<label>
+					<input
+						type="checkbox"
+						name="isFinalPot"
+						checked={plantData.isFinalPot}
+						onChange={handleChange}
+					/>
+					Maceta final
+				</label>
+			</div>
 			<button type="submit">Añadir Planta</button>
 		</form>
 	)
