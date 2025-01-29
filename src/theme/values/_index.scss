@@ -1,0 +1,11 @@
+// independientes
+@import './_colors.scss';
+@import './_mediaqueries.scss';
+@import './_sizes.scss';
+@import './_elements.scss';
+@import './_placeholders.scss';
+@import './_classes.scss';
+
+// dependientes
+@import './_mixins.scss'; // color
+@import './_animations.scss'; // color
