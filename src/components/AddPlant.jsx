@@ -3,20 +3,21 @@ import { PlantContext } from '../context/PlantContext'
 import { calculateEstimatedChange } from '../utils/dateUtils'
 import { validatePlantData } from '../utils/validation'
 
+const defaultPlantData = {
+	entryDate: '',
+	name: '',
+	genetic: 'N/A',
+	stage: 'Vegetativo',
+	potSize: '',
+	isFinalPot: false,
+}
+
 /**
  * Componente para añadir una nueva planta al inventario.
  */
 const AddPlant = () => {
 	const { addPlant } = useContext(PlantContext)
-	const [plantData, setPlantData] = useState({
-		entryDate: '',
-		name: '',
-		genetic: 'N/A', // Genética por defecto
-		stage: 'Vegetativo', // Etapa inicial por defecto
-		estimatedChange: '',
-		potSize: '',
-		isFinalPot: false,
-	})
+	const [plantData, setPlantData] = useState(defaultPlantData)
 	const [errors, setErrors] = useState({})
 
 	/**
@@ -42,17 +43,11 @@ const AddPlant = () => {
 		if (Object.keys(validationErrors).length === 0) {
 			const estimatedChange = calculateEstimatedChange(plantData)
 			addPlant({ ...plantData, estimatedChange })
-			setPlantData({
-				entryDate: '',
-				name: '',
-				genetic: 'N/A', // Restablecer la genética por defecto
-				stage: 'Vegetativo', // Restablecer a la etapa inicial por defecto
-				estimatedChange: '',
-				potSize: '',
-				isFinalPot: false,
-			})
+			setPlantData(defaultPlantData)
 			setErrors({})
 		}
+
+		/* debe cerrarse el formulario al añadir planta pero el estado de apertura y cerrado de formulario lo maneja APP.jsx */
 	}
 
 	return (

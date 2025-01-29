@@ -12,6 +12,8 @@ dist
 dist-ssr
 package-lock.json
 *.local
+posible_camino-src
+posible_camino-src.zip
 
 # Editor directories and files
 .vscode/*

@@ -29,7 +29,7 @@ const EditPlant = () => {
 		ec: '',
 		temperature: '',
 		humidity: '',
-		lastWatered: new Date().toISOString().split('T')[0], // Fecha actual por defecto
+		lastWatered: '', // Fecha actual por defecto
 	})
 
 	const [isWatered, setIsWatered] = useState(false)
@@ -41,11 +41,7 @@ const EditPlant = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		if (plantData) {
-			const changeDescription = `Planta actualizada: ${Object.keys(plantData)
-				.map((key) => `${translateField(key)}: ${plantData[key]}`)
-				.join(', ')}`
-
-			updatePlant(plantData, changeDescription, wateringData, products)
+			updatePlant(plantData, wateringData, products)
 
 			if (note.trim()) {
 				addNote(selectedPlant.id, note.trim())
@@ -55,10 +51,7 @@ const EditPlant = () => {
 			// Asegurarse de que ambos productos se actualicen correctamente en el stock
 			wateringData.productsUsed.forEach((productUsed) => {
 				if (productUsed.product && productUsed.productAmount) {
-					updateProductStock(
-						productUsed.product,
-						-parseFloat(productUsed.productAmount) // Pasar la cantidad como negativa
-					)
+					updateProductStock(productUsed.product, productUsed.productAmount)
 				}
 			})
 
@@ -70,7 +63,7 @@ const EditPlant = () => {
 				ec: '',
 				temperature: '',
 				humidity: '',
-				lastWatered: new Date().toISOString().split('T')[0], // Fecha actual por defecto
+				lastWatered: '',
 			})
 		}
 	}
