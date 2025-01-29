@@ -78,36 +78,36 @@ export const PlantProvider = (props) => {
 	 * @returns {void}
 	 */
 	const selectPlant = (plant, mode = 'details') => {
-		setSelectedPlant(plant) // Establecer la planta seleccionada
-		setHistory(plant.history) // Establecer el historial de la planta seleccionada
-		setViewMode(mode) // Establecer el modo de visualización
+		setSelectedPlant(plant) // Establecer la planta seleccionada.
+		setHistory(plant.history) // Establecer el historial de la planta seleccionada.
+		setViewMode(mode) // Establecer el modo de visualización.
 	}
 
 	/**
-	 * Actualiza una planta en el inventario y registra el cambio en el historial.
+	 * Actualiza una planta y registra el cambio.
 	 * @param {Object} updatedPlant - Objeto de la planta actualizada.
 	 * @param {Object} wateringData - Datos de riego.
 	 * @param {Array} products - Lista de productos disponibles.
 	 * @returns {void}
 	 */
 	const updatePlant = (updatedPlant, wateringData, products) => {
-		// Actualizar la planta en el estado de plantas
+		// Actualizar la planta en el estado de plantas.
 		const updatedPlants = plants.map((plant) =>
 			plant.id === updatedPlant.id ? { ...plant, ...updatedPlant } : plant
 		)
 
 		const today = new Date().toISOString().split('T')[0]
 
-		// Encontrar la planta actualizada
+		// Encontrar la planta actualizada.
 		const plantToUpdate = updatedPlants.find(
 			(plant) => plant.id === updatedPlant.id
 		)
 
-		// Obtener la última entrada del historial
+		// Obtener la última entrada del historial.
 		const lastHistoryEntry =
 			plantToUpdate.history[plantToUpdate.history.length - 1]
 
-		// Registrar solo los cambios específicos
+		// Registrar solo los cambios específicos.
 		const changes = []
 		for (const key in updatedPlant) {
 			if (updatedPlant[key] !== selectedPlant[key]) {
@@ -116,7 +116,7 @@ export const PlantProvider = (props) => {
 			}
 		}
 
-		// Registrar datos del riego
+		// Registrar datos del riego.
 		if (wateringData) {
 			if (wateringData.amount)
 				changes.push(`Cantidad de agua: ${wateringData.amount} ml`)
@@ -141,14 +141,14 @@ export const PlantProvider = (props) => {
 			) {
 				changes.push(`Último riego: ${formatDate(wateringData.lastWatered)}`)
 
-				// Actualizar la fecha de último riego en la planta
+				// Actualizar la fecha de último riego en la planta.
 				plantToUpdate.lastWatered = wateringData.lastWatered
 			}
 		}
 
 		if (changes.length > 0) {
 			if (lastHistoryEntry && lastHistoryEntry.date === today) {
-				// Convertir la entrada existente en un objeto clave-valor para evitar duplicados
+				// Convertir la entrada existente en un objeto clave-valor para evitar duplicados.
 				const historyMap = new Map(
 					lastHistoryEntry.changes.map((change) => {
 						const [key, value] = change.split(': ')
@@ -156,25 +156,25 @@ export const PlantProvider = (props) => {
 					})
 				)
 
-				// Agregar o sobrescribir los valores nuevos
+				// Agregar o sobrescribir los valores nuevos.
 				changes.forEach((change) => {
 					const [key, value] = change.split(': ')
 					historyMap.set(key, value)
 				})
 
-				// Convertir de nuevo a array de strings
+				// Convertir de nuevo a array de strings.
 				lastHistoryEntry.changes = Array.from(historyMap.entries()).map(
 					([key, value]) => `${key}: ${value}`
 				)
 			} else {
-				// Añadir una nueva entrada si no hay registro en la fecha de hoy
+				// Añadir una nueva entrada si no hay registro en la fecha de hoy.
 				plantToUpdate.history.push({ date: today, changes })
 			}
 		}
 
-		setPlants(updatedPlants) // Actualizar el estado de plantas
-		setSelectedPlant(plantToUpdate) // Actualizar la planta seleccionada
-		setHistory(plantToUpdate.history) // Actualizar el historial de la planta seleccionada
+		setPlants(updatedPlants) // Actualizar el estado de plantas.
+		setSelectedPlant(plantToUpdate) // Actualizar la planta seleccionada.
+		setHistory(plantToUpdate.history) // Actualizar el historial de la planta seleccionada.
 	}
 
 	/**

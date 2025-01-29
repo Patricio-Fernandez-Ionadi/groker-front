@@ -28,7 +28,10 @@ export const samplePlants = [
 		underObservation: true,
 		history: [
 			{ date: '2023-01-05', changes: ['Planta añadida'] },
-			{ date: '2023-01-20', changes: ['Último riego: 2023-01-20'] },
+			{
+				date: '2023-01-20',
+				changes: ['Último riego: 2023-01-20', 'Etapa: Floracion'],
+			},
 		],
 	},
 ]
