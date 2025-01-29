@@ -146,25 +146,29 @@ export const PlantProvider = (props) => {
 			}
 		}
 
-		// if (changes.length > 0) {
-		// 	if (lastHistoryEntry && lastHistoryEntry.date === today) {
-		// 		lastHistoryEntry.changes.push(...changes)
-		// 	} else {
-		// 		plantToUpdate.history.push({ date: today, changes })
-		// 	}
-		// }
-
 		if (changes.length > 0) {
-			// Actualizar la última entrada del historial si la fecha es la misma que hoy
 			if (lastHistoryEntry && lastHistoryEntry.date === today) {
-				lastHistoryEntry.changes = [...lastHistoryEntry.changes, ...changes]
+				// Convertir la entrada existente en un objeto clave-valor para evitar duplicados
+				const historyMap = new Map(
+					lastHistoryEntry.changes.map((change) => {
+						const [key, value] = change.split(': ')
+						return [key, value]
+					})
+				)
 
-				// console.log('entrada en if:', lastHistoryEntry.changes)
-				/* parece que aca debe hacerse la comprobacion de si debe sobreescribirse el dato existente o añadir uno nuevo pero al ser entradas de tipo string es dificultoso comprobar los estados que cambiaron, habria que trabajar con key=values quiza*/
+				// Agregar o sobrescribir los valores nuevos
+				changes.forEach((change) => {
+					const [key, value] = change.split(': ')
+					historyMap.set(key, value)
+				})
+
+				// Convertir de nuevo a array de strings
+				lastHistoryEntry.changes = Array.from(historyMap.entries()).map(
+					([key, value]) => `${key}: ${value}`
+				)
 			} else {
-				// Añadir una nueva entrada al historial con la fecha de hoy
+				// Añadir una nueva entrada si no hay registro en la fecha de hoy
 				plantToUpdate.history.push({ date: today, changes })
-				// console.log('entrada en else:', plantToUpdate.history)
 			}
 		}
 
