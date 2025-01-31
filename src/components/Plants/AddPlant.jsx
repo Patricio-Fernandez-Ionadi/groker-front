@@ -128,7 +128,7 @@ const AddPlant = () => {
 						onChange={(e) =>
 							setPlantData({
 								...newPlantData,
-								flags: { ...plantData.flags, isFinalPot: e.target.checked },
+								flags: { ...newPlantData.flags, isFinalPot: e.target.checked },
 							})
 						}
 					/>

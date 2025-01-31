@@ -1,13 +1,26 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { formatDate } from '../../utils/dateUtils'
 import { AppContext } from '../../context/AppContext'
 import { translateField } from '../../utils/translations'
+import EditPlant from './EditPlant'
 
 /**
  * Componente que muestra la lista de plantas en el inventario.
  */
 const PlantList = () => {
 	const { state, deletePlant, selectPlant } = useContext(AppContext)
+
+	const [editForm, setEditForm] = useState(false)
+
+	const handleEditForm = (e, plant) => {
+		e.stopPropagation()
+		setEditForm(true)
+		selectPlant(plant)
+	}
+	const handleDeletePlant = (e, plant) => {
+		e.stopPropagation()
+		deletePlant(plant._id)
+	}
 
 	if (state.plants.length > 0) {
 		return (
@@ -30,7 +43,7 @@ const PlantList = () => {
 						{state.plants.map((plant) => (
 							<tr
 								key={plant._id}
-								onClick={() => selectPlant(plant, 'details')}
+								onClick={() => selectPlant(plant)}
 								style={{
 									cursor: 'pointer',
 									backgroundColor:
@@ -47,20 +60,10 @@ const PlantList = () => {
 								<td>{formatDate(plant.lastWatered)}</td>
 								<td>{plant.underObservation ? 'Sí' : 'No'}</td>
 								<td>
-									<button
-										onClick={(e) => {
-											e.stopPropagation()
-											selectPlant(plant, 'edit')
-										}}
-									>
+									<button onClick={(e) => handleEditForm(e, plant)}>
 										Editar
 									</button>
-									<button
-										onClick={(e) => {
-											e.stopPropagation()
-											deletePlant(plant._id)
-										}}
-									>
+									<button onClick={(e) => handleDeletePlant(e, plant)}>
 										Eliminar
 									</button>
 								</td>
@@ -68,6 +71,12 @@ const PlantList = () => {
 						))}
 					</tbody>
 				</table>
+				{editForm && (
+					<>
+						<button onClick={() => setEditForm(false)}>Cerrar</button>
+						<EditPlant />
+					</>
+				)}
 			</div>
 		)
 	} else {
