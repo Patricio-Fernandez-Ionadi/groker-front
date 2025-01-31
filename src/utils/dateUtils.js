@@ -5,10 +5,12 @@
  */
 export const calculateEstimatedChange = (plant) => {
 	const entryDate = new Date(plant.entryDate)
-	if (plant.stage === 'Vegetativo') {
+	if (plant.stage === 'vegetative') {
 		entryDate.setDate(entryDate.getDate() + 42) // 6 weeks
-	} else if (plant.stage === 'Floracion') {
+	} else if (plant.stage === 'flowering') {
 		entryDate.setDate(entryDate.getDate() + 98) // 14 weeks
+	} else if (plant.stage === 'germination') {
+		entryDate.setDate(entryDate.getDate() + 28) // 4 weeks
 	}
 
 	// Ajustar la fecha para considerar el huso horario de la zona de uso

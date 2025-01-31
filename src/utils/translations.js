@@ -10,6 +10,9 @@ export const translateField = (field) => {
 		genetics: 'Genética',
 		potSize: 'Tamaño de la Maceta',
 		isFinalPot: 'Maceta Final',
+		flowering: 'Floración',
+		vegetative: 'Vegetativo',
+		germination: 'Germinación',
 	}
 	return translations[field] || field
 }

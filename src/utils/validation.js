@@ -20,5 +20,6 @@ export const validateProductData = (productData) => {
 	const errors = {}
 	if (!productData.name) errors.name = 'El nombre del producto es obligatorio'
 	if (!productData.stock) errors.stock = 'El stock del producto es obligatorio'
+	if (!productData.type) errors.type = 'El tipo de producto es obligatorio'
 	return errors
 }

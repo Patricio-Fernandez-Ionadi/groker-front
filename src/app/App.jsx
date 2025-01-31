@@ -2,14 +2,13 @@ import React, { useContext, useState } from 'react'
 import { PlantContext } from '../context/PlantContext'
 import { ProductProvider } from '../context/ProductContext'
 
-import PlantList from '../components/PlantList'
-import AddPlant from '../components/AddPlant'
-import PlantDetails from '../components/PlantDetails'
-import PlantHistory from '../components/PlantHistory'
-import EditPlant from '../components/EditPlant'
+import PlantList from '../components/Plants/PlantList'
+import AddPlant from '../components/Plants/AddPlant'
+import PlantDetails from '../components/Plants/PlantDetails'
+import PlantHistory from '../components/Plants/PlantHistory'
+import EditPlant from '../components/Plants/EditPlant'
 
-import AddProduct from '../components/AddProduct'
-import ProductList from '../components/ProductList'
+import ProductList from '../components/Products/ProductList'
 
 /**
  * Componente principal de la aplicación de gestión de inventario de cultivos.
@@ -18,8 +17,6 @@ const App = () => {
 	const { viewMode } = useContext(PlantContext)
 
 	const [showAddPlantForm, setShowAddPlantForm] = useState(false)
-
-	const [showAddProductForm, setShowAddProductForm] = useState(false)
 	const [showProductList, setShowProductList] = useState(false)
 
 	return (
@@ -32,19 +29,12 @@ const App = () => {
 						{showAddPlantForm ? 'Cerrar' : 'Nuevo Ingreso'}
 					</button>
 
-					<button onClick={() => setShowAddProductForm(!showAddProductForm)}>
-						{showAddProductForm ? 'Cerrar' : 'Añadir Producto'}
-					</button>
-
 					<button onClick={() => setShowProductList(!showProductList)}>
-						{showProductList
-							? 'Ocultar Inventario de Productos'
-							: 'Ver Inventario de Productos'}
+						{showProductList ? 'Cerrar' : 'Inventario de Productos'}
 					</button>
 				</div>
 
 				{showAddPlantForm && <AddPlant />}
-				{showAddProductForm && <AddProduct />}
 				{showProductList && <ProductList />}
 
 				<PlantList />

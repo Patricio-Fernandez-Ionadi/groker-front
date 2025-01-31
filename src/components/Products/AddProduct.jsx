@@ -1,0 +1,112 @@
+import React, { useState } from 'react'
+import { addProduct } from '../../api/products'
+
+import { validateProductData } from '../../utils/validation'
+
+/**
+ * Componente para añadir un nuevo producto al inventario.
+ */
+const AddProduct = () => {
+	const [productData, setProductData] = useState({
+		name: '',
+		stock: '',
+		nitrogen: '',
+		phosphorus: '',
+		potassium: '',
+		type: '',
+	})
+	const [errors, setErrors] = useState({})
+
+	const handleChange = (e) => {
+		const { name, value } = e.target
+		setProductData({ ...productData, [name]: value })
+	}
+
+	const handleSubmit = async (e) => {
+		e.preventDefault()
+
+		const validationErrors = validateProductData(productData)
+		setErrors(validationErrors)
+
+		// si no hay errores de validación, agregar el producto
+		if (Object.keys(validationErrors).length > 0) return
+
+		try {
+			// agregar el producto a la base de datos
+			const response = await addProduct(productData)
+			if (!response.ok) {
+				throw new Error('Network response was not ok')
+			}
+
+			// resetear el formulario
+			setProductData({
+				name: '',
+				stock: '',
+				nitrogen: '',
+				phosphorus: '',
+				potassium: '',
+				type: '',
+			})
+		} catch (error) {
+			console.error('Error al agregar producto:', error)
+		}
+	}
+
+	return (
+		<form onSubmit={handleSubmit}>
+			<div>
+				<input
+					type="text"
+					name="name"
+					value={productData.name}
+					onChange={handleChange}
+					placeholder="Nombre del producto"
+				/>
+				{errors.name && <span className="error">{errors.name}</span>}
+
+				<input
+					type="number"
+					name="stock"
+					value={productData.stock}
+					onChange={handleChange}
+					placeholder="Stock (ml)"
+				/>
+				{errors.stock && <span className="error">{errors.stock}</span>}
+			</div>
+			<div>
+				<input
+					type="number"
+					name="nitrogen"
+					value={productData.nitrogen}
+					onChange={handleChange}
+					placeholder="Nitrógeno (%)"
+				/>
+
+				<input
+					type="number"
+					name="potassium"
+					value={productData.potassium}
+					onChange={handleChange}
+					placeholder="Potasio (%)"
+				/>
+
+				<input
+					type="number"
+					name="phosphorus"
+					value={productData.phosphorus}
+					onChange={handleChange}
+					placeholder="Fósforo (%)"
+				/>
+
+				<select name="type" value={productData.type} onChange={handleChange}>
+					<option value="">Seleccione un tipo</option>
+					<option value="organic">Organico</option>
+					<option value="mineral">Mineral</option>
+				</select>
+			</div>
+			<button type="submit">Añadir Producto</button>
+		</form>
+	)
+}
+
+export default AddProduct
