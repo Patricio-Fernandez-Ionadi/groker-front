@@ -56,20 +56,17 @@ export const api_deletePlant = async (plantId) => {
 // ----- TODO -----
 
 // Ejemplo de cómo editar una planta
-export const api_editPlant = async (plantId, plantData) => {
+export const api_editPlant = async (plantData) => {
 	try {
-		const response = await fetch(`/api/plants/${plantId}`, {
+		const response = await fetch(`/api/plants/${plantData._id}`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify(plantData),
 		})
-		if (!response.ok) {
-			throw new Error('Network response was not ok')
-		}
 		const data = await response.json()
-		console.log('Planta editada:', data)
+		// console.log('Planta editada:', data)
 		return data
 	} catch (error) {
 		console.error('Error al editar planta:', error)
@@ -86,11 +83,8 @@ export const api_addHistoryEntry = async (plantId, historyData) => {
 			},
 			body: JSON.stringify(historyData),
 		})
-		if (!response.ok) {
-			throw new Error('Network response was not ok')
-		}
 		const data = await response.json()
-		console.log('Entrada de historial agregada:', data)
+		// console.log('Entrada de historial agregada:', data)
 		return data
 	} catch (error) {
 		console.error('Error al agregar entrada de historial:', error)
