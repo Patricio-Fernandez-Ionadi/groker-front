@@ -46,3 +46,14 @@ export const formatDate = (dateString) => {
 
 	return `${day}/${month}/${year}`
 }
+
+export const formatDateToYYYYMMDD = (dateString) => {
+	if (!dateString) return ''
+	const date = new Date(dateString)
+	return date.toISOString().split('T')[0]
+}
+
+export const formatDateToISO = (dateString) => {
+	if (!dateString) return ''
+	return new Date(dateString).toISOString()
+}
