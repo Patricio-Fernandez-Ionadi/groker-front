@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { formatDate } from '../../utils/dateUtils'
 import { AppContext } from '../../context/AppContext'
 import { translateField } from '../../utils/translations'
-import EditPlant from './EditPlant'
+import EditPlant from './edition/EditPlant'
 
 /**
  * Componente que muestra la lista de plantas en el inventario.

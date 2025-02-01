@@ -6,7 +6,6 @@ import PlantList from '../components/Plants/PlantList'
 import AddPlant from '../components/Plants/AddPlant'
 import PlantDetails from '../components/Plants/PlantDetails'
 import PlantHistory from '../components/Plants/PlantHistory'
-import EditPlant from '../components/Plants/EditPlant'
 
 import ProductList from '../components/Products/ProductList'
 
@@ -39,7 +38,6 @@ const App = () => {
 
 				<PlantList />
 				{viewMode === 'details' && <PlantDetails />}
-				{viewMode === 'edit' && <EditPlant />}
 				<PlantHistory />
 			</div>
 		</ProductProvider>
