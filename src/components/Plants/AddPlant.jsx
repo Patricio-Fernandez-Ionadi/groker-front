@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { AppContext } from '../../context/AppContext'
 
 import { AddGenetic } from '../Genetics/AddGenetic'
@@ -14,6 +14,55 @@ const defaultPlantData = {
 	flags: { isFinalPot: false },
 }
 
+const TODAY_FAKE_PLANT_DATA = {
+	entryDate: '2025-02-01T00:00:00.000Z',
+	name: 'TODAY HISTORY',
+	genetic: { _id: '679bf81f5996a713ebb47ece', name: 'Desconocida', __v: 0 },
+	stage: 'flowering',
+	potSize: 5,
+	flags: { isFinalPot: false, underObservation: false },
+	estimatedChange: '2025-02-27T00:00:00.000Z',
+	history: [
+		{
+			date: '2025-02-01T00:00:00.000Z',
+			events: [
+				{
+					type: 'stage',
+					detail: 'flowering',
+				},
+				{
+					type: 'note',
+					detail: [{ id: 4857, note: 'Anotaciones de prueba' }],
+				},
+			],
+		},
+	],
+}
+const NOT_TODAY_FAKE_PLANT_DATA = {
+	entryDate: '2025-02-01T00:00:00.000Z',
+	name: 'NOT TODAY HISTORY',
+	genetic: { _id: '679bf81f5996a713ebb47ece', name: 'Desconocida', __v: 0 },
+	stage: 'flowering',
+	potSize: 5,
+	flags: { isFinalPot: false, underObservation: false },
+	estimatedChange: '2025-02-27T00:00:00.000Z',
+	history: [
+		{
+			date: '2025-01-01T00:00:00.000Z',
+			events: [
+				{
+					type: 'stage',
+					detail: 'flowering',
+				},
+				{
+					type: 'note',
+					detail: [{ id: 4857, note: 'Anotaciones de prueba' }],
+				},
+			],
+		},
+	],
+}
+
 /**
  * Formulario para añadir una nueva planta al inventario.
  */
@@ -25,6 +74,11 @@ const AddPlant = () => {
 	const { state, addPlant } = useContext(AppContext)
 
 	const { genetics } = state
+
+	useEffect(() => {
+		addPlant(TODAY_FAKE_PLANT_DATA)
+		addPlant(NOT_TODAY_FAKE_PLANT_DATA)
+	}, [])
 
 	/**
 	 * Maneja los cambios en los campos del formulario.
