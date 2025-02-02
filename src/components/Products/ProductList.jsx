@@ -1,18 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 
-import { getProducts } from '../../api/products'
 import AddProduct from './AddProduct'
+import { AppContext } from '../../context/AppContext'
 
 /**
  * Componente que muestra la lista de productos en el inventario.
  */
 const ProductList = () => {
-	const [products, setProducts] = useState([])
 	const [showAddProductForm, setShowAddProductForm] = useState(false)
 
-	useEffect(() => {
-		getProducts().then((data) => setProducts(data))
-	}, [])
+	const { state } = useContext(AppContext)
+	const { products } = state
 
 	return (
 		<div>

@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import { addProduct } from '../../api/products'
+import React, { useContext, useState } from 'react'
 
 import { validateProductData } from '../../utils/validation'
+import { AppContext } from '../../context/AppContext'
 
 /**
  * Componente para añadir un nuevo producto al inventario.
@@ -17,6 +17,8 @@ const AddProduct = () => {
 	})
 	const [errors, setErrors] = useState({})
 
+	const { addProduct } = useContext(AppContext)
+
 	const handleChange = (e) => {
 		const { name, value } = e.target
 		setProductData({ ...productData, [name]: value })
@@ -31,25 +33,17 @@ const AddProduct = () => {
 		// si no hay errores de validación, agregar el producto
 		if (Object.keys(validationErrors).length > 0) return
 
-		try {
-			// agregar el producto a la base de datos
-			const response = await addProduct(productData)
-			if (!response.ok) {
-				throw new Error('Network response was not ok')
-			}
+		addProduct(productData)
 
-			// resetear el formulario
-			setProductData({
-				name: '',
-				stock: '',
-				nitrogen: '',
-				phosphorus: '',
-				potassium: '',
-				type: '',
-			})
-		} catch (error) {
-			console.error('Error al agregar producto:', error)
-		}
+		// resetear el formulario
+		setProductData({
+			name: '',
+			stock: '',
+			nitrogen: '',
+			phosphorus: '',
+			potassium: '',
+			type: '',
+		})
 	}
 
 	return (

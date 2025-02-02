@@ -1,9 +1,6 @@
-export const getProducts = async () => {
+export const api_getProducts = async () => {
 	try {
 		const response = await fetch('/api/products')
-		if (!response.ok) {
-			throw new Error('Network response was not ok')
-		}
 		const data = await response.json()
 		// console.log('Productos obtenidos:', data)
 		return data
@@ -13,7 +10,7 @@ export const getProducts = async () => {
 }
 
 // Ejemplo de cómo agregar un producto
-export const addProduct = async (productData) => {
+export const api_addProduct = async (productData) => {
 	try {
 		const response = await fetch('/api/products', {
 			method: 'POST',
@@ -22,9 +19,6 @@ export const addProduct = async (productData) => {
 			},
 			body: JSON.stringify(productData),
 		})
-		if (!response.ok) {
-			throw new Error('Network response was not ok')
-		}
 		return response
 	} catch (error) {
 		console.error('Error al agregar producto:', error)
@@ -33,7 +27,7 @@ export const addProduct = async (productData) => {
 }
 
 // Ejemplo de cómo editar un producto
-export const editProduct = async (productId, productData) => {
+export const api_editProduct = async (productId, productData) => {
 	try {
 		const response = await fetch(`/api/products/${productId}`, {
 			method: 'PUT',
@@ -42,11 +36,8 @@ export const editProduct = async (productId, productData) => {
 			},
 			body: JSON.stringify(productData),
 		})
-		if (!response.ok) {
-			throw new Error('Network response was not ok')
-		}
 		const data = await response.json()
-		console.log('Producto editado:', data)
+		// console.log('Producto editado:', data)
 		return data
 	} catch (error) {
 		console.error('Error al editar producto:', error)
@@ -54,16 +45,13 @@ export const editProduct = async (productId, productData) => {
 }
 
 // Ejemplo de cómo eliminar un producto
-export const deleteProduct = async (productId) => {
+export const api_deleteProduct = async (productId) => {
 	try {
 		const response = await fetch(`/api/products/${productId}`, {
 			method: 'DELETE',
 		})
-		if (!response.ok) {
-			throw new Error('Network response was not ok')
-		}
 		const data = await response.json()
-		console.log('Producto eliminado:', data)
+		// console.log('Producto eliminado:', data)
 		return data
 	} catch (error) {
 		console.error('Error al eliminar producto:', error)

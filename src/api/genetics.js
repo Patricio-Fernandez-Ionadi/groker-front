@@ -1,5 +1,5 @@
 // Ejemplo de cómo obtener todas las genéticas
-export const getGenetics = async () => {
+export const api_getGenetics = async () => {
 	try {
 		const response = await fetch('/api/genetics')
 		const data = await response.json()
@@ -10,7 +10,7 @@ export const getGenetics = async () => {
 	}
 }
 // Ejemplo de cómo agregar una nueva genética
-export const addGenetic = async (geneticData) => {
+export const api_addGenetic = async (geneticData) => {
 	try {
 		const response = await fetch('/api/genetics', {
 			method: 'POST',
@@ -30,7 +30,7 @@ export const addGenetic = async (geneticData) => {
 	}
 }
 
-export const deleteGenetic = async (id) => {
+export const api_deleteGenetic = async (id) => {
 	try {
 		const response = await fetch(`/api/genetics/${id}`, {
 			method: 'DELETE',
