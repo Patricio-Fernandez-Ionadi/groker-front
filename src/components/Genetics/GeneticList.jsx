@@ -13,6 +13,7 @@ export function GeneticList() {
 
 	return (
 		<>
+			<h3 className="genetics-modal-title">Lista de genéticas disponibles</h3>
 			<ul className="genetics-modal-list">
 				{genetics.map((genetic) => (
 					<li key={genetic._id}>

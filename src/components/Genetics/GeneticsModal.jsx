@@ -14,7 +14,7 @@ export function GeneticsModal() {
 					className="genetics-modal-close"
 					onClick={() => setShowGeneticForm(false)}
 				>
-					X
+					✖
 				</button>
 				<AddGenetic />
 				<GeneticList />

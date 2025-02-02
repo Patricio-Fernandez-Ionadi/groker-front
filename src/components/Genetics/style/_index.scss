@@ -34,6 +34,7 @@
 	line-height: 20px;
 	&:hover {
 		background-color: $primary_darken;
+		color: $error;
 	}
 }
 
@@ -57,6 +58,7 @@
 		width: $full;
 		outline: none;
 		height: $full;
+		font-size: 20px;
 	}
 
 	& button {

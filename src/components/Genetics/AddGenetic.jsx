@@ -24,7 +24,7 @@ export function AddGenetic() {
 				<input
 					type="text"
 					name="name"
-					placeholder="Nombre de la genética"
+					placeholder="Nueva Genética"
 					value={newGenetic}
 					onChange={(e) => setNewGenetic(e.target.value)}
 				/>

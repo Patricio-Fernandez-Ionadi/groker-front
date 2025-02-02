@@ -50,6 +50,7 @@
 }
 .genetics-modal-close:hover {
   background-color: #006064;
+  color: #f44336;
 }
 
 .genetics-modal-title {
@@ -73,6 +74,7 @@
   width: 100%;
   outline: none;
   height: 100%;
+  font-size: 20px;
 }
 .genetics-modal-input-container button {
   background-color: #007d85;
