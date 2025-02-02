@@ -1,15 +1,16 @@
 import React from 'react'
 import { toggleCheckboxState } from '../../../utils/helpers'
+import { useEditPlantContext } from '../../../context/PlantEditContext'
 
-export function CommonFields({
-	editedPlant,
-	handlePlantChange,
-	showAdvancedFields,
-	setShowAdvancedFields,
-	isWatered,
-	setIsWatered,
-	handleAddNote,
-}) {
+export function CommonFields() {
+	const {
+		editedPlant,
+		handlePlantChange,
+		isWatered,
+		setIsWatered,
+		handleAddNote,
+	} = useEditPlantContext()
+
 	return (
 		<>
 			<div>
@@ -31,29 +32,26 @@ export function CommonFields({
 					onChange={handlePlantChange}
 					placeholder="Tamaño de la maceta"
 				/>
-				<label>
-					Temperatura (°C):
-					<input
-						type="number"
-						name="temperature"
-						onChange={handlePlantChange}
-						placeholder="Temperatura (°C)"
-					/>
-				</label>
-				<label>
-					Humedad (%):
-					<input
-						type="number"
-						name="humidity"
-						onChange={handlePlantChange}
-						placeholder="Humedad (%)"
-					/>
-				</label>
+
+				<input
+					type="number"
+					name="temperature"
+					onChange={handlePlantChange}
+					placeholder="Temperatura (°C)"
+				/>
+
+				<input
+					type="number"
+					name="humidity"
+					onChange={handlePlantChange}
+					placeholder="Humedad (%)"
+				/>
 				<label>
 					Maceta final
 					<input
 						type="checkbox"
 						name="isFinalPot"
+						checked={editedPlant.flags.isFinalPot}
 						onChange={handlePlantChange}
 					/>
 				</label>
@@ -61,6 +59,7 @@ export function CommonFields({
 					Bajo observación
 					<input
 						type="checkbox"
+						checked={editedPlant.flags.underObservation}
 						name="underObservation"
 						onChange={handlePlantChange}
 					/>
@@ -81,18 +80,6 @@ export function CommonFields({
 							placeholder="Añadir una nota"
 						/>
 					</div>
-				</div>
-				<div>
-					<button
-						type="button"
-						onClick={() =>
-							toggleCheckboxState(showAdvancedFields, setShowAdvancedFields)
-						}
-					>
-						{showAdvancedFields
-							? 'Ocultar Campos Avanzados'
-							: 'Mostrar Campos Avanzados'}
-					</button>
 				</div>
 			</div>
 		</>

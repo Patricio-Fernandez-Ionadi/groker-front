@@ -20,19 +20,32 @@ const TODAY_FAKE_PLANT_DATA = {
 	genetic: { _id: '679bf81f5996a713ebb47ece', name: 'Desconocida', __v: 0 },
 	stage: 'flowering',
 	potSize: 5,
-	flags: { isFinalPot: false, underObservation: false },
+	flags: { isFinalPot: true, underObservation: true },
 	estimatedChange: '2025-02-27T00:00:00.000Z',
 	history: [
 		{
-			date: '2025-02-01T00:00:00.000Z',
+			date: '2025-01-30T00:00:00.000Z',
+			events: [
+				{
+					type: 'underObservation',
+					details: true,
+				},
+				{
+					type: 'isFinalPot',
+					details: true,
+				},
+			],
+		},
+		{
+			date: '2025-02-02T00:00:00.000Z',
 			events: [
 				{
 					type: 'stage',
-					detail: 'flowering',
+					details: 'flowering',
 				},
 				{
 					type: 'note',
-					detail: [{ id: 4857, note: 'Anotaciones de prueba' }],
+					details: [{ id: 4857, note: 'Anotaciones de prueba' }],
 				},
 			],
 		},
@@ -52,11 +65,24 @@ const NOT_TODAY_FAKE_PLANT_DATA = {
 			events: [
 				{
 					type: 'stage',
-					detail: 'flowering',
+					details: 'flowering',
 				},
 				{
 					type: 'note',
-					detail: [{ id: 4857, note: 'Anotaciones de prueba' }],
+					details: [{ id: 4857, note: 'Anotaciones de prueba' }],
+				},
+			],
+		},
+		{
+			date: '2025-01-10T00:00:00.000Z',
+			events: [
+				{
+					type: 'temperature',
+					details: 22,
+				},
+				{
+					type: 'potSize',
+					details: 5,
 				},
 			],
 		},
@@ -76,8 +102,8 @@ const AddPlant = () => {
 	const { genetics } = state
 
 	useEffect(() => {
-		addPlant(TODAY_FAKE_PLANT_DATA)
-		addPlant(NOT_TODAY_FAKE_PLANT_DATA)
+		// addPlant(TODAY_FAKE_PLANT_DATA)
+		// addPlant(NOT_TODAY_FAKE_PLANT_DATA)
 	}, [])
 
 	/**

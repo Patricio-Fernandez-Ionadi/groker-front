@@ -1,6 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AppContext } from '../../../context/AppContext'
+import { useEditPlantContext } from '../../../context/PlantEditContext'
 
-export function AdvancedFields({ editedPlant, handlePlantChange, genetics }) {
+export function AdvancedFields() {
+	const { state } = useContext(AppContext)
+	const { genetics } = state
+
+	const { editedPlant, handlePlantChange, showAdvancedFields } =
+		useEditPlantContext()
+
+	if (!showAdvancedFields) return null
+
 	return (
 		<>
 			<div>

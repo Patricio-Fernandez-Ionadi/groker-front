@@ -3,6 +3,7 @@ import { formatDate } from '../../utils/dateUtils'
 import { AppContext } from '../../context/AppContext'
 import { translateField } from '../../utils/translations'
 import EditPlant from './edition/EditPlant'
+import { PlantsFormsEditProvider } from '../../context/PlantEditContext'
 
 /**
  * Componente que muestra la lista de plantas en el inventario.
@@ -74,7 +75,9 @@ const PlantList = () => {
 				{editForm && (
 					<>
 						<button onClick={() => setEditForm(false)}>Cerrar</button>
-						<EditPlant />
+						<PlantsFormsEditProvider>
+							<EditPlant />
+						</PlantsFormsEditProvider>
 					</>
 				)}
 			</div>
