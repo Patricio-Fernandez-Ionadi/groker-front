@@ -1,26 +1,19 @@
-import React, { useEffect, useState } from 'react'
-import { deleteGenetic, getGenetics } from '../../api/genetics'
+import React, { useContext } from 'react'
+import { AppContext } from '../../context/AppContext'
 
 export function GeneticList() {
-	const [genetics, setGenetics] = useState([])
-
-	useEffect(() => {
-		getGenetics().then((data) => setGenetics(data))
-	}, [genetics])
+	const { deleteGenetic, state } = useContext(AppContext)
+	const { genetics } = state
 
 	const handleDeleteGenetic = async (id) => {
-		try {
-			await deleteGenetic(id)
-		} catch (error) {
-			console.error('Error al eliminar genética:', error)
-		}
+		deleteGenetic(id)
 	}
 
 	if (genetics.length === 0) return <p>Cargando genéticas...</p>
 
 	return (
 		<>
-			<ul>
+			<ul className="genetics-modal-list">
 				{genetics.map((genetic) => (
 					<li key={genetic._id}>
 						{genetic.name}

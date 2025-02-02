@@ -1,26 +1,26 @@
-import React, { useState } from 'react'
-import { addGenetic } from '../../api/genetics'
-
-import { GeneticList } from './GeneticList'
+import React, { useContext, useState } from 'react'
+import { GenModalContext } from '../../context/genetics/GenModalContext'
+import { AppContext } from '../../context/AppContext'
 
 export function AddGenetic() {
 	const [newGenetic, setNewGenetic] = useState('')
 
+	const { addGenetic } = useContext(AppContext)
+
+	const { setShowGeneticForm } = useContext(GenModalContext)
+
 	const handleAddGenetic = async (e) => {
 		e.preventDefault()
-		try {
-			const addNewGenetic = { name: newGenetic }
-			await addGenetic(addNewGenetic)
-			setNewGenetic('')
-		} catch (error) {
-			console.error('Error al agregar genética:', error)
-		}
+		const addNewGenetic = { name: newGenetic }
+		addGenetic(addNewGenetic)
+		setNewGenetic('')
+		setShowGeneticForm(false)
 	}
 
 	return (
 		<>
-			<h1>Genéticas</h1>
-			<div>
+			<h3 className="genetics-modal-title">Añadir nueva genética</h3>
+			<div className="genetics-modal-input-container">
 				<input
 					type="text"
 					name="name"
@@ -28,8 +28,7 @@ export function AddGenetic() {
 					value={newGenetic}
 					onChange={(e) => setNewGenetic(e.target.value)}
 				/>
-				<button onClick={handleAddGenetic}>Agregar Genética</button>
-				<GeneticList />
+				<button onClick={handleAddGenetic}>Guardar</button>
 			</div>
 		</>
 	)

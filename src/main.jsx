@@ -1,14 +1,15 @@
 import { createRoot } from 'react-dom/client'
-import { PlantProvider } from './context/PlantContext'
+import { AppProvider } from './context/AppContext'
+import GenModalProvider from './context/genetics/GenModalContext'
+
 import App from './app/App'
 
 import './theme/index.css'
-import { AppProvider } from './context/AppContext'
 
 createRoot(document.getElementById('root')).render(
 	<AppProvider>
-		<PlantProvider>
+		<GenModalProvider>
 			<App />
-		</PlantProvider>
+		</GenModalProvider>
 	</AppProvider>
 )

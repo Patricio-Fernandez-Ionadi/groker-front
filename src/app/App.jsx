@@ -1,25 +1,25 @@
 import React, { useContext, useState } from 'react'
-import { PlantContext } from '../context/PlantContext'
-import { ProductProvider } from '../context/ProductContext'
+import { GenModalContext } from '../context/genetics/GenModalContext'
 
-import PlantList from '../components/Plants/PlantList'
+import { GeneticsModal } from '../components/Genetics/GeneticsModal'
+
 import AddPlant from '../components/Plants/AddPlant'
+import PlantList from '../components/Plants/PlantList'
 import PlantDetails from '../components/Plants/PlantDetails'
 import PlantHistory from '../components/Plants/PlantHistory'
-
 import ProductList from '../components/Products/ProductList'
 
 /**
  * Componente principal de la aplicación de gestión de inventario de cultivos.
  */
 const App = () => {
-	const { viewMode } = useContext(PlantContext)
-
 	const [showAddPlantForm, setShowAddPlantForm] = useState(false)
 	const [showProductList, setShowProductList] = useState(false)
 
+	const { showGeneticForm } = useContext(GenModalContext)
+
 	return (
-		<ProductProvider>
+		<>
 			<div>
 				<h1>Gestión de Inventario de Cultivos</h1>
 
@@ -35,12 +35,13 @@ const App = () => {
 
 				{showAddPlantForm && <AddPlant />}
 				{showProductList && <ProductList />}
+				{showGeneticForm && <GeneticsModal />}
 
 				<PlantList />
-				{viewMode === 'details' && <PlantDetails />}
+				<PlantDetails />
 				<PlantHistory />
 			</div>
-		</ProductProvider>
+		</>
 	)
 }
 

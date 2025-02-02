@@ -1,9 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AppContext } from '../../context/AppContext'
 
-import { AddGenetic } from '../Genetics/AddGenetic'
-
 import { validatePlantData } from '../../utils/validation'
+import { AddGeneticButton } from '../Genetics/AddGeneticButton'
 
 const defaultPlantData = {
 	entryDate: '',
@@ -94,11 +93,9 @@ const NOT_TODAY_FAKE_PLANT_DATA = {
  */
 const AddPlant = () => {
 	const [newPlantData, setPlantData] = useState(defaultPlantData)
-	const [showGeneticForm, setShowGeneticForm] = useState(false)
 	const [errors, setErrors] = useState({})
 
 	const { state, addPlant } = useContext(AppContext)
-
 	const { genetics } = state
 
 	useEffect(() => {
@@ -178,9 +175,7 @@ const AddPlant = () => {
 						</option>
 					))}
 				</select>
-				<button onClick={() => setShowGeneticForm(!showGeneticForm)}>
-					{showGeneticForm ? 'Cerrar' : 'Agregar Genética'}
-				</button>
+				<AddGeneticButton />
 			</div>
 			<div>
 				<label>
@@ -214,7 +209,6 @@ const AddPlant = () => {
 					/>
 				</label>
 			</div>
-			{showGeneticForm && <AddGenetic />}
 			<button onClick={handleSubmit}>Añadir Planta</button>
 		</div>
 	)

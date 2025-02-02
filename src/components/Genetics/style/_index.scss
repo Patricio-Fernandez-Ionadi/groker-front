@@ -1,0 +1,89 @@
+.genetics-modal-overlay {
+	position: fixed;
+	width: $vw;
+	height: $vh;
+	top: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+.genetics-modal {
+	background-color: $white;
+	width: 400px;
+	height: 400px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 20px;
+}
+
+.genetics-modal-close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	cursor: pointer;
+	border-radius: 50%;
+	border: none;
+	background-color: $primary_dark;
+	color: $white;
+	width: 30px;
+	height: 30px;
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 20px;
+	&:hover {
+		background-color: $primary_darken;
+	}
+}
+
+.genetics-modal-title {
+	text-align: center;
+	margin: 10px 0;
+	color: $primary_dark;
+	font-size: 20px;
+}
+
+.genetics-modal-input-container {
+	display: flex;
+	align-items: center;
+	width: $full;
+	justify-content: space-between;
+	height: 40px;
+	margin-bottom: 10px;
+	& input {
+		padding: 10px;
+		margin: 10px 0;
+		width: $full;
+		outline: none;
+		height: $full;
+	}
+
+	& button {
+		background-color: $primary_dark;
+		color: $white;
+		border: none;
+		padding: 10px;
+		cursor: pointer;
+		height: $full;
+		&:hover {
+			background-color: $primary_darken;
+		}
+	}
+}
+
+.genetics-modal-list {
+	max-height: 200px;
+	overflow-y: scroll;
+	list-style: none;
+	padding: 0;
+	& li {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 5px 10px;
+		&:hover {
+			background-color: $primary_light;
+		}
+	}
+}
