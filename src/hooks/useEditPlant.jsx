@@ -18,7 +18,7 @@ export const useEditPlant = () => {
 	const [newNote, setNewNote] = useState({ id: '', note: '' })
 	const [wateringData, setWateringData] = useState({
 		amount: '',
-		productsUsed: [{ product: '', productAmount: '' }],
+		productsUsed: [],
 		ph: '',
 		ec: '',
 	})

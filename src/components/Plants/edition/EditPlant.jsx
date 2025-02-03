@@ -12,26 +12,25 @@ const EditPlant = () => {
 		useEditPlantContext()
 
 	return (
-		<>
+		<div className="dynamic-form">
+			<button
+				className="action-buttons"
+				type="button"
+				onClick={() =>
+					toggleCheckboxState(showAdvancedFields, setShowAdvancedFields)
+				}
+			>
+				{showAdvancedFields
+					? 'Ocultar Campos Avanzados'
+					: 'Mostrar Campos Avanzados'}
+			</button>
 			<AdvancedFields />
 			<CommonFields />
 			<WateringFields />
-			<div>
-				<button
-					type="button"
-					onClick={() =>
-						toggleCheckboxState(showAdvancedFields, setShowAdvancedFields)
-					}
-				>
-					{showAdvancedFields
-						? 'Ocultar Campos Avanzados'
-						: 'Mostrar Campos Avanzados'}
-				</button>
-			</div>
-			<div>
-				<button onClick={handleSubmit}>Guardar Cambios</button>
-			</div>
-		</>
+			<button className="action-buttons" onClick={handleSubmit}>
+				Guardar Cambios
+			</button>
+		</div>
 	)
 }
 

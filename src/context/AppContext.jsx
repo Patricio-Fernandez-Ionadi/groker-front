@@ -4,7 +4,11 @@ import {
 	api_deleteGenetic,
 	api_getGenetics,
 } from '../api/genetics'
-import { api_addProduct, api_getProducts } from '../api/products'
+import {
+	api_addProduct,
+	api_editProduct,
+	api_getProducts,
+} from '../api/products'
 import {
 	api_getPlants,
 	api_deletePlant,
@@ -166,7 +170,27 @@ const AppProvider = ({ children }) => {
 		}
 	}
 
-	const updateProductStock = (productId, amount) => {
+	const updateProductStock = async (productId, amount) => {
+		const productToUpdate = state.products.find((p) => p._id === productId)
+
+		const newProductData = {
+			...productToUpdate,
+			stock: productToUpdate.stock - amount,
+		}
+
+		// en este punto llegan los productos tantas veces como se llame la funcion handleSubmit en useEditPlant
+		// es decir llegan todos los productos registrados en newEvents
+		console.log({
+			idRecibido: productId,
+			nombre: productToUpdate.name,
+			cantidad: amount,
+			stockDisponible: productToUpdate.stock,
+			stockAcualizado: newProductData.stock,
+		})
+
+		// const updatedProduct = await api_editProduct(productId, newProductData)
+
+		// actualizacion en el estado de la aplicacion para evitar nueva llamada
 		setState((prev) => ({
 			...prev,
 			products: prev.products.map((product) =>

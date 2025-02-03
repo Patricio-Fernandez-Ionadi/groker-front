@@ -2,6 +2,7 @@ import React from 'react'
 import { useEditPlantContext } from '../../../context/plants/PlantEditContext'
 
 import { toggleCheckboxState } from '../../../utils/helpers'
+import { ToggleSwitch } from '../../Universals/ToggleSwitch'
 
 export function CommonFields() {
 	const {
@@ -13,76 +14,72 @@ export function CommonFields() {
 	} = useEditPlantContext()
 
 	return (
-		<>
-			<div>
-				<label>
-					Etapa:
-					<select
-						name="stage"
-						value={editedPlant.stage}
-						onChange={handlePlantChange}
-					>
-						<option value="vegetative">Vegetativo</option>
-						<option value="flowering">Floración</option>
-					</select>
-				</label>
+		<div className="common-fields">
+			<select
+				className="stage-select"
+				name="stage"
+				value={editedPlant.stage}
+				onChange={handlePlantChange}
+			>
+				<option value="germination">Germinación</option>
+				<option value="vegetative">Vegetativo</option>
+				<option value="flowering">Floración</option>
+			</select>
 
-				<input
-					type="text"
-					name="potSize"
-					onChange={handlePlantChange}
-					placeholder="Tamaño de la maceta"
-				/>
+			<input
+				className="potSize-input"
+				type="text"
+				name="potSize"
+				onChange={handlePlantChange}
+				placeholder="Tamaño de la maceta"
+			/>
 
-				<input
-					type="number"
-					name="temperature"
-					onChange={handlePlantChange}
-					placeholder="Temperatura (°C)"
-				/>
+			<input
+				className="temperature-input"
+				type="number"
+				name="temperature"
+				onChange={handlePlantChange}
+				placeholder="Temperatura (°C)"
+			/>
 
-				<input
-					type="number"
-					name="humidity"
-					onChange={handlePlantChange}
-					placeholder="Humedad (%)"
+			<input
+				className="humidity-input"
+				type="number"
+				name="humidity"
+				onChange={handlePlantChange}
+				placeholder="Humedad (%)"
+			/>
+
+			<label className="isFinalPot-switch">
+				<p>Maceta Final</p>
+				<ToggleSwitch
+					switcher={editedPlant.flags.isFinalPot}
+					onEvent={handlePlantChange}
+					name={'isFinalPot'}
 				/>
-				<label>
-					Maceta final
-					<input
-						type="checkbox"
-						name="isFinalPot"
-						checked={editedPlant.flags.isFinalPot}
-						onChange={handlePlantChange}
-					/>
-				</label>
-				<label>
-					Bajo observación
-					<input
-						type="checkbox"
-						checked={editedPlant.flags.underObservation}
-						name="underObservation"
-						onChange={handlePlantChange}
-					/>
-				</label>
-				<label>
-					¿Hubo riego?
-					<input
-						type="checkbox"
-						checked={isWatered}
-						onChange={() => toggleCheckboxState(isWatered, setIsWatered)}
-					/>
-				</label>
-				<div>
-					<div>
-						<textarea
-							name="note"
-							onChange={handleAddNote}
-							placeholder="Añadir una nota"
-						/>
-					</div>
-				</div>
-			</div>
-		</>
+			</label>
+
+			<label className="underObservation-switch">
+				<p>Bajo observación</p>
+				<ToggleSwitch
+					switcher={editedPlant.flags.underObservation}
+					onEvent={handlePlantChange}
+					name={'underObservation'}
+				/>
+			</label>
+			<label className="watered-switch">
+				<p>Riego</p>
+				<ToggleSwitch
+					switcher={isWatered}
+					onEvent={() => toggleCheckboxState(isWatered, setIsWatered)}
+				/>
+			</label>
+			<textarea
+				className="notes-textarea"
+				name="note"
+				onChange={handleAddNote}
+				placeholder="Añadir una nota"
+			/>
+		</div>
 	)
 }

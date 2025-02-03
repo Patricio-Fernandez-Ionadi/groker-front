@@ -14,30 +14,30 @@ export function AdvancedFields() {
 	if (!showAdvancedFields) return null
 
 	return (
-		<>
-			<div>
+		<div className="advanced-fields">
+			<label className="advanced-date">
+				Fecha de ingreso:
+				<input
+					type="date"
+					name="entryDate"
+					value={editedPlant.entryDate}
+					onChange={handlePlantChange}
+					placeholder="Fecha de ingreso"
+				/>
+			</label>
+			<label className="advanced-name">
+				Nombre de la planta:
+				<input
+					type="text"
+					name="name"
+					value={editedPlant.name}
+					onChange={handlePlantChange}
+					placeholder="Nombre de la planta"
+				/>
+			</label>
+			<div className="advanced-genetic">
 				<label>
-					Fecha de ingreso:
-					<input
-						type="date"
-						name="entryDate"
-						value={editedPlant.entryDate}
-						onChange={handlePlantChange}
-						placeholder="Fecha de ingreso"
-					/>
-				</label>
-				<label>
-					Nombre de la planta:
-					<input
-						type="text"
-						name="name"
-						value={editedPlant.name}
-						onChange={handlePlantChange}
-						placeholder="Nombre de la planta"
-					/>
-				</label>
-				<label>
-					Genética:
+					Editar genética:
 					<select name="genetic" onChange={handlePlantChange}>
 						<option value={editedPlant.genetic}>Seleccione una genética</option>
 						{genetics.map((genetic) => (
@@ -46,18 +46,18 @@ export function AdvancedFields() {
 							</option>
 						))}
 					</select>
-					<AddGeneticButton />
 				</label>
-				<label>
-					Cambio estimado:
-					<input
-						type="date"
-						name="estimatedChange"
-						value={editedPlant.estimatedChange}
-						onChange={handlePlantChange}
-					/>
-				</label>
+				<AddGeneticButton />
 			</div>
-		</>
+			<label className="advanced-change">
+				Cambio estimado:
+				<input
+					type="date"
+					name="estimatedChange"
+					value={editedPlant.estimatedChange}
+					onChange={handlePlantChange}
+				/>
+			</label>
+		</div>
 	)
 }

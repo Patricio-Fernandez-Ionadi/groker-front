@@ -1,0 +1,205 @@
+/* Estilos generales */
+.dynamic-form {
+	max-width: 600px; // Ancho máximo para centrar el formulario
+	margin: 0 auto;
+	padding: 20px;
+	background-color: $white;
+	border-radius: $border-radius;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+	.action-buttons {
+		width: $full;
+		&:first-child {
+			background-color: $secondary;
+			&:hover {
+				background-color: $secondary_dark;
+			}
+		}
+	}
+
+	.watering-fields,
+	.advanced-fields {
+		margin-top: 10px;
+		padding: 15px;
+		border: 1px dashed $grey;
+		border-radius: $border-radius;
+	}
+
+	.common-fields {
+		margin: 10px 0;
+		display: grid;
+		grid-template-columns: repeat(6, 1fr);
+		grid-template-rows: repeat(2, 40px) 60px 100px;
+		gap: 10px;
+		grid-template-areas:
+			'stage stage stage potSize potSize potSize'
+			'temperature temperature temperature humidity humidity humidity'
+			'switchPot switchPot switchObs switchObs switchWater switchWater'
+			'notes notes notes notes notes notes';
+	}
+	.stage-select {
+		grid-area: stage;
+	}
+	.potSize-input {
+		grid-area: potSize;
+	}
+	.temperature-input {
+		grid-area: temperature;
+	}
+	.humidity-input {
+		grid-area: humidity;
+	}
+	.isFinalPot-switch {
+		grid-area: switchPot;
+	}
+	.underObservation-switch {
+		grid-area: switchObs;
+	}
+	.watered-switch {
+		grid-area: switchWater;
+	}
+	.notes-textarea {
+		grid-area: notes;
+		resize: none;
+	}
+	.isFinalPot-switch,
+	.underObservation-switch,
+	.watered-switch {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		& p {
+			margin-bottom: 5px;
+		}
+	}
+
+	.advanced-fields {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 80px 100px;
+		gap: 10px;
+		grid-template-areas: 'date name' 'change genetic';
+	}
+	.advanced-date {
+		grid-area: date;
+	}
+	.advanced-name {
+		grid-area: name;
+	}
+	.advanced-genetic {
+		grid-area: genetic;
+		& button {
+			width: 100%;
+			padding: 5px 0;
+		}
+	}
+	.advanced-change {
+		grid-area: change;
+	}
+
+	.watering-fields {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-areas:
+			'watering-date watering-amount'
+			'watering-ph watering-ec'
+			'watering-products watering-products'
+			'watering-product-add watering-product-add';
+		align-items: end;
+		gap: 10px;
+		margin-bottom: 10px;
+	}
+	.watering-date {
+		grid-area: watering-date;
+		height: 60px;
+	}
+	.watering-amount {
+		grid-area: watering-amount;
+	}
+	.watering-ph {
+		grid-area: watering-ph;
+	}
+	.watering-ec {
+		grid-area: watering-ec;
+	}
+	.watering-products {
+		grid-area: watering-products;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+	.watering-product-item {
+		display: grid;
+		grid-template-columns: 2fr 1fr 1fr; /* Select, Amount, Remove */
+		gap: 10px;
+		align-items: center;
+	}
+	.watering-product-select {
+		grid-column: 1 / 2;
+	}
+	.watering-product-amount {
+		grid-column: 2 / 3;
+	}
+	.watering-product-remove {
+		grid-column: 3 / 4;
+	}
+	.watering-product-add {
+		grid-area: watering-product-add;
+	}
+}
+
+/* Media Queries para móviles */
+@media (max-width: $medium) {
+	.dynamic-form {
+		padding: 15px;
+
+		.advanced-fields {
+			grid-template-columns: 1fr;
+			grid-template-areas: 'date' 'name' 'genetic' 'change';
+			grid-template-rows: auto auto auto auto;
+		}
+
+		.common-fields {
+			grid-template-columns: repeat(3, 1fr);
+			grid-template-rows: repeat(4, 40px) auto 100px;
+			grid-template-areas:
+				'stage stage stage'
+				'potSize potSize potSize'
+				'temperature temperature temperature'
+				'humidity humidity humidity'
+				'switchPot switchObs switchWater'
+				'notes notes notes';
+		}
+
+		.watering-fields {
+			grid-template-columns: 1fr;
+			grid-template-areas:
+				'watering-date'
+				'watering-amount'
+				'watering-ph'
+				'watering-ec'
+				'watering-products'
+				'watering-product-add';
+		}
+		.watering-product-item {
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			grid-template-areas:
+				'watprod-select watprod-select watprod-amount'
+				'watprod-remove watprod-remove watprod-remove';
+			gap: 10px;
+			align-items: center;
+		}
+		.watering-product-select {
+			grid-area: watprod-select;
+		}
+		.watering-product-amount {
+			grid-area: watprod-amount;
+		}
+		.watering-product-remove {
+			grid-area: watprod-remove;
+		}
+	}
+}
