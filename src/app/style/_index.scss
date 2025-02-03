@@ -8,7 +8,7 @@
 
 .main-content {
 	display: grid;
-	grid-template-columns: 3fr 1fr;
+	grid-template-columns: 2fr 1fr;
 	gap: 20px;
 }
 
@@ -17,4 +17,10 @@
 	padding: 20px;
 	border-radius: 8px;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: $medium) {
+	.main-content {
+		grid-template-columns: 1fr;
+	}
 }

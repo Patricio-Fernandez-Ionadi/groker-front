@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
@@ -126,7 +127,7 @@ button:hover {
 .plant-list-component,
 .plant-details-component,
 .plant-history-component {
-  background-color: white;
+  background-color: #f5f5f5;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -178,8 +179,6 @@ button:hover {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-  font-family: Arial, sans-serif;
-  color: #f5f5f5;
 }
 
 .add-plant-form-name_genetic,
@@ -215,7 +214,7 @@ button:hover {
   width: 100%;
   padding: 8px;
   border: 1px solid #616161;
-  border-radius: 4px;
+  border-radius: 3px;
   font-size: 14px;
 }
 
@@ -223,7 +222,7 @@ button:hover {
 .add-plant-form-genetic select:focus,
 .add-plant-form-date input:focus,
 .add-plant-form-stage select:focus,
-.add-plant-form-potSize input:focus {
+.add-plant-form-potSize:focus {
   border-color: #007d85;
   outline: none;
 }
@@ -237,7 +236,7 @@ button:hover {
 .add-plant-form-potCheckbox {
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-end;
   gap: 5px;
   font-size: 14px;
 }
@@ -263,6 +262,36 @@ button:hover {
   justify-content: space-between;
 }
 
+@media (max-width: 769px) {
+  .inventory-table th,
+  .inventory-table td {
+    font-size: 14px; /* Reducir el tamaño del texto */
+    padding: 6px; /* Reducir el padding */
+  }
+  .inventory-table th:nth-child(n+4),
+  .inventory-table td:nth-child(n+4) {
+    display: none; /* Ocultar columnas adicionales en móviles */
+  }
+  .add-plant-form-container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .add-plant-form-name_genetic,
+  .add-plant-form-date_stage,
+  .add-plant-form-pot {
+    gap: 15px;
+  }
+  .add-plant-form-name input,
+  .add-plant-form-genetic select,
+  .add-plant-form-date input,
+  .add-plant-form-stage select,
+  .add-plant-form-potSize {
+    font-size: 16px;
+  }
+  .add-plant-form-button {
+    font-size: 18px;
+  }
+}
 .header {
   display: flex;
   justify-content: space-between;
@@ -280,6 +309,18 @@ button:hover {
   margin-right: 10px;
 }
 
+@media (max-width: 769px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .header-buttons button {
+    margin-top: 10px;
+  }
+  .header-buttons button:first-child {
+    margin-bottom: 10px;
+  }
+}
 .app-container {
   display: flex;
   flex-direction: column;
@@ -290,7 +331,7 @@ button:hover {
 
 .main-content {
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 2fr 1fr;
   gap: 20px;
 }
 
@@ -299,4 +340,10 @@ button:hover {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 769px) {
+  .main-content {
+    grid-template-columns: 1fr;
+  }
 }/*# sourceMappingURL=index.css.map */
