@@ -18,9 +18,9 @@ export function AddGenetic() {
 	}
 
 	return (
-		<>
-			<h3 className="genetics-modal-title">Añadir nueva genética</h3>
-			<div className="genetics-modal-input-container">
+		<div className="add-genetic-form">
+			<h2>Añadir Genética</h2>
+			<div className="form-group">
 				<input
 					type="text"
 					name="name"
@@ -28,8 +28,10 @@ export function AddGenetic() {
 					value={newGenetic}
 					onChange={(e) => setNewGenetic(e.target.value)}
 				/>
-				<button onClick={handleAddGenetic}>Guardar</button>
+				<button className="save-button" onClick={handleAddGenetic}>
+					Guardar
+				</button>
 			</div>
-		</>
+		</div>
 	)
 }

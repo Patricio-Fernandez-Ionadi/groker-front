@@ -25,9 +25,9 @@ const PlantList = () => {
 
 	if (state.plants.length > 0) {
 		return (
-			<div>
+			<section className="plant-list-component">
 				<h2>Inventario de Plantas</h2>
-				<table>
+				<table className="inventory-table">
 					<thead>
 						<tr>
 							<th>Nombre</th>
@@ -45,13 +45,11 @@ const PlantList = () => {
 							<tr
 								key={plant._id}
 								onClick={() => selectPlant(plant)}
-								style={{
-									cursor: 'pointer',
-									backgroundColor:
-										state.selectedPlant && state.selectedPlant._id === plant._id
-											? 'lightblue'
-											: 'transparent',
-								}}
+								className={`${
+									state.selectedPlant && state.selectedPlant._id === plant._id
+										? 'selected'
+										: ''
+								}`}
 							>
 								<td>{plant.name}</td>
 								<td>{plant.genetic.name}</td>
@@ -61,10 +59,16 @@ const PlantList = () => {
 								<td>{formatDate(plant.lastWatered)}</td>
 								<td>{plant.underObservation ? 'Sí' : 'No'}</td>
 								<td>
-									<button onClick={(e) => handleEditForm(e, plant)}>
+									<button
+										className="table-buttons"
+										onClick={(e) => handleEditForm(e, plant)}
+									>
 										Editar
 									</button>
-									<button onClick={(e) => handleDeletePlant(e, plant)}>
+									<button
+										className="table-buttons"
+										onClick={(e) => handleDeletePlant(e, plant)}
+									>
 										Eliminar
 									</button>
 								</td>
@@ -80,7 +84,7 @@ const PlantList = () => {
 						</PlantsFormsEditProvider>
 					</>
 				)}
-			</div>
+			</section>
 		)
 	} else {
 		return (

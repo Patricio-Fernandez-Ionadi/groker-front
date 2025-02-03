@@ -8,6 +8,7 @@ import PlantList from '../components/Plants/PlantList'
 import PlantDetails from '../components/Plants/PlantDetails'
 import PlantHistory from '../components/Plants/PlantHistory'
 import ProductList from '../components/Products/ProductList'
+import { Header } from '../components/Header'
 
 /**
  * Componente principal de la aplicación de gestión de inventario de cultivos.
@@ -20,26 +21,26 @@ const App = () => {
 
 	return (
 		<>
-			<div>
-				<h1>Gestión de Inventario de Cultivos</h1>
+			<div className="app-container">
+				<Header
+					showAddPlantForm={showAddPlantForm}
+					setShowAddPlantForm={setShowAddPlantForm}
+					showProductList={showProductList}
+					setShowProductList={setShowProductList}
+				/>
+				{(showAddPlantForm || showProductList || showGeneticForm) && (
+					<aside className="forms-section">
+						{showAddPlantForm && <AddPlant />}
+						{showProductList && <ProductList />}
+						{showGeneticForm && <GeneticsModal />}
+					</aside>
+				)}
 
-				<div>
-					<button onClick={() => setShowAddPlantForm(!showAddPlantForm)}>
-						{showAddPlantForm ? 'Cerrar' : 'Nuevo Ingreso'}
-					</button>
-
-					<button onClick={() => setShowProductList(!showProductList)}>
-						{showProductList ? 'Cerrar' : 'Inventario de Productos'}
-					</button>
-				</div>
-
-				{showAddPlantForm && <AddPlant />}
-				{showProductList && <ProductList />}
-				{showGeneticForm && <GeneticsModal />}
-
-				<PlantList />
-				<PlantDetails />
-				<PlantHistory />
+				<main className="main-content">
+					<PlantList />
+					<PlantDetails />
+					<PlantHistory />
+				</main>
 			</div>
 		</>
 	)

@@ -12,18 +12,21 @@ export function GeneticList() {
 	if (genetics.length === 0) return <p>Cargando genéticas...</p>
 
 	return (
-		<>
-			<h3 className="genetics-modal-title">Lista de genéticas disponibles</h3>
-			<ul className="genetics-modal-list">
+		<div className="genetic-list">
+			<h3>Lista de genéticas disponibles</h3>
+			<ul>
 				{genetics.map((genetic) => (
 					<li key={genetic._id}>
 						{genetic.name}
-						<button onClick={(e) => handleDeleteGenetic(genetic._id)}>
+						<button
+							className="delete-button"
+							onClick={(e) => handleDeleteGenetic(genetic._id)}
+						>
 							Eliminar
 						</button>
 					</li>
 				))}
 			</ul>
-		</>
+		</div>
 	)
 }

@@ -15,7 +15,7 @@ const PlantDetails = () => {
 		return <div>Seleccione una planta para ver los detalles</div>
 
 	return (
-		<div>
+		<section className="plant-details-component">
 			<h2>Detalles de la Planta</h2>
 			<p>Fecha de ingreso: {formatDate(selectedPlant.entryDate)}</p>
 			<p>Nombre: {selectedPlant.name}</p>
@@ -28,7 +28,7 @@ const PlantDetails = () => {
 			<p>
 				Bajo observación: {selectedPlant.flags.underObservation ? 'Sí' : 'No'}
 			</p>
-		</div>
+		</section>
 	)
 }
 

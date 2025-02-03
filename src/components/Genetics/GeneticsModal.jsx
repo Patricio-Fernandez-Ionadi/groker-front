@@ -16,6 +16,8 @@ export function GeneticsModal() {
 				>
 					✖
 				</button>
+				<h2 className="genetics-modal-title">Gestión de Genética</h2>
+
 				<AddGenetic />
 				<GeneticList />
 			</div>

@@ -1,3 +1,47 @@
+.plant-list-component,
+.plant-details-component,
+.plant-history-component {
+	background-color: white;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.inventory-table,
+.history-table {
+	width: $full;
+	border-collapse: collapse;
+}
+.inventory-table th,
+.inventory-table td,
+.history-table th,
+.history-table td {
+	border: 1px solid $white_dark;
+	padding: 2px;
+	text-align: left;
+}
+.inventory-table th,
+.history-table th {
+	background-color: $secondary_light;
+}
+
+.inventory-table tr {
+	cursor: pointer;
+	&.selected {
+		background-color: $secondary;
+	}
+}
+.inventory-table .table-buttons {
+	color: $white;
+	border: 1px solid $secondary_dark;
+	width: $full;
+	padding: 2px 0;
+	&:first-child {
+		margin-bottom: 1px;
+	}
+}
+
+// ### ADD PLANT FORM ###
 .add-plant-form-container {
 	display: grid;
 	grid-template-columns: 1fr 1fr; // Dos columnas
@@ -5,9 +49,8 @@
 	max-width: 800px; // Ancho máximo del formulario
 	margin: 0 auto; // Centrar el formulario
 	padding: 20px;
-	background-color: $black;
 	border-radius: 8px;
-	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 	font-family: Arial, sans-serif;
 	color: $white;
 }
@@ -47,9 +90,6 @@
 	border: 1px solid $grey;
 	border-radius: 4px;
 	font-size: 14px;
-	background-color: $black;
-	color: $white;
-	transition: border-color 0.3s ease;
 }
 
 .add-plant-form-name input:focus,
@@ -78,17 +118,10 @@
 .add-plant-form-button {
 	grid-column: span 2; // El botón ocupa las dos columnas
 	padding: 10px;
-	background-color: $primary;
 	color: $white;
 	border: none;
 	border-radius: 4px;
-	cursor: pointer;
 	font-size: 16px;
-	transition: background-color 0.3s ease;
-}
-
-.add-plant-form-button:hover {
-	background-color: $primary_dark;
 }
 
 .error {
