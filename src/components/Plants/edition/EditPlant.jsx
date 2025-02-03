@@ -1,9 +1,11 @@
 import React from 'react'
+import { useEditPlantContext } from '../../../context/plants/PlantEditContext'
+
 import { AdvancedFields } from './AdvancedFields'
 import { CommonFields } from './CommonFields'
 import { WateringFields } from './WateringFields'
+
 import { toggleCheckboxState } from '../../../utils/helpers'
-import { useEditPlantContext } from '../../../context/PlantEditContext'
 
 const EditPlant = () => {
 	const { showAdvancedFields, setShowAdvancedFields, handleSubmit } =

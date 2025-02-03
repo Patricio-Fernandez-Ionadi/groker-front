@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../context/AppContext'
-import { useEditPlantContext } from '../../../context/PlantEditContext'
+import { useEditPlantContext } from '../../../context/plants/PlantEditContext'
+
 import { AddGeneticButton } from '../../Genetics/AddGeneticButton'
 
 export function AdvancedFields() {

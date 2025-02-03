@@ -12,6 +12,8 @@ const ProductList = () => {
 	const { state } = useContext(AppContext)
 	const { products } = state
 
+	console.log(products)
+
 	return (
 		<div>
 			<h2>Inventario de Productos</h2>

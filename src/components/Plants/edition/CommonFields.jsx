@@ -1,6 +1,7 @@
 import React from 'react'
+import { useEditPlantContext } from '../../../context/plants/PlantEditContext'
+
 import { toggleCheckboxState } from '../../../utils/helpers'
-import { useEditPlantContext } from '../../../context/PlantEditContext'
 
 export function CommonFields() {
 	const {

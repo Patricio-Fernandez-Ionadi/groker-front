@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../context/AppContext'
-import { useEditPlantContext } from '../../../context/PlantEditContext'
+import { useEditPlantContext } from '../../../context/plants/PlantEditContext'
 
 export function WateringFields() {
 	const { state } = useContext(AppContext)
