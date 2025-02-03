@@ -139,62 +139,70 @@ const AddPlant = () => {
 	/* al añadir varias plantas el valor del select de stage no cambia pero el valor por defecto si se resetea */
 
 	return (
-		<div>
-			<div>
-				<label>
-					Fecha de ingreso:
+		<div className="add-plant-form-container">
+			<div className="add-plant-form-name_genetic">
+				<div className="inline add-plant-form-name">
+					<input
+						type="text"
+						name="name"
+						value={newPlantData.name}
+						onChange={handleChange}
+						placeholder="Nombre de la planta"
+					/>
+				</div>
+
+				<div className="inline add-plant-form-genetic">
+					<select
+						name="genetic"
+						value={newPlantData.genetic}
+						onChange={handleChange}
+					>
+						<option value="">Seleccionar genética</option>
+						{genetics.map((gen) => (
+							<option key={gen._id} value={gen._id}>
+								{gen.name}
+							</option>
+						))}
+					</select>
+					<AddGeneticButton />
+				</div>
+				<div>{errors.name && <span className="error">{errors.name}</span>}</div>
+			</div>
+
+			<div className="add-plant-form-date_stage">
+				<label className="inline add-plant-form-date">
+					<p>Fecha de Ingreso</p>
 					<input
 						type="date"
 						name="entryDate"
 						value={newPlantData.entryDate}
 						onChange={handleChange}
 					/>
-					{errors.entryDate && (
-						<span className="error">{errors.entryDate}</span>
-					)}
 				</label>
-
-				<input
-					type="text"
-					name="name"
-					value={newPlantData.name}
-					onChange={handleChange}
-					placeholder="Nombre de la planta"
-				/>
-				{errors.name && <span className="error">{errors.name}</span>}
-
-				<select
-					name="genetic"
-					value={newPlantData.genetic}
-					onChange={handleChange}
-				>
-					<option value="">Seleccionar genética</option>
-					{genetics.map((gen) => (
-						<option key={gen._id} value={gen._id}>
-							{gen.name}
-						</option>
-					))}
-				</select>
-				<AddGeneticButton />
-			</div>
-			<div>
-				<label>
-					Etapa:
+				<label className="inline add-plant-form-stage">
+					<p>Etapa:</p>
 					<select name="stage" onChange={handleChange}>
 						<option value="vegetative">Vegetativo</option>
 						<option value="flowering">Floración</option>
 						<option value="germination">Germinacion</option>
 					</select>
 				</label>
-
+				<div>
+					{errors.entryDate && (
+						<span className="error">{errors.entryDate}</span>
+					)}
+				</div>
+			</div>
+			<div className="add-plant-form-pot">
 				<input
+					className="inline add-plant-form-potSize"
 					type="text"
 					name="potSize"
 					value={newPlantData.potSize}
 					onChange={handleChange}
 					placeholder="Tamaño de la maceta"
 				/>
-				<label>
+				<label className="inline add-plant-form-potCheckbox">
 					Maceta final
 					<input
 						type="checkbox"

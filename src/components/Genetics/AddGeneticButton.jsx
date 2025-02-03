@@ -7,7 +7,7 @@ export function AddGeneticButton() {
 	return (
 		<>
 			<button onClick={() => setShowGeneticForm(!showGeneticForm)}>
-				{showGeneticForm ? 'Cerrar' : 'Agregar Genética'}
+				+ Nueva
 			</button>
 		</>
 	)
