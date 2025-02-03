@@ -1,7 +1,16 @@
 import React, { createContext, useState, useEffect } from 'react'
-import { getGenetics } from '../api/genetics'
-import { getProducts } from '../api/products'
-import { api_getPlants, api_deletePlant, api_addPlant } from '../api/plants'
+import {
+	api_addGenetic,
+	api_deleteGenetic,
+	api_getGenetics,
+} from '../api/genetics'
+import { api_addProduct, api_getProducts } from '../api/products'
+import {
+	api_getPlants,
+	api_deletePlant,
+	api_addPlant,
+	api_editPlant,
+} from '../api/plants'
 import { calculateEstimatedChange } from '../utils/dateUtils'
 
 const initialState = {
@@ -23,17 +32,21 @@ const AppProvider = ({ children }) => {
 		setState((prev) => ({ ...prev, isLoading: true }))
 
 		if (state.genetics.length === 0) {
-			getGenetics().then((data) =>
+			api_getGenetics().then((data) =>
 				setState((prev) => ({ ...prev, genetics: data }))
 			)
-			getProducts().then((data) =>
+			api_getProducts().then((data) =>
 				setState((prev) => ({ ...prev, products: data }))
 			)
 			api_getPlants().then((data) =>
 				setState((prev) => ({ ...prev, plants: data }))
 			)
 		}
-	}, [state.plants])
+	}, [])
+
+	const handleError = (error, message) => console.error(message, error)
+
+	// ##### PLANTS #####
 
 	/**
 	 * Selecciona una planta del inventario y la asigna al estado global.
@@ -59,12 +72,12 @@ const AppProvider = ({ children }) => {
 
 		try {
 			// POST de la planta
-			const response = await api_addPlant(plantToAdd)
+			const addedPlant = await api_addPlant(plantToAdd)
 
 			// actualizacion del estado interno de la aplicacion
-			setState((prev) => ({ ...prev, plants: [...prev.plants, response] }))
+			setState((prev) => ({ ...prev, plants: [...prev.plants, addedPlant] }))
 		} catch (error) {
-			console.error('Error al agregar planta addPlantContext:', error)
+			handleError(error, 'Error al agregar planta addPlantContext')
 		}
 	}
 
@@ -75,65 +88,98 @@ const AppProvider = ({ children }) => {
 	 */
 	const deletePlant = async (plantId) => {
 		try {
-			const response = await api_deletePlant(plantId)
+			await api_deletePlant(plantId)
+
 			setState((prev) => ({
 				...prev,
-				plants: response,
+				plants: prev.plants.filter((plant) => plant._id !== plantId),
 			}))
 		} catch (error) {
-			console.error('Error al eliminar planta deletePlantContext:', error)
+			handleError(error, 'Error al eliminar planta deletePlantContext')
 		}
 	}
-
-	// ----- TODO -----
 
 	// Función para actualizar una planta
 	const updatePlant = async (updatedPlant) => {
 		try {
-			const response = await fetch(`/api/plants/${updatedPlant._id}`, {
-				method: 'PUT',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(updatedPlant),
-			})
-			const data = await response.json()
+			const updated = await api_editPlant(updatedPlant)
+
 			setState((prev) => ({
 				...prev,
 				plants: prev.plants.map((plant) =>
-					plant._id === updatedPlant._id ? data : plant
+					plant._id === updated._id ? { ...plant, ...updated } : plant
 				),
+				selectedPlant: { ...prev.selectedPlant, ...updated },
 			}))
 		} catch (error) {
-			handleError(error)
+			handleError(error, 'Error al editar planta updatePlantContext')
 		}
 	}
-	// Función para agregar un evento al historial de una planta
-	const addPlantHistoryEvent = async (plantId, event) => {
+
+	// ##### GENETICS #####
+	const addGenetic = async (newGenetic) => {
 		try {
-			const response = await fetch(`/api/plants/${plantId}/history`, {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(event),
-			})
-			const data = await response.json()
+			const addedGenetic = await api_addGenetic(newGenetic)
 			setState((prev) => ({
 				...prev,
-				plants: prev.plants.map((plant) =>
-					plant._id === plantId ? data : plant
-				),
+				genetics: [...prev.genetics, addedGenetic],
 			}))
 		} catch (error) {
-			handleError(error)
+			handleError(error, 'Error al agregar genetica addGeneticContext')
 		}
+	}
+
+	const deleteGenetic = async (geneticId) => {
+		try {
+			await api_deleteGenetic(geneticId)
+			setState((prev) => ({
+				...prev,
+				genetics: prev.genetics.filter((genetic) => genetic._id !== geneticId),
+			}))
+		} catch (error) {
+			handleError(error, 'Error al eliminar genetica deleteGeneticContext')
+		}
+	}
+
+	// ##### PRODUCTS #####
+
+	const addProduct = async (newProduct) => {
+		try {
+			const addedProduct = await api_addProduct(newProduct)
+			setState((prev) => ({
+				...prev,
+				products: [...prev.products, addedProduct],
+			}))
+		} catch (error) {
+			handleError(error, 'Error al agregar producto addProductContext')
+		}
+	}
+
+	const updateProductStock = (productId, amount) => {
+		setState((prev) => ({
+			...prev,
+			products: prev.products.map((product) =>
+				product._id === productId
+					? { ...product, stock: product.stock - amount }
+					: product
+			),
+		}))
 	}
 
 	// Valor proporcionado por el contexto
 	const value = {
 		state,
+		// plants
 		selectPlant,
 		addPlant,
 		updatePlant,
 		deletePlant,
-		addPlantHistoryEvent,
+		// genetics
+		addGenetic,
+		deleteGenetic,
+		// products
+		addProduct,
+		updateProductStock,
 	}
 
 	return <AppContext.Provider value={value}>{children}</AppContext.Provider>

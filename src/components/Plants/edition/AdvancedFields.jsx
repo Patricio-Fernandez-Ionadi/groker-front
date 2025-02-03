@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../context/AppContext'
 import { useEditPlantContext } from '../../../context/PlantEditContext'
+import { AddGeneticButton } from '../../Genetics/AddGeneticButton'
 
 export function AdvancedFields() {
 	const { state } = useContext(AppContext)
@@ -44,6 +45,7 @@ export function AdvancedFields() {
 							</option>
 						))}
 					</select>
+					<AddGeneticButton />
 				</label>
 				<label>
 					Cambio estimado:
