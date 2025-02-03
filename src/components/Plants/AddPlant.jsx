@@ -140,79 +140,77 @@ const AddPlant = () => {
 
 	return (
 		<div className="add-plant-form-container">
-			<div className="add-plant-form-name_genetic">
-				<div className="inline add-plant-form-name">
-					<input
-						type="text"
-						name="name"
-						value={newPlantData.name}
-						onChange={handleChange}
-						placeholder="Nombre de la planta"
-					/>
-					{errors.name && <span className="error">{errors.name}</span>}
-				</div>
-
-				<div className="inline add-plant-form-genetic">
-					<select
-						name="genetic"
-						value={newPlantData.genetic}
-						onChange={handleChange}
-					>
-						<option value="">Seleccionar genética</option>
-						{genetics.map((gen) => (
-							<option key={gen._id} value={gen._id}>
-								{gen.name}
-							</option>
-						))}
-					</select>
-					<AddGeneticButton />
-				</div>
-			</div>
-
-			<div className="add-plant-form-date_stage">
-				<label className="inline add-plant-form-date">
-					<p>Fecha de Ingreso</p>
-					<input
-						type="date"
-						name="entryDate"
-						value={newPlantData.entryDate}
-						onChange={handleChange}
-					/>
-				</label>
-				{errors.entryDate && <span className="error">{errors.entryDate}</span>}
-				<label className="inline add-plant-form-stage">
-					<p>Etapa:</p>
-					<select name="stage" onChange={handleChange}>
-						<option value="vegetative">Vegetativo</option>
-						<option value="flowering">Floración</option>
-						<option value="germination">Germinacion</option>
-					</select>
-				</label>
-			</div>
-			<div className="add-plant-form-pot">
+			<div className="inline add-plant-form-name">
 				<input
-					className="inline add-plant-form-potSize"
 					type="text"
-					name="potSize"
-					value={newPlantData.potSize}
+					name="name"
+					value={newPlantData.name}
 					onChange={handleChange}
-					placeholder="Tamaño de la maceta"
+					placeholder="Nombre de la planta"
 				/>
-				<label className="inline add-plant-form-potCheckbox">
-					Maceta final
-					<input
-						type="checkbox"
-						name="isFinalPot"
-						checked={newPlantData.flags.isFinalPot}
-						onChange={(e) =>
-							setPlantData({
-								...newPlantData,
-								flags: { ...newPlantData.flags, isFinalPot: e.target.checked },
-							})
-						}
-					/>
-				</label>
+				{errors.name && <span className="error">{errors.name}</span>}
 			</div>
+
+			<div className="inline add-plant-form-genetic">
+				<select
+					name="genetic"
+					value={newPlantData.genetic}
+					onChange={handleChange}
+				>
+					<option value="">Seleccionar genética</option>
+					{genetics.map((gen) => (
+						<option key={gen._id} value={gen._id}>
+							{gen.name}
+						</option>
+					))}
+				</select>
+				<AddGeneticButton />
+			</div>
+
+			<label className="inline add-plant-form-date">
+				<p>Fecha de Ingreso</p>
+				<input
+					type="date"
+					name="entryDate"
+					value={newPlantData.entryDate}
+					onChange={handleChange}
+				/>
+				{errors.entryDate && <span className="error">{errors.entryDate}</span>}
+			</label>
+
+			<label className="inline add-plant-form-stage">
+				<p>Etapa:</p>
+				<select name="stage" onChange={handleChange}>
+					<option value="vegetative">Vegetativo</option>
+					<option value="flowering">Floración</option>
+					<option value="germination">Germinacion</option>
+				</select>
+			</label>
+
+			<input
+				className="inline add-plant-form-potSize"
+				type="number"
+				name="potSize"
+				value={newPlantData.potSize}
+				onChange={handleChange}
+				placeholder="Tamaño de la maceta"
+			/>
+
+			<label className="inline add-plant-form-potCheckbox">
+				Maceta final
+				<input
+					type="checkbox"
+					name="isFinalPot"
+					checked={newPlantData.flags.isFinalPot}
+					onChange={(e) =>
+						setPlantData({
+							...newPlantData,
+							flags: { ...newPlantData.flags, isFinalPot: e.target.checked },
+						})
+					}
+				/>
+			</label>
+
 			<button className="add-plant-form-button" onClick={handleSubmit}>
 				Añadir Planta
 			</button>

@@ -51,22 +51,13 @@
 	padding: 20px;
 	border-radius: 8px;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-}
 
-.add-plant-form-name_genetic,
-.add-plant-form-date_stage,
-.add-plant-form-pot {
-	display: flex;
-	flex-direction: column;
-	gap: 10px; // Espacio entre los elementos internos
+	grid-template-areas:
+		'name genetic'
+		'date stage'
+		'potSize potCheckbox'
+		'button button';
 }
-
-.add-plant-form-pot {
-	grid-column: span 2; // Ocupa las dos columnas
-	display: grid;
-	grid-template-columns: 1fr 1fr; // Dos columnas para potSize y checkbox
-}
-
 .inline {
 	display: flex;
 	align-items: center; // Alinear elementos verticalmente
@@ -74,9 +65,32 @@
 }
 
 .add-plant-form-name {
+	grid-area: name;
 	display: flex;
 	flex-direction: column;
-	// para la muestra de error de validacion
+}
+.add-plant-form-genetic {
+	grid-area: genetic;
+	gap: 0;
+}
+.add-plant-form-date {
+	grid-area: date;
+}
+.add-plant-form-stage {
+	grid-area: stage;
+}
+.add-plant-form-potSize {
+	grid-area: potSize;
+}
+.add-plant-form-potCheckbox {
+	grid-area: potCheckbox;
+	justify-content: flex-end;
+	font-size: 14px;
+}
+.add-plant-form-button {
+	grid-area: button;
+	padding: 10px;
+	font-size: 16px;
 }
 
 .add-plant-form-name input,
@@ -84,56 +98,21 @@
 .add-plant-form-date input,
 .add-plant-form-stage select,
 .add-plant-form-potSize {
-	width: 100%;
+	width: $full;
 	padding: 8px;
 	border: 1px solid $grey;
 	border-radius: $border_radius;
 	font-size: 14px;
-}
-
-.add-plant-form-name input:focus,
-.add-plant-form-genetic select:focus,
-.add-plant-form-date input:focus,
-.add-plant-form-stage select:focus,
-.add-plant-form-potSize:focus {
-	border-color: $primary;
-	outline: none;
-}
-
-.add-plant-form-genetic {
-	display: flex;
-	align-items: center;
-	gap: 10px; // Espacio entre el select y el botón
-}
-
-.add-plant-form-potCheckbox {
-	display: flex;
-	align-items: center;
-	justify-content: flex-end;
-	gap: 5px;
-	font-size: 14px;
-}
-
-.add-plant-form-button {
-	grid-column: span 2; // El botón ocupa las dos columnas
-	padding: 10px;
-	color: $white;
-	border: none;
-	border-radius: 4px;
-	font-size: 16px;
+	&:focus {
+		border-color: $primary;
+		outline: none;
+	}
 }
 
 .error {
 	color: $error;
 	font-size: 12px;
 	margin-top: 2px; // Espacio pequeño arriba del error
-}
-
-// Asegurar que las filas tengan la misma altura
-.add-plant-form-name_genetic,
-.add-plant-form-date_stage {
-	min-height: 100px; // Altura mínima para igualar las filas
-	justify-content: space-between; // Distribuir el espacio verticalmente
 }
 
 @media (max-width: 769px) {
@@ -150,14 +129,15 @@
 
 	// ADD PLANT FORM
 	.add-plant-form-container {
-		grid-template-columns: 1fr; // Una sola columna en móviles
-		gap: 15px; // Reducir el espacio entre elementos
-	}
-
-	.add-plant-form-name_genetic,
-	.add-plant-form-date_stage,
-	.add-plant-form-pot {
+		grid-template-columns: 1fr 1fr 1fr;
 		gap: 15px;
+		grid-template-areas:
+			'name name name'
+			'genetic genetic genetic'
+			'date date date'
+			'stage stage stage'
+			'potSize potSize potCheckbox'
+			'button button button';
 	}
 
 	.add-plant-form-name input,
@@ -165,10 +145,10 @@
 	.add-plant-form-date input,
 	.add-plant-form-stage select,
 	.add-plant-form-potSize {
-		font-size: 16px; // Aumentar el tamaño del texto para mejorar la legibilidad
+		font-size: 16px;
 	}
 
 	.add-plant-form-button {
-		font-size: 18px; // Aumentar el tamaño del botón
+		font-size: 18px;
 	}
 }
