@@ -149,6 +149,7 @@ const AddPlant = () => {
 						onChange={handleChange}
 						placeholder="Nombre de la planta"
 					/>
+					{errors.name && <span className="error">{errors.name}</span>}
 				</div>
 
 				<div className="inline add-plant-form-genetic">
@@ -166,7 +167,6 @@ const AddPlant = () => {
 					</select>
 					<AddGeneticButton />
 				</div>
-				<div>{errors.name && <span className="error">{errors.name}</span>}</div>
 			</div>
 
 			<div className="add-plant-form-date_stage">
@@ -179,6 +179,7 @@ const AddPlant = () => {
 						onChange={handleChange}
 					/>
 				</label>
+				{errors.entryDate && <span className="error">{errors.entryDate}</span>}
 				<label className="inline add-plant-form-stage">
 					<p>Etapa:</p>
 					<select name="stage" onChange={handleChange}>
@@ -187,11 +188,6 @@ const AddPlant = () => {
 						<option value="germination">Germinacion</option>
 					</select>
 				</label>
-				<div>
-					{errors.entryDate && (
-						<span className="error">{errors.entryDate}</span>
-					)}
-				</div>
 			</div>
 			<div className="add-plant-form-pot">
 				<input
@@ -217,7 +213,9 @@ const AddPlant = () => {
 					/>
 				</label>
 			</div>
-			<button onClick={handleSubmit}>Añadir Planta</button>
+			<button className="add-plant-form-button" onClick={handleSubmit}>
+				Añadir Planta
+			</button>
 		</div>
 	)
 }
