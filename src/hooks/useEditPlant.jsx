@@ -64,8 +64,6 @@ export const useEditPlant = () => {
 				history: updatedHistory,
 			}
 
-			console.log(plantToSave)
-			console.log(state.products)
 			updatePlant(plantToSave)
 
 			setShouldSave(false)
@@ -265,106 +263,6 @@ export const useEditPlant = () => {
 			return [...history, { date: todayISO, events: [...newEvents] }]
 		}
 	}
-
-	/* const handleSubmit = (e) => {
-		e.preventDefault()
-
-		if (newNote.note.trim() !== '') {
-			setNewEvents((prev) => {
-				const noteEventIndex = existingEventIndex('note', prev)
-				return noteEventIndex !== -1
-					? prev.map((event, index) =>
-							index === noteEventIndex
-								? { ...event, details: [...event.details, newNote] }
-								: event
-					  )
-					: [...prev, { type: 'note', details: [newNote] }]
-			})
-		}
-
-		if (isWatered) {
-			const wateringEventIndex = existingEventIndex('watering', newEvents)
-
-			if (wateringEventIndex !== -1) {
-				const previousWateringData = newEvents[wateringEventIndex].details
-
-				// Crear un objeto para mapear los productos previos por su ID
-			const previousProductsMap = new Map(
-				previousWateringData.productsUsed.map((p) => [p.product._id, p])
-			)
-
-				// Fusionar productos previos con nuevos
-				const updatedProductsUsed = previousWateringData.productsUsed.map(
-					(prevProduct) => {
-						const updatedProduct = wateringData.productsUsed.find(
-							(p) => p.product === prevProduct.product
-						)
-						return updatedProduct
-							? { ...prevProduct, productAmount: updatedProduct.productAmount }
-							: prevProduct
-					}
-				)
-
-				// Agregar nuevos productos que no estaban antes
-				wateringData.productsUsed.forEach((newProduct) => {
-					if (
-						newProduct.product &&
-						!previousWateringData.productsUsed.some(
-							(p) => p.product === newProduct.product
-						)
-					) {
-						updatedProductsUsed.push(newProduct)
-					}
-				})
-
-				const newEditedWatering = {
-					amount: wateringData.amount || previousWateringData.amount,
-					ec: wateringData.ec || previousWateringData.ec,
-					ph: wateringData.ph || previousWateringData.ph,
-					productsUsed: updatedProductsUsed,
-				}
-
-				// Calcular la diferencia en el stock de productos
-				previousWateringData.productsUsed.forEach((prevProductUsed) => {
-					const updatedProduct = updatedProductsUsed.find(
-						(p) => p.product === prevProductUsed.product
-					)
-					if (updatedProduct) {
-						const difference =
-							updatedProduct.productAmount - prevProductUsed.productAmount
-						updateProductStock(updatedProduct.product._id, difference)
-					}
-				})
-
-				setNewEvents((prev) =>
-					prev.map((event, index) =>
-						index === wateringEventIndex
-							? { type: 'watering', details: newEditedWatering }
-							: event
-					)
-				)
-			} else {
-				setNewEvents((prev) => [
-					...prev,
-					{ type: 'watering', details: wateringData },
-				])
-
-				// Actualizar el stock de productos utilizados en el riego
-				wateringData.productsUsed.forEach((productUsed) => {
-					if (productUsed.product && productUsed.productAmount) {
-						const product = state.products.find(
-							(p) => p.name === productUsed.product.name
-						)
-						if (product) {
-							updateProductStock(product._id, productUsed.productAmount)
-						}
-					}
-				})
-			}
-		}
-
-		setShouldSave(true)
-	} */
 
 	const handleSubmit = (e) => {
 		e.preventDefault()

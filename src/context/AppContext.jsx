@@ -74,8 +74,13 @@ const AppProvider = ({ children }) => {
 			// POST de la planta
 			const addedPlant = await api_addPlant(plantToAdd)
 
+			const geneticReference = state.genetics.find(
+				(g) => g._id === addedPlant.genetic
+			)
+			const updated = { ...addedPlant, genetic: geneticReference }
+
 			// actualizacion del estado interno de la aplicacion
-			setState((prev) => ({ ...prev, plants: [...prev.plants, addedPlant] }))
+			setState((prev) => ({ ...prev, plants: [...prev.plants, updated] }))
 		} catch (error) {
 			handleError(error, 'Error al agregar planta addPlantContext')
 		}
@@ -104,10 +109,16 @@ const AppProvider = ({ children }) => {
 		try {
 			const updated = await api_editPlant(updatedPlant)
 
+			const geneticReference = state.genetics.find(
+				(g) => g._id === updated.genetic
+			)
+
 			setState((prev) => ({
 				...prev,
 				plants: prev.plants.map((plant) =>
-					plant._id === updated._id ? { ...plant, ...updated } : plant
+					plant._id === updated._id
+						? { ...updated, genetic: geneticReference }
+						: plant
 				),
 				selectedPlant: { ...prev.selectedPlant, ...updated },
 			}))

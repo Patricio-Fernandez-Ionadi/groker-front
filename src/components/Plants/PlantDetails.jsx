@@ -19,15 +19,19 @@ const PlantDetails = () => {
 			<h2>Detalles de la Planta</h2>
 			<p>Fecha de ingreso: {formatDate(selectedPlant.entryDate)}</p>
 			<p>Nombre: {selectedPlant.name}</p>
-			<p>Genética: {selectedPlant.genetic.name}</p>
 			<p>Etapa: {translateField(selectedPlant.stage)}</p>
+			<p>Genética: {selectedPlant.genetic.name}</p>
 			<p>Cambio estimado: {formatDate(selectedPlant.estimatedChange)}</p>
-			{/* <p>Último riego: {formatDate(selectedPlant.lastWatered)}</p> */}
-			<p>Tamaño de la maceta: {selectedPlant.potSize}L</p>
-			<p>Maceta final: {selectedPlant.flags.isFinalPot ? 'Sí' : 'No'}</p>
-			<p>
-				Bajo observación: {selectedPlant.flags.underObservation ? 'Sí' : 'No'}
-			</p>
+			{selectedPlant.lastWatered && (
+				<p>Último riego: {formatDate(selectedPlant.lastWatered)}</p>
+			)}
+			{selectedPlant.potSize && (
+				<p>Tamaño de la maceta: {selectedPlant.potSize}L</p>
+			)}
+			{selectedPlant.potSize && selectedPlant.flags.isFinalPot && (
+				<p>Maceta final: ✔️</p>
+			)}
+			{selectedPlant.flags.underObservation && <p>Bajo observación: 👁️</p>}
 		</section>
 	)
 }

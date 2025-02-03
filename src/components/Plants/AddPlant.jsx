@@ -7,7 +7,7 @@ import { AddGeneticButton } from '../Genetics/AddGeneticButton'
 const defaultPlantData = {
 	entryDate: '',
 	name: '',
-	genetic: '',
+	genetic: { name: '' },
 	stage: 'vegetative',
 	potSize: '',
 	flags: { isFinalPot: false },
@@ -151,20 +151,23 @@ const AddPlant = () => {
 				{errors.name && <span className="error">{errors.name}</span>}
 			</div>
 
-			<div className="inline add-plant-form-genetic">
-				<select
-					name="genetic"
-					value={newPlantData.genetic}
-					onChange={handleChange}
-				>
-					<option value="">Seleccionar genética</option>
-					{genetics.map((gen) => (
-						<option key={gen._id} value={gen._id}>
-							{gen.name}
-						</option>
-					))}
-				</select>
-				<AddGeneticButton />
+			<div className="add-plant-form-genetic">
+				<div className="inline">
+					<select
+						name="genetic"
+						value={newPlantData.genetic.name}
+						onChange={handleChange}
+					>
+						<option value="">Seleccionar genética</option>
+						{genetics.map((gen) => (
+							<option key={gen._id} value={gen._id}>
+								{gen.name}
+							</option>
+						))}
+					</select>
+					<AddGeneticButton />
+				</div>
+				{errors.genetic && <span className="error">{errors.genetic}</span>}
 			</div>
 
 			<label className="inline add-plant-form-date">

@@ -1,45 +1,5 @@
-.plant-list-component,
-.plant-details-component,
-.plant-history-component {
-	background-color: $white;
-	padding: 20px;
-	border-radius: 8px;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.inventory-table,
-.history-table {
-	width: $full;
-	border-collapse: collapse;
-}
-.inventory-table th,
-.inventory-table td,
-.history-table th,
-.history-table td {
-	border: 1px solid $white_dark;
-	padding: 2px;
-	text-align: left;
-}
-.inventory-table th,
-.history-table th {
-	background-color: $secondary_light;
-}
-
-.inventory-table tr {
-	cursor: pointer;
-	&.selected {
-		background-color: $secondary;
-	}
-}
-.inventory-table .table-buttons {
-	color: $white;
-	border: 1px solid $secondary_dark;
-	width: $full;
-	padding: 2px 0;
-	&:first-child {
-		margin-bottom: 1px;
-	}
-}
+@import './history';
+@import './inventory';
 
 // ### ADD PLANT FORM ###
 .add-plant-form-container {
@@ -71,7 +31,9 @@
 }
 .add-plant-form-genetic {
 	grid-area: genetic;
-	gap: 0;
+	& .inline {
+		gap: 0;
+	}
 }
 .add-plant-form-date {
 	grid-area: date;
@@ -116,18 +78,6 @@
 }
 
 @media (max-width: 769px) {
-	// PLANT LIST TABLE
-	.inventory-table th,
-	.inventory-table td {
-		font-size: 14px; /* Reducir el tamaño del texto */
-		padding: 6px; /* Reducir el padding */
-	}
-	.inventory-table th:nth-child(n + 4),
-	.inventory-table td:nth-child(n + 4) {
-		display: none; /* Ocultar columnas adicionales en móviles */
-	}
-
-	// ADD PLANT FORM
 	.add-plant-form-container {
 		grid-template-columns: 1fr 1fr 1fr;
 		gap: 15px;

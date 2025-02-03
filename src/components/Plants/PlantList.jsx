@@ -11,6 +11,8 @@ import { PlantsFormsEditProvider } from '../../context/PlantEditContext'
 const PlantList = () => {
 	const { state, deletePlant, selectPlant } = useContext(AppContext)
 
+	const { plants } = state
+
 	const [editForm, setEditForm] = useState(false)
 
 	const handleEditForm = (e, plant) => {
@@ -23,7 +25,7 @@ const PlantList = () => {
 		deletePlant(plant._id)
 	}
 
-	if (state.plants.length > 0) {
+	if (plants.length > 0) {
 		return (
 			<section className="plant-list-component">
 				<h2>Inventario de Plantas</h2>
@@ -41,7 +43,7 @@ const PlantList = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{state.plants.map((plant) => (
+						{plants.map((plant) => (
 							<tr
 								key={plant._id}
 								onClick={() => selectPlant(plant)}
@@ -57,7 +59,7 @@ const PlantList = () => {
 								<td>{translateField(plant.stage)}</td>
 								<td>{formatDate(plant.estimatedChange)}</td>
 								<td>{formatDate(plant.lastWatered)}</td>
-								<td>{plant.underObservation ? 'Sí' : 'No'}</td>
+								<td>{plant.flags.underObservation ? '👁️' : '-'}</td>
 								<td>
 									<button
 										className="table-buttons"

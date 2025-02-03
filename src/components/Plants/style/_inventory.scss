@@ -1,0 +1,49 @@
+.plant-list-component,
+.plant-details-component {
+	background-color: $white;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.inventory-table {
+	width: $full;
+	border-collapse: collapse;
+	& th,
+	td {
+		border: 1px solid $white_dark;
+		padding: 2px;
+		text-align: left;
+	}
+	& th {
+		background-color: $secondary_light;
+	}
+
+	& tr {
+		cursor: pointer;
+		&.selected {
+			background-color: $secondary;
+		}
+	}
+
+	& .table-buttons {
+		border: 1px solid $secondary_dark;
+		width: $full;
+		padding: 2px 0;
+		&:first-child {
+			margin-bottom: 1px;
+		}
+	}
+}
+
+@media (max-width: 769px) {
+	.inventory-table th,
+	.inventory-table td {
+		font-size: 14px; /* Reducir el tamaño del texto */
+		padding: 6px; /* Reducir el padding */
+	}
+	.inventory-table th:nth-child(n + 4),
+	.inventory-table td:nth-child(n + 4) {
+		display: none; /* Ocultar columnas adicionales en móviles */
+	}
+}
