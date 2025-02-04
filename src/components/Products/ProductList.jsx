@@ -23,8 +23,8 @@ const ProductList = () => {
 			{isAddProductFormOpen && <AddProduct />}
 
 			<ul>
-				{products.map((product, index) => (
-					<li key={product._id || index}>
+				{products.map((product) => (
+					<li key={product.name}>
 						<h3>{product.name}</h3>
 						<p>Stock: {product.stock} ml</p>
 						<p>Nitrógeno: {product.nitrogen} %</p>
