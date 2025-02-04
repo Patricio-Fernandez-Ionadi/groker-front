@@ -112,6 +112,14 @@ const AddPlant = () => {
 	 */
 	const handleChange = (e) => {
 		const { name, value, type, checked } = e.target
+
+		if (name === 'genetic') {
+			setPlantData({
+				...newPlantData,
+				genetic: { name: value },
+			})
+		}
+
 		setPlantData({
 			...newPlantData,
 			[name]: type === 'checkbox' ? checked : value,
@@ -139,9 +147,6 @@ const AddPlant = () => {
 		}
 	}
 
-	/* debe cerrarse el formulario al añadir planta pero el estado de apertura y cerrado de formulario lo maneja APP.jsx */
-	/* al añadir varias plantas el valor del select de stage no cambia pero el valor por defecto si se resetea */
-
 	return (
 		<div className="add-plant-form-container">
 			<div className="add-plant-form-name">
@@ -161,7 +166,7 @@ const AddPlant = () => {
 					value={newPlantData.genetic.name}
 					onChange={handleChange}
 				>
-					<option value="">Seleccionar genética</option>
+					<option>Seleccionar genética</option>
 					{genetics.map((gen) => (
 						<option key={gen._id} value={gen._id}>
 							{gen.name}
