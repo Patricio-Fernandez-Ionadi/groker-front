@@ -1,19 +1,31 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 
 import { AddGenetic } from './AddGenetic'
 import { GeneticList } from './GeneticList'
 import { GenModalContext } from '../../context/genetics/GenModalContext'
 
 export function GeneticsModal() {
-	const { setShowGeneticForm } = useContext(GenModalContext)
+	const { closeGeneticModal, isGeneticModalOpen } = useContext(GenModalContext)
+
+	useEffect(() => {
+		if (isGeneticModalOpen) {
+			document.body.style.overflow = 'hidden' // Deshabilita el scroll
+		} else {
+			document.body.style.overflow = '' // Habilita el scroll nuevamente
+		}
+
+		// Limpieza al desmontar el componente
+		return () => {
+			document.body.style.overflow = ''
+		}
+	}, [isGeneticModalOpen])
+
+	if (!isGeneticModalOpen) return null
 
 	return (
-		<div className="genetics-modal-overlay">
-			<div className="genetics-modal">
-				<button
-					className="genetics-modal-close"
-					onClick={() => setShowGeneticForm(false)}
-				>
+		<div className="genetics-modal-overlay" onClick={closeGeneticModal}>
+			<div className="genetics-modal" onClick={(e) => e.stopPropagation()}>
+				<button className="genetics-modal-close" onClick={closeGeneticModal}>
 					✖
 				</button>
 				<h2 className="genetics-modal-title">Gestión de Genética</h2>

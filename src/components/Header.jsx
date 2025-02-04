@@ -1,20 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { FormContext } from '../context/FormContext'
+import { toggleCheckboxState } from '../utils/helpers'
 
-export function Header({
-	showAddPlantForm,
-	setShowAddPlantForm,
-	showProductList,
-	setShowProductList,
-}) {
+export function Header({ showProductList, setShowProductList }) {
+	const { toggleAddPlantForm, isAddPlantFormOpen } = useContext(FormContext)
+
+	const handleProductList = () => {
+		toggleCheckboxState(showProductList, setShowProductList)
+	}
+
 	return (
 		<header className="header">
 			<h1>Gestión de Inventario de Cultivos</h1>
 			<div className="header-buttons">
-				<button onClick={() => setShowAddPlantForm(!showAddPlantForm)}>
-					{showAddPlantForm ? 'Cerrar' : 'Nuevo Ingreso'}
+				<button onClick={toggleAddPlantForm}>
+					{isAddPlantFormOpen ? 'Cerrar' : 'Nuevo Ingreso'}
 				</button>
 
-				<button onClick={() => setShowProductList(!showProductList)}>
+				<button onClick={handleProductList}>
 					{showProductList ? 'Cerrar' : 'Inventario de Productos'}
 				</button>
 			</div>

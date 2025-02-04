@@ -7,14 +7,14 @@ export function AddGenetic() {
 
 	const { addGenetic } = useContext(AppContext)
 
-	const { setShowGeneticForm } = useContext(GenModalContext)
+	const { closeGeneticModal } = useContext(GenModalContext)
 
 	const handleAddGenetic = async (e) => {
 		e.preventDefault()
 		const addNewGenetic = { name: newGenetic }
 		addGenetic(addNewGenetic)
 		setNewGenetic('')
-		setShowGeneticForm(false)
+		closeGeneticModal()
 	}
 
 	return (

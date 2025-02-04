@@ -6,23 +6,20 @@
 .add-plant-form-container {
 	display: grid;
 	grid-template-columns: 1fr 1fr; // Dos columnas
-	gap: 20px; // Espacio entre los elementos
+	grid-template-rows: repeat(4, 60px);
+	gap: 10px; // Espacio entre los elementos
 	max-width: 800px; // Ancho máximo del formulario
 	margin: 0 auto; // Centrar el formulario
 	padding: 20px;
 	border-radius: 8px;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+	align-items: center;
 
 	grid-template-areas:
 		'name genetic'
 		'date stage'
 		'potSize potCheckbox'
 		'button button';
-}
-.inline {
-	display: flex;
-	align-items: center; // Alinear elementos verticalmente
-	gap: 10px; // Espacio entre elementos en línea
 }
 
 .add-plant-form-name {
@@ -32,8 +29,14 @@
 }
 .add-plant-form-genetic {
 	grid-area: genetic;
-	& .inline {
-		gap: 0;
+	display: flex;
+	& select {
+		border-radius: $border_radius 0 0 $border_radius !important;
+	}
+	& button {
+		height: 40px;
+		padding: 0 10px;
+		border-radius: 0 $border_radius $border_radius 0;
 	}
 }
 .add-plant-form-date {
@@ -47,8 +50,10 @@
 }
 .add-plant-form-potCheckbox {
 	grid-area: potCheckbox;
-	justify-content: flex-end;
 	font-size: 14px;
+	display: flex;
+	gap: 15px;
+	justify-content: center;
 }
 .add-plant-form-button {
 	grid-area: button;
@@ -78,7 +83,7 @@
 	margin-top: 2px; // Espacio pequeño arriba del error
 }
 
-@media (max-width: 769px) {
+@media (max-width: $medium) {
 	.add-plant-form-container {
 		grid-template-columns: 1fr 1fr 1fr;
 		gap: 15px;
@@ -97,6 +102,12 @@
 	.add-plant-form-stage select,
 	.add-plant-form-potSize {
 		font-size: 16px;
+	}
+
+	.add-plant-form-potCheckbox {
+		flex-direction: column;
+		gap: 0;
+		align-items: center;
 	}
 
 	.add-plant-form-button {

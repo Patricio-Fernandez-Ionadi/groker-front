@@ -2,13 +2,7 @@ import React, { useContext } from 'react'
 import { GenModalContext } from '../../context/genetics/GenModalContext'
 
 export function AddGeneticButton() {
-	const { showGeneticForm, setShowGeneticForm } = useContext(GenModalContext)
+	const { openGeneticModal } = useContext(GenModalContext)
 
-	return (
-		<>
-			<button onClick={() => setShowGeneticForm(!showGeneticForm)}>
-				+ Nueva
-			</button>
-		</>
-	)
+	return <button onClick={openGeneticModal}>+ Nueva</button>
 }

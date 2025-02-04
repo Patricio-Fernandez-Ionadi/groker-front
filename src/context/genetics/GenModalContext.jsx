@@ -3,13 +3,18 @@ import { createContext, useState } from 'react'
 export const GenModalContext = createContext()
 
 const GenModalProvider = ({ children }) => {
-	const [showGeneticForm, setShowGeneticForm] = useState(false)
+	const [isGeneticModalOpen, setGeneticModalOpen] = useState(false)
+	const openGeneticModal = () => setGeneticModalOpen(true)
+	const closeGeneticModal = () => setGeneticModalOpen(false)
+	const toggleGeneticModal = () => setGeneticModalOpen(!isGeneticModalOpen)
 
 	return (
 		<GenModalContext.Provider
 			value={{
-				showGeneticForm,
-				setShowGeneticForm,
+				isGeneticModalOpen,
+				openGeneticModal,
+				closeGeneticModal,
+				toggleGeneticModal,
 			}}
 		>
 			{children}

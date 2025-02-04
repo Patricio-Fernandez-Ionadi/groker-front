@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 
 import { validateProductData } from '../../utils/validation'
 import { AppContext } from '../../context/AppContext'
+import { FormContext } from '../../context/FormContext'
 
 /**
  * Componente para añadir un nuevo producto al inventario.
@@ -18,6 +19,7 @@ const AddProduct = () => {
 	const [errors, setErrors] = useState({})
 
 	const { addProduct } = useContext(AppContext)
+	const { closeAddProductForm } = useContext(FormContext)
 
 	const handleChange = (e) => {
 		const { name, value } = e.target
@@ -44,10 +46,12 @@ const AddProduct = () => {
 			potassium: '',
 			type: '',
 		})
+
+		closeAddProductForm()
 	}
 
 	return (
-		<form onSubmit={handleSubmit}>
+		<div>
 			<div>
 				<input
 					type="text"
@@ -98,8 +102,8 @@ const AddProduct = () => {
 					<option value="mineral">Mineral</option>
 				</select>
 			</div>
-			<button type="submit">Añadir Producto</button>
-		</form>
+			<button onClick={handleSubmit}>Añadir Producto</button>
+		</div>
 	)
 }
 

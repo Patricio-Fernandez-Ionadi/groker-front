@@ -481,19 +481,15 @@ button:hover {
 .add-plant-form-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  grid-template-rows: repeat(4, 60px);
+  gap: 10px;
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-  grid-template-areas: "name genetic" "date stage" "potSize potCheckbox" "button button";
-}
-
-.inline {
-  display: flex;
   align-items: center;
-  gap: 10px;
+  grid-template-areas: "name genetic" "date stage" "potSize potCheckbox" "button button";
 }
 
 .add-plant-form-name {
@@ -504,9 +500,15 @@ button:hover {
 
 .add-plant-form-genetic {
   grid-area: genetic;
+  display: flex;
 }
-.add-plant-form-genetic .inline {
-  gap: 0;
+.add-plant-form-genetic select {
+  border-radius: 3px 0 0 3px !important;
+}
+.add-plant-form-genetic button {
+  height: 40px;
+  padding: 0 10px;
+  border-radius: 0 3px 3px 0;
 }
 
 .add-plant-form-date {
@@ -523,8 +525,10 @@ button:hover {
 
 .add-plant-form-potCheckbox {
   grid-area: potCheckbox;
-  justify-content: flex-end;
   font-size: 14px;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
 }
 
 .add-plant-form-button {
@@ -571,6 +575,11 @@ button:hover {
   .add-plant-form-stage select,
   .add-plant-form-potSize {
     font-size: 16px;
+  }
+  .add-plant-form-potCheckbox {
+    flex-direction: column;
+    gap: 0;
+    align-items: center;
   }
   .add-plant-form-button {
     font-size: 18px;

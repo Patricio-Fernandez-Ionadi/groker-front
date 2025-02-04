@@ -1,13 +1,14 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 
 import AddProduct from './AddProduct'
 import { AppContext } from '../../context/AppContext'
+import { FormContext } from '../../context/FormContext'
 
 /**
  * Componente que muestra la lista de productos en el inventario.
  */
 const ProductList = () => {
-	const [showAddProductForm, setShowAddProductForm] = useState(false)
+	const { isAddProductFormOpen, toggleAddProductForm } = useContext(FormContext)
 
 	const { state } = useContext(AppContext)
 	const { products } = state
@@ -16,14 +17,14 @@ const ProductList = () => {
 		<div>
 			<h2>Inventario de Productos</h2>
 
-			<button onClick={() => setShowAddProductForm(!showAddProductForm)}>
-				{showAddProductForm ? 'Cerrar' : 'Añadir Producto'}
+			<button onClick={toggleAddProductForm}>
+				{isAddProductFormOpen ? 'Cerrar' : 'Añadir Producto'}
 			</button>
-			{showAddProductForm && <AddProduct />}
+			{isAddProductFormOpen && <AddProduct />}
 
 			<ul>
-				{products.map((product) => (
-					<li key={product._id}>
+				{products.map((product, index) => (
+					<li key={product._id || index}>
 						<h3>{product.name}</h3>
 						<p>Stock: {product.stock} ml</p>
 						<p>Nitrógeno: {product.nitrogen} %</p>

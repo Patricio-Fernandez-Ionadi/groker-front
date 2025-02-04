@@ -27,13 +27,20 @@ const PlantHistory = () => {
 					</>
 				)
 			case 'stage':
-				return <p>Cambio de etapa: {translateField(details)}</p>
+				return (
+					<p>
+						Cambio de etapa: {translateField(details)}
+						{details === 'germination' && '🌱'}
+						{details === 'vegetative' && '🌿'}
+						{details === 'flowering' && '🌼'}
+					</p>
+				)
 
 			case 'potSize':
 				return <p>Tamaño de maceta: {details}L</p>
 
 			case 'underObservation':
-				return details && <p>Bajo observación</p>
+				return details && <p>Bajo observación 👁️</p>
 
 			case 'isFinalPot':
 				return <p>Maceta final {details ? '✔️' : '❌'}</p>
@@ -48,15 +55,15 @@ const PlantHistory = () => {
 				return <p>Fecha de ingreso: {formatDate(details)}</p>
 
 			case 'temperature':
-				return <p>Temperatura: {details}°</p>
+				return <p>Temperatura: {details}° 🌡️</p>
 
 			case 'humidity':
-				return <p>Humedad: {details}%</p>
+				return <p>Humedad: {details}% 💦</p>
 
 			case 'watering':
 				return (
 					<>
-						<p>Último riego: {formatDate(date)}</p>
+						<p>Último riego: {formatDate(date)} 💧</p>
 						{details.ph && <p>PH: {details.ph}</p>}
 						{details.ec && <p>EC: {details.ec}</p>}
 

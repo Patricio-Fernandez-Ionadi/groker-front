@@ -3,6 +3,8 @@ import { AppContext } from '../../context/AppContext'
 
 import { validatePlantData } from '../../utils/validation'
 import { AddGeneticButton } from '../Genetics/AddGeneticButton'
+import { ToggleSwitch } from '../Universals/ToggleSwitch'
+import { FormContext } from '../../context/FormContext'
 
 const defaultPlantData = {
 	entryDate: '',
@@ -95,6 +97,7 @@ const AddPlant = () => {
 	const [newPlantData, setPlantData] = useState(defaultPlantData)
 	const [errors, setErrors] = useState({})
 
+	const { closeAddPlantForm } = useContext(FormContext)
 	const { state, addPlant } = useContext(AppContext)
 	const { genetics } = state
 
@@ -129,6 +132,7 @@ const AddPlant = () => {
 				addPlant(newPlantData)
 				setPlantData(defaultPlantData)
 				setErrors({})
+				closeAddPlantForm()
 			} catch (error) {
 				console.error('Error al agregar planta AddPlant.jsx:', error)
 			}
@@ -140,7 +144,7 @@ const AddPlant = () => {
 
 	return (
 		<div className="add-plant-form-container">
-			<div className="inline add-plant-form-name">
+			<div className="add-plant-form-name">
 				<input
 					type="text"
 					name="name"
@@ -152,25 +156,23 @@ const AddPlant = () => {
 			</div>
 
 			<div className="add-plant-form-genetic">
-				<div className="inline">
-					<select
-						name="genetic"
-						value={newPlantData.genetic.name}
-						onChange={handleChange}
-					>
-						<option value="">Seleccionar genética</option>
-						{genetics.map((gen) => (
-							<option key={gen._id} value={gen._id}>
-								{gen.name}
-							</option>
-						))}
-					</select>
-					<AddGeneticButton />
-				</div>
+				<select
+					name="genetic"
+					value={newPlantData.genetic.name}
+					onChange={handleChange}
+				>
+					<option value="">Seleccionar genética</option>
+					{genetics.map((gen) => (
+						<option key={gen._id} value={gen._id}>
+							{gen.name}
+						</option>
+					))}
+				</select>
+				<AddGeneticButton />
 				{errors.genetic && <span className="error">{errors.genetic}</span>}
 			</div>
 
-			<label className="inline add-plant-form-date">
+			<label className="add-plant-form-date">
 				<p>Fecha de Ingreso</p>
 				<input
 					type="date"
@@ -181,7 +183,7 @@ const AddPlant = () => {
 				{errors.entryDate && <span className="error">{errors.entryDate}</span>}
 			</label>
 
-			<label className="inline add-plant-form-stage">
+			<label className="add-plant-form-stage">
 				<p>Etapa:</p>
 				<select name="stage" onChange={handleChange}>
 					<option value="vegetative">Vegetativo</option>
@@ -191,7 +193,7 @@ const AddPlant = () => {
 			</label>
 
 			<input
-				className="inline add-plant-form-potSize"
+				className="add-plant-form-potSize"
 				type="number"
 				name="potSize"
 				value={newPlantData.potSize}
@@ -199,18 +201,17 @@ const AddPlant = () => {
 				placeholder="Tamaño de la maceta"
 			/>
 
-			<label className="inline add-plant-form-potCheckbox">
-				Maceta final
-				<input
-					type="checkbox"
-					name="isFinalPot"
-					checked={newPlantData.flags.isFinalPot}
-					onChange={(e) =>
+			<label className="add-plant-form-potCheckbox">
+				<p>Maceta final</p>
+				<ToggleSwitch
+					name={'isFinalPot'}
+					onEvent={(e) =>
 						setPlantData({
 							...newPlantData,
 							flags: { ...newPlantData.flags, isFinalPot: e.target.checked },
 						})
 					}
+					switcher={newPlantData.flags.isFinalPot}
 				/>
 			</label>
 

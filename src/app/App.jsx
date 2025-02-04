@@ -9,30 +9,29 @@ import PlantDetails from '../components/Plants/PlantDetails'
 import PlantHistory from '../components/Plants/PlantHistory'
 import ProductList from '../components/Products/ProductList'
 import { Header } from '../components/Header'
+import { FormContext } from '../context/FormContext'
 
 /**
  * Componente principal de la aplicación de gestión de inventario de cultivos.
  */
 const App = () => {
-	const [showAddPlantForm, setShowAddPlantForm] = useState(false)
 	const [showProductList, setShowProductList] = useState(false)
 
-	const { showGeneticForm } = useContext(GenModalContext)
+	const { isAddPlantFormOpen } = useContext(FormContext)
+	const { isGeneticModalOpen } = useContext(GenModalContext)
 
 	return (
 		<>
 			<div className="app-container">
 				<Header
-					showAddPlantForm={showAddPlantForm}
-					setShowAddPlantForm={setShowAddPlantForm}
 					showProductList={showProductList}
 					setShowProductList={setShowProductList}
 				/>
-				{(showAddPlantForm || showProductList || showGeneticForm) && (
+				{(isAddPlantFormOpen || showProductList || isGeneticModalOpen) && (
 					<aside className="forms-section">
-						{showAddPlantForm && <AddPlant />}
+						{isAddPlantFormOpen && <AddPlant />}
 						{showProductList && <ProductList />}
-						{showGeneticForm && <GeneticsModal />}
+						{isGeneticModalOpen && <GeneticsModal />}
 					</aside>
 				)}
 
