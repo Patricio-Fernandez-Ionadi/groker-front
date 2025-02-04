@@ -43,6 +43,11 @@ button:hover {
   background-color: #e78437;
 }
 
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 /* Estilo base para el contenedor del label */
 .toggle-switch-label {
   display: flex;

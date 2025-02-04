@@ -18,12 +18,19 @@ export function GeneticList() {
 				{genetics.map((genetic) => (
 					<li key={genetic._id}>
 						{genetic.name}
-						<button
-							className="delete-button"
-							onClick={(e) => handleDeleteGenetic(genetic._id)}
-						>
-							Eliminar
-						</button>
+
+						{genetic.name === 'Desconocida' ? (
+							<button className="delete-button disabled" disabled>
+								Eliminar
+							</button>
+						) : (
+							<button
+								className="delete-button"
+								onClick={(e) => handleDeleteGenetic(genetic._id)}
+							>
+								Eliminar
+							</button>
+						)}
 					</li>
 				))}
 			</ul>
