@@ -57,6 +57,9 @@ const PlantHistory = () => {
 				return (
 					<>
 						<p>Último riego: {formatDate(date)}</p>
+						{details.ph && <p>PH: {details.ph}</p>}
+						{details.ec && <p>EC: {details.ec}</p>}
+
 						{details.productsUsed.length > 0 && (
 							<>
 								<p>Productos usados:</p>
