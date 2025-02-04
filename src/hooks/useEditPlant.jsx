@@ -267,9 +267,61 @@ export const useEditPlant = () => {
 		}
 	}
 
+	const calculateStockDifference = (previousProducts, newProducts) => {
+		const stockDifferences = []
+
+		// Iterar sobre los productos nuevos
+		newProducts.forEach((newProduct) => {
+			const previousProduct = previousProducts.find(
+				(p) => p.product._id === newProduct.product._id
+			)
+
+			if (previousProduct) {
+				// Si el producto ya existía, calcular la diferencia
+				const difference = -(
+					newProduct.productAmount - previousProduct.productAmount
+				)
+				stockDifferences.push({
+					productId: newProduct.product._id,
+					difference,
+				})
+			} else {
+				// Si es un producto nuevo, restar la cantidad completa
+				stockDifferences.push({
+					productId: newProduct.product._id,
+					difference: -newProduct.productAmount,
+				})
+			}
+		})
+
+		// Iterar sobre los productos antiguos para detectar eliminaciones
+		previousProducts.forEach((prevProduct) => {
+			const newProduct = newProducts.find(
+				(p) => p.product._id === prevProduct.product._id
+			)
+
+			if (!newProduct) {
+				// Si el producto fue eliminado, devolverlo al stock
+				stockDifferences.push({
+					productId: prevProduct.product._id,
+					difference: prevProduct.productAmount,
+				})
+			}
+		})
+
+		return stockDifferences
+	}
+
+	const applyStockDifferences = (stockDifferences) => {
+		stockDifferences.forEach(({ productId, difference }) => {
+			updateProductStock(productId, difference)
+		})
+	}
+
 	const handleSubmit = (e) => {
 		e.preventDefault()
 
+		// Guardar notas si existen
 		if (newNote.note.trim() !== '') {
 			setNewEvents((prev) => {
 				const noteEventIndex = existingEventIndex('note', prev)
@@ -283,6 +335,7 @@ export const useEditPlant = () => {
 			})
 		}
 
+		// Manejar registros de riego
 		if (isWatered) {
 			const wateringEventIndex = existingEventIndex('watering', newEvents)
 
@@ -294,19 +347,18 @@ export const useEditPlant = () => {
 					previousWateringData.productsUsed.map((p) => [p.product._id, p])
 				)
 
-				// Actualizar o agregar productos con la referencia correcta
-				// Fusionamos los productos: actualizamos existentes y mantenemos los no modificados
+				// Fusionar productos: actualizar existentes, mantener no modificados y agregar nuevos
 				const updatedProductsUsed = [
 					...previousWateringData.productsUsed.map((prevProduct) => {
 						const editedProduct = wateringData.productsUsed.find(
 							(p) => p.product._id === prevProduct.product._id
 						)
 						return editedProduct
-							? { ...prevProduct, productAmount: editedProduct.productAmount } // Actualizar cantidad
-							: prevProduct // Mantener si no fue editado
+							? { ...prevProduct, productAmount: editedProduct.productAmount }
+							: prevProduct
 					}),
 					...wateringData.productsUsed.filter(
-						(newProduct) => !previousProductsMap.has(newProduct.product._id) // Agregar productos nuevos
+						(newProduct) => !previousProductsMap.has(newProduct.product._id)
 					),
 				]
 
@@ -317,16 +369,16 @@ export const useEditPlant = () => {
 					productsUsed: updatedProductsUsed,
 				}
 
-				// Calcular la diferencia en el stock de productos
-				updatedProductsUsed.forEach((productUsed) => {
-					const prevProduct = previousProductsMap.get(productUsed.product._id)
-					if (prevProduct) {
-						const difference =
-							productUsed.productAmount - prevProduct.productAmount
-						updateProductStock(productUsed.product._id, difference)
-					}
-				})
+				// Calcular las diferencias de stock
+				const stockDifferences = calculateStockDifference(
+					previousWateringData.productsUsed,
+					updatedProductsUsed
+				)
 
+				// Aplicar las diferencias al stock
+				applyStockDifferences(stockDifferences)
+
+				// Actualizar el evento de riego
 				setNewEvents((prev) =>
 					prev.map((event, index) =>
 						index === wateringEventIndex
@@ -335,25 +387,26 @@ export const useEditPlant = () => {
 					)
 				)
 			} else {
+				// Si es un nuevo registro de riego, calcular las diferencias desde cero
+				const stockDifferences = wateringData.productsUsed.map(
+					(productUsed) => ({
+						productId: productUsed.product._id,
+						difference: -productUsed.productAmount,
+					})
+				)
+
+				// Aplicar las diferencias al stock
+				applyStockDifferences(stockDifferences)
+
+				// Agregar el nuevo evento de riego
 				setNewEvents((prev) => [
 					...prev,
 					{ type: 'watering', details: wateringData },
 				])
-
-				// Actualizar el stock de productos utilizados en el riego
-				wateringData.productsUsed.forEach((productUsed) => {
-					if (productUsed.product && productUsed.productAmount) {
-						const product = state.products.find(
-							(p) => p._id === productUsed.product._id
-						)
-						if (product) {
-							updateProductStock(product._id, productUsed.productAmount)
-						}
-					}
-				})
 			}
 		}
 
+		// Marcar para guardar
 		setShouldSave(true)
 	}
 

@@ -173,32 +173,36 @@ const AppProvider = ({ children }) => {
 	const updateProductStock = async (productId, amount) => {
 		const productToUpdate = state.products.find((p) => p._id === productId)
 
-		const newProductData = {
-			...productToUpdate,
-			stock: productToUpdate.stock - amount,
+		if (!productToUpdate) {
+			console.error(`Producto con ID ${productId} no encontrado.`)
+			return
 		}
 
-		// en este punto llegan los productos tantas veces como se llame la funcion handleSubmit en useEditPlant
-		// es decir llegan todos los productos registrados en newEvents
+		// Calcular el nuevo stock
+		const newStock = productToUpdate.stock + amount
+
 		console.log({
 			idRecibido: productId,
 			nombre: productToUpdate.name,
 			cantidad: amount,
 			stockDisponible: productToUpdate.stock,
-			stockAcualizado: newProductData.stock,
+			stockAcualizado: newStock,
 		})
-
-		// const updatedProduct = await api_editProduct(productId, newProductData)
 
 		// actualizacion en el estado de la aplicacion para evitar nueva llamada
 		setState((prev) => ({
 			...prev,
 			products: prev.products.map((product) =>
-				product._id === productId
-					? { ...product, stock: product.stock - amount }
-					: product
+				product._id === productId ? { ...product, stock: newStock } : product
 			),
 		}))
+
+		// Actualizar el stock en la base de datos
+		try {
+			await api_editProduct(productId, { ...productToUpdate, stock: newStock })
+		} catch (error) {
+			console.error('Error al actualizar el stock en la base de datos:', error)
+		}
 	}
 
 	// Valor proporcionado por el contexto
