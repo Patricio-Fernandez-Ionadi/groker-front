@@ -14,7 +14,7 @@ const AddProduct = () => {
 		nitrogen: '',
 		phosphorus: '',
 		potassium: '',
-		type: '',
+		type: 'organic',
 	})
 	const [errors, setErrors] = useState({})
 
@@ -96,8 +96,12 @@ const AddProduct = () => {
 					placeholder="Fósforo (%)"
 				/>
 
-				<select name="type" value={productData.type} onChange={handleChange}>
-					<option value="">Seleccione un tipo</option>
+				<select
+					name="type"
+					defaultValue={productData.type}
+					onChange={handleChange}
+				>
+					<option>Seleccione un tipo</option>
 					<option value="organic">Organico</option>
 					<option value="mineral">Mineral</option>
 				</select>
