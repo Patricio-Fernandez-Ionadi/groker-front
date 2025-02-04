@@ -260,7 +260,10 @@ export const useEditPlant = () => {
 			return updatedHistory
 		} else {
 			// Si no existe, agregar un nuevo registro
-			return [...history, { date: todayISO, events: [...newEvents] }]
+			return [
+				...history,
+				{ date: new Date().toISOString(), events: [...newEvents] },
+			]
 		}
 	}
 
