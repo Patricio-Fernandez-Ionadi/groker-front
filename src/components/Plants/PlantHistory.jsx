@@ -9,7 +9,7 @@ import { translateField } from '../../utils/translations'
 const PlantHistory = () => {
 	const { state } = useContext(AppContext)
 	const { selectedPlant } = state
-	if (!selectedPlant) return null
+	if (!selectedPlant || selectedPlant.history.length === 0) return null
 
 	const renderDetails = (type, details, date) => {
 		switch (type) {
@@ -90,25 +90,24 @@ const PlantHistory = () => {
 	return (
 		<section className="plant-history-component">
 			<h2>Historial de la Planta</h2>
-			{selectedPlant.history.length > 0 &&
-				[...selectedPlant.history]
-					.sort((a, b) => new Date(b.date) - new Date(a.date))
-					.map((entry) => (
-						<div key={entry._id} className="history-entry">
-							<h3>{formatDate(entry.date)}</h3>
-							<ul>
-								{entry.events.map((event, eventIndex) => (
-									<li key={eventIndex}>
-										{renderDetails(
-											event.type,
-											event.details,
-											selectedPlant.lastWatered
-										)}
-									</li>
-								))}
-							</ul>
-						</div>
-					))}
+			{[...selectedPlant.history]
+				.sort((a, b) => new Date(b.date) - new Date(a.date))
+				.map((entry) => (
+					<div key={entry._id} className="history-entry">
+						<h3>{formatDate(entry.date)}</h3>
+						<ul>
+							{entry.events.map((event, eventIndex) => (
+								<li key={eventIndex}>
+									{renderDetails(
+										event.type,
+										event.details,
+										selectedPlant.lastWatered
+									)}
+								</li>
+							))}
+						</ul>
+					</div>
+				))}
 		</section>
 	)
 }
