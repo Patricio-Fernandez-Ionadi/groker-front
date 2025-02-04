@@ -9,7 +9,7 @@ import { FormContext } from '../../context/FormContext'
 const defaultPlantData = {
 	entryDate: '',
 	name: '',
-	genetic: { name: '' },
+	genetic: { name: 'Desconocida' },
 	stage: 'vegetative',
 	potSize: '',
 	flags: { isFinalPot: false },
@@ -163,7 +163,7 @@ const AddPlant = () => {
 			<div className="add-plant-form-genetic">
 				<select
 					name="genetic"
-					value={newPlantData.genetic.name}
+					defaultValue={newPlantData.genetic.name}
 					onChange={handleChange}
 				>
 					<option>Seleccionar genética</option>
@@ -174,7 +174,6 @@ const AddPlant = () => {
 					))}
 				</select>
 				<AddGeneticButton />
-				{errors.genetic && <span className="error">{errors.genetic}</span>}
 			</div>
 
 			<label className="add-plant-form-date">

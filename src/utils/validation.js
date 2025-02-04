@@ -8,8 +8,6 @@ export const validatePlantData = (plantData) => {
 	if (!plantData.entryDate)
 		errors.entryDate = 'La fecha de ingreso es obligatoria'
 	if (!plantData.name) errors.name = 'El nombre de la planta es obligatorio'
-	if (!plantData.genetic.name)
-		errors.genetic = 'La genética de la planta es obligatoria'
 	return errors
 }
 
@@ -22,6 +20,5 @@ export const validateProductData = (productData) => {
 	const errors = {}
 	if (!productData.name) errors.name = 'El nombre del producto es obligatorio'
 	if (!productData.stock) errors.stock = 'El stock del producto es obligatorio'
-	if (!productData.type) errors.type = 'El tipo de producto es obligatorio'
 	return errors
 }

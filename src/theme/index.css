@@ -500,22 +500,15 @@ button:hover {
 
 .add-plant-form-genetic {
   grid-area: genetic;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-areas: "select select select select button" "error error error error error";
+  display: flex;
 }
 .add-plant-form-genetic select {
-  grid-area: select;
   border-radius: 3px 0 0 3px !important;
 }
 .add-plant-form-genetic button {
-  grid-area: button;
   height: 40px;
   padding: 0 10px;
   border-radius: 0 3px 3px 0;
-}
-.add-plant-form-genetic .error {
-  grid-area: error;
 }
 
 .add-plant-form-date {

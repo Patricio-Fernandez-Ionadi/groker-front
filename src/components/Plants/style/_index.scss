@@ -29,23 +29,14 @@
 }
 .add-plant-form-genetic {
 	grid-area: genetic;
-	display: grid;
-	grid-template-columns: repeat(5, 1fr);
-	grid-template-areas:
-		'select select select select button'
-		'error error error error error';
+	display: flex;
 	& select {
-		grid-area: select;
 		border-radius: $border_radius 0 0 $border_radius !important;
 	}
 	& button {
-		grid-area: button;
 		height: 40px;
 		padding: 0 10px;
 		border-radius: 0 $border_radius $border_radius 0;
-	}
-	& .error {
-		grid-area: error;
 	}
 }
 .add-plant-form-date {
