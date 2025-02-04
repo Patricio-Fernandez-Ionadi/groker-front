@@ -68,23 +68,27 @@ const AppProvider = ({ children }) => {
 	 * @returns {void}
 	 */
 	const addPlant = async (newPlant) => {
-		// calculo de fecha de cambio segun fecha de ingreso y etapa de la planta
 		const plantToAdd = {
 			...newPlant,
 			estimatedChange: calculateEstimatedChange(newPlant),
 		}
 
-		try {
-			// POST de la planta
-			const addedPlant = await api_addPlant(plantToAdd)
+		const geneticReference = state.genetics.find(
+			(g) => g.name === plantToAdd.genetic // string name
+		)
+		// -> { _id: ..., name: ..., __v:0 }
 
-			const geneticReference = state.genetics.find(
-				(g) => g._id === addedPlant.genetic
-			)
-			const updated = { ...addedPlant, genetic: geneticReference }
+		try {
+			const addedPlant = await api_addPlant({
+				...plantToAdd,
+				genetic: geneticReference,
+			})
 
 			// actualizacion del estado interno de la aplicacion
-			setState((prev) => ({ ...prev, plants: [...prev.plants, updated] }))
+			setState((prev) => ({
+				...prev,
+				plants: [...prev.plants, { ...addedPlant, genetic: geneticReference }],
+			}))
 		} catch (error) {
 			handleError(error, 'Error al agregar planta addPlantContext')
 		}
@@ -174,20 +178,12 @@ const AppProvider = ({ children }) => {
 		const productToUpdate = state.products.find((p) => p._id === productId)
 
 		if (!productToUpdate) {
-			console.error(`Producto con ID ${productId} no encontrado.`)
+			handleError(null, `Producto con ID ${productId} no encontrado.`)
 			return
 		}
 
 		// Calcular el nuevo stock
 		const newStock = productToUpdate.stock + amount
-
-		console.log({
-			idRecibido: productId,
-			nombre: productToUpdate.name,
-			cantidad: amount,
-			stockDisponible: productToUpdate.stock,
-			stockAcualizado: newStock,
-		})
 
 		// actualizacion en el estado de la aplicacion para evitar nueva llamada
 		setState((prev) => ({

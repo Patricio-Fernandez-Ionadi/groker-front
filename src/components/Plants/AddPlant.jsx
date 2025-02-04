@@ -6,10 +6,16 @@ import { AddGeneticButton } from '../Genetics/AddGeneticButton'
 import { ToggleSwitch } from '../Universals/ToggleSwitch'
 import { FormContext } from '../../context/FormContext'
 
+const defaultGenetic = {
+	_id: '679bf81f5996a713ebb47ece',
+	name: 'Desconocida',
+	__v: 0,
+}
+
 const defaultPlantData = {
 	entryDate: '',
 	name: '',
-	genetic: { name: 'Desconocida' },
+	genetic: 'Desconocida',
 	stage: 'vegetative',
 	potSize: '',
 	flags: { isFinalPot: false },
@@ -113,13 +119,6 @@ const AddPlant = () => {
 	const handleChange = (e) => {
 		const { name, value, type, checked } = e.target
 
-		if (name === 'genetic') {
-			setPlantData({
-				...newPlantData,
-				genetic: { name: value },
-			})
-		}
-
 		setPlantData({
 			...newPlantData,
 			[name]: type === 'checkbox' ? checked : value,
@@ -168,7 +167,7 @@ const AddPlant = () => {
 				>
 					<option>Seleccionar genética</option>
 					{genetics.map((gen) => (
-						<option key={gen._id} value={gen._id}>
+						<option key={gen._id} value={gen.name}>
 							{gen.name}
 						</option>
 					))}
