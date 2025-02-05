@@ -2,8 +2,8 @@ import { useState, useEffect, useContext } from 'react'
 import { ProductsContext } from '../../context/products/ProductsContext'
 import { GeneticsContext } from '../../context/genetics/GeneticsContext'
 import { PlantsContext } from '../../context/plants/PlantsContext'
+import { FormContext } from '../../context/FormContext'
 
-import { useShowForms } from '../useShowForms'
 import { useStockManagement } from '../products/useStockManagement'
 import { useNotesLogic } from './useNotesLogic'
 
@@ -19,7 +19,7 @@ export const useEditPlant = () => {
 	const { genetics } = useContext(GeneticsContext)
 	const { selectedPlant, updatePlant } = useContext(PlantsContext)
 
-	const { isEditPlantFormOpen, closeEditPlantForm } = useShowForms()
+	const { isEditPlantFormOpen, closeEditPlantForm } = useContext(FormContext)
 
 	const { applyStockDifferences, calculateStockDifference } =
 		useStockManagement()

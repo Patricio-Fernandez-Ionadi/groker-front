@@ -40,7 +40,7 @@ const PlantHistory = () => {
 				return details && <p>Bajo observación 👁️</p>
 
 			case 'isFinalPot':
-				return <p>Maceta final {details ? '✔️' : '❌'}</p>
+				return details && <p>Maceta final ✔️</p>
 
 			case 'estimatedChange':
 				return <p>Cambio estimado: {formatDate(details)}</p>
