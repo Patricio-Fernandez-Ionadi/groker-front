@@ -1,22 +1,19 @@
 import React, { useContext } from 'react'
-import { AppContext } from '../../context/AppContext'
-import { FormContext } from '../../context/FormContext'
+import { PlantsContext } from '../../context/plants/PlantsContext'
 import { PlantsFormsEditProvider } from '../../context/plants/PlantEditContext'
+import { FormContext } from '../../context/FormContext'
 
 import EditPlant from './edition/EditPlant'
 
 import { formatDate } from '../../utils/dateUtils'
 import { translateField } from '../../utils/translations'
 
-/**
- * Componente que muestra la lista de plantas en el inventario.
- */
 const PlantList = () => {
-	const { state, deletePlant, selectPlant } = useContext(AppContext)
 	const { isEditPlantFormOpen, closeEditPlantForm, openEditPlantForm } =
 		useContext(FormContext)
 
-	const { plants } = state
+	const { plants, selectPlant, deletePlant, selectedPlant } =
+		useContext(PlantsContext)
 
 	const handleEditForm = (e, plant, open) => {
 		e.stopPropagation()
@@ -27,6 +24,8 @@ const PlantList = () => {
 		e.stopPropagation()
 		deletePlant(plant._id)
 	}
+
+	if (!plants) return <p>...Cargando</p>
 
 	if (plants.length > 0) {
 		return (
@@ -51,7 +50,7 @@ const PlantList = () => {
 								key={plant._id}
 								onClick={() => selectPlant(plant)}
 								className={`${
-									state.selectedPlant && state.selectedPlant._id === plant._id
+									selectedPlant && selectedPlant._id === plant._id
 										? 'selected'
 										: ''
 								}`}
@@ -64,8 +63,7 @@ const PlantList = () => {
 								<td>{formatDate(plant.lastWatered)}</td>
 								<td>{plant.flags.underObservation ? '👁️' : '-'}</td>
 								<td>
-									{isEditPlantFormOpen &&
-									state.selectedPlant._id === plant._id ? (
+									{isEditPlantFormOpen && selectedPlant._id === plant._id ? (
 										<button
 											className="table-buttons"
 											onClick={(e) => handleEditForm(e, plant, false)}

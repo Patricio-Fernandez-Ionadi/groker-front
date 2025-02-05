@@ -1,16 +1,20 @@
 import { useState, useEffect, useContext } from 'react'
-import { AppContext } from '../context/AppContext'
+import { ProductsContext } from '../context/products/ProductsContext'
+import { GeneticsContext } from '../context/genetics/GeneticsContext'
+import { PlantsContext } from '../context/plants/PlantsContext'
+import { FormContext } from '../context/FormContext'
+
 import {
 	calculateEstimatedChange,
 	formatDateToISO,
 	formatDateToYYYYMMDD,
 } from '../utils/dateUtils'
 import { editPrevEvent, existingEventIndex } from '../utils/helpers'
-import { FormContext } from '../context/FormContext'
 
 export const useEditPlant = () => {
-	const { state, updateProductStock, updatePlant } = useContext(AppContext)
-	const { selectedPlant } = state
+	const { products, updateProductStock } = useContext(ProductsContext)
+	const { genetics } = useContext(GeneticsContext)
+	const { selectedPlant, updatePlant } = useContext(PlantsContext)
 
 	const { isEditPlantFormOpen, closeEditPlantForm } = useContext(FormContext)
 
@@ -115,7 +119,7 @@ export const useEditPlant = () => {
 				break
 
 			case 'genetic':
-				const newGenetic = state.genetics.find(
+				const newGenetic = genetics.find(
 					(genetic) => genetic.name === fieldValue
 				)
 
@@ -204,7 +208,7 @@ export const useEditPlant = () => {
 				}
 
 				if (name === 'product') {
-					const product = state.products.find((p) => p.name === value)
+					const product = products.find((p) => p.name === value)
 					updatedProducts[index].product = product
 				}
 

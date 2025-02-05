@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { AppContext } from '../../context/AppContext'
+import { PlantsContext } from '../../context/plants/PlantsContext'
 
 import { formatDate } from '../../utils/dateUtils'
 import { translateField } from '../../utils/translations'
@@ -8,8 +8,7 @@ import { translateField } from '../../utils/translations'
  * Componente que muestra los detalles de una planta específica.
  */
 const PlantDetails = () => {
-	const { state } = useContext(AppContext)
-	const selectedPlant = state.selectedPlant
+	const { selectedPlant } = useContext(PlantsContext)
 
 	if (!selectedPlant)
 		return <div>Seleccione una planta para ver los detalles</div>

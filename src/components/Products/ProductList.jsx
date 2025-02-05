@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { AppContext } from '../../context/AppContext'
+import { ProductsContext } from '../../context/products/ProductsContext'
 import { FormContext } from '../../context/FormContext'
 
 import AddProduct from './AddProduct'
@@ -13,8 +13,7 @@ const ProductList = () => {
 		isEditProductFormOpen,
 	} = useContext(FormContext)
 
-	const { state, deleteProduct } = useContext(AppContext)
-	const { products } = state
+	const { products, deleteProduct } = useContext(ProductsContext)
 
 	const handleEditProduct = (product) => {
 		openEditProductForm(product)
@@ -41,9 +40,6 @@ const ProductList = () => {
 		setIsModalOpen(false) // Cierra el modal
 		setProductToDelete(null) // Limpia el estado
 	}
-
-	console.log(products)
-
 	return (
 		<div className="product-list-container">
 			<h2>Inventario de Productos</h2>

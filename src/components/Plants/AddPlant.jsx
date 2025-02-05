@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { AppContext } from '../../context/AppContext'
 
 import { validatePlantData } from '../../utils/validation'
 import { AddGeneticButton } from '../Genetics/AddGeneticButton'
 import { ToggleSwitch } from '../Universals/ToggleSwitch'
 import { FormContext } from '../../context/FormContext'
+import { PlantsContext } from '../../context/plants/PlantsContext'
+import { GeneticsContext } from '../../context/genetics/GeneticsContext'
 
 const defaultGenetic = {
 	_id: '679bf81f5996a713ebb47ece',
@@ -104,8 +105,9 @@ const AddPlant = () => {
 	const [errors, setErrors] = useState({})
 
 	const { closeAddPlantForm } = useContext(FormContext)
-	const { state, addPlant } = useContext(AppContext)
-	const { genetics } = state
+
+	const { plants, addPlant } = useContext(PlantsContext)
+	const { genetics } = useContext(GeneticsContext)
 
 	useEffect(() => {
 		// addPlant(TODAY_FAKE_PLANT_DATA)

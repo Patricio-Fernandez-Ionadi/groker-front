@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { ProductsContext } from '../../context/products/ProductsContext'
+import { FormContext } from '../../context/FormContext'
 
 import { validateProductData } from '../../utils/validation'
-import { AppContext } from '../../context/AppContext'
-import { FormContext } from '../../context/FormContext'
 
 const defaultProductData = {
 	name: '',
@@ -17,8 +17,9 @@ const AddProduct = () => {
 	const [productData, setProductData] = useState({ ...defaultProductData })
 	const [errors, setErrors] = useState({})
 
-	const { addProduct, state, editExistingProduct } = useContext(AppContext)
-	const { selectedProduct } = state
+	const { selectedProduct, addProduct, editExistingProduct } =
+		useContext(ProductsContext)
+
 	// console.log(selectedProduct)
 
 	const { closeAddProductForm, isEditProductFormOpen, closeEditProductForm } =

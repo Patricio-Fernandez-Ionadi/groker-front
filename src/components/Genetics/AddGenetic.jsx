@@ -1,11 +1,11 @@
 import React, { useContext, useState } from 'react'
 import { GenModalContext } from '../../context/genetics/GenModalContext'
-import { AppContext } from '../../context/AppContext'
+import { GeneticsContext } from '../../context/genetics/GeneticsContext'
 
 export function AddGenetic() {
 	const [newGenetic, setNewGenetic] = useState('')
 
-	const { addGenetic } = useContext(AppContext)
+	const { addGenetic } = useContext(GeneticsContext)
 
 	const { closeGeneticModal } = useContext(GenModalContext)
 

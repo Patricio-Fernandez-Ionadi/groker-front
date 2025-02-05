@@ -1,14 +1,16 @@
 import React, { useContext } from 'react'
-import { AppContext } from '../../context/AppContext'
 import { formatDate } from '../../utils/dateUtils'
 import { translateField } from '../../utils/translations'
+import { PlantsContext } from '../../context/plants/PlantsContext'
+
+import { useHistoryEvents } from '../../hooks/plants/useHistoryEvents'
 
 /**
  * Componente que muestra el historial de cambios de una planta específica.
  */
 const PlantHistory = () => {
-	const { state } = useContext(AppContext)
-	const { selectedPlant } = state
+	const { selectedPlant } = useContext(PlantsContext)
+
 	if (!selectedPlant || selectedPlant.history.length === 0) return null
 
 	const renderDetails = (type, details, date) => {
@@ -49,7 +51,7 @@ const PlantHistory = () => {
 				return <p>Cambio estimado: {formatDate(details)}</p>
 
 			case 'genetic':
-				return <p>Genética: {details.name}</p>
+				return <p>Genética: {details}</p>
 
 			case 'entryDate':
 				return <p>Fecha de ingreso: {formatDate(details)}</p>
@@ -82,8 +84,11 @@ const PlantHistory = () => {
 					</>
 				)
 
+			case 'name':
+				return <p>Nombre: {details}</p>
+
 			default:
-				return <p> probablemente sea riego</p>
+				return <p>Campo de cambio no manejado avisar al desarrollador</p>
 		}
 	}
 

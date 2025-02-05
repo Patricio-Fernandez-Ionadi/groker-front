@@ -1,12 +1,12 @@
 import { createContext, useContext, useState } from 'react'
-import { AppContext } from './AppContext'
+import { ProductsContext } from './products/ProductsContext'
 
 const FormContext = createContext()
 
 const FormProvider = ({ children }) => {
-	const { selectProduct, removeStateProduct } = useContext(AppContext)
+	const { selectProduct, removeStateProduct } = useContext(ProductsContext)
 
-	// Formulario para edicion de plantas (nuevo registro)
+	// Formulario para edicion de plantas (history)
 	const [isEditPlantFormOpen, setEditPlantFormOpen] = useState(false)
 	const openEditPlantForm = () => setEditPlantFormOpen(true)
 	const closeEditPlantForm = () => setEditPlantFormOpen(false)
@@ -24,6 +24,7 @@ const FormProvider = ({ children }) => {
 	const closeAddProductForm = () => setAddProductForm(false)
 	const toggleAddProductForm = () => setAddProductForm(!isAddProductFormOpen)
 
+	// Formulario para edicion de producto existente
 	const [isEditProductFormOpen, setEditProductForm] = useState(false)
 	const openEditProductForm = (product) => {
 		selectProduct(product)

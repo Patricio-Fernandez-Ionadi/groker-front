@@ -1,9 +1,8 @@
 import React, { useContext } from 'react'
-import { AppContext } from '../../context/AppContext'
+import { GeneticsContext } from '../../context/genetics/GeneticsContext'
 
 export function GeneticList() {
-	const { deleteGenetic, state } = useContext(AppContext)
-	const { genetics } = state
+	const { deleteGenetic, genetics } = useContext(GeneticsContext)
 
 	const handleDeleteGenetic = async (id) => {
 		deleteGenetic(id)

@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
-import { AppContext } from '../../../context/AppContext'
+import { ProductsContext } from '../../../context/products/ProductsContext'
 import { useEditPlantContext } from '../../../context/plants/PlantEditContext'
 
 export function WateringFields() {
-	const { state } = useContext(AppContext)
+	const { products } = useContext(ProductsContext)
 
 	const {
 		handleWateringEntry,
@@ -55,7 +55,7 @@ export function WateringFields() {
 							onChange={(e) => handleWateringEntry(e, index)}
 						>
 							<option>Seleccionar producto</option>
-							{state.products.map((product) => (
+							{products.map((product) => (
 								<option key={product._id}>{product.name}</option>
 							))}
 						</select>

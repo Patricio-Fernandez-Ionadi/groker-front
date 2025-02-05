@@ -1,12 +1,11 @@
 import React, { useContext } from 'react'
-import { AppContext } from '../../../context/AppContext'
+import { GeneticsContext } from '../../../context/genetics/GeneticsContext'
 import { useEditPlantContext } from '../../../context/plants/PlantEditContext'
 
 import { AddGeneticButton } from '../../Genetics/AddGeneticButton'
 
 export function AdvancedFields() {
-	const { state } = useContext(AppContext)
-	const { genetics } = state
+	const { genetics } = useContext(GeneticsContext)
 
 	const { editedPlant, handlePlantChange, showAdvancedFields } =
 		useEditPlantContext()
