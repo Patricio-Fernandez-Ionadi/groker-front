@@ -3,15 +3,13 @@ import { useEditPlantContext } from '../../../context/plants/PlantEditContext'
 
 import { toggleCheckboxState } from '../../../utils/helpers'
 import { ToggleSwitch } from '../../Universals/ToggleSwitch'
+import { useNotesLogic } from '../../../hooks/plants/useNotesLogic'
 
 export function CommonFields() {
-	const {
-		editedPlant,
-		handlePlantChange,
-		isWatered,
-		setIsWatered,
-		handleAddNote,
-	} = useEditPlantContext()
+	const { editedPlant, handlePlantChange, isWatered, setIsWatered } =
+		useEditPlantContext()
+
+	const { handleAddNote } = useNotesLogic()
 
 	return (
 		<div className="common-fields">

@@ -3,11 +3,6 @@ import { formatDate } from '../../utils/dateUtils'
 import { translateField } from '../../utils/translations'
 import { PlantsContext } from '../../context/plants/PlantsContext'
 
-import { useHistoryEvents } from '../../hooks/plants/useHistoryEvents'
-
-/**
- * Componente que muestra el historial de cambios de una planta específica.
- */
 const PlantHistory = () => {
 	const { selectedPlant } = useContext(PlantsContext)
 

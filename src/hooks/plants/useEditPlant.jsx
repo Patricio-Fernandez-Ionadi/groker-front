@@ -1,28 +1,35 @@
 import { useState, useEffect, useContext } from 'react'
-import { ProductsContext } from '../context/products/ProductsContext'
-import { GeneticsContext } from '../context/genetics/GeneticsContext'
-import { PlantsContext } from '../context/plants/PlantsContext'
-import { FormContext } from '../context/FormContext'
+import { ProductsContext } from '../../context/products/ProductsContext'
+import { GeneticsContext } from '../../context/genetics/GeneticsContext'
+import { PlantsContext } from '../../context/plants/PlantsContext'
+
+import { useShowForms } from '../useShowForms'
+import { useStockManagement } from '../products/useStockManagement'
+import { useNotesLogic } from './useNotesLogic'
 
 import {
 	calculateEstimatedChange,
 	formatDateToISO,
 	formatDateToYYYYMMDD,
-} from '../utils/dateUtils'
-import { editPrevEvent, existingEventIndex } from '../utils/helpers'
+} from '../../utils/dateUtils'
+import { editPrevEvent, existingEventIndex } from '../../utils/helpers'
 
 export const useEditPlant = () => {
-	const { products, updateProductStock } = useContext(ProductsContext)
+	const { products } = useContext(ProductsContext)
 	const { genetics } = useContext(GeneticsContext)
 	const { selectedPlant, updatePlant } = useContext(PlantsContext)
 
-	const { isEditPlantFormOpen, closeEditPlantForm } = useContext(FormContext)
+	const { isEditPlantFormOpen, closeEditPlantForm } = useShowForms()
+
+	const { applyStockDifferences, calculateStockDifference } =
+		useStockManagement()
+	const { newNote } = useNotesLogic()
 
 	const [showAdvancedFields, setShowAdvancedFields] = useState(false)
 	const [isWatered, setIsWatered] = useState(false)
 	const [shouldSave, setShouldSave] = useState(false)
+
 	const [newEvents, setNewEvents] = useState([])
-	const [newNote, setNewNote] = useState({ id: '', note: '' })
 	const [wateringData, setWateringData] = useState({
 		amount: '',
 		productsUsed: [],
@@ -190,10 +197,6 @@ export const useEditPlant = () => {
 		}
 	}
 
-	const handleAddNote = (e) => {
-		setNewNote({ id: Date.now(), note: e.target.value })
-	}
-
 	const handleWateringEntry = (e, index = null) => {
 		const { name, value } = e.target
 		const formattedValue =
@@ -268,62 +271,14 @@ export const useEditPlant = () => {
 			return updatedHistory
 		} else {
 			// Si no existe, agregar un nuevo registro
-			return [
-				...history,
-				{ date: new Date().toISOString(), events: [...newEvents] },
-			]
+			if (newEvents.length > 0) {
+				return [
+					...history,
+					{ date: new Date().toISOString(), events: [...newEvents] },
+				]
+			}
+			return history
 		}
-	}
-
-	const calculateStockDifference = (previousProducts, newProducts) => {
-		const stockDifferences = []
-
-		// Iterar sobre los productos nuevos
-		newProducts.forEach((newProduct) => {
-			const previousProduct = previousProducts.find(
-				(p) => p.product._id === newProduct.product._id
-			)
-
-			if (previousProduct) {
-				// Si el producto ya existía, calcular la diferencia
-				const difference = -(
-					newProduct.productAmount - previousProduct.productAmount
-				)
-				stockDifferences.push({
-					productId: newProduct.product._id,
-					difference,
-				})
-			} else {
-				// Si es un producto nuevo, restar la cantidad completa
-				stockDifferences.push({
-					productId: newProduct.product._id,
-					difference: -newProduct.productAmount,
-				})
-			}
-		})
-
-		// Iterar sobre los productos antiguos para detectar eliminaciones
-		previousProducts.forEach((prevProduct) => {
-			const newProduct = newProducts.find(
-				(p) => p.product._id === prevProduct.product._id
-			)
-
-			if (!newProduct) {
-				// Si el producto fue eliminado, devolverlo al stock
-				stockDifferences.push({
-					productId: prevProduct.product._id,
-					difference: prevProduct.productAmount,
-				})
-			}
-		})
-
-		return stockDifferences
-	}
-
-	const applyStockDifferences = (stockDifferences) => {
-		stockDifferences.forEach(({ productId, difference }) => {
-			updateProductStock(productId, difference)
-		})
 	}
 
 	const handleSubmit = (e) => {
@@ -426,7 +381,6 @@ export const useEditPlant = () => {
 		editedPlant,
 		handlePlantChange,
 		newEvents,
-		handleAddNote,
 		wateringData,
 		handleWateringEntry,
 		addProductField,

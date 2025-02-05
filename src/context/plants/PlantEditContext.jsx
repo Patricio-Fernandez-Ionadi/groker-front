@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react'
-import { useEditPlant } from '../../hooks/useEditPlant'
+import { useEditPlant } from '../../hooks/plants/useEditPlant'
 
 const PlantEditContext = createContext()
 
