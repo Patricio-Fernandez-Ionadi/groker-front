@@ -19,7 +19,9 @@ export const api_addProduct = async (productData) => {
 			},
 			body: JSON.stringify(productData),
 		})
-		return response
+
+		const data = await response.json()
+		return data
 	} catch (error) {
 		console.error('Error al agregar producto:', error)
 		throw error

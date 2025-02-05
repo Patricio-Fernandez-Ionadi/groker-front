@@ -1,13 +1,16 @@
-import { createContext, useState } from 'react'
+import { createContext, useContext, useState } from 'react'
+import { AppContext } from './AppContext'
 
 const FormContext = createContext()
 
 const FormProvider = ({ children }) => {
+	const { selectProduct, removeStateProduct } = useContext(AppContext)
+
 	// Formulario para edicion de plantas (nuevo registro)
-	const [isEditionFormOpen, setEditionFormOpen] = useState(false)
-	const openEditionForm = () => setEditionFormOpen(true)
-	const closeEditionForm = () => setEditionFormOpen(false)
-	const toggleEditionForm = () => setEditionFormOpen(!isEditionFormOpen)
+	const [isEditPlantFormOpen, setEditPlantFormOpen] = useState(false)
+	const openEditPlantForm = () => setEditPlantFormOpen(true)
+	const closeEditPlantForm = () => setEditPlantFormOpen(false)
+	const toggleEditPlantForm = () => setEditPlantFormOpen(!isEditPlantFormOpen)
 
 	// Formulario para ingreso al inventario de nueva planta
 	const [isAddPlantFormOpen, setAddPlantForm] = useState(false)
@@ -21,7 +24,15 @@ const FormProvider = ({ children }) => {
 	const closeAddProductForm = () => setAddProductForm(false)
 	const toggleAddProductForm = () => setAddProductForm(!isAddProductFormOpen)
 
-	// habria que considerar una forma de editar un producto existente lo que podria verse reflejado en un modulo de estos mas
+	const [isEditProductFormOpen, setEditProductForm] = useState(false)
+	const openEditProductForm = (product) => {
+		selectProduct(product)
+		setEditProductForm(true)
+	}
+	const closeEditProductForm = () => {
+		setEditProductForm(false)
+		removeStateProduct()
+	}
 
 	return (
 		<FormContext.Provider
@@ -31,16 +42,20 @@ const FormProvider = ({ children }) => {
 				openAddProductForm,
 				closeAddProductForm,
 				toggleAddProductForm,
+				// Form edicion de producto existente
+				isEditProductFormOpen,
+				openEditProductForm,
+				closeEditProductForm,
 				// From registro nueva planta
 				isAddPlantFormOpen,
 				openAddPlantForm,
 				closeAddPlantForm,
 				toggleAddPlantForm,
 				// From edicion de planta existente
-				isEditionFormOpen,
-				openEditionForm,
-				closeEditionForm,
-				toggleEditionForm,
+				isEditPlantFormOpen,
+				openEditPlantForm,
+				closeEditPlantForm,
+				toggleEditPlantForm,
 			}}
 		>
 			{children}

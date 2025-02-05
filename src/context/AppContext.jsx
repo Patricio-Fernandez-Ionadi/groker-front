@@ -6,6 +6,7 @@ import {
 } from '../api/genetics'
 import {
 	api_addProduct,
+	api_deleteProduct,
 	api_editProduct,
 	api_getProducts,
 } from '../api/products'
@@ -23,6 +24,7 @@ const initialState = {
 	products: [],
 	isLoading: false,
 	selectedPlant: null,
+	selectedProduct: null,
 }
 
 const AppContext = createContext()
@@ -48,7 +50,10 @@ const AppProvider = ({ children }) => {
 		}
 	}, [])
 
-	const handleError = (error, message) => console.error(message, error)
+	const handleError = (error, message) => {
+		console.error(message, error)
+		alert(`${message}\n${error?.message || ''} `)
+	}
 
 	// ##### PLANTS #####
 
@@ -65,6 +70,7 @@ const AppProvider = ({ children }) => {
 	 * Agrega nueva planta al inventario haciendo POST a la API.
 	 * Actualiza el estado global con la nueva planta.
 	 * @param {Object} newPlant - planta a agregar.
+	 * @requires name-entryDate
 	 * @returns {void}
 	 */
 	const addPlant = async (newPlant) => {
@@ -96,7 +102,7 @@ const AppProvider = ({ children }) => {
 
 	/**
 	 * Elimina una planta y la elimina del estado.
-	 * @param {number|string} plantId - ID de la planta a eliminar.
+	 * @param {string} plantId - ID de la planta a eliminar.
 	 * @returns {void}
 	 */
 	const deletePlant = async (plantId) => {
@@ -112,7 +118,11 @@ const AppProvider = ({ children }) => {
 		}
 	}
 
-	// Función para actualizar una planta
+	/**
+	 * Edita una planta existente en el inventario y actualiza el estado global.
+	 * @param {Object} updatedPlant - La planta con los nuevos datos.
+	 * @returns {void}
+	 */
 	const updatePlant = async (updatedPlant) => {
 		try {
 			const updated = await api_editPlant(updatedPlant)
@@ -162,6 +172,14 @@ const AppProvider = ({ children }) => {
 
 	// ##### PRODUCTS #####
 
+	const selectProduct = (product) => {
+		setState((prev) => ({ ...prev, selectedProduct: product }))
+	}
+
+	const removeStateProduct = () => {
+		setState((prev) => ({ ...prev, selectedProduct: null }))
+	}
+
 	const addProduct = async (newProduct) => {
 		try {
 			const addedProduct = await api_addProduct(newProduct)
@@ -174,8 +192,47 @@ const AppProvider = ({ children }) => {
 		}
 	}
 
+	const editExistingProduct = async (updatedProduct) => {
+		/* TODO
+			hay que asegurarse que el producto tenga _id ya que si fue agregado sin refrescar la app al estar guardado en el estado (optimist render) no la tendrá 
+			// actualizar los productos en el estado antes de seguir
+		*/
+		try {
+			const updated = await api_editProduct(updatedProduct._id, updatedProduct)
+			setState((prev) => ({
+				...prev,
+				products: prev.products.map((product) =>
+					product._id === updatedProduct._id ? updated : product
+				),
+			}))
+		} catch (error) {
+			handleError(error, 'Error al editar producto updateProductContext')
+		}
+	}
+
+	const deleteProduct = async (productId) => {
+		console.log('eliminar producto de api:', productId)
+
+		/* TODO
+			hay que asegurarse que el producto tenga _id ya que si fue agregado sin refrescar la app al estar guardado en el estado (optimist render) no la tendrá 
+			// actualizar los productos en el estado antes de seguir
+		*/
+
+		try {
+			await api_deleteProduct(productId)
+			setState((prev) => ({
+				...prev,
+				products: prev.products.filter((product) => product._id !== productId),
+			}))
+		} catch (error) {
+			handleError(error, 'Error al eliminar producto deleteProductContext')
+		}
+	}
+
 	const updateProductStock = async (productId, amount) => {
 		const productToUpdate = state.products.find((p) => p._id === productId)
+
+		// aca hacemos un retorno pero deberiamos chequear que todos los productos tengan _id primero ya que en el estado podria haber productos sin esta propiedad
 
 		if (!productToUpdate) {
 			handleError(null, `Producto con ID ${productId} no encontrado.`)
@@ -185,7 +242,7 @@ const AppProvider = ({ children }) => {
 		// Calcular el nuevo stock
 		const newStock = productToUpdate.stock + amount
 
-		// actualizacion en el estado de la aplicacion para evitar nueva llamada
+		// actualizacion en el estado de la aplicacion
 		setState((prev) => ({
 			...prev,
 			products: prev.products.map((product) =>
@@ -197,7 +254,7 @@ const AppProvider = ({ children }) => {
 		try {
 			await api_editProduct(productId, { ...productToUpdate, stock: newStock })
 		} catch (error) {
-			console.error('Error al actualizar el stock en la base de datos:', error)
+			handleError(error, 'Error al actualizar el stock en la base de datos')
 		}
 	}
 
@@ -213,7 +270,11 @@ const AppProvider = ({ children }) => {
 		addGenetic,
 		deleteGenetic,
 		// products
+		selectProduct,
+		removeStateProduct,
 		addProduct,
+		editExistingProduct,
+		deleteProduct,
 		updateProductStock,
 	}
 

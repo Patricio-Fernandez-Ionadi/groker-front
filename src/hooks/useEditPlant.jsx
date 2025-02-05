@@ -6,10 +6,13 @@ import {
 	formatDateToYYYYMMDD,
 } from '../utils/dateUtils'
 import { editPrevEvent, existingEventIndex } from '../utils/helpers'
+import { FormContext } from '../context/FormContext'
 
 export const useEditPlant = () => {
 	const { state, updateProductStock, updatePlant } = useContext(AppContext)
 	const { selectedPlant } = state
+
+	const { isEditPlantFormOpen, closeEditPlantForm } = useContext(FormContext)
 
 	const [showAdvancedFields, setShowAdvancedFields] = useState(false)
 	const [isWatered, setIsWatered] = useState(false)
@@ -66,6 +69,7 @@ export const useEditPlant = () => {
 
 			updatePlant(plantToSave)
 
+			isEditPlantFormOpen && closeEditPlantForm()
 			setShouldSave(false)
 		}
 	}, [newEvents, shouldSave])

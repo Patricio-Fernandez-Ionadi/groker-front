@@ -1,5 +1,6 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { AppContext } from '../../context/AppContext'
+import { FormContext } from '../../context/FormContext'
 import { PlantsFormsEditProvider } from '../../context/plants/PlantEditContext'
 
 import EditPlant from './edition/EditPlant'
@@ -12,14 +13,14 @@ import { translateField } from '../../utils/translations'
  */
 const PlantList = () => {
 	const { state, deletePlant, selectPlant } = useContext(AppContext)
+	const { isEditPlantFormOpen, closeEditPlantForm, openEditPlantForm } =
+		useContext(FormContext)
 
 	const { plants } = state
 
-	const [editForm, setEditForm] = useState(false)
-
-	const handleEditForm = (e, plant) => {
+	const handleEditForm = (e, plant, open) => {
 		e.stopPropagation()
-		setEditForm(true)
+		open ? openEditPlantForm() : closeEditPlantForm()
 		selectPlant(plant)
 	}
 	const handleDeletePlant = (e, plant) => {
@@ -63,12 +64,22 @@ const PlantList = () => {
 								<td>{formatDate(plant.lastWatered)}</td>
 								<td>{plant.flags.underObservation ? '👁️' : '-'}</td>
 								<td>
-									<button
-										className="table-buttons"
-										onClick={(e) => handleEditForm(e, plant)}
-									>
-										Editar
-									</button>
+									{isEditPlantFormOpen &&
+									state.selectedPlant._id === plant._id ? (
+										<button
+											className="table-buttons"
+											onClick={(e) => handleEditForm(e, plant, false)}
+										>
+											Cancelar
+										</button>
+									) : (
+										<button
+											className="table-buttons"
+											onClick={(e) => handleEditForm(e, plant, true)}
+										>
+											Editar
+										</button>
+									)}
 									<button
 										className="table-buttons"
 										onClick={(e) => handleDeletePlant(e, plant)}
@@ -80,9 +91,9 @@ const PlantList = () => {
 						))}
 					</tbody>
 				</table>
-				{editForm && (
+				{isEditPlantFormOpen && (
 					<>
-						<button onClick={() => setEditForm(false)}>Cerrar</button>
+						<button onClick={closeEditPlantForm}>Cerrar</button>
 						<PlantsFormsEditProvider>
 							<EditPlant />
 						</PlantsFormsEditProvider>
