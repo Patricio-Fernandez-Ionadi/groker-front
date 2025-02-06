@@ -3,12 +3,14 @@ import { createContext, useContext, useEffect, useState } from 'react'
 import { PlantsContext } from './PlantsContext'
 import { FormContext } from '../FormContext'
 // hooks
+import { usePlantState } from '../../hooks/plants/usePlantState'
 import { useNotesLogic } from '../../hooks/plants/useNotesLogic'
 import { useHistoryEvents } from '../../hooks/plants/useHistoryEvents'
+import { useWateringLogic } from '../../hooks/plants/useWateringLogic'
+import { useStockManagement } from '../../hooks/products/useStockManagement'
 // utils
 import { formatDateToISO, formatDateToYYYYMMDD } from '../../utils/dateUtils'
-import { useWateringLogic } from '../../hooks/plants/useWateringLogic'
-import { usePlantState } from '../../hooks/plants/usePlantState'
+import { existingEventIndex } from '../../utils/helpers'
 
 export const PlantEditionContext = createContext()
 
@@ -26,7 +28,6 @@ export const PlantsEditiontProvider = ({ children }) => {
 		entryDate: formatDateToYYYYMMDD(selectedPlant.entryDate),
 		estimatedChange: formatDateToYYYYMMDD(selectedPlant.estimatedChange),
 	}
-
 	const [editedPlant, setEditedPlant] = useState(plantToCopy)
 
 	const { newNote, handleAddNote } = useNotesLogic()
@@ -45,6 +46,9 @@ export const PlantsEditiontProvider = ({ children }) => {
 		setNewEvents,
 		setEditedPlant
 	)
+
+	const { calculateStockDifference, applyStockDifferences } =
+		useStockManagement()
 
 	useEffect(() => {
 		if (selectedPlant) {
