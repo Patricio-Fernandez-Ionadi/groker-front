@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { ProductsContext } from '../../../context/products/ProductsContext'
-import { useEditPlantContext } from '../../../context/plants/PlantEditContext'
+import { PlantEditionContext } from '../../../context/plants/PlantEditContext'
 
 export function WateringFields() {
 	const { products } = useContext(ProductsContext)
@@ -11,7 +11,7 @@ export function WateringFields() {
 		addProductField,
 		removeProductField,
 		isWatered,
-	} = useEditPlantContext()
+	} = useContext(PlantEditionContext)
 
 	if (!isWatered) return null
 

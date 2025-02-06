@@ -2,16 +2,18 @@ import React, { useContext } from 'react'
 import { formatDate } from '../../utils/dateUtils'
 import { translateField } from '../../utils/translations'
 import { PlantsContext } from '../../context/plants/PlantsContext'
+// import { PlantEditionContext } from '../../context/plants/PlantEditContext'
 
-import { useHistoryEvents } from '../../hooks/plants/useHistoryEvents'
-
-/**
- * Componente que muestra el historial de cambios de una planta específica.
- */
 const PlantHistory = () => {
 	const { selectedPlant } = useContext(PlantsContext)
 
+	// const { deleteNoteFromHistory } = useContext(PlantEditionContext) // -> no tiene acceso a esto ya que este hook 'vive' en un contexto inferior
+
 	if (!selectedPlant || selectedPlant.history.length === 0) return null
+
+	const handleDeleteNote = (noteId) => {
+		console.log(noteId) // -> loguea bien el id de la nota
+	}
 
 	const renderDetails = (type, details, date) => {
 		switch (type) {
@@ -22,7 +24,10 @@ const PlantHistory = () => {
 						<ul>
 							{details.map((note) => (
 								<li key={note.id}>
-									{note.note} <button>eliminar nota</button>
+									{note.note}{' '}
+									<button onClick={() => handleDeleteNote(note.id)}>
+										eliminar nota
+									</button>
 								</li>
 							))}
 						</ul>
