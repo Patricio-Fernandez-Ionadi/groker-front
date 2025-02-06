@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { PlantEditContext } from '../../../context/plants/PlantEditContext'
+import { PlantEditionContext } from '../../../context/plants/PlantEditContext'
 
 import { AdvancedFields } from './AdvancedFields'
 import { CommonFields } from './CommonFields'
@@ -9,7 +9,7 @@ import { toggleCheckboxState } from '../../../utils/helpers'
 
 const EditPlant = () => {
 	const { showAdvancedFields, setShowAdvancedFields, handleSubmit } =
-		useContext(PlantEditContext)
+		useContext(PlantEditionContext)
 
 	return (
 		<div className="dynamic-form">

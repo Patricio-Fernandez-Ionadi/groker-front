@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { PlantEditContext } from '../../../context/plants/PlantEditContext'
+import { PlantEditionContext } from '../../../context/plants/PlantEditContext'
 
 import { toggleCheckboxState } from '../../../utils/helpers'
 import { ToggleSwitch } from '../../Universals/ToggleSwitch'
@@ -11,7 +11,7 @@ export function CommonFields() {
 		isWatered,
 		setIsWatered,
 		handleAddNote,
-	} = useContext(PlantEditContext)
+	} = useContext(PlantEditionContext)
 
 	return (
 		<div className="common-fields">

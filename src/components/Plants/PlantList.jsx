@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { PlantsContext } from '../../context/plants/PlantsContext'
-import { PlantsFormsEditProvider } from '../../context/plants/PlantEditContext'
+import { PlantsEditiontProvider } from '../../context/plants/PlantEditContext'
 import { FormContext } from '../../context/FormContext'
 
 import EditPlant from './edition/EditPlant'
@@ -92,9 +92,9 @@ const PlantList = () => {
 				{isEditPlantFormOpen && (
 					<>
 						<button onClick={closeEditPlantForm}>Cerrar</button>
-						<PlantsFormsEditProvider>
+						<PlantsEditiontProvider>
 							<EditPlant />
-						</PlantsFormsEditProvider>
+						</PlantsEditiontProvider>
 					</>
 				)}
 			</section>
