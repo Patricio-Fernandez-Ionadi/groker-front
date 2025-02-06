@@ -1,15 +1,17 @@
-import React from 'react'
-import { useEditPlantContext } from '../../../context/plants/PlantEditContext'
+import React, { useContext } from 'react'
+import { PlantEditContext } from '../../../context/plants/PlantEditContext'
 
 import { toggleCheckboxState } from '../../../utils/helpers'
 import { ToggleSwitch } from '../../Universals/ToggleSwitch'
-import { useNotesLogic } from '../../../hooks/plants/useNotesLogic'
 
 export function CommonFields() {
-	const { editedPlant, handlePlantChange, isWatered, setIsWatered } =
-		useEditPlantContext()
-
-	const { handleAddNote } = useNotesLogic()
+	const {
+		editedPlant,
+		handlePlantChange,
+		isWatered,
+		setIsWatered,
+		handleAddNote,
+	} = useContext(PlantEditContext)
 
 	return (
 		<div className="common-fields">

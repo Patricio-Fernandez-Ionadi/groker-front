@@ -6,6 +6,7 @@ const FormContext = createContext()
 const FormProvider = ({ children }) => {
 	const { selectProduct, removeStateProduct } = useContext(ProductsContext)
 
+	// ################## PLANTAS ##################
 	// Formulario para edicion de plantas (history)
 	const [isEditPlantFormOpen, setEditPlantFormOpen] = useState(false)
 	const openEditPlantForm = () => setEditPlantFormOpen(true)
@@ -18,6 +19,7 @@ const FormProvider = ({ children }) => {
 	const closeAddPlantForm = () => setAddPlantForm(false)
 	const toggleAddPlantForm = () => setAddPlantForm(!isAddPlantFormOpen)
 
+	// ################## PRODUCTOS ##################
 	// Formulario para ingreso de nuevo producto
 	const [isAddProductFormOpen, setAddProductForm] = useState(false)
 	const openAddProductForm = () => setAddProductForm(true)

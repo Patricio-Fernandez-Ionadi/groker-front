@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { GeneticsContext } from '../../../context/genetics/GeneticsContext'
-import { useEditPlantContext } from '../../../context/plants/PlantEditContext'
+import { PlantEditContext } from '../../../context/plants/PlantEditContext'
 
 import { AddGeneticButton } from '../../Genetics/AddGeneticButton'
 
@@ -8,7 +8,7 @@ export function AdvancedFields() {
 	const { genetics } = useContext(GeneticsContext)
 
 	const { editedPlant, handlePlantChange, showAdvancedFields } =
-		useEditPlantContext()
+		useContext(PlantEditContext)
 
 	if (!showAdvancedFields) return null
 
