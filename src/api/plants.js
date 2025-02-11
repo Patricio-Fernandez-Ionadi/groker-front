@@ -58,7 +58,8 @@ export const api_deletePlant = async (plantId) => {
  * @param {Object} plantData - Los nuevos datos de la planta, incluyendo su ID.
  * @returns {Promise<Object>} - Los datos de la planta editada.
  */
-export const api_editPlant = async (plantData) => {
+export const api_updatePlant = async (plantData) => {
+	console.log(plantData)
 	try {
 		const response = await fetch(`/api/plants/${plantData._id}`, {
 			method: 'PUT',
@@ -68,7 +69,6 @@ export const api_editPlant = async (plantData) => {
 			body: JSON.stringify(plantData),
 		})
 		const data = await response.json()
-		// console.log('Planta editada:', data)
 		return data
 	} catch (error) {
 		console.error('Error al editar planta:', error)
