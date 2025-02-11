@@ -29,14 +29,14 @@ export const api_addProduct = async (productData) => {
 }
 
 // Ejemplo de cómo editar un producto
-export const api_editProduct = async (productId, productData) => {
+export const api_editProduct = async (updatedProduct) => {
 	try {
-		const response = await fetch(`/api/products/${productId}`, {
+		const response = await fetch(`/api/products/${updatedProduct._id}`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',
 			},
-			body: JSON.stringify(productData),
+			body: JSON.stringify(updatedProduct),
 		})
 		const data = await response.json()
 		// console.log('Producto editado:', data)
