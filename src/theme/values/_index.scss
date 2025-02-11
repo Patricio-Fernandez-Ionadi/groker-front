@@ -9,3 +9,7 @@
 // dependientes
 @import './_mixins.scss'; // color
 @import './_animations.scss'; // color
+
+// componentes
+@import './components/_confirmModal.scss';
+@import './components/_toggleSwitch.scss';
