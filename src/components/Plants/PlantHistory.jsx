@@ -75,7 +75,7 @@ const PlantHistory = () => {
 						{details.ph && <p>PH: {details.ph}</p>}
 						{details.ec && <p>EC: {details.ec}</p>}
 
-						{details.productsUsed.length > 0 && (
+						{details.productsUsed?.length > 0 && (
 							<>
 								<p>Productos usados:</p>
 								<ul>

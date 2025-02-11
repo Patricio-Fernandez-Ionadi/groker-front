@@ -1,10 +1,8 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import {
-	saveHistory,
-	toggleAdvanced,
-} from '../../../store/reducers/history/historySlice'
+import { toggleAdvanced } from '../../../store/reducers/history/historySlice'
+import { savePlantHistory } from '../../../store/reducers/history/historyAsyncActions'
 
 import { AdvancedFields } from './AdvancedFields'
 import { CommonFields } from './CommonFields'
@@ -17,7 +15,11 @@ const EditPlant = () => {
 
 	const handleSubmit = () => {
 		// console.log(editingState)
-		dispatch(saveHistory(editingState))
+		dispatch(savePlantHistory(editingState))
+			.unwrap() // Maneja la promesa para detectar errores
+			.catch((error) => {
+				console.error('Error al guardar la planta:', error)
+			})
 	}
 
 	return (

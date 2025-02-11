@@ -7,13 +7,13 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+PREV_CONTEXTS
+PREV_HOOKS
 node_modules
 dist
 dist-ssr
 package-lock.json
 *.local
-posible_camino-src
-posible_camino-src.zip
 
 # Editor directories and files
 .vscode/*
