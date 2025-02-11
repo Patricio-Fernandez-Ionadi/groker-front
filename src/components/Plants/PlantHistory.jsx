@@ -1,13 +1,14 @@
-import React, { useContext } from 'react'
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+
 import { formatDate } from '../../utils/dateUtils'
 import { translateField } from '../../utils/translations'
-import { PlantsContext } from '../../context/plants/PlantsContext'
-// import { PlantEditionContext } from '../../context/plants/PlantEditContext'
 
 const PlantHistory = () => {
-	const { selectedPlant } = useContext(PlantsContext)
-
-	// const { deleteNoteFromHistory } = useContext(PlantEditionContext) // -> no tiene acceso a esto ya que este hook 'vive' en un contexto inferior
+	const selectedPlant = useSelector(
+		(state) => state.plantsStore.selectedPlant,
+		(prev, next) => JSON.stringify(prev) === JSON.stringify(next)
+	)
 
 	if (!selectedPlant || selectedPlant.history.length === 0) return null
 

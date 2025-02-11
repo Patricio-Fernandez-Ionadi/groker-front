@@ -1,11 +1,8 @@
-import { createContext, useContext, useState } from 'react'
-import { ProductsContext } from './products/ProductsContext'
+import { createContext, useState } from 'react'
 
 const FormContext = createContext()
 
 const FormProvider = ({ children }) => {
-	const { selectProduct, removeStateProduct } = useContext(ProductsContext)
-
 	// ################## PLANTAS ##################
 	// Formulario para edicion de plantas (history)
 	const [isEditPlantFormOpen, setEditPlantFormOpen] = useState(false)
@@ -28,14 +25,8 @@ const FormProvider = ({ children }) => {
 
 	// Formulario para edicion de producto existente
 	const [isEditProductFormOpen, setEditProductForm] = useState(false)
-	const openEditProductForm = (product) => {
-		selectProduct(product)
-		setEditProductForm(true)
-	}
-	const closeEditProductForm = () => {
-		setEditProductForm(false)
-		removeStateProduct()
-	}
+	const openEditProductForm = () => setEditProductForm(true)
+	const closeEditProductForm = () => setEditProductForm(false)
 
 	return (
 		<FormContext.Provider

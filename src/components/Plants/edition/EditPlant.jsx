@@ -1,28 +1,33 @@
-import React, { useContext } from 'react'
-import { PlantEditionContext } from '../../../context/plants/PlantEditContext'
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
+import {
+	saveHistory,
+	toggleAdvanced,
+} from '../../../store/reducers/history/historySlice'
 
 import { AdvancedFields } from './AdvancedFields'
 import { CommonFields } from './CommonFields'
 import { WateringFields } from './WateringFields'
 
-import { toggleCheckboxState } from '../../../utils/helpers'
-
 const EditPlant = () => {
-	const { showAdvancedFields, setShowAdvancedFields, handleSubmit } =
-		useContext(PlantEditionContext)
+	const dispatch = useDispatch()
+	const editingState = useSelector((state) => state.historyStore)
+	const { showAdvanced } = editingState
+
+	const handleSubmit = () => {
+		// console.log(editingState)
+		dispatch(saveHistory(editingState))
+	}
 
 	return (
 		<div className="dynamic-form">
 			<button
 				className="action-buttons"
 				type="button"
-				onClick={() =>
-					toggleCheckboxState(showAdvancedFields, setShowAdvancedFields)
-				}
+				onClick={(e) => dispatch(toggleAdvanced())}
 			>
-				{showAdvancedFields
-					? 'Ocultar Campos Avanzados'
-					: 'Mostrar Campos Avanzados'}
+				{showAdvanced ? 'Ocultar Campos Avanzados' : 'Mostrar Campos Avanzados'}
 			</button>
 			<AdvancedFields />
 			<CommonFields />

@@ -1,18 +1,17 @@
 import React, { useContext, useState } from 'react'
 import { GenModalContext } from '../../context/genetics/GenModalContext'
-import { GeneticsContext } from '../../context/genetics/GeneticsContext'
+import { useDispatch } from 'react-redux'
+import { addNewGenetic } from '../../store/reducers/genetics/geneticsAsyncActions'
 
 export function AddGenetic() {
 	const [newGenetic, setNewGenetic] = useState('')
-
-	const { addGenetic } = useContext(GeneticsContext)
-
+	const dispatch = useDispatch()
 	const { closeGeneticModal } = useContext(GenModalContext)
 
 	const handleAddGenetic = async (e) => {
 		e.preventDefault()
-		const addNewGenetic = { name: newGenetic }
-		addGenetic(addNewGenetic)
+		const geneticToAdd = { name: newGenetic }
+		dispatch(addNewGenetic(geneticToAdd))
 		setNewGenetic('')
 		closeGeneticModal()
 	}

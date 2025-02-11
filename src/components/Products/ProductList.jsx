@@ -1,9 +1,13 @@
 import React, { useContext, useState } from 'react'
-import { ProductsContext } from '../../context/products/ProductsContext'
+import { useDispatch, useSelector } from 'react-redux'
+
 import { FormContext } from '../../context/FormContext'
 
 import AddProduct from './AddProduct'
-import ConfirmModal from '../ConfirmModal'
+import ConfirmModal from '../Universals/ConfirmModal'
+
+import { selectProduct } from '../../store/reducers/products/productsSlice'
+import { deleteProduct } from '../../store/reducers/products/productsAsyncActions'
 
 const ProductList = () => {
 	const {
@@ -13,10 +17,12 @@ const ProductList = () => {
 		isEditProductFormOpen,
 	} = useContext(FormContext)
 
-	const { products, deleteProduct } = useContext(ProductsContext)
+	const dispatch = useDispatch()
+	const { products } = useSelector((state) => state.productsStore)
 
 	const handleEditProduct = (product) => {
-		openEditProductForm(product)
+		openEditProductForm()
+		dispatch(selectProduct(product))
 	}
 
 	const [productToDelete, setProductToDelete] = useState(null) // Estado para el producto a eliminar
@@ -30,7 +36,7 @@ const ProductList = () => {
 
 	const confirmDelete = () => {
 		if (productToDelete) {
-			deleteProduct(productToDelete._id) // Elimina el producto
+			dispatch(deleteProduct(productToDelete._id))
 			setIsModalOpen(false) // Cierra el modal
 			setProductToDelete(null) // Limpia el estado
 		}

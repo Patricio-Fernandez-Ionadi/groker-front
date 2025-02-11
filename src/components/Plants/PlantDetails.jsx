@@ -1,14 +1,11 @@
-import React, { useContext } from 'react'
-import { PlantsContext } from '../../context/plants/PlantsContext'
+import React from 'react'
 
 import { formatDate } from '../../utils/dateUtils'
 import { translateField } from '../../utils/translations'
+import { useSelector } from 'react-redux'
 
-/**
- * Componente que muestra los detalles de una planta específica.
- */
 const PlantDetails = () => {
-	const { selectedPlant } = useContext(PlantsContext)
+	const { selectedPlant } = useSelector((state) => state.plantsStore)
 
 	if (!selectedPlant)
 		return <div>Seleccione una planta para ver los detalles</div>

@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
-import { PlantsContext } from '../../context/plants/PlantsContext'
-import { PlantsEditiontProvider } from '../../context/plants/PlantEditContext'
+// import { PlantsEditiontProvider } from '../../context/plants/PlantEditContext'
 import { FormContext } from '../../context/FormContext'
 
 import EditPlant from './edition/EditPlant'
@@ -8,21 +7,32 @@ import EditPlant from './edition/EditPlant'
 import { formatDate } from '../../utils/dateUtils'
 import { translateField } from '../../utils/translations'
 
+import { useDispatch, useSelector } from 'react-redux'
+import { deletePlant } from '../../store/reducers/plants/plantsAsyncActions'
+import { selectPlant } from '../../store/reducers/plants/plantsSlice'
+
+import { setEditedPlant } from '../../store/reducers/history/historySlice'
+
 const PlantList = () => {
 	const { isEditPlantFormOpen, closeEditPlantForm, openEditPlantForm } =
 		useContext(FormContext)
 
-	const { plants, selectPlant, deletePlant, selectedPlant } =
-		useContext(PlantsContext)
+	const dispatch = useDispatch()
+	const { plants, selectedPlant } = useSelector((state) => state.plantsStore)
+
+	const handleSelectPlant = (plant) => {
+		dispatch(selectPlant(plant))
+	}
 
 	const handleEditForm = (e, plant, open) => {
 		e.stopPropagation()
 		open ? openEditPlantForm() : closeEditPlantForm()
-		selectPlant(plant)
+		handleSelectPlant(plant)
+		dispatch(setEditedPlant(plant))
 	}
 	const handleDeletePlant = (e, plant) => {
 		e.stopPropagation()
-		deletePlant(plant._id)
+		dispatch(deletePlant(plant._id))
 	}
 
 	if (!plants) return <p>...Cargando</p>
@@ -48,7 +58,7 @@ const PlantList = () => {
 						{plants.map((plant) => (
 							<tr
 								key={plant._id}
-								onClick={() => selectPlant(plant)}
+								onClick={() => handleSelectPlant(plant)}
 								className={`${
 									selectedPlant && selectedPlant._id === plant._id
 										? 'selected'
@@ -92,9 +102,9 @@ const PlantList = () => {
 				{isEditPlantFormOpen && (
 					<>
 						<button onClick={closeEditPlantForm}>Cerrar</button>
-						<PlantsEditiontProvider>
-							<EditPlant />
-						</PlantsEditiontProvider>
+						{/* <PlantsEditiontProvider> */}
+						<EditPlant />
+						{/* </PlantsEditiontProvider> */}
 					</>
 				)}
 			</section>

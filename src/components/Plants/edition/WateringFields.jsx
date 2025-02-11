@@ -1,17 +1,40 @@
-import React, { useContext } from 'react'
-import { ProductsContext } from '../../../context/products/ProductsContext'
-import { PlantEditionContext } from '../../../context/plants/PlantEditContext'
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+	setAmount,
+	setEc,
+	setLastWatered,
+	setPh,
+} from '../../../store/reducers/history/historySlice'
 
 export function WateringFields() {
-	const { products } = useContext(ProductsContext)
+	const dispatch = useDispatch()
 
-	const {
-		handleWateringEntry,
-		wateringData,
-		addProductField,
-		removeProductField,
-		isWatered,
-	} = useContext(PlantEditionContext)
+	const { products } = useSelector((state) => state.productsStore)
+	const editingState = useSelector((state) => state.historyStore)
+
+	const { isWatered } = editingState
+
+	const handleWateringChanges = (e) => {
+		const { name, value } = e.target
+
+		switch (name) {
+			case 'lastWatering':
+				dispatch(setLastWatered(value))
+				break
+			case 'amount':
+				dispatch(setAmount(value))
+				break
+			case 'ph':
+				dispatch(setPh(value))
+				break
+			case 'ec':
+				dispatch(setEc(value))
+				break
+			default:
+				console.log('por ahora no controlado', name)
+		}
+	}
 
 	if (!isWatered) return null
 
@@ -19,14 +42,18 @@ export function WateringFields() {
 		<div className="watering-fields">
 			<label className="watering-date">
 				Fecha de último riego:
-				<input type="date" name="lastWatering" onChange={handleWateringEntry} />
+				<input
+					type="date"
+					name="lastWatering"
+					onChange={handleWateringChanges}
+				/>
 			</label>
 
 			<input
 				className="watering-amount"
 				type="number"
 				name="amount"
-				onChange={handleWateringEntry}
+				onChange={handleWateringChanges}
 				placeholder="Cant. de agua (ml)"
 			/>
 
@@ -34,7 +61,7 @@ export function WateringFields() {
 				className="watering-ph"
 				type="number"
 				name="ph"
-				onChange={handleWateringEntry}
+				onChange={handleWateringChanges}
 				placeholder="pH del agua"
 			/>
 
@@ -42,17 +69,17 @@ export function WateringFields() {
 				className="watering-ec"
 				type="number"
 				name="ec"
-				onChange={handleWateringEntry}
+				onChange={handleWateringChanges}
 				placeholder="EC del agua"
 			/>
 
 			<div className="watering-products">
-				{wateringData.productsUsed.map((_, index) => (
+				{/* {wateringData.productsUsed.map((_, index) => (
 					<div key={index} className="watering-product-item">
 						<select
 							className="watering-product-select"
 							name="product"
-							onChange={(e) => handleWateringEntry(e, index)}
+							// onChange={(e) => handleWateringEntry(e, index)}
 						>
 							<option>Seleccionar producto</option>
 							{products.map((product) => (
@@ -64,20 +91,20 @@ export function WateringFields() {
 							className="watering-product-amount"
 							type="number"
 							name="productAmount"
-							onChange={(e) => handleWateringEntry(e, index)}
+							// onChange={(e) => handleWateringEntry(e, index)}
 							placeholder="Cant. de producto (ml)"
 						/>
 						<button
 							className="watering-product-remove"
-							onClick={() => removeProductField(index)}
+							// onClick={() => removeProductField(index)}
 						>
 							Eliminar Producto
 						</button>
 					</div>
-				))}
+				))} */}
 			</div>
 
-			<button className="watering-product-add" onClick={addProductField}>
+			<button className="watering-product-add" /*  onClick={addProductField} */>
 				Añadir Producto
 			</button>
 		</div>

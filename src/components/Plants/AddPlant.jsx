@@ -1,17 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 
 import { validatePlantData } from '../../utils/validation'
 import { AddGeneticButton } from '../Genetics/AddGeneticButton'
 import { ToggleSwitch } from '../Universals/ToggleSwitch'
 import { FormContext } from '../../context/FormContext'
-import { PlantsContext } from '../../context/plants/PlantsContext'
-import { GeneticsContext } from '../../context/genetics/GeneticsContext'
 
-const defaultGenetic = {
-	_id: '679bf81f5996a713ebb47ece',
-	name: 'Desconocida',
-	__v: 0,
-}
+import { useDispatch, useSelector } from 'react-redux'
+import { addPlant } from '../../store/reducers/plants/plantsAsyncActions'
 
 const defaultPlantData = {
 	entryDate: '',
@@ -22,97 +17,14 @@ const defaultPlantData = {
 	flags: { isFinalPot: false },
 }
 
-const TODAY_FAKE_PLANT_DATA = {
-	entryDate: '2025-02-01T00:00:00.000Z',
-	name: 'TODAY HISTORY',
-	genetic: { _id: '679bf81f5996a713ebb47ece', name: 'Desconocida', __v: 0 },
-	stage: 'flowering',
-	potSize: 5,
-	flags: { isFinalPot: true, underObservation: true },
-	estimatedChange: '2025-02-27T00:00:00.000Z',
-	history: [
-		{
-			date: '2025-01-30T00:00:00.000Z',
-			events: [
-				{
-					type: 'underObservation',
-					details: true,
-				},
-				{
-					type: 'isFinalPot',
-					details: true,
-				},
-			],
-		},
-		{
-			date: '2025-02-02T00:00:00.000Z',
-			events: [
-				{
-					type: 'stage',
-					details: 'flowering',
-				},
-				{
-					type: 'note',
-					details: [{ id: 4857, note: 'Anotaciones de prueba' }],
-				},
-			],
-		},
-	],
-}
-const NOT_TODAY_FAKE_PLANT_DATA = {
-	entryDate: '2025-02-01T00:00:00.000Z',
-	name: 'NOT TODAY HISTORY',
-	genetic: { _id: '679bf81f5996a713ebb47ece', name: 'Desconocida', __v: 0 },
-	stage: 'flowering',
-	potSize: 5,
-	flags: { isFinalPot: false, underObservation: false },
-	estimatedChange: '2025-02-27T00:00:00.000Z',
-	history: [
-		{
-			date: '2025-01-01T00:00:00.000Z',
-			events: [
-				{
-					type: 'stage',
-					details: 'flowering',
-				},
-				{
-					type: 'note',
-					details: [{ id: 4857, note: 'Anotaciones de prueba' }],
-				},
-			],
-		},
-		{
-			date: '2025-01-10T00:00:00.000Z',
-			events: [
-				{
-					type: 'temperature',
-					details: 22,
-				},
-				{
-					type: 'potSize',
-					details: 5,
-				},
-			],
-		},
-	],
-}
-
-/**
- * Formulario para añadir una nueva planta al inventario.
- */
 const AddPlant = () => {
 	const [newPlantData, setPlantData] = useState(defaultPlantData)
 	const [errors, setErrors] = useState({})
 
 	const { closeAddPlantForm } = useContext(FormContext)
 
-	const { plants, addPlant } = useContext(PlantsContext)
-	const { genetics } = useContext(GeneticsContext)
-
-	useEffect(() => {
-		// addPlant(TODAY_FAKE_PLANT_DATA)
-		// addPlant(NOT_TODAY_FAKE_PLANT_DATA)
-	}, [])
+	const dispatch = useDispatch()
+	const { genetics } = useSelector((state) => state.geneticsStore)
 
 	/**
 	 * Maneja los cambios en los campos del formulario.
@@ -137,8 +49,12 @@ const AddPlant = () => {
 		setErrors(validationErrors)
 
 		if (Object.keys(validationErrors).length === 0) {
+			newPlantData.genetic = genetics.find(
+				(gen) => gen.name === newPlantData.genetic
+			)
+
 			try {
-				addPlant(newPlantData)
+				dispatch(addPlant(newPlantData))
 				setPlantData(defaultPlantData)
 				setErrors({})
 				closeAddPlantForm()

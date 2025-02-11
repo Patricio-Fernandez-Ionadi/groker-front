@@ -1,8 +1,8 @@
-import { useContext } from 'react'
-import { ProductsContext } from '../../context/products/ProductsContext'
+import { useDispatch } from 'react-redux'
+import { updateStock } from '../../store/reducers/products/productsAsyncActions'
 
 export function useStockManagement() {
-	const { updateProductStock } = useContext(ProductsContext)
+	const dispatch = useDispatch()
 
 	const calculateStockDifference = (previousProducts, newProducts) => {
 		const stockDifferences = []
@@ -51,7 +51,7 @@ export function useStockManagement() {
 
 	const applyStockDifferences = (stockDifferences) => {
 		stockDifferences.forEach(({ productId, difference }) => {
-			updateProductStock(productId, difference)
+			dispatch(updateStock(productId, difference))
 		})
 	}
 

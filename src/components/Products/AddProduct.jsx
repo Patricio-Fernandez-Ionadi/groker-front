@@ -1,8 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { ProductsContext } from '../../context/products/ProductsContext'
 import { FormContext } from '../../context/FormContext'
 
 import { validateProductData } from '../../utils/validation'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+	addProduct,
+	editProduct,
+} from '../../store/reducers/products/productsAsyncActions'
+import { unselectProduct } from '../../store/reducers/products/productsSlice'
 
 const defaultProductData = {
 	name: '',
@@ -14,13 +19,11 @@ const defaultProductData = {
 }
 
 const AddProduct = () => {
-	const [productData, setProductData] = useState({ ...defaultProductData })
+	const [productData, setProductData] = useState(defaultProductData)
 	const [errors, setErrors] = useState({})
 
-	const { selectedProduct, addProduct, editExistingProduct } =
-		useContext(ProductsContext)
-
-	// console.log(selectedProduct)
+	const dispatch = useDispatch()
+	const { selectedProduct } = useSelector((state) => state.productsStore)
 
 	const { closeAddProductForm, isEditProductFormOpen, closeEditProductForm } =
 		useContext(FormContext)
@@ -45,13 +48,15 @@ const AddProduct = () => {
 		setErrors(validationErrors)
 
 		if (isEditProductFormOpen) {
-			editExistingProduct(productData) // implementar la actualización
+			dispatch(editProduct(productData))
+			dispatch(unselectProduct())
 			closeEditProductForm()
 		} else {
 			// no se esta editando sino que se quiere agregar un producto
 			// si no hay errores de validación, agregar el producto
 			if (Object.keys(validationErrors).length > 0) return
-			addProduct(productData)
+			dispatch(addProduct(productData))
+			dispatch(unselectProduct())
 			closeAddProductForm()
 		}
 
@@ -68,7 +73,7 @@ const AddProduct = () => {
 					<input
 						type="text"
 						name="name"
-						value={productData.name}
+						value={productData.name || ''}
 						onChange={handleChange}
 						placeholder="Nombre del producto"
 						required
@@ -80,7 +85,7 @@ const AddProduct = () => {
 					<input
 						type="number"
 						name="stock"
-						value={productData.stock}
+						value={productData.stock || ''}
 						onChange={handleChange}
 						placeholder="Stock (ml)"
 						required
@@ -93,7 +98,7 @@ const AddProduct = () => {
 				<input
 					type="number"
 					name="nitrogen"
-					value={productData.nitrogen}
+					value={productData.nitrogen || ''}
 					onChange={handleChange}
 					placeholder="Nitrógeno (%)"
 				/>
@@ -103,7 +108,7 @@ const AddProduct = () => {
 				<input
 					type="number"
 					name="potassium"
-					value={productData.potassium}
+					value={productData.potassium || ''}
 					onChange={handleChange}
 					placeholder="Potasio (%)"
 				/>
@@ -113,7 +118,7 @@ const AddProduct = () => {
 				<input
 					type="number"
 					name="phosphorus"
-					value={productData.phosphorus}
+					value={productData.phosphorus || ''}
 					onChange={handleChange}
 					placeholder="Fósforo (%)"
 				/>

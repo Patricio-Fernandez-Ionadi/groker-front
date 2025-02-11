@@ -1,24 +1,64 @@
-import React, { useContext } from 'react'
-import { PlantEditionContext } from '../../../context/plants/PlantEditContext'
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
-import { toggleCheckboxState } from '../../../utils/helpers'
+import {
+	setFlags,
+	setHumidity,
+	setIsWatered,
+	setNote,
+	setPotSize,
+	setStage,
+	setTemperature,
+} from '../../../store/reducers/history/historySlice'
+
 import { ToggleSwitch } from '../../Universals/ToggleSwitch'
 
 export function CommonFields() {
-	const {
-		editedPlant,
-		handlePlantChange,
-		isWatered,
-		setIsWatered,
-		handleAddNote,
-	} = useContext(PlantEditionContext)
+	const dispatch = useDispatch()
+
+	const editingState = useSelector((state) => state.historyStore)
+
+	const handlePlantChange = (e) => {
+		const { name, value, type, checked } = e.target
+		const fieldValue = type === 'checkbox' ? checked : value
+
+		switch (name) {
+			case 'stage':
+				dispatch(setStage(fieldValue))
+				break
+			case 'isWatered':
+				dispatch(setIsWatered(fieldValue))
+				break
+			case 'isFinalPot':
+				dispatch(setFlags(fieldValue))
+				break
+			case 'underObservation':
+				dispatch(setFlags(fieldValue))
+				break
+			case 'temperature':
+				dispatch(setTemperature(fieldValue))
+				break
+			case 'humidity':
+				dispatch(setHumidity(fieldValue))
+				break
+			case 'potSize':
+				dispatch(setPotSize(fieldValue))
+				break
+			case 'note':
+				dispatch(setNote(fieldValue))
+				break
+			default:
+				console.log('por ahora no controlado', name)
+		}
+	}
 
 	return (
 		<div className="common-fields">
 			<select
 				className="stage-select"
 				name="stage"
-				value={editedPlant.stage}
+				type="text"
+				value={editingState.stage}
 				onChange={handlePlantChange}
 			>
 				<option value="germination">Germinación</option>
@@ -53,8 +93,8 @@ export function CommonFields() {
 			<label className="isFinalPot-switch">
 				<p>Maceta Final</p>
 				<ToggleSwitch
-					switcher={editedPlant.flags.isFinalPot}
-					onEvent={handlePlantChange}
+					switcher={editingState.flags.isFinalPot}
+					onEvent={(e) => dispatch(setFlags({ isFinalPot: e.target.checked }))}
 					name={'isFinalPot'}
 				/>
 			</label>
@@ -62,22 +102,27 @@ export function CommonFields() {
 			<label className="underObservation-switch">
 				<p>Bajo observación</p>
 				<ToggleSwitch
-					switcher={editedPlant.flags.underObservation}
-					onEvent={handlePlantChange}
+					switcher={editingState.flags.underObservation}
+					onEvent={(e) =>
+						dispatch(setFlags({ underObservation: e.target.checked }))
+					}
 					name={'underObservation'}
 				/>
 			</label>
 			<label className="watered-switch">
 				<p>Riego</p>
 				<ToggleSwitch
-					switcher={isWatered}
-					onEvent={() => toggleCheckboxState(isWatered, setIsWatered)}
+					switcher={editingState.isWatered}
+					onEvent={(e) =>
+						dispatch(setIsWatered({ isWatered: e.target.checked }))
+					}
 				/>
 			</label>
 			<textarea
 				className="notes-textarea"
 				name="note"
-				onChange={handleAddNote}
+				// value={newNote.note}
+				onChange={handlePlantChange}
 				placeholder="Añadir una nota"
 			/>
 		</div>

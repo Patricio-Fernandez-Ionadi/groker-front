@@ -1,11 +1,13 @@
-import React, { useContext } from 'react'
-import { GeneticsContext } from '../../context/genetics/GeneticsContext'
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { deleteGenetic } from '../../store/reducers/genetics/geneticsAsyncActions'
 
 export function GeneticList() {
-	const { deleteGenetic, genetics } = useContext(GeneticsContext)
+	const dispatch = useDispatch()
+	const { genetics } = useSelector((state) => state.geneticsStore)
 
 	const handleDeleteGenetic = async (id) => {
-		deleteGenetic(id)
+		dispatch(deleteGenetic(id))
 	}
 
 	if (genetics.length === 0) return <p>Cargando genéticas...</p>
