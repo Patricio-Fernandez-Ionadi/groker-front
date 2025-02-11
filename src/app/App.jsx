@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { GenModalContext } from '../context/genetics/GenModalContext'
 
 import { GeneticsModal } from '../components/Genetics/GeneticsModal'
@@ -11,14 +11,37 @@ import ProductList from '../components/Products/ProductList'
 import { Header } from '../components/Header'
 import { FormContext } from '../context/FormContext'
 
-/**
- * Componente principal de la aplicación de gestión de inventario de cultivos.
- */
+// Store
+import { useDispatch, useSelector } from 'react-redux'
+import { loadPlants } from '../store/reducers/plants/plantsAsyncActions'
+import { loadGenetics } from '../store/reducers/genetics/geneticsAsyncActions'
+import { loadProducts } from '../store/reducers/products/productsAsyncActions'
+
 const App = () => {
 	const [showProductList, setShowProductList] = useState(false)
 
 	const { isAddPlantFormOpen } = useContext(FormContext)
 	const { isGeneticModalOpen } = useContext(GenModalContext)
+
+	const dispatch = useDispatch()
+	const plantsState = useSelector((state) => state.plantsStore)
+	const geneticsState = useSelector((state) => state.geneticsStore)
+	const productsState = useSelector((state) => state.productsStore)
+
+	useEffect(() => {
+		if (!geneticsState.loaded) dispatch(loadGenetics())
+		if (!productsState.loaded) dispatch(loadProducts())
+		if (!plantsState.loaded) dispatch(loadPlants())
+	}, [])
+
+	if (!geneticsState.loaded && !productsState.loaded && !plantsState.loaded) {
+		return <div>CARGANDO APP...</div>
+	}
+	// console.log({
+	// 	genetics: geneticsState.loaded,
+	// 	products: productsState.loaded,
+	// 	plants: plantsState.loaded,
+	// })
 
 	return (
 		<>
