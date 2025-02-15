@@ -9,7 +9,7 @@ import { AdvancedFields } from './AdvancedFields'
 import { CommonFields } from './CommonFields'
 import { WateringFields } from './WateringFields'
 
-const EditPlant = () => {
+export const EditPlant = () => {
 	const dispatch = useDispatch()
 	const editingState = useSelector((state) => state.historyStore)
 	const { showAdvanced } = editingState
@@ -43,8 +43,6 @@ const EditPlant = () => {
 		</div>
 	)
 }
-
-export default EditPlant
 
 /* Modelo de datos
 const palantModel = {
