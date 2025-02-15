@@ -1,23 +1,24 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { GenModalContext } from '../context/genetics/GenModalContext'
+import { GenModalContext } from '../Genetics'
 
-import { GeneticsModal } from '../components/Genetics/GeneticsModal'
+import { GeneticsModal } from '../Genetics'
 
-import AddPlant from '../components/Plants/AddPlant'
-import PlantList from '../components/Plants/PlantList'
-import PlantDetails from '../components/Plants/PlantDetails'
-import PlantHistory from '../components/Plants/PlantHistory'
-import ProductList from '../components/Products/ProductList'
-import { Header } from '../components/Header'
-import { FormContext } from '../context/FormContext'
+import { AddPlant } from '../Plants'
+import { PlantList } from '../Plants'
+import { PlantDetails } from '../Plants'
+import { PlantHistory } from '../Plants'
+import { ProductList } from '../Products'
+
+import { Header } from './index'
+import { FormContext } from './index'
 
 // Store
 import { useDispatch, useSelector } from 'react-redux'
-import { loadPlants } from '../store/reducers/plants/plantsAsyncActions'
-import { loadGenetics } from '../store/reducers/genetics/geneticsAsyncActions'
-import { loadProducts } from '../store/reducers/products/productsAsyncActions'
+import { loadPlants } from '../Plants'
+import { loadGenetics } from '../Genetics'
+import { loadProducts } from '../Products'
 
-const App = () => {
+export const App = () => {
 	const [showProductList, setShowProductList] = useState(false)
 
 	const { isAddPlantFormOpen } = useContext(FormContext)
@@ -67,5 +68,3 @@ const App = () => {
 		</>
 	)
 }
-
-export default App
