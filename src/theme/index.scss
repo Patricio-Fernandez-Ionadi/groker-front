@@ -2,10 +2,10 @@
 @import './values/_index.scss';
 
 // ##### app #####
-@import '../components/style/_index.scss';
-
-// ##### app #####
-@import '../app/style/_index.scss';
+@import '../app/style/index';
 
 // ##### Content #####
-// @import '../pages/style/_index.scss';
+@import '../Plants/components/style/index';
+@import '../Plants/components/edition/style/index';
+@import '../Products/components/style/index';
+@import '../Genetics/components/style/index';

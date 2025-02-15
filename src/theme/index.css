@@ -43,6 +43,14 @@ button:hover {
   background-color: #e78437;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:visited {
+  color: inherit;
+}
+
 .disabled {
   opacity: 0.5;
   cursor: not-allowed;
@@ -164,103 +172,59 @@ button:hover {
   transform: translateX(26px); /* Distancia que se mueve el punto */
 }
 
-.genetics-modal-overlay {
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+.app-container {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 100;
+  flex-direction: column;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-.genetics-modal {
+.main-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+.forms-section {
   background-color: #f5f5f5;
   padding: 20px;
-  width: 400px;
-  height: 400px;
-  position: relative;
-  border-radius: 3px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.genetics-modal-close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: transparent;
-  color: #333;
-  font-size: 20px;
-  transition: color 0.3s ease;
-}
-.genetics-modal-close:hover {
-  background: transparent;
-  color: #0b686e;
-}
-
-.genetics-modal-title {
-  text-align: center;
-  margin-top: 0;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-.add-genetic-form {
-  margin-bottom: 20px;
-}
-.add-genetic-form h3 {
-  margin-bottom: 10px;
-  color: #333;
-}
-.add-genetic-form .form-group {
-  display: flex;
-}
-.add-genetic-form .form-group input {
-  flex: 1;
-  padding: 8px;
-  border: 1px solid #c2c2c2;
-  border-radius: 3px 0 0 3px;
-}
-.add-genetic-form .form-group .save-button {
-  border-radius: 0 3px 3px 0;
-  padding: 8px 15px;
-}
-.add-genetic-form .form-group .save-button:hover {
-  background-color: #0b686e;
-}
-
-.genetic-list h3 {
-  margin-bottom: 10px;
-  color: #333;
-}
-.genetic-list ul {
-  max-height: 200px;
-  overflow-y: scroll;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.genetic-list ul li {
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 0;
-  border-bottom: 1px solid #c2c2c2;
+  margin-bottom: 20px;
 }
-.genetic-list ul li span {
-  color: #333;
+.header h1 {
+  color: #484848;
 }
-.genetic-list ul li .delete-button {
-  background-color: #eb6400;
-  padding: 5px 10px;
+.header-buttons button {
+  padding: 10px 15px;
+  color: #f5f5f5;
 }
-.genetic-list ul li .delete-button:hover {
-  background-color: #b35208;
+.header-buttons button:first-child {
+  margin-right: 10px;
 }
 
+@media (max-width: 769px) {
+  .main-content {
+    grid-template-columns: 1fr;
+  }
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .header-buttons button {
+    margin-top: 10px;
+  }
+  .header-buttons button:first-child {
+    margin-bottom: 10px;
+  }
+}
 /* Estilos generales */
 .dynamic-form {
   max-width: 600px;
@@ -639,6 +603,183 @@ button:hover {
     font-size: 18px;
   }
 }
+/* Estilos generales */
+.dynamic-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 3px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.dynamic-form .action-buttons {
+  width: 100%;
+}
+.dynamic-form .action-buttons:first-child {
+  background-color: #eb6400;
+}
+.dynamic-form .action-buttons:first-child:hover {
+  background-color: #b35208;
+}
+.dynamic-form .watering-fields,
+.dynamic-form .advanced-fields {
+  margin-top: 10px;
+  padding: 15px;
+  border: 1px dashed #616161;
+  border-radius: 3px;
+}
+.dynamic-form .common-fields {
+  margin: 10px 0;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(2, 40px) 60px 100px;
+  gap: 10px;
+  grid-template-areas: "stage stage stage potSize potSize potSize" "temperature temperature temperature humidity humidity humidity" "switchPot switchPot switchObs switchObs switchWater switchWater" "notes notes notes notes notes notes";
+}
+.dynamic-form .stage-select {
+  grid-area: stage;
+}
+.dynamic-form .potSize-input {
+  grid-area: potSize;
+}
+.dynamic-form .temperature-input {
+  grid-area: temperature;
+}
+.dynamic-form .humidity-input {
+  grid-area: humidity;
+}
+.dynamic-form .isFinalPot-switch {
+  grid-area: switchPot;
+}
+.dynamic-form .underObservation-switch {
+  grid-area: switchObs;
+}
+.dynamic-form .watered-switch {
+  grid-area: switchWater;
+}
+.dynamic-form .notes-textarea {
+  grid-area: notes;
+  resize: none;
+}
+.dynamic-form .isFinalPot-switch,
+.dynamic-form .underObservation-switch,
+.dynamic-form .watered-switch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.dynamic-form .isFinalPot-switch p,
+.dynamic-form .underObservation-switch p,
+.dynamic-form .watered-switch p {
+  margin-bottom: 5px;
+}
+.dynamic-form .advanced-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 80px 100px;
+  gap: 10px;
+  grid-template-areas: "date name" "change genetic";
+}
+.dynamic-form .advanced-date {
+  grid-area: date;
+}
+.dynamic-form .advanced-name {
+  grid-area: name;
+}
+.dynamic-form .advanced-genetic {
+  grid-area: genetic;
+}
+.dynamic-form .advanced-genetic button {
+  width: 100%;
+  padding: 5px 0;
+}
+.dynamic-form .advanced-change {
+  grid-area: change;
+}
+.dynamic-form .watering-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "watering-date watering-amount" "watering-ph watering-ec" "watering-products watering-products" "watering-product-add watering-product-add";
+  align-items: end;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.dynamic-form .watering-date {
+  grid-area: watering-date;
+  height: 60px;
+}
+.dynamic-form .watering-amount {
+  grid-area: watering-amount;
+}
+.dynamic-form .watering-ph {
+  grid-area: watering-ph;
+}
+.dynamic-form .watering-ec {
+  grid-area: watering-ec;
+}
+.dynamic-form .watering-products {
+  grid-area: watering-products;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.dynamic-form .watering-product-item {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr; /* Select, Amount, Remove */
+  gap: 10px;
+  align-items: center;
+}
+.dynamic-form .watering-product-select {
+  grid-column: 1/2;
+}
+.dynamic-form .watering-product-amount {
+  grid-column: 2/3;
+}
+.dynamic-form .watering-product-remove {
+  grid-column: 3/4;
+}
+.dynamic-form .watering-product-add {
+  grid-area: watering-product-add;
+}
+
+/* Media Queries para móviles */
+@media (max-width: 769px) {
+  .dynamic-form {
+    padding: 15px;
+  }
+  .dynamic-form .advanced-fields {
+    grid-template-columns: 1fr;
+    grid-template-areas: "date" "name" "genetic" "change";
+    grid-template-rows: auto auto auto auto;
+  }
+  .dynamic-form .common-fields {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 40px) auto 100px;
+    grid-template-areas: "stage stage stage" "potSize potSize potSize" "temperature temperature temperature" "humidity humidity humidity" "switchPot switchObs switchWater" "notes notes notes";
+  }
+  .dynamic-form .watering-fields {
+    grid-template-columns: 1fr;
+    grid-template-areas: "watering-date" "watering-amount" "watering-ph" "watering-ec" "watering-products" "watering-product-add";
+  }
+  .dynamic-form .watering-product-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "watprod-select watprod-select watprod-amount" "watprod-remove watprod-remove watprod-remove";
+    gap: 10px;
+    align-items: center;
+  }
+  .dynamic-form .watering-product-select {
+    grid-area: watprod-select;
+  }
+  .dynamic-form .watering-product-amount {
+    grid-area: watprod-amount;
+  }
+  .dynamic-form .watering-product-remove {
+    grid-area: watprod-remove;
+  }
+}
 .product-list-container {
   max-width: 800px;
   margin: 0 auto;
@@ -762,58 +903,99 @@ button:hover {
   width: 100%;
 }
 
-.header {
+.genetics-modal-overlay {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.genetics-modal {
+  background-color: #f5f5f5;
+  padding: 20px;
+  width: 400px;
+  height: 400px;
+  position: relative;
+  border-radius: 3px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.genetics-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  color: #333;
+  font-size: 20px;
+  transition: color 0.3s ease;
+}
+.genetics-modal-close:hover {
+  background: transparent;
+  color: #0b686e;
+}
+
+.genetics-modal-title {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.add-genetic-form {
+  margin-bottom: 20px;
+}
+.add-genetic-form h3 {
+  margin-bottom: 10px;
+  color: #333;
+}
+.add-genetic-form .form-group {
+  display: flex;
+}
+.add-genetic-form .form-group input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #c2c2c2;
+  border-radius: 3px 0 0 3px;
+}
+.add-genetic-form .form-group .save-button {
+  border-radius: 0 3px 3px 0;
+  padding: 8px 15px;
+}
+.add-genetic-form .form-group .save-button:hover {
+  background-color: #0b686e;
+}
+
+.genetic-list h3 {
+  margin-bottom: 10px;
+  color: #333;
+}
+.genetic-list ul {
+  max-height: 200px;
+  overflow-y: scroll;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.genetic-list ul li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  padding: 8px 0;
+  border-bottom: 1px solid #c2c2c2;
 }
-.header h1 {
-  color: #484848;
+.genetic-list ul li span {
+  color: #333;
 }
-.header-buttons button {
-  padding: 10px 15px;
-  color: #f5f5f5;
+.genetic-list ul li .delete-button {
+  background-color: #eb6400;
+  padding: 5px 10px;
 }
-.header-buttons button:first-child {
-  margin-right: 10px;
-}
-
-@media (max-width: 769px) {
-  .header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .header-buttons button {
-    margin-top: 10px;
-  }
-  .header-buttons button:first-child {
-    margin-bottom: 10px;
-  }
-}
-.app-container {
-  display: flex;
-  flex-direction: column;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.main-content {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 20px;
-}
-
-.forms-section {
-  background-color: #f5f5f5;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-@media (max-width: 769px) {
-  .main-content {
-    grid-template-columns: 1fr;
-  }
+.genetic-list ul li .delete-button:hover {
+  background-color: #b35208;
 }/*# sourceMappingURL=index.css.map */
