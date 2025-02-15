@@ -94,19 +94,19 @@ a:visited {
   font-size: 14px;
 }
 
-.cancel-button {
+.cancel-modal-button {
   background-color: #f44336;
   color: white;
 }
-.cancel-button:hover {
+.cancel-modal-button:hover {
   background-color: #d32f2f;
 }
 
-.confirm-button {
+.confirm-modal-button {
   background-color: #007d85;
   color: white;
 }
-.confirm-button:hover {
+.confirm-modal-button:hover {
   background-color: #45a049;
 }
 
@@ -447,6 +447,9 @@ a:visited {
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+.plant-list-component h2 {
+  text-align: center;
+}
 
 .inventory-table {
   width: 100%;
@@ -505,7 +508,7 @@ a:visited {
 .add-plant-form-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(4, 60px);
+  grid-template-rows: repeat(5, 60px);
   gap: 10px;
   max-width: 800px;
   margin: 0 auto;
@@ -513,7 +516,14 @@ a:visited {
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   align-items: center;
-  grid-template-areas: "name genetic" "date stage" "potSize potCheckbox" "button button";
+  grid-template-areas: ". cancel" "name genetic" "date stage" "potSize potCheckbox" "button button";
+}
+
+.cancel-button {
+  grid-area: cancel;
+  width: 100px;
+  justify-self: end;
+  align-self: center;
 }
 
 .add-plant-form-name {
