@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { updatePlant } from '../../index'
+import { store_updatePlant } from '../../index'
 import {
 	formatDateToYYYYMMDD,
 	formatDateToISO,
@@ -42,8 +42,8 @@ export const savePlantHistory = createAsyncThunk(
 					name: editingState.name,
 				}
 
-				const resultAction = await dispatch(updatePlant(updatedPlant))
-				if (updatePlant.fulfilled.match(resultAction)) {
+				const resultAction = await dispatch(store_updatePlant(updatedPlant))
+				if (store_updatePlant.fulfilled.match(resultAction)) {
 					selectedPlant = resultAction.payload
 				}
 				console.log('name', selectedPlant)
@@ -66,13 +66,13 @@ export const savePlantHistory = createAsyncThunk(
 					}
 				)
 				const resultAction = await dispatch(
-					updatePlant({
+					store_updatePlant({
 						...selectedPlant,
 						entryDate: formatDateToISO(editingState.entryDate),
 						estimatedChange: formatDateToISO(newChangeDate),
 					})
 				)
-				if (updatePlant.fulfilled.match(resultAction)) {
+				if (store_updatePlant.fulfilled.match(resultAction)) {
 					selectedPlant = resultAction.payload
 				}
 				console.log('entryDate', selectedPlant)
@@ -85,12 +85,12 @@ export const savePlantHistory = createAsyncThunk(
 				changes.push({ type: 'genetic', details: selectedGenetic })
 
 				const resultAction = await dispatch(
-					updatePlant({
+					store_updatePlant({
 						...selectedPlant,
 						genetic: selectedGenetic,
 					})
 				)
-				if (updatePlant.fulfilled.match(resultAction)) {
+				if (store_updatePlant.fulfilled.match(resultAction)) {
 					selectedPlant = resultAction.payload
 				}
 				console.log('genetic', selectedPlant)
@@ -105,12 +105,12 @@ export const savePlantHistory = createAsyncThunk(
 					details: formatDateToISO(editingState.estimatedChange),
 				})
 				const resultAction = await dispatch(
-					updatePlant({
+					store_updatePlant({
 						...selectedPlant,
 						estimatedChange: formatDateToISO(editingState.estimatedChange),
 					})
 				)
-				if (updatePlant.fulfilled.match(resultAction)) {
+				if (store_updatePlant.fulfilled.match(resultAction)) {
 					selectedPlant = resultAction.payload
 				}
 				console.log('estimatedChange', selectedPlant)
@@ -122,12 +122,12 @@ export const savePlantHistory = createAsyncThunk(
 				changes.push({ type: 'stage', details: editingState.stage })
 
 				const resultAction = await dispatch(
-					updatePlant({
+					store_updatePlant({
 						...selectedPlant,
 						stage: editingState.stage,
 					})
 				)
-				if (updatePlant.fulfilled.match(resultAction)) {
+				if (store_updatePlant.fulfilled.match(resultAction)) {
 					selectedPlant = resultAction.payload
 				}
 				console.log('stage', selectedPlant)
@@ -137,12 +137,12 @@ export const savePlantHistory = createAsyncThunk(
 				changes.push({ type: 'potSize', details: editingState.potSize })
 
 				const resultAction = await dispatch(
-					updatePlant({
+					store_updatePlant({
 						...selectedPlant,
 						potSize: Number(editingState.potSize),
 					})
 				)
-				if (updatePlant.fulfilled.match(resultAction)) {
+				if (store_updatePlant.fulfilled.match(resultAction)) {
 					selectedPlant = resultAction.payload
 				}
 				console.log('potSize', selectedPlant)
@@ -152,12 +152,12 @@ export const savePlantHistory = createAsyncThunk(
 				changes.push({ type: 'temperature', details: editingState.temperature })
 
 				const resultAction = await dispatch(
-					updatePlant({
+					store_updatePlant({
 						...selectedPlant,
 						temperature: Number(editingState.temperature),
 					})
 				)
-				if (updatePlant.fulfilled.match(resultAction)) {
+				if (store_updatePlant.fulfilled.match(resultAction)) {
 					selectedPlant = resultAction.payload
 				}
 				console.log('temperature', selectedPlant)
@@ -167,12 +167,12 @@ export const savePlantHistory = createAsyncThunk(
 				changes.push({ type: 'humidity', details: editingState.humidity })
 
 				const resultAction = await dispatch(
-					updatePlant({
+					store_updatePlant({
 						...selectedPlant,
 						humidity: Number(editingState.humidity),
 					})
 				)
-				if (updatePlant.fulfilled.match(resultAction)) {
+				if (store_updatePlant.fulfilled.match(resultAction)) {
 					selectedPlant = resultAction.payload
 				}
 				console.log('humidity', selectedPlant)
@@ -185,7 +185,7 @@ export const savePlantHistory = createAsyncThunk(
 				})
 
 				const resultAction = await dispatch(
-					updatePlant({
+					store_updatePlant({
 						...selectedPlant,
 						flags: {
 							...selectedPlant.flags,
@@ -193,7 +193,7 @@ export const savePlantHistory = createAsyncThunk(
 						},
 					})
 				)
-				if (updatePlant.fulfilled.match(resultAction)) {
+				if (store_updatePlant.fulfilled.match(resultAction)) {
 					selectedPlant = resultAction.payload
 				}
 				console.log('isFinalPot', selectedPlant)
@@ -209,7 +209,7 @@ export const savePlantHistory = createAsyncThunk(
 				})
 
 				const resultAction = await dispatch(
-					updatePlant({
+					store_updatePlant({
 						...selectedPlant,
 						flags: {
 							...selectedPlant.flags,
@@ -217,7 +217,7 @@ export const savePlantHistory = createAsyncThunk(
 						},
 					})
 				)
-				if (updatePlant.fulfilled.match(resultAction)) {
+				if (store_updatePlant.fulfilled.match(resultAction)) {
 					selectedPlant = resultAction.payload
 				}
 				console.log('underObservation', selectedPlant)
@@ -273,7 +273,7 @@ export const savePlantHistory = createAsyncThunk(
 				)
 				hasWateringData = true
 				dispatch(
-					updatePlant({
+					store_updatePlant({
 						...selectedPlant,
 						lastWatered: formatDateToISO(editingState.lastWatered),
 					})

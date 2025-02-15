@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { loadPlants } from '../store/plantsAsyncActions'
+import { store_loadPlants } from '../store/plantsAsyncActions'
 
 export function usePlants() {
 	const dispatch = useDispatch()
@@ -9,7 +9,7 @@ export function usePlants() {
 
 	useEffect(() => {
 		if (!plantsStore.loaded) {
-			dispatch(loadPlants())
+			dispatch(store_loadPlants())
 		}
 	}, [])
 

@@ -7,7 +7,7 @@ import {
 } from '../index'
 import { calculateEstimatedChange } from '../utils/dateUtils'
 
-export const loadPlants = createAsyncThunk(
+export const store_loadPlants = createAsyncThunk(
 	'plantsStore/loadPlants',
 	async () => {
 		try {
@@ -19,7 +19,7 @@ export const loadPlants = createAsyncThunk(
 	}
 )
 
-export const addPlant = createAsyncThunk(
+export const store_addPlant = createAsyncThunk(
 	'plantsStore/addPlant',
 	async (newPlant) => {
 		const plantToAdd = {
@@ -35,7 +35,7 @@ export const addPlant = createAsyncThunk(
 	}
 )
 
-export const deletePlantById = createAsyncThunk(
+export const store_deletePlantById = createAsyncThunk(
 	'plantsStore/deletePlant',
 	async (id) => {
 		try {
@@ -47,7 +47,7 @@ export const deletePlantById = createAsyncThunk(
 	}
 )
 
-export const updatePlant = createAsyncThunk(
+export const store_updatePlant = createAsyncThunk(
 	'plantsStore/updatePlant',
 	async (updatedPlant) => {
 		console.log(updatedPlant)

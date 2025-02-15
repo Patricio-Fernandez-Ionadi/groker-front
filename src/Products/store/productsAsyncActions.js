@@ -6,7 +6,7 @@ import {
 	api_getProducts,
 } from '../index'
 
-export const loadProducts = createAsyncThunk(
+export const store_loadProducts = createAsyncThunk(
 	'productsStore/loadProducts',
 	async () => {
 		try {
@@ -18,7 +18,7 @@ export const loadProducts = createAsyncThunk(
 	}
 )
 
-export const addProduct = createAsyncThunk(
+export const store_addProduct = createAsyncThunk(
 	'productsStore/addProduct',
 	async (newProduct) => {
 		try {
@@ -33,7 +33,7 @@ export const addProduct = createAsyncThunk(
 	}
 )
 
-export const editProduct = createAsyncThunk(
+export const store_updateProduct = createAsyncThunk(
 	'productsStore/editProduct',
 	async (updatedProduct) => {
 		try {
@@ -48,7 +48,7 @@ export const editProduct = createAsyncThunk(
 	}
 )
 
-export const deleteProduct = createAsyncThunk(
+export const store_deleteProduct = createAsyncThunk(
 	'productsStore/deleteProduct',
 	async (id) => {
 		try {

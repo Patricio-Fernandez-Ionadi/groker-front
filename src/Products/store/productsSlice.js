@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 import {
-	addProduct,
-	deleteProduct,
-	editProduct,
-	loadProducts,
+	store_addProduct,
+	store_deleteProduct,
+	store_updateProduct,
+	store_loadProducts,
 	updateStock,
 } from './productsAsyncActions'
 
@@ -17,30 +17,27 @@ export const productsSlice = createSlice({
 	name: 'productsStore',
 	initialState: products_InitialState,
 	reducers: {
-		selectProduct: (state, action) => {
+		setSelectedProduct: (state, action) => {
 			state.selectedProduct = action.payload
-		},
-		unselectProduct: (state, action) => {
-			state.selectedProduct = null
 		},
 	},
 	extraReducers: (builder) => {
-		builder.addCase(loadProducts.fulfilled, (state, action) => ({
+		builder.addCase(store_loadProducts.fulfilled, (state, action) => ({
 			...state,
 			products: action.payload,
 			loaded: true,
 		}))
-		builder.addCase(addProduct.fulfilled, (state, action) => ({
+		builder.addCase(store_addProduct.fulfilled, (state, action) => ({
 			...state,
 			products: [...state.products, action.payload],
 		}))
-		builder.addCase(deleteProduct.fulfilled, (state, action) => ({
+		builder.addCase(store_deleteProduct.fulfilled, (state, action) => ({
 			...state,
 			products: state.products.filter(
 				(product) => product._id !== action.payload._id
 			),
 		}))
-		builder.addCase(editProduct.fulfilled, (state, action) => ({
+		builder.addCase(store_updateProduct.fulfilled, (state, action) => ({
 			...state,
 			products: state.products.map((product) => {
 				if (product._id === action.payload._id) {
@@ -63,6 +60,6 @@ export const productsSlice = createSlice({
 	},
 })
 
-export const { selectProduct, unselectProduct } = productsSlice.actions
+export const { setSelectedProduct } = productsSlice.actions
 
 export default productsSlice.reducer

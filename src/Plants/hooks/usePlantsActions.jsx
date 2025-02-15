@@ -1,7 +1,10 @@
 import { useDispatch } from 'react-redux'
 
 import { setPlantSelected } from '../store/plantsSlice'
-import { deletePlantById } from '../store/plantsAsyncActions'
+import {
+	store_addPlant,
+	store_deletePlantById,
+} from '../store/plantsAsyncActions'
 
 export function usePlantsActions() {
 	const dispatch = useDispatch()
@@ -15,8 +18,12 @@ export function usePlantsActions() {
 	}
 
 	const deletePlant = (id) => {
-		dispatch(deletePlantById(id))
+		dispatch(store_deletePlantById(id))
 	}
 
-	return { selectPlant, unselectPlant, deletePlant }
+	const addNewPlant = (newPlant) => {
+		dispatch(store_addPlant(newPlant))
+	}
+
+	return { selectPlant, unselectPlant, deletePlant, addNewPlant }
 }

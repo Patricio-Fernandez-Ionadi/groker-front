@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 //
 import {
-	loadPlants,
-	addPlant,
-	deletePlantById,
-	updatePlant,
+	store_loadPlants,
+	store_addPlant,
+	store_deletePlantById,
+	store_updatePlant,
 } from './plantsAsyncActions'
 
 const plants_initialState = {
@@ -23,21 +23,21 @@ export const plantSlice = createSlice({
 		},
 	},
 	extraReducers: (builder) => {
-		builder.addCase(loadPlants.fulfilled, (state, action) => ({
+		builder.addCase(store_loadPlants.fulfilled, (state, action) => ({
 			...state,
 			plants: action.payload,
 			loaded: true,
 		}))
-		builder.addCase(addPlant.fulfilled, (state, action) => ({
+		builder.addCase(store_addPlant.fulfilled, (state, action) => ({
 			...state,
 			plants: [...state.plants, action.payload],
 		}))
-		builder.addCase(deletePlantById.fulfilled, (state, action) => ({
+		builder.addCase(store_deletePlantById.fulfilled, (state, action) => ({
 			...state,
 			plants: state.plants.filter((plant) => plant._id !== action.payload._id),
 			selectedPlant: null,
 		}))
-		builder.addCase(updatePlant.fulfilled, (state, action) => ({
+		builder.addCase(store_updatePlant.fulfilled, (state, action) => ({
 			...state,
 			plants: state.plants.map((plant) => {
 				if (plant._id === action.payload._id) {
