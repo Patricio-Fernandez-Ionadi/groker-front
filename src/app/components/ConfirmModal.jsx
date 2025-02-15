@@ -8,10 +8,10 @@ export function ConfirmModal({ isOpen, onClose, onConfirm, message }) {
 			<div className="modal-content" onClick={(e) => e.stopPropagation()}>
 				<p>{message}</p>
 				<div className="modal-actions">
-					<button className="cancel-button" onClick={onClose}>
+					<button className="cancel-modal-button" onClick={onClose}>
 						Cancelar
 					</button>
-					<button className="confirm-button" onClick={onConfirm}>
+					<button className="confirm-modal-button" onClick={onConfirm}>
 						Confirmar
 					</button>
 				</div>

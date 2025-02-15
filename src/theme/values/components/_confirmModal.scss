@@ -31,7 +31,7 @@
 	font-size: 14px;
 }
 
-.cancel-button {
+.cancel-modal-button {
 	background-color: #f44336;
 	color: white;
 	&:hover {
@@ -39,7 +39,7 @@
 	}
 }
 
-.confirm-button {
+.confirm-modal-button {
 	background-color: $primary;
 	color: white;
 	&:hover {
