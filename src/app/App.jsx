@@ -1,5 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { GenModalContext } from '../Genetics'
+import { FormContext } from './index'
 
 import { GeneticsModal } from '../Genetics'
 
@@ -7,10 +8,6 @@ import { AddPlant } from '../Plants'
 import { PlantList } from '../Plants'
 import { PlantDetails } from '../Plants'
 import { PlantHistory } from '../Plants'
-import { ProductList } from '../Products'
-
-import { Header } from './index'
-import { FormContext } from './index'
 
 // Store
 import { useDispatch, useSelector } from 'react-redux'
@@ -19,8 +16,6 @@ import { loadGenetics } from '../Genetics'
 import { loadProducts } from '../Products'
 
 export const App = () => {
-	const [showProductList, setShowProductList] = useState(false)
-
 	const { isAddPlantFormOpen } = useContext(FormContext)
 	const { isGeneticModalOpen } = useContext(GenModalContext)
 
@@ -38,23 +33,18 @@ export const App = () => {
 	if (!geneticsState.loaded && !productsState.loaded && !plantsState.loaded) {
 		return <div>CARGANDO APP...</div>
 	}
-	// console.log({
-	// 	genetics: geneticsState.loaded,
-	// 	products: productsState.loaded,
-	// 	plants: plantsState.loaded,
-	// })
+	console.log({
+		genetics: geneticsState,
+		products: productsState,
+		plants: plantsState,
+	})
 
 	return (
 		<>
 			<div className="app-container">
-				<Header
-					showProductList={showProductList}
-					setShowProductList={setShowProductList}
-				/>
-				{(isAddPlantFormOpen || showProductList || isGeneticModalOpen) && (
+				{(isAddPlantFormOpen || isGeneticModalOpen) && (
 					<aside className="forms-section">
 						{isAddPlantFormOpen && <AddPlant />}
-						{showProductList && <ProductList />}
 						{isGeneticModalOpen && <GeneticsModal />}
 					</aside>
 				)}

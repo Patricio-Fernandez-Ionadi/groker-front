@@ -6,3 +6,5 @@ export { Header } from './components/Header'
 export { ToggleSwitch } from './components/ToggleSwitch'
 
 export { store } from './store/store'
+
+export * from './hooks/usePath'

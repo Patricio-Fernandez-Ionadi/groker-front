@@ -1,12 +1,12 @@
 import React, { useContext } from 'react'
-import { FormContext } from '../context/FormContext'
+import { Link } from 'react-router'
 
-export function Header({ showProductList, setShowProductList }) {
+import { FormContext, usePath } from '../'
+
+export function Header() {
 	const { toggleAddPlantForm, isAddPlantFormOpen } = useContext(FormContext)
 
-	const handleProductList = () => {
-		setShowProductList(!showProductList)
-	}
+	const currentPath = usePath()
 
 	return (
 		<header className="header">
@@ -16,8 +16,11 @@ export function Header({ showProductList, setShowProductList }) {
 					{isAddPlantFormOpen ? 'Cerrar' : 'Nuevo Ingreso'}
 				</button>
 
-				<button onClick={handleProductList}>
-					{showProductList ? 'Cerrar' : 'Inventario de Productos'}
+				<button>
+					{currentPath !== '/products' && (
+						<Link to="/products">Inventario de Productos</Link>
+					)}
+					{currentPath === '/products' && <Link to="/">Volver al Inicio</Link>}
 				</button>
 			</div>
 		</header>

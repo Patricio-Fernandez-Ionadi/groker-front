@@ -45,6 +45,8 @@ export const ProductList = () => {
 		setIsModalOpen(false) // Cierra el modal
 		setProductToDelete(null) // Limpia el estado
 	}
+
+	console.log(products)
 	return (
 		<div className="product-list-container">
 			<h2>Inventario de Productos</h2>
