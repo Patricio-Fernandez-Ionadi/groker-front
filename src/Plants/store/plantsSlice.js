@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import {
 	loadPlants,
 	addPlant,
-	deletePlant,
+	deletePlantById,
 	updatePlant,
 } from './plantsAsyncActions'
 
@@ -18,11 +18,8 @@ export const plantSlice = createSlice({
 	name: 'plantsStore',
 	initialState: plants_initialState,
 	reducers: {
-		selectPlant: (state, action) => {
+		setPlantSelected: (state, action) => {
 			state.selectedPlant = action.payload
-		},
-		unselectPlant: (state, action) => {
-			state.selectedPlant = null
 		},
 	},
 	extraReducers: (builder) => {
@@ -35,7 +32,7 @@ export const plantSlice = createSlice({
 			...state,
 			plants: [...state.plants, action.payload],
 		}))
-		builder.addCase(deletePlant.fulfilled, (state, action) => ({
+		builder.addCase(deletePlantById.fulfilled, (state, action) => ({
 			...state,
 			plants: state.plants.filter((plant) => plant._id !== action.payload._id),
 			selectedPlant: null,
@@ -53,4 +50,4 @@ export const plantSlice = createSlice({
 	},
 })
 
-export const { selectPlant, unselectPlant } = plantSlice.actions
+export const { setPlantSelected } = plantSlice.actions

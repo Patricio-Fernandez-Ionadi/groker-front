@@ -35,7 +35,7 @@ export const addPlant = createAsyncThunk(
 	}
 )
 
-export const deletePlant = createAsyncThunk(
+export const deletePlantById = createAsyncThunk(
 	'plantsStore/deletePlant',
 	async (id) => {
 		try {
