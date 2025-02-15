@@ -4,9 +4,9 @@ import { FormContext } from './index'
 
 import { GeneticsModal } from '../Genetics'
 
-import { AddPlant } from '../Plants'
+import { AddPlant, usePlants } from '../Plants'
 import { PlantList } from '../Plants'
-import { PlantDetails } from '../Plants'
+import { Detail } from '../Plants'
 import { PlantHistory } from '../Plants'
 
 // Store
@@ -20,24 +20,23 @@ export const App = () => {
 	const { isGeneticModalOpen } = useContext(GenModalContext)
 
 	const dispatch = useDispatch()
-	const plantsState = useSelector((state) => state.plantsStore)
+	const plantsState = usePlants()
 	const geneticsState = useSelector((state) => state.geneticsStore)
 	const productsState = useSelector((state) => state.productsStore)
 
 	useEffect(() => {
 		if (!geneticsState.loaded) dispatch(loadGenetics())
 		if (!productsState.loaded) dispatch(loadProducts())
-		if (!plantsState.loaded) dispatch(loadPlants())
 	}, [])
 
 	if (!geneticsState.loaded && !productsState.loaded && !plantsState.loaded) {
 		return <div>CARGANDO APP...</div>
 	}
-	console.log({
+	/* 	console.log({
 		genetics: geneticsState,
 		products: productsState,
 		plants: plantsState,
-	})
+	}) */
 
 	return (
 		<>
@@ -51,7 +50,7 @@ export const App = () => {
 
 				<main className="main-content">
 					<PlantList />
-					<PlantDetails />
+					<Detail />
 					<PlantHistory />
 				</main>
 			</div>
