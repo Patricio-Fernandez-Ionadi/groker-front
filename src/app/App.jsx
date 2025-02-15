@@ -1,33 +1,20 @@
-import React, { useContext, useEffect } from 'react'
-import { GenModalContext } from '../Genetics'
-import { FormContext } from './index'
+import React, { useContext } from 'react'
 
-import { GeneticsModal } from '../Genetics'
+import { FormContext } from './'
 
-import { AddPlant, usePlants } from '../Plants'
-import { PlantList } from '../Plants'
-import { Detail } from '../Plants'
-import { PlantHistory } from '../Plants'
+import { GenModalContext, useGenetics, GeneticsModal } from '../Genetics'
 
-// Store
-import { useDispatch, useSelector } from 'react-redux'
-import { loadPlants } from '../Plants'
-import { loadGenetics } from '../Genetics'
-import { loadProducts } from '../Products'
+import { AddPlant, usePlants, Inventory, Detail, PlantHistory } from '../Plants'
+
+import { useProducts } from '../Products'
 
 export const App = () => {
 	const { isAddPlantFormOpen } = useContext(FormContext)
 	const { isGeneticModalOpen } = useContext(GenModalContext)
 
-	const dispatch = useDispatch()
 	const plantsState = usePlants()
-	const geneticsState = useSelector((state) => state.geneticsStore)
-	const productsState = useSelector((state) => state.productsStore)
-
-	useEffect(() => {
-		if (!geneticsState.loaded) dispatch(loadGenetics())
-		if (!productsState.loaded) dispatch(loadProducts())
-	}, [])
+	const geneticsState = useGenetics()
+	const productsState = useProducts()
 
 	if (!geneticsState.loaded && !productsState.loaded && !plantsState.loaded) {
 		return <div>CARGANDO APP...</div>
@@ -49,7 +36,7 @@ export const App = () => {
 				)}
 
 				<main className="main-content">
-					<PlantList />
+					<Inventory />
 					<Detail />
 					<PlantHistory />
 				</main>
