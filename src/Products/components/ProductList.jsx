@@ -6,7 +6,7 @@ import { ConfirmModal } from '../../app'
 
 import { AddProduct } from './AddProduct'
 
-import { selectProduct, deleteProduct } from '../index'
+import { selectProduct, deleteProduct, loadProducts } from '../'
 
 export const ProductList = () => {
 	const {
@@ -46,7 +46,11 @@ export const ProductList = () => {
 		setProductToDelete(null) // Limpia el estado
 	}
 
-	console.log(products)
+	if (products.length === 0) {
+		dispatch(loadProducts())
+		return <div>Loading...</div>
+	}
+
 	return (
 		<div className="product-list-container">
 			<h2>Inventario de Productos</h2>
