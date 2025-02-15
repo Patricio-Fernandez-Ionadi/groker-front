@@ -1,9 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { FormContext } from '../../app'
 
-import { validateProductData } from '../index'
-import { useDispatch, useSelector } from 'react-redux'
-import { addProduct, editProduct, unselectProduct } from '../index'
+import { useProducts, useProductsActions, validateProductData } from '../'
 
 const defaultProductData = {
 	name: '',
@@ -18,8 +16,8 @@ export const AddProduct = () => {
 	const [productData, setProductData] = useState(defaultProductData)
 	const [errors, setErrors] = useState({})
 
-	const dispatch = useDispatch()
-	const { selectedProduct } = useSelector((state) => state.productsStore)
+	const { selectedProduct } = useProducts()
+	const { unselectProduct, addNewProduct, editProduct } = useProductsActions()
 
 	const { closeAddProductForm, isEditProductFormOpen, closeEditProductForm } =
 		useContext(FormContext)
@@ -44,15 +42,15 @@ export const AddProduct = () => {
 		setErrors(validationErrors)
 
 		if (isEditProductFormOpen) {
-			dispatch(editProduct(productData))
-			dispatch(unselectProduct())
+			editProduct(productData)
+			unselectProduct()
 			closeEditProductForm()
 		} else {
 			// no se esta editando sino que se quiere agregar un producto
 			// si no hay errores de validación, agregar el producto
 			if (Object.keys(validationErrors).length > 0) return
-			dispatch(addProduct(productData))
-			dispatch(unselectProduct())
+			addNewProduct(productData)
+			unselectProduct()
 			closeAddProductForm()
 		}
 

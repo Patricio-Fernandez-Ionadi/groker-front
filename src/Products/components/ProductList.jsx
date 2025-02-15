@@ -1,12 +1,11 @@
 import React, { useContext, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 
 import { FormContext } from '../../app'
 import { ConfirmModal } from '../../app'
 
 import { AddProduct } from './AddProduct'
 
-import { selectProduct, deleteProduct, loadProducts } from '../'
+import { useProducts, useProductsActions } from '../'
 
 export const ProductList = () => {
 	const {
@@ -16,12 +15,12 @@ export const ProductList = () => {
 		isEditProductFormOpen,
 	} = useContext(FormContext)
 
-	const dispatch = useDispatch()
-	const { products } = useSelector((state) => state.productsStore)
+	const { products } = useProducts()
+	const { selectProduct, deleteProduct } = useProductsActions()
 
 	const handleEditProduct = (product) => {
 		openEditProductForm()
-		dispatch(selectProduct(product))
+		selectProduct(product)
 	}
 
 	const [productToDelete, setProductToDelete] = useState(null) // Estado para el producto a eliminar
@@ -35,7 +34,7 @@ export const ProductList = () => {
 
 	const confirmDelete = () => {
 		if (productToDelete) {
-			dispatch(deleteProduct(productToDelete._id))
+			deleteProduct(productToDelete._id)
 			setIsModalOpen(false) // Cierra el modal
 			setProductToDelete(null) // Limpia el estado
 		}
@@ -44,11 +43,6 @@ export const ProductList = () => {
 	const closeModal = () => {
 		setIsModalOpen(false) // Cierra el modal
 		setProductToDelete(null) // Limpia el estado
-	}
-
-	if (products.length === 0) {
-		dispatch(loadProducts())
-		return <div>Loading...</div>
 	}
 
 	return (
