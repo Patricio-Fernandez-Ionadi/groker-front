@@ -1,12 +1,17 @@
 export { AddPlant } from './components/AddPlant'
-export { PlantList } from './components/PlantList'
-export { PlantDetails } from './components/PlantDetails'
+export { PlantList } from './components/inventoryList/PlantList'
 export { PlantHistory } from './components/PlantHistory'
+export { Detail } from './components/details/Detail'
+export { PlantDetails } from './components/details/PlantDetails'
+export { InventoryDetails } from './components/details/InventoryDetails'
 
 export * from './Register/store/historyAsyncActions'
 export * from './Register/store/historySlice'
 
+export * from './hooks/usePlants'
+
 export * from './services/plants'
+
 export * from './utils/dateUtils'
 export * from './utils/translations'
 export * from './utils/validations'
