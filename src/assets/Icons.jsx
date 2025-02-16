@@ -108,22 +108,45 @@ export const Cube_transparent = () => (
 	</svg>
 )
 
-export const Cloud_arrow_up = () => (
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		fill="none"
-		viewBox="0 0 24 24"
-		stroke-width="1.5"
-		stroke="currentColor"
-		class="size-6"
-	>
-		<path
-			stroke-linecap="round"
-			stroke-linejoin="round"
-			d="M12 16.5V9.75m0 0 3 3m-3-3-3 3M6.75 19.5a4.5 4.5 0 0 1-1.41-8.775 5.25 5.25 0 0 1 10.233-2.33 3 3 0 0 1 3.758 3.848A3.752 3.752 0 0 1 18 19.5H6.75Z"
-		/>
-	</svg>
-)
+export const Cloud_arrow_up = (props) => {
+	const {
+		strokeWidth = 1.5,
+		size = 200,
+		color = 'currentColor',
+		fill = 'none',
+		onEvent,
+		getProps,
+	} = props
+
+	if (getProps)
+		console.log({
+			strokeWidth: 'Number',
+			size: 'Number',
+			color: 'String',
+			fill: 'String',
+			onEvent: 'Function',
+		})
+
+	return (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			fill={fill}
+			viewBox="0 0 24 24"
+			strokeWidth={strokeWidth}
+			stroke={color}
+			width={size}
+			height={size}
+			onClick={onEvent}
+			style={{ cursor: 'pointer' }}
+		>
+			<path
+				strokeLinecap="round"
+				strokeLinejoin="round"
+				d="M12 16.5V9.75m0 0 3 3m-3-3-3 3M6.75 19.5a4.5 4.5 0 0 1-1.41-8.775 5.25 5.25 0 0 1 10.233-2.33 3 3 0 0 1 3.758 3.848A3.752 3.752 0 0 1 18 19.5H6.75Z"
+			/>
+		</svg>
+	)
+}
 
 export const Arrow_left = (props) => {
 	const { size, color = '#222', strokeWidth = 1, getProps } = props
@@ -148,6 +171,39 @@ export const Arrow_left = (props) => {
 				stroke={color}
 				strokeWidth={strokeWidth}
 			/>
+		</svg>
+	)
+}
+
+export const Edit_icon = (props) => {
+	const {
+		size = 200,
+		color = 'currentColor',
+		fill = 'none',
+		onEvent,
+		getProps,
+	} = props
+
+	if (getProps)
+		console.log({
+			size: 'Number',
+			color: 'String',
+			fill: 'String',
+			onEvent: 'Function',
+		})
+
+	return (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 24 24"
+			fill={color}
+			width={size}
+			height={size}
+			onClick={onEvent}
+			style={{ cursor: 'pointer' }}
+		>
+			<path d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32l8.4-8.4Z" />
+			<path d="M5.25 5.25a3 3 0 0 0-3 3v10.5a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3V13.5a.75.75 0 0 0-1.5 0v5.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5V8.25a1.5 1.5 0 0 1 1.5-1.5h5.25a.75.75 0 0 0 0-1.5H5.25Z" />
 		</svg>
 	)
 }
