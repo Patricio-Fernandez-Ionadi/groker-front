@@ -57,3 +57,5 @@ export const formatDateToISO = (dateString) => {
 	if (!dateString) return ''
 	return new Date(dateString).toISOString()
 }
+
+export const today = new Date().toISOString().split('T')[0]
