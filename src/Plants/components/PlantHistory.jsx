@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import React from 'react'
+
+import { usePlants } from '../hooks/usePlants'
 
 import { formatDate } from '../utils/dateUtils'
 import { translateField } from '../utils/translations'
 
 export const PlantHistory = () => {
-	const { selectedPlant } = useSelector((state) => state.plantsStore)
+	const { selectedPlant } = usePlants()
 
 	if (!selectedPlant || selectedPlant.history.length === 0) return null
 
