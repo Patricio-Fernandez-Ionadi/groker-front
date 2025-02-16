@@ -12,6 +12,7 @@ const defaultPlantData = {
 	genetic: 'Desconocida',
 	stage: 'vegetative',
 	flags: { isFinalPot: false },
+	lastWatered: '',
 }
 
 export const AddPlant = () => {
