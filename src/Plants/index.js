@@ -7,6 +7,8 @@ export { Detail } from './components/details/Detail'
 export { PlantDetails } from './components/details/PlantDetails'
 export { InventoryDetails } from './components/details/InventoryDetails'
 
+export { PlantInfo } from './components/info/PlantInfo'
+
 export * from './Register/store/historyAsyncActions'
 export * from './Register/store/historySlice'
 
