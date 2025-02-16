@@ -1,16 +1,12 @@
-import React, { useContext } from 'react'
-
-import { FormContext } from '../../../app/context/FormContext'
+import React from 'react'
+import { Link, useLocation } from 'react-router'
 
 import { usePlants } from '../..'
 
-import { EditPlant } from '../edition/EditPlant'
 import { InventoryTable } from './InventoryTable'
-import { Link, useLocation } from 'react-router'
+import { InventoryEmpty } from './InventoryEmpty'
 
 export const Inventory = () => {
-	const { isEditPlantFormOpen, closeEditPlantForm } = useContext(FormContext)
-
 	const location = useLocation()
 	const { plants } = usePlants()
 
@@ -33,19 +29,7 @@ export const Inventory = () => {
 			{plants.length > 0 ? (
 				<InventoryTable />
 			) : (
-				<>
-					<p>Vaya! parece que aun no hay plantas en el inventario</p>
-					<p>Añade una planta para comenzar.</p>
-
-					{renderAddPlantButton()}
-				</>
-			)}
-
-			{isEditPlantFormOpen && (
-				<>
-					<button onClick={closeEditPlantForm}>Cerrar</button>
-					<EditPlant />
-				</>
+				<InventoryEmpty>{renderAddPlantButton()}</InventoryEmpty>
 			)}
 		</section>
 	)

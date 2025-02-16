@@ -8,10 +8,10 @@ export const InventoryDetails = () => {
 		<>
 			<h2>Datos del inventario</h2>
 			<p>Plantas en germinación: {stages.germination}</p>
-			<p>Plantas vegetativas: {stages.vegetative}</p>
+			<p>Plantas en vegetativo: {stages.vegetative}</p>
 			<p>Plantas en floración: {stages.flowering}</p>
 			<p>
-				Total de plantas:{' '}
+				Plantas totales:{' '}
 				{stages.germination + stages.vegetative + stages.flowering}
 			</p>
 		</>
