@@ -5,29 +5,30 @@ import { usePlants } from '../..'
 
 import { InventoryTable } from './InventoryTable'
 import { InventoryEmpty } from './InventoryEmpty'
+import { Button } from '../../../app'
 
-export const Inventory = () => {
+export const Inventory = ({ theme }) => {
 	const location = useLocation()
 	const { plants } = usePlants()
 
 	const renderAddPlantButton = () => {
 		return (
-			<button>
+			<Button>
 				<Link to="/plants/ingreso" state={{ from: location.pathname }}>
 					Añadir Planta
 				</Link>
-			</button>
+			</Button>
 		)
 	}
 
 	if (!plants) return <p>...Cargando</p>
 
 	return (
-		<section className="plant-list-component">
+		<section className={`plant-list-component ${theme}`}>
 			{plants.length > 0 && <>{renderAddPlantButton()}</>}
 			<h2>Inventario de Plantas</h2>
 			{plants.length > 0 ? (
-				<InventoryTable />
+				<InventoryTable theme={theme} />
 			) : (
 				<InventoryEmpty>{renderAddPlantButton()}</InventoryEmpty>
 			)}
