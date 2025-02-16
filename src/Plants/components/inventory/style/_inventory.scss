@@ -1,5 +1,5 @@
 .plant-list-component {
-	background-color: $white;
+	@include useThemeBg($white, $black_light);
 	padding: 20px;
 	border-radius: 8px;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -17,38 +17,16 @@
 		padding: 2px;
 		height: 50px;
 		text-align: center;
-
-		&:nth-child(1) {
-			width: 80px;
-		}
-		&:nth-child(2) {
-			width: 80px;
-		}
-		&:nth-child(3) {
-			width: 80px;
-		}
-		&:nth-child(4) {
-			width: 50px;
-		}
-		&:nth-child(5) {
-			width: 80px;
-		}
-		&:nth-child(6) {
-			width: 80px;
-		}
-		&:nth-child(7) {
-			width: 80px;
-		}
 	}
 	& th {
-		background-color: $secondary_light;
+		@include useThemeBg($secondary_light, $secondary_dark);
 	}
 
 	& tr {
 		cursor: pointer;
 		height: 50px;
 		&.selected {
-			background-color: $secondary;
+			@include useThemeBg($secondary, $primary);
 		}
 		&:last-child {
 			td:first-child {

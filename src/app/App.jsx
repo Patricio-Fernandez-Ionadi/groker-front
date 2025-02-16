@@ -5,7 +5,7 @@ import { useGenetics } from '../Genetics'
 
 import { usePlants, Inventory, Detail, PlantHistory } from '../Plants'
 
-export const App = () => {
+export const App = ({ theme }) => {
 	const plantsState = usePlants()
 	const geneticsState = useGenetics()
 	const productsState = useProducts()
@@ -16,9 +16,8 @@ export const App = () => {
 
 	return (
 		<main className="main-content">
-			<Inventory />
-			<Detail />
-			<PlantHistory />
+			<Inventory theme={theme} />
+			<Detail theme={theme} />
 		</main>
 	)
 }

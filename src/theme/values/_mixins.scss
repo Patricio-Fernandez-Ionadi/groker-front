@@ -1,36 +1,45 @@
-// Dark mode
 @mixin useThemeText($light: $black, $dark: $white) {
-  transition: color $fast;
-  &.light {
-    color: $light;
-    & a {
-      color: $light;
-    }
-  }
-  &.dark {
-    color: $dark;
-    & a {
-      color: $dark;
-    }
-  }
+	transition: color $fast;
+	&.light {
+		color: $light;
+		& a {
+			color: $light;
+		}
+	}
+	&.dark {
+		color: $dark;
+		& a {
+			color: $dark;
+		}
+	}
 }
 @mixin useThemeBg($light: transparent, $dark: transparent) {
-  transition: background $fast;
-  &.light {
-    background: $light;
-  }
-  &.dark {
-    background: $dark;
-  }
+	transition: background $fast;
+	&.light {
+		background: $light;
+	}
+	&.dark {
+		background: $dark;
+	}
 }
+
+@mixin useThemeShadow($light: $black, $dark: $white) {
+	&.light {
+		box-shadow: 0 2px 5px rgba($light, 0.1);
+	}
+	&.dark {
+		box-shadow: 0 3px 10px rgba($dark, 0.1);
+	}
+}
+
 @mixin useThemeShadowInset(
-  $left: 0,
-  $top: 0,
-  $blur: 3px,
-  $size: 0,
-  $color: $black
+	$left: 0,
+	$top: 0,
+	$blur: 3px,
+	$size: 0,
+	$color: $black
 ) {
-  box-shadow: $left $top $blur $size $color inset;
+	box-shadow: $left $top $blur $size $color inset;
 }
 
 // Elevation Effect
@@ -71,5 +80,5 @@
               0px 3px 14px 2px rgb(0 0 0 / 12%);
 }
 @mixin elevate($value) {
-  @extend %elevation-#{$value};
+	@extend %elevation-#{$value};
 }

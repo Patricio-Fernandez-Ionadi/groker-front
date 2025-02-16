@@ -3,13 +3,15 @@ $bar_width: 30px;
 $bar_height: 3px;
 
 .menu_icon {
-	color: $text;
+	@include useThemeBg(_, $primary);
+	border-radius: $border_radius;
 	width: 40px;
 	height: 40px;
 	cursor: pointer;
 	position: relative;
 	z-index: 3;
 	& .bar {
+		// <- barra principal (central)
 		width: $bar_width;
 		height: $bar_height;
 		background: $text;
@@ -17,11 +19,11 @@ $bar_height: 3px;
 		position: relative;
 		top: 18px;
 		left: 50%;
-		color: red;
 		transform: translateX(-50%);
 		transition: all 0.3s ease;
 		&::before,
 		&::after {
+			// <- barras laterales
 			content: '';
 			display: block;
 			position: absolute;

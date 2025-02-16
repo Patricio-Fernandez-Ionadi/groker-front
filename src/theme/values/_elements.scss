@@ -27,14 +27,12 @@ select {
 
 button {
 	cursor: pointer;
-	background-color: $primary;
+	@include useThemeBg($primary, $secondary);
 	border-radius: $border_radius;
 	border: none;
-	transition: background-color 0.3s ease;
-	color: $white;
 	padding: 10px;
 	&:hover {
-		background-color: $secondary_light;
+		@include useThemeBg($secondary, $primary);
 	}
 }
 a {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 
-import { routes } from '../../../app'
+import { Button, routes } from '../../../app'
 
 import { formatDate, translateField, usePlants } from '../../'
 
@@ -11,14 +11,14 @@ export const PlantDetails = () => {
 	return (
 		<>
 			<h2>Detalles de la Planta</h2>
-			<button>
+			<Button>
 				<Link
 					to={routes.plantDetail(selectedPlant._id)}
 					state={{ from: location.pathname }}
 				>
 					Ver más sobre esta planta
 				</Link>
-			</button>
+			</Button>
 			<p>Fecha de ingreso: {formatDate(selectedPlant.entryDate)}</p>
 			<p>Nombre: {selectedPlant.name}</p>
 			<p>Etapa: {translateField(selectedPlant.stage)}</p>
