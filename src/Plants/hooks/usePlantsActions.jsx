@@ -5,6 +5,7 @@ import {
 	store_addPlant,
 	store_deletePlantById,
 	store_loadPlants,
+	store_updatePlant,
 } from '../store/plantsAsyncActions'
 
 export function usePlantsActions() {
@@ -29,5 +30,9 @@ export function usePlantsActions() {
 		dispatch(store_loadPlants())
 	}
 
-	return { selectPlant, unselectPlant, deletePlant, addNewPlant }
+	const updatePlant = (plant) => {
+		dispatch(store_updatePlant(plant))
+	}
+
+	return { selectPlant, unselectPlant, deletePlant, addNewPlant, updatePlant }
 }
