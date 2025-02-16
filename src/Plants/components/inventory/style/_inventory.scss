@@ -11,11 +11,34 @@
 .inventory-table {
 	width: $full;
 	border-collapse: collapse;
-	& th,
+	th,
 	td {
 		border: 1px solid $white_dark;
 		padding: 2px;
-		text-align: left;
+		height: 50px;
+		text-align: center;
+
+		&:nth-child(1) {
+			width: 80px;
+		}
+		&:nth-child(2) {
+			width: 80px;
+		}
+		&:nth-child(3) {
+			width: 80px;
+		}
+		&:nth-child(4) {
+			width: 50px;
+		}
+		&:nth-child(5) {
+			width: 80px;
+		}
+		&:nth-child(6) {
+			width: 80px;
+		}
+		&:nth-child(7) {
+			width: 80px;
+		}
 	}
 	& th {
 		background-color: $secondary_light;
@@ -23,8 +46,17 @@
 
 	& tr {
 		cursor: pointer;
+		height: 50px;
 		&.selected {
 			background-color: $secondary;
+		}
+		&:last-child {
+			td:first-child {
+				border-radius: 0 0 0 $border_radius;
+			}
+			td:last-child {
+				border-radius: 0 0 $border_radius 0;
+			}
 		}
 	}
 
@@ -38,6 +70,22 @@
 	}
 }
 
+.inventory-empty {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	& p {
+		margin-bottom: 10px;
+	}
+	& button {
+		margin-top: 10px;
+		width: 200px;
+		font-size: 16px;
+	}
+}
+
 @media (max-width: $medium) {
 	.inventory-table th,
 	.inventory-table td {
@@ -48,8 +96,6 @@
 	.inventory-table td:nth-child(2),
 	.inventory-table th:nth-child(3),
 	.inventory-table td:nth-child(3),
-	.inventory-table th:nth-child(4),
-	.inventory-table td:nth-child(4),
 	.inventory-table th:nth-child(5),
 	.inventory-table td:nth-child(5),
 	.inventory-table th:nth-child(7),

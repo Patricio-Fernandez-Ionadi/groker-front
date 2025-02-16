@@ -1,0 +1,52 @@
+$bar_gap: 0.4em;
+$bar_width: 30px;
+$bar_height: 3px;
+
+.menu_icon {
+	color: $text;
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+	position: relative;
+	z-index: 3;
+	& .bar {
+		width: $bar_width;
+		height: $bar_height;
+		background: $text;
+		border-radius: calc($bar_height/2);
+		position: relative;
+		top: 18px;
+		left: 50%;
+		color: red;
+		transform: translateX(-50%);
+		transition: all 0.3s ease;
+		&::before,
+		&::after {
+			content: '';
+			display: block;
+			position: absolute;
+			background: $text;
+			width: $bar_width;
+			height: $bar_height;
+			border-radius: calc($bar_height/2);
+			top: -$bar_gap;
+			transition: all 0.4s ease;
+		}
+		&::after {
+			top: $bar_gap;
+		}
+		&.toggle {
+			height: 0;
+			&::before,
+			&::after {
+				top: 0;
+			}
+			&::after {
+				transform: rotate(45deg);
+			}
+			&::before {
+				transform: rotate(-45deg);
+			}
+		}
+	}
+}

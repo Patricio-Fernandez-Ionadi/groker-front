@@ -1,9 +1,27 @@
+@import '../components/style/burger';
+@import '../components/style/navigation';
+
 .app-container {
 	display: flex;
 	flex-direction: column;
 	max-width: 1280px;
 	margin: 0 auto;
 	padding: 20px;
+}
+
+.header {
+	padding: 20px;
+	margin-bottom: 20px;
+	& h1 {
+		color: $grey_dark;
+	}
+	&-buttons button {
+		padding: 10px 15px;
+		color: $white;
+		&:first-child {
+			margin-right: 10px;
+		}
+	}
 }
 
 .main-content {
@@ -18,22 +36,6 @@
 	border-radius: 8px;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-.header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin-bottom: 20px;
-	& h1 {
-		color: $grey_dark;
-	}
-	&-buttons button {
-		padding: 10px 15px;
-		color: $white;
-		&:first-child {
-			margin-right: 10px;
-		}
-	}
-}
 
 @media (max-width: $medium) {
 	.main-content {
@@ -42,6 +44,9 @@
 	.header {
 		flex-direction: column;
 		align-items: flex-start;
+		& h1 {
+			font-size: 22px;
+		}
 		&-buttons button {
 			margin-top: 10px;
 			&:first-child {
