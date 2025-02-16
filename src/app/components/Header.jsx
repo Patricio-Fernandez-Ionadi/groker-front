@@ -1,22 +1,28 @@
 import React from 'react'
-import { Link } from 'react-router'
 
-import { usePath } from '../'
+import { Navigation } from './navigation/Navigation'
 
 export function Header() {
-	const currentPath = usePath()
-
 	return (
 		<header className="header">
-			<h1>Gestión de Inventario de Cultivos</h1>
+			<Navigation />
+			{/* 
+			{location.state || currentPath !== '/' ? (
+				<div className="back-button">
+					<BackButton />
+				</div>
+			) : (
+				''
+			)}
 			<div className="header-buttons">
-				<button>
-					{currentPath !== '/products' && (
-						<Link to="/products">Inventario de Productos</Link>
-					)}
-					{currentPath === '/products' && <Link to="/">Volver al Inicio</Link>}
-				</button>
-			</div>
+				{currentPath !== '/products' && (
+					<button>
+						<Link to="/products" state={{ from: location.pathname }}>
+							Inventario de Productos
+						</Link>
+					</button>
+				)}
+			</div> */}
 		</header>
 	)
 }
