@@ -4,6 +4,7 @@ import { setPlantSelected } from '../store/plantsSlice'
 import {
 	store_addPlant,
 	store_deletePlantById,
+	store_loadPlants,
 } from '../store/plantsAsyncActions'
 
 export function usePlantsActions() {
@@ -21,8 +22,11 @@ export function usePlantsActions() {
 		dispatch(store_deletePlantById(id))
 	}
 
-	const addNewPlant = (newPlant) => {
-		dispatch(store_addPlant(newPlant))
+	const addNewPlant = async (newPlant) => {
+		await dispatch(store_addPlant(newPlant))
+
+		// actualizacion de plantas para tener el .populate('genetics') de la api
+		dispatch(store_loadPlants())
 	}
 
 	return { selectPlant, unselectPlant, deletePlant, addNewPlant }
