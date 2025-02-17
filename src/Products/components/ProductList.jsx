@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 
-import { FormContext } from '../../app'
+import { Button, FormContext } from '../../app'
 import { ConfirmModal } from '../../app'
 
 import { AddProduct } from './AddProduct'
@@ -48,9 +48,9 @@ export const ProductList = ({ theme }) => {
 	return (
 		<div className={`product-list-container ${theme}`}>
 			<h2>Inventario de Productos</h2>
-			<button className="add-product-button" onClick={toggleAddProductForm}>
+			<Button className="add-product-button" onClick={toggleAddProductForm}>
 				{isAddProductFormOpen ? 'Cerrar' : 'Añadir Producto'}
-			</button>
+			</Button>
 			{(isAddProductFormOpen || isEditProductFormOpen) && <AddProduct />}
 
 			<div className="products-grid">
@@ -107,6 +107,7 @@ export const ProductList = ({ theme }) => {
 				onClose={closeModal}
 				onConfirm={confirmDelete}
 				message={`¿Estás seguro de que deseas eliminar el producto "${productToDelete?.name}"?`}
+				theme={theme}
 			/>
 		</div>
 	)
