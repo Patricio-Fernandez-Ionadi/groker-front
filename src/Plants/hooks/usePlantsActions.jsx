@@ -30,8 +30,11 @@ export function usePlantsActions() {
 		dispatch(store_loadPlants())
 	}
 
-	const updatePlant = (plant) => {
-		dispatch(store_updatePlant(plant))
+	const updatePlant = async (plant) => {
+		await dispatch(store_updatePlant(plant))
+		// actualizacion de plantas para tener el .populate('genetics') de la api
+		dispatch(store_loadPlants())
+		selectPlant(plant)
 	}
 
 	return { selectPlant, unselectPlant, deletePlant, addNewPlant, updatePlant }
