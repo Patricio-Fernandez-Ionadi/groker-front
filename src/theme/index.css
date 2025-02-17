@@ -86,11 +86,17 @@ a:visited {
 }
 
 .modal-content {
-  background-color: white;
+  transition: background 0.2s ease;
   padding: 20px;
   border-radius: 8px;
   text-align: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.modal-content.light {
+  background: #f5f5f5;
+}
+.modal-content.dark {
+  background: #373737;
 }
 
 .modal-actions {
@@ -105,19 +111,19 @@ a:visited {
   font-size: 14px;
 }
 
-.cancel-modal-button {
+.cancel-button {
   background-color: #f44336;
   color: white;
 }
-.cancel-modal-button:hover {
+.cancel-button:hover {
   background-color: #d32f2f;
 }
 
-.confirm-modal-button {
+.confirm-button {
   background-color: #007d85;
   color: white;
 }
-.confirm-modal-button:hover {
+.confirm-button:hover {
   background-color: #45a049;
 }
 
@@ -710,11 +716,42 @@ a:visited {
   box-shadow: 0 3px 10px rgba(0, 125, 133, 0.2);
 }
 
-.plant-info-component input[name=entryDate] {
+.plant-info-component input[type=date] {
   width: 115px;
 }
-.plant-info-component input[name=name] {
-  width: 100px;
+.plant-info-component .text-input,
+.plant-info-component input[type=number] {
+  transition: color 0.2s ease;
+  width: 150px;
+  background: transparent;
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid #007d85;
+}
+.plant-info-component .text-input.light,
+.plant-info-component input[type=number].light {
+  color: #333;
+}
+.plant-info-component .text-input.light a,
+.plant-info-component input[type=number].light a {
+  color: #333;
+}
+.plant-info-component .text-input.dark,
+.plant-info-component input[type=number].dark {
+  color: #f5f5f5;
+}
+.plant-info-component .text-input.dark a,
+.plant-info-component input[type=number].dark a {
+  color: #f5f5f5;
+}
+.plant-info-component select {
+  width: 200px;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .add-plant-form-container {

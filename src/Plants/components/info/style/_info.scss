@@ -1,8 +1,23 @@
 .plant-info-component {
-	input[name='entryDate'] {
+	input[type='date'] {
 		width: 115px;
 	}
-	input[name='name'] {
-		width: 100px;
+	.text-input,
+	input[type='number'] {
+		@include useThemeText($text, $white);
+		width: 150px;
+		background: transparent;
+		border-radius: 0;
+		border: none;
+		border-bottom: 1px solid $primary;
 	}
+
+	select {
+		width: 200px;
+	}
+}
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
 }

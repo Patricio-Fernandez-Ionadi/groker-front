@@ -1,25 +1,24 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router'
 
+import { Button } from '../../../app'
+
 import { usePlants } from '../..'
 
 import { InventoryTable } from './InventoryTable'
 import { InventoryEmpty } from './InventoryEmpty'
-import { Button } from '../../../app'
 
 export const Inventory = ({ theme }) => {
 	const location = useLocation()
 	const { plants } = usePlants()
 
-	const renderAddPlantButton = () => {
-		return (
-			<Button>
-				<Link to="/plants/ingreso" state={{ from: location.pathname }}>
-					Añadir Planta
-				</Link>
-			</Button>
-		)
-	}
+	const renderAddPlantButton = () => (
+		<Button>
+			<Link to="/plants/ingreso" state={{ from: location.pathname }}>
+				Añadir Planta
+			</Link>
+		</Button>
+	)
 
 	if (!plants) return <p>...Cargando</p>
 
