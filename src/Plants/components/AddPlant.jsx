@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router'
 
-import { FormContext, ToggleSwitch } from '../../app'
+import { Button, FormContext, ToggleSwitch } from '../../app'
 import { AddGeneticButton, useGenetics } from '../../Genetics'
 
 import { validatePlantData, usePlantsActions } from '../'
@@ -25,10 +25,6 @@ export const AddPlant = () => {
 	const [newPlantData, setPlantData] = useState(defaultPlantData)
 	const [errors, setErrors] = useState({})
 
-	/**
-	 * Maneja los cambios en los campos del formulario.
-	 * @param {Event} e - Evento de cambio del formulario.
-	 */
 	const handleChange = (e) => {
 		const { name, value, type, checked } = e.target
 
@@ -76,9 +72,9 @@ export const AddPlant = () => {
 	return (
 		<>
 			<div className="add-plant-form-container">
-				<button className="cancel-button" onClick={handleCancelForm}>
+				<Button className="cancel-button" onEvent={handleCancelForm}>
 					Cerrar
-				</button>
+				</Button>
 				<div className="add-plant-form-name">
 					<input
 						type="text"
@@ -151,9 +147,9 @@ export const AddPlant = () => {
 					/>
 				</label>
 
-				<button className="add-plant-form-button" onClick={handleSubmit}>
+				<Button className="add-plant-form-button" onEvent={handleSubmit}>
 					Añadir Planta
-				</button>
+				</Button>
 			</div>
 		</>
 	)
