@@ -1,32 +1,106 @@
 import React from 'react'
-
-import { formatDate, translateField, usePlants } from '../../'
 import { useParams } from 'react-router'
 
-export function PlantInfo() {
+import { formatDate, PlantHistory, usePlants, usePlantsActions } from '../../'
+
+import { Edit_icon, ToggleSwitch } from '../../../app'
+
+// Fields
+import { NameField } from './NameField'
+import { GeneticField } from './GeneticField'
+import { EntryDateField } from './EntryDateField'
+import { StageField } from './StageField'
+import { EstimatedChangeField } from './EstimatedChangeField'
+import { PotSizeField } from './PotSizeField'
+import { WateringField } from './WateringField'
+
+export function PlantInfo({ theme }) {
 	const plantId = useParams().id
-	const { plants } = usePlants()
+	const { plants, selectedPlant } = usePlants()
+	const { selectPlant } = usePlantsActions()
 
-	const plant = plants.find((plant) => plant._id === plantId)
+	const iconSize = 25
 
-	console.log(plant)
+	const [edit, setEdit] = React.useState({
+		name: false,
+		entryDate: false,
+		genetic: false,
+		stage: false,
+		estimatedChange: false,
+		potSize: false,
+		lastWatered: false,
+	})
+
+	const plant = React.useMemo(
+		() => plants.find((p) => p._id === plantId),
+		[plants, plantId]
+	)
+
+	React.useEffect(() => {
+		if (plant && !selectedPlant) selectPlant(plant)
+	}, [plant, selectPlant])
+
 	if (!plant) return <p>Parece que la planta no existe</p>
 	return (
-		<>
-			<h2>{plant.name}</h2>
-			<p>Fecha de ingreso: {formatDate(plant.entryDate)}</p>
-			<p>Genética: {plant.genetic.name}</p>
-			<p>Periodo: {translateField(plant.stage)}</p>
-			<p>Cambio estimado: {formatDate(plant.estimatedChange)}</p>
-			{plant.potSize !== 0 && (
-				<p>
-					<span>Tamaño de la maceta: {plant.potSize}L</span> -{' '}
-					<span>Maceta final: {plant.flags.isFinalPot ? '✔️' : '❌'}</span>
-				</p>
-			)}
-			{plant.lastWatered && (
-				<p>Último riego: {formatDate(plant.lastWatered)}</p>
-			)}
-		</>
+		<div className="plant-info-component">
+			{/* NAME */}
+			<NameField
+				edit={{ state: edit, update: setEdit }}
+				plant={plant}
+				iconSize={iconSize}
+				theme={theme}
+			/>
+
+			{/* ENTRY DATE */}
+			<EntryDateField
+				edit={{ state: edit, update: setEdit }}
+				plant={plant}
+				iconSize={iconSize}
+			/>
+
+			{/* GENETIC */}
+			<GeneticField
+				edit={{ state: edit, update: setEdit }}
+				plant={plant}
+				iconSize={iconSize}
+			/>
+
+			{/* STAGE */}
+			<StageField
+				edit={{ state: edit, update: setEdit }}
+				plant={plant}
+				iconSize={iconSize}
+			/>
+
+			{/* ESTIMATED CHANGE */}
+			<EstimatedChangeField
+				edit={{ state: edit, update: setEdit }}
+				plant={plant}
+				iconSize={iconSize}
+			/>
+
+			{/* POT SIZE */}
+			<PotSizeField
+				edit={{ state: edit, update: setEdit }}
+				plant={plant}
+				iconSize={iconSize}
+			/>
+
+			{/* LAST WATERED */}
+			<WateringField
+				edit={{ state: edit, update: setEdit }}
+				plant={plant}
+				theme={theme}
+				iconSize={iconSize}
+			/>
+
+			{/* UNDER OBSERVATION */}
+			<ToggleSwitch
+				switcher={plant.flags.underObservation}
+				onEvent={() => {}}
+			/>
+
+			<PlantHistory theme={theme} />
+		</div>
 	)
 }
