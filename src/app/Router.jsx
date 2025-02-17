@@ -8,7 +8,7 @@ import { Header } from './components/Header'
 
 import { App } from './App'
 
-import { AddPlant, PlantInfo } from '../Plants'
+import { AddPlant, Detail, Inventory, PlantInfo } from '../Plants'
 import { ProductList } from '../Products'
 
 export const Router = () => {
@@ -25,6 +25,15 @@ export const Router = () => {
 			)}
 			<Routes>
 				<Route index element={<App theme={theme} />} />
+				<Route
+					path="/plants"
+					element={
+						<>
+							<Inventory theme={theme} />
+							<Detail theme={theme} />
+						</>
+					}
+				/>
 				<Route path="/plants/ingreso" element={<AddPlant theme={theme} />} />
 				<Route path="/plants/:id" element={<PlantInfo theme={theme} />} />
 				<Route path="/products" element={<ProductList theme={theme} />} />
