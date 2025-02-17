@@ -5,7 +5,7 @@ import {
 	api_getPlants,
 	api_updatePlant,
 } from '../index'
-import { calculateEstimatedChange } from '../utils/dateUtils'
+import { calculateEstimatedChangeFromEntryDate } from '../utils/dateUtils'
 
 export const store_loadPlants = createAsyncThunk(
 	'plantsStore/loadPlants',
@@ -24,7 +24,7 @@ export const store_addPlant = createAsyncThunk(
 	async (newPlant) => {
 		const plantToAdd = {
 			...newPlant,
-			estimatedChange: calculateEstimatedChange(newPlant),
+			estimatedChange: calculateEstimatedChangeFromEntryDate(newPlant),
 		}
 		try {
 			const data = await api_addPlant(plantToAdd)
@@ -50,7 +50,7 @@ export const store_deletePlantById = createAsyncThunk(
 export const store_updatePlant = createAsyncThunk(
 	'plantsStore/updatePlant',
 	async (updatedPlant) => {
-		console.log(updatedPlant)
+		// console.log(updatedPlant)
 		try {
 			const data = await api_updatePlant(updatedPlant)
 			return data

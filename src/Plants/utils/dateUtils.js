@@ -3,7 +3,7 @@
  * @param {Object} plant - Objeto que contiene los detalles de la planta.
  * @returns {string} - La fecha estimada en formato ISO (YYYY-MM-DD).
  */
-export const calculateEstimatedChange = (plant) => {
+export const calculateEstimatedChangeFromEntryDate = (plant) => {
 	const entryDate = new Date(plant.entryDate)
 	if (plant.stage === 'vegetative') {
 		entryDate.setDate(entryDate.getDate() + 42) // 6 weeks
