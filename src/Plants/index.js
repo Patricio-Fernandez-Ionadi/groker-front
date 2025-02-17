@@ -9,9 +9,6 @@ export { InventoryDetails } from './components/details/InventoryDetails'
 
 export { PlantInfo } from './components/info/PlantInfo'
 
-export * from './Register/store/historyAsyncActions'
-export * from './Register/store/historySlice'
-
 export * from './hooks/usePlants'
 export * from './hooks/usePlantsActions'
 

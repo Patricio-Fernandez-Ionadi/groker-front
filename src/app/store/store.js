@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-import { plantSlice, eventsSlice } from '../../Plants'
+import { plantSlice } from '../../Plants'
 import { geneticsSlice } from '../../Genetics'
 import { productsSlice } from '../../Products'
 
@@ -16,7 +16,6 @@ export const store = configureStore({
 		plantsStore: plantSlice.reducer,
 		geneticsStore: geneticsSlice.reducer,
 		productsStore: productsSlice.reducer,
-		historyStore: eventsSlice.reducer,
 	},
 	// middleware: (getDefaultMiddleware) =>
 	// 	getDefaultMiddleware().concat(loggerMiddleware),
