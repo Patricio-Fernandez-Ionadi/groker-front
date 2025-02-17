@@ -2,6 +2,7 @@
 @import './history';
 @import '../inventory/style/inventory';
 @import '../details/style/details';
+@import '../info/style/info';
 
 // ### ADD PLANT FORM ###
 .add-plant-form-container {
@@ -9,7 +10,8 @@
 	grid-template-columns: 1fr 1fr; // Dos columnas
 	grid-template-rows: repeat(5, 60px);
 	gap: 10px; // Espacio entre los elementos
-	max-width: 800px; // Ancho máximo del formulario
+	max-width: 1280px; // Ancho máximo del formulario
+	width: $full;
 	margin: 0 auto; // Centrar el formulario
 	padding: 20px;
 	border-radius: 8px;
@@ -26,7 +28,7 @@
 .cancel-button {
 	grid-area: cancel;
 	width: 100px;
-	justify-self: end;
+	justify-self: flex-end;
 	align-self: center;
 }
 

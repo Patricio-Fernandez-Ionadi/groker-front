@@ -243,6 +243,7 @@ a:visited {
   gap: 20px;
 }
 .navigation-container .back-button {
+  margin: 5px;
   width: 30px;
   height: 30px;
 }
@@ -253,13 +254,9 @@ a:visited {
   width: 230px;
   position: fixed;
   top: 0;
-  left: 0;
+  left: -240px;
   z-index: 2;
-  -webkit-clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
-          clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
-  transition: -webkit-clip-path 0.3s ease;
-  transition: clip-path 0.3s ease;
-  transition: clip-path 0.3s ease, -webkit-clip-path 0.3s ease;
+  transition: left 0.3s ease;
 }
 .navigation-container .navigation.light {
   background: #f5f5f5;
@@ -279,9 +276,25 @@ a:visited {
 .navigation-container .navigation.dark a {
   color: #f5f5f5;
 }
+.navigation-container .navigation.light {
+  box-shadow: 0 2px 5px rgba(33, 33, 33, 0.1);
+}
+.navigation-container .navigation.dark {
+  box-shadow: 0 3px 10px rgba(0, 125, 133, 0.2);
+}
 .navigation-container .navigation.open {
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  left: 0;
+}
+.navigation-container .navigation .theme-switch {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 10px;
+  position: relative;
+}
+.navigation-container .navigation .theme-switch div {
+  padding-right: 12px;
+  padding-top: 17px;
 }
 
 .app-container {
@@ -289,7 +302,6 @@ a:visited {
   transition: color 0.2s ease;
   display: flex;
   flex-direction: column;
-  max-width: 1280px;
   margin: 0 auto;
   padding: 20px;
   min-height: 100vh;
@@ -540,22 +552,25 @@ a:visited {
   padding: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   border-radius: 3px;
-  background-color: #f5f5f5;
+  transition: background 0.2s ease;
+}
+.plant-history-component.light {
+  background: #f5f5f5;
+}
+.plant-history-component.dark {
+  background: #373737;
 }
 .plant-history-component h2 {
   text-align: center;
-  color: #333;
 }
 .plant-history-component .history-entry {
   margin-bottom: 10px;
   padding: 8px;
   border: 1px solid #ddd;
   border-radius: 3px;
-  background-color: #fff;
 }
 .plant-history-component .history-entry h3 {
   margin-top: 0;
-  color: #555;
 }
 .plant-history-component .history-entry ul {
   list-style-type: none;
@@ -579,13 +594,18 @@ a:visited {
   transition: background 0.2s ease;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 .plant-list-component.light {
   background: #f5f5f5;
 }
 .plant-list-component.dark {
   background: #373737;
+}
+.plant-list-component.light {
+  box-shadow: 0 2px 5px rgba(33, 33, 33, 0.1);
+}
+.plant-list-component.dark {
+  box-shadow: 0 3px 10px rgba(0, 125, 133, 0.2);
 }
 .plant-list-component h2 {
   text-align: center;
@@ -687,11 +707,11 @@ a:visited {
   box-shadow: 0 2px 5px rgba(33, 33, 33, 0.1);
 }
 .details-component.dark {
-  box-shadow: 0 3px 10px rgba(0, 125, 133, 0.1);
+  box-shadow: 0 3px 10px rgba(0, 125, 133, 0.2);
 }
 
 .plant-info-component input[name=entryDate] {
-  width: 100px;
+  width: 115px;
 }
 .plant-info-component input[name=name] {
   width: 100px;
@@ -702,7 +722,8 @@ a:visited {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(5, 60px);
   gap: 10px;
-  max-width: 800px;
+  max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
   padding: 20px;
   border-radius: 8px;
@@ -714,7 +735,7 @@ a:visited {
 .cancel-button {
   grid-area: cancel;
   width: 100px;
-  justify-self: end;
+  justify-self: flex-end;
   align-self: center;
 }
 
@@ -989,7 +1010,8 @@ a:visited {
   }
 }
 .product-list-container {
-  max-width: 800px;
+  width: 100%;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 20px;
 }
@@ -1011,12 +1033,21 @@ a:visited {
   border: 1px solid #c2c2c2;
   border-radius: 3px;
   padding: 15px;
-  background-color: #f5f5f5;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.product-list-container .products-grid .product-card.light {
+  box-shadow: 0 2px 5px rgba(33, 33, 33, 0.1);
+}
+.product-list-container .products-grid .product-card.dark {
+  box-shadow: 0 3px 10px rgba(0, 125, 133, 0.2);
 }
 .product-list-container .products-grid .product-card:hover {
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
   transform: scale(1.01);
+}
+.product-list-container .products-grid .product-card:hover.light {
+  box-shadow: 0 2px 5px rgba(33, 33, 33, 0.1);
+}
+.product-list-container .products-grid .product-card:hover.dark {
+  box-shadow: 0 3px 10px rgba(0, 125, 133, 0.2);
 }
 .product-list-container .products-grid .product-card h3 {
   margin: 0 0 10px;
