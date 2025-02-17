@@ -7,7 +7,7 @@ import { usePlantsActions } from '../../hooks/usePlantsActions'
 
 import { formatDate, translateField, usePlants } from '../../'
 
-export const InventoryTable = () => {
+export const InventoryTable = ({ theme }) => {
 	const { isEditPlantFormOpen, closeEditPlantForm } = useContext(FormContext)
 
 	const { plants, selectedPlant } = usePlants()
@@ -27,16 +27,16 @@ export const InventoryTable = () => {
 	if (!plants) return <p>...Cargando</p>
 
 	return (
-		<table className="inventory-table">
+		<table className={`inventory-table ${theme}`}>
 			<thead>
 				<tr>
-					<th>Nombre</th>
-					<th>Genética</th>
-					<th>Ingreso</th>
-					<th>Etapa</th>
-					<th>Cambio de Ciclo</th>
-					<th>Último Riego</th>
-					<th>En Observación</th>
+					<th className={theme}>Nombre</th>
+					<th className={theme}>Genética</th>
+					<th className={theme}>Ingreso</th>
+					<th className={theme}>Etapa</th>
+					<th className={theme}>Cambio de Ciclo</th>
+					<th className={theme}>Último Riego</th>
+					<th className={theme}>En Observación</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -45,7 +45,9 @@ export const InventoryTable = () => {
 						key={plant._id}
 						onClick={() => handlePlantSelection(plant)}
 						className={`${
-							selectedPlant && selectedPlant._id === plant._id ? 'selected' : ''
+							selectedPlant && selectedPlant._id === plant._id
+								? `selected ${theme}`
+								: ''
 						}`}
 					>
 						<td>{plant.name}</td>

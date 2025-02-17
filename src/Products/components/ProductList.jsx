@@ -7,7 +7,7 @@ import { AddProduct } from './AddProduct'
 
 import { useProducts, useProductsActions } from '../'
 
-export const ProductList = () => {
+export const ProductList = ({ theme }) => {
 	const {
 		isAddProductFormOpen,
 		toggleAddProductForm,
@@ -46,7 +46,7 @@ export const ProductList = () => {
 	}
 
 	return (
-		<div className="product-list-container">
+		<div className={`product-list-container ${theme}`}>
 			<h2>Inventario de Productos</h2>
 			<button className="add-product-button" onClick={toggleAddProductForm}>
 				{isAddProductFormOpen ? 'Cerrar' : 'Añadir Producto'}
@@ -55,7 +55,7 @@ export const ProductList = () => {
 
 			<div className="products-grid">
 				{products.map((product) => (
-					<div className="product-card" key={product.name}>
+					<div className={`product-card ${theme}`} key={product.name}>
 						<h3>{product.name}</h3>
 						<table className="product-table">
 							<tbody>
