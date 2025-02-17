@@ -5,7 +5,7 @@ import { usePlants } from '../hooks/usePlants'
 import { formatDate } from '../utils/dateUtils'
 import { translateField } from '../utils/translations'
 
-export const PlantHistory = () => {
+export const PlantHistory = ({ theme }) => {
 	const { selectedPlant } = usePlants()
 
 	if (!selectedPlant || selectedPlant.history.length === 0) return null
@@ -102,7 +102,7 @@ export const PlantHistory = () => {
 	}
 
 	return (
-		<section className="plant-history-component">
+		<section className={`plant-history-component ${theme}`}>
 			<h2>Historial de la Planta</h2>
 			{[...selectedPlant.history]
 				.sort((a, b) => new Date(b.date) - new Date(a.date))
