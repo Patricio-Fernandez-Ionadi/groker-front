@@ -5,7 +5,7 @@ import { useProducts } from '../Products'
 import { GeneticsModal, GenModalContext, useGenetics } from '../Genetics'
 
 import { Header } from './components/layout/Header'
-import { usePlants, Inventory, Detail } from '../Plants'
+import { usePlants } from '../Plants'
 import { Router } from './Router'
 
 export const App = () => {
