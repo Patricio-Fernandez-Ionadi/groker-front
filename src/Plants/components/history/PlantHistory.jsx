@@ -1,9 +1,9 @@
 import React from 'react'
 
-import { usePlants } from '../hooks/usePlants'
+import { usePlants } from '../../hooks/usePlants'
 
-import { formatDate } from '../utils/dateUtils'
-import { translateField } from '../utils/translations'
+import { formatDate } from '../../utils/dateUtils'
+import { translateField } from '../../utils/translations'
 
 export const PlantHistory = ({ theme }) => {
 	const { selectedPlant } = usePlants()
@@ -84,7 +84,7 @@ export const PlantHistory = ({ theme }) => {
 								<ul>
 									{details.productsUsed.map((each) => (
 										<li key={each.product._id}>
-											{each.product.name} {each.amount}ml
+											{each.product.name} {each.productAmount}ml
 										</li>
 									))}
 								</ul>
