@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { FormContext } from '../../app'
+import { Button, FormContext } from '../../app'
 
 import { useProducts, useProductsActions, validateProductData } from '../'
 
@@ -129,9 +129,9 @@ export const AddProduct = () => {
 					<option value="mineral">Mineral</option>
 				</select>
 			</label>
-			<button onClick={handleSubmit} className="submit-button">
+			<Button onEvent={handleSubmit} className="submit-button">
 				{isEditProductFormOpen ? 'Guardar Cambios' : 'Añadir Producto'}
-			</button>
+			</Button>
 		</div>
 	)
 }
