@@ -5,8 +5,8 @@ import { useTheme } from './context/ThemeContext'
 import { GeneticsModal, GenModalContext } from '../Genetics'
 
 import { App } from './App'
-import { Detail, Header } from './index'
-import { AddPlant, Inventory, PlantInfo } from '../Plants'
+import { Header } from './index'
+import { AddPlant, Inventory, PlantInfo, Detail } from '../Plants'
 import { ProductList } from '../Products'
 
 export const Router = () => {

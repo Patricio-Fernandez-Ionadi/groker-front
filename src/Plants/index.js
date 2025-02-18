@@ -1,12 +1,15 @@
 export { AddPlant } from './components/AddPlant'
 
-export { Inventory } from './components/inventory/Inventory'
 export { PlantHistory } from './components/history/PlantHistory'
 
-export { PlantDetails } from './components/details/PlantDetails'
+export { Inventory } from './components/inventory/Inventory'
 export { InventoryDetails } from './components/inventory/InventoryDetails'
 
+export { PlantDetails } from './components/details/PlantDetails'
+
 export { PlantInfo } from './components/info/PlantInfo'
+
+export { Detail } from './components/shared/Detail'
 
 export * from './hooks/usePlants'
 export * from './hooks/usePlantsActions'

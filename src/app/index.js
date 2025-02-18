@@ -4,7 +4,6 @@ export { useTheme } from './context/ThemeContext'
 
 export { Header } from './components/layout/Header'
 export { Navigation } from './components/layout/navigation/Navigation'
-export { Detail } from './components/layout/Detail'
 
 export { ConfirmModal } from './components/shared/ConfirmModal'
 export { AlertModal } from './components/shared/AlertModal'
