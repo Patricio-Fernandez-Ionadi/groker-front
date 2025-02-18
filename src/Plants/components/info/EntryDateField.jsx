@@ -3,7 +3,7 @@ import { Button, Cloud_arrow_up, Edit_icon } from '../../../app'
 
 import { usePlantsActions } from '../../hooks/usePlantsActions'
 
-import { updatePlantHistoryEvents } from './updateHistory'
+import { updateSimpleEvents } from '../history/utils/updateHistory'
 import {
 	calculateEstimatedChangeFromEntryDate,
 	formatDate,
@@ -25,7 +25,7 @@ export const EntryDateField = ({ edit, plant }) => {
 
 			let updatedPlant = { ...plant, entryDate: newDate }
 
-			const updateEntryDateHistory = updatePlantHistoryEvents(
+			const updateEntryDateHistory = updateSimpleEvents(
 				updatedPlant,
 				'entryDate',
 				newDate
@@ -40,7 +40,7 @@ export const EntryDateField = ({ edit, plant }) => {
 				plantEDyHistoryUpdated
 			)
 
-			const updateEstimatedChangeHistory = updatePlantHistoryEvents(
+			const updateEstimatedChangeHistory = updateSimpleEvents(
 				{
 					...plantEDyHistoryUpdated,
 					estimatedChange: formatDateToISO(newChangeDate),

@@ -5,7 +5,7 @@ import { usePlantsActions } from '../../hooks/usePlantsActions'
 
 import { translateField } from '../../utils/translations'
 import { formatDateToISO } from '../../utils/dateUtils'
-import { updatePlantHistoryEvents } from './updateHistory'
+import { updateSimpleEvents } from '../history/utils/updateHistory'
 
 export const StageField = ({ edit, plant, iconSize }) => {
 	const { state, update } = edit
@@ -49,7 +49,7 @@ export const StageField = ({ edit, plant, iconSize }) => {
 			}
 
 			// Actualiza el historial con el evento stage
-			let updateStageEvent = updatePlantHistoryEvents(
+			let updateStageEvent = updateSimpleEvents(
 				updatedBasePlant,
 				'stage',
 				newStage
@@ -62,7 +62,7 @@ export const StageField = ({ edit, plant, iconSize }) => {
 			}
 
 			// Actualiza el historial con el evento estimatedChange
-			const updateChangeEvent = updatePlantHistoryEvents(
+			const updateChangeEvent = updateSimpleEvents(
 				updatedPlantHistoryStage,
 				'estimatedChange',
 				recalculateEstimatedChange()

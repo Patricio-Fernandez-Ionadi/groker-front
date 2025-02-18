@@ -3,7 +3,7 @@ import { Button, Cloud_arrow_up, Edit_icon } from '../../../app'
 
 import { usePlantsActions } from '../../hooks/usePlantsActions'
 
-import { updatePlantHistoryEvents } from './updateHistory'
+import { updateSimpleEvents } from '../history/utils/updateHistory'
 
 export const NameField = ({ edit, plant, iconSize, theme }) => {
 	const { updatePlant } = usePlantsActions()
@@ -20,7 +20,7 @@ export const NameField = ({ edit, plant, iconSize, theme }) => {
 		} else {
 			let updatedPlant = { ...plant, name: nameRef.current.value }
 
-			const updatedHistory = updatePlantHistoryEvents(
+			const updatedHistory = updateSimpleEvents(
 				updatedPlant,
 				'name',
 				nameRef.current.value

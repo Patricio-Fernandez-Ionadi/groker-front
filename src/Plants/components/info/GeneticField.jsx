@@ -3,7 +3,7 @@ import { useGenetics } from '../../../Genetics'
 
 import { Button, Cloud_arrow_up, Edit_icon } from '../../../app'
 import { usePlantsActions } from '../../hooks/usePlantsActions'
-import { updatePlantHistoryEvents } from './updateHistory'
+import { updateSimpleEvents } from '../history/utils/updateHistory'
 
 export const GeneticField = ({ edit, plant, iconSize }) => {
 	const { genetics } = useGenetics()
@@ -24,7 +24,7 @@ export const GeneticField = ({ edit, plant, iconSize }) => {
 
 			if (foundGenetic) {
 				updatedPlant = { ...plant, genetic: foundGenetic._id }
-				updatedHistory = updatePlantHistoryEvents(
+				updatedHistory = updateSimpleEvents(
 					updatedPlant,
 					'genetic',
 					`${foundGenetic.name}`

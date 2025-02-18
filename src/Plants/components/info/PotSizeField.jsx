@@ -8,7 +8,7 @@ import {
 	useTheme,
 } from '../../../app'
 import { usePlantsActions } from '../../hooks/usePlantsActions'
-import { updatePlantHistoryEvents } from './updateHistory'
+import { updateSimpleEvents } from '../history/utils/updateHistory'
 
 export function PotSizeField({ edit, plant, iconSize }) {
 	const { theme } = useTheme()
@@ -39,7 +39,7 @@ export function PotSizeField({ edit, plant, iconSize }) {
 
 			let updatedPlant = { ...plant, potSize: newPotSize }
 
-			const updatedHistory = updatePlantHistoryEvents(
+			const updatedHistory = updateSimpleEvents(
 				updatedPlant,
 				'potSize',
 				newPotSize
@@ -90,7 +90,7 @@ export function PotSizeField({ edit, plant, iconSize }) {
 			flags: { ...plant.flags, isFinalPot: !plant.flags.isFinalPot },
 		}
 
-		const updatedHistory = updatePlantHistoryEvents(
+		const updatedHistory = updateSimpleEvents(
 			updatedPlant,
 			'isFinalPot',
 			!plant.flags.isFinalPot

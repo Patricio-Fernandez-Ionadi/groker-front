@@ -95,10 +95,10 @@ export function PlantInfo({ theme }) {
 			/>
 
 			{/* UNDER OBSERVATION */}
-			<ToggleSwitch
+			{/* <ToggleSwitch
 				switcher={plant.flags.underObservation}
 				onEvent={() => {}}
-			/>
+			/> */}
 
 			<PlantHistory theme={theme} />
 		</div>

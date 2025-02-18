@@ -4,7 +4,7 @@ import { usePlantsActions } from '../../hooks/usePlantsActions'
 
 import { Button, Cloud_arrow_up, Edit_icon } from '../../../app'
 
-import { updatePlantHistoryEvents } from './updateHistory'
+import { updateSimpleEvents } from '../history/utils/updateHistory'
 
 import {
 	formatDate,
@@ -25,7 +25,7 @@ export function EstimatedChangeField({ plant, edit, iconSize }) {
 
 			let updatedPlant = { ...plant, estimatedChange: newCahngeDate }
 
-			const updatedHistory = updatePlantHistoryEvents(
+			const updatedHistory = updateSimpleEvents(
 				updatedPlant,
 				'estimatedChange',
 				newCahngeDate
