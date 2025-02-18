@@ -10,7 +10,7 @@ import {
 export function useProductsActions() {
 	const dispatch = useDispatch()
 
-	const selectProduct = () => {
+	const selectProduct = (product) => {
 		dispatch(setSelectedProduct(product))
 	}
 
