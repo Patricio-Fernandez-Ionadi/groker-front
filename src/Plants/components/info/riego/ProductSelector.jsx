@@ -15,8 +15,6 @@ export function ProductSelector({ edit, eventData }) {
 		productAmount: '',
 	})
 
-	console.log('productos seleccionados en el estado:', selectedProducts)
-
 	useEffect(() => {
 		update({ ...state, productsUsed: selectedProducts })
 	}, [selectedProducts])

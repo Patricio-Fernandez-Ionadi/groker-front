@@ -57,7 +57,6 @@ export function WateringField({ edit, plant, iconSize }) {
 				'watering',
 				wateringData
 			)
-			console.log('historial a guardar:', updatedHistory)
 
 			const plantToSave = {
 				...updatedPlant,
