@@ -74,8 +74,8 @@ export const updateObjectEvent = (plant, type, newValues) => {
 	)
 
 	// Si no hay cambios devuelve el historial sin modificar
-	if (updatedProducts.length > 0) {
-		filteredValues.productsUsed = updatedProducts
+	if (updatedProducts.updatedArray.length > 0) {
+		filteredValues.productsUsed = updatedProducts.updatedArray
 	}
 
 	// 🔹 No actualizar si no hay cambios
@@ -156,5 +156,5 @@ function updateProductsArray(prevArray, newArray) {
 		}
 	})
 
-	return updatedArray
+	return { updatedArray, prev: prevArray, new: newArray }
 }
