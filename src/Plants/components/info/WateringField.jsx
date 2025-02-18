@@ -14,7 +14,7 @@ import { WateringForm } from './riego/WateringForm'
 import { ProductSelector } from './riego/ProductSelector'
 import { updateObjectEvent } from '../history/utils/updateHistory'
 
-export function WateringField({ edit, plant, iconSize, theme }) {
+export function WateringField({ edit, plant, iconSize }) {
 	const { updatePlant } = usePlantsActions()
 	const { state, update } = edit
 	const wateringDateRef = React.useRef(null)

@@ -2,6 +2,7 @@
 	input[type='date'] {
 		width: 115px;
 	}
+
 	.text-input,
 	input[type='number'] {
 		@include useThemeText($text, $white);

@@ -1,9 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router'
 
-import { formatDate, PlantHistory, usePlants, usePlantsActions } from '../../'
-
-import { Edit_icon, ToggleSwitch } from '../../../app'
+import { PlantHistory, usePlants, usePlantsActions } from '../../'
 
 // Fields
 import { NameField } from './NameField'
@@ -14,7 +12,7 @@ import { EstimatedChangeField } from './EstimatedChangeField'
 import { PotSizeField } from './PotSizeField'
 import { WateringField } from './WateringField'
 
-export function PlantInfo({ theme }) {
+export function PlantInfo() {
 	const plantId = useParams().id
 	const { plants, selectedPlant } = usePlants()
 	const { selectPlant } = usePlantsActions()
@@ -48,7 +46,6 @@ export function PlantInfo({ theme }) {
 				edit={{ state: edit, update: setEdit }}
 				plant={plant}
 				iconSize={iconSize}
-				theme={theme}
 			/>
 
 			{/* ENTRY DATE */}
@@ -90,7 +87,6 @@ export function PlantInfo({ theme }) {
 			<WateringField
 				edit={{ state: edit, update: setEdit }}
 				plant={plant}
-				theme={theme}
 				iconSize={iconSize}
 			/>
 
@@ -100,7 +96,7 @@ export function PlantInfo({ theme }) {
 				onEvent={() => {}}
 			/> */}
 
-			<PlantHistory theme={theme} />
+			<PlantHistory />
 		</div>
 	)
 }

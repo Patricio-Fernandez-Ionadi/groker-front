@@ -26,11 +26,11 @@ select {
 }
 
 button {
-	cursor: pointer;
 	@include useThemeBg($primary, $secondary);
-	border-radius: $border_radius;
-	border: none;
 	padding: 10px;
+	border: none;
+	border-radius: $border_radius;
+	cursor: pointer;
 	&:hover {
 		@include useThemeBg($secondary, $primary);
 	}

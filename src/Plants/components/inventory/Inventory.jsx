@@ -1,16 +1,17 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router'
 
-import { Button } from '../../../app'
+import { Button, useTheme } from '../../../app'
 
 import { usePlants } from '../..'
 
 import { InventoryTable } from './InventoryTable'
 import { InventoryEmpty } from './InventoryEmpty'
 
-export const Inventory = ({ theme }) => {
+export const Inventory = () => {
 	const location = useLocation()
 	const { plants } = usePlants()
+	const { theme } = useTheme()
 
 	const renderAddPlantButton = () => (
 		<Button>

@@ -7,7 +7,7 @@ import { AddProduct } from './AddProduct'
 
 import { useProducts, useProductsActions } from '../'
 
-export const ProductList = ({ theme }) => {
+export const ProductList = () => {
 	const {
 		isAddProductFormOpen,
 		toggleAddProductForm,
@@ -46,16 +46,16 @@ export const ProductList = ({ theme }) => {
 	}
 
 	return (
-		<div className={`product-list-container ${theme}`}>
+		<div className="product-list-container">
 			<h2>Inventario de Productos</h2>
-			<Button className="add-product-button" onClick={toggleAddProductForm}>
+			<Button className="add-product-button" onEvent={toggleAddProductForm}>
 				{isAddProductFormOpen ? 'Cerrar' : 'Añadir Producto'}
 			</Button>
 			{(isAddProductFormOpen || isEditProductFormOpen) && <AddProduct />}
 
 			<div className="products-grid">
 				{products.map((product) => (
-					<div className={`product-card ${theme}`} key={product.name}>
+					<div className="product-card" key={product.name}>
 						<h3>{product.name}</h3>
 						<table className="product-table">
 							<tbody>
@@ -107,7 +107,6 @@ export const ProductList = ({ theme }) => {
 				onClose={closeModal}
 				onConfirm={confirmDelete}
 				message={`¿Estás seguro de que deseas eliminar el producto "${productToDelete?.name}"?`}
-				theme={theme}
 			/>
 		</div>
 	)

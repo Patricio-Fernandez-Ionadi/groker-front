@@ -4,9 +4,11 @@ import { usePlants } from '../../hooks/usePlants'
 
 import { formatDate } from '../../utils/dateUtils'
 import { translateField } from '../../utils/translations'
+import { useTheme } from '../../../app'
 
-export const PlantHistory = ({ theme }) => {
+export const PlantHistory = () => {
 	const { selectedPlant } = usePlants()
+	const { theme } = useTheme()
 
 	if (!selectedPlant || selectedPlant.history.length === 0) return null
 

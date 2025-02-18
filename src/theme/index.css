@@ -42,11 +42,11 @@ select {
 }
 
 button {
-  cursor: pointer;
   transition: background 0.2s ease;
-  border-radius: 3px;
-  border: none;
   padding: 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
 }
 button.light {
   background: #007d85;
@@ -112,11 +112,11 @@ a:visited {
 }
 
 .cancel-button {
-  background-color: #f44336;
+  background-color: #d32f2f;
   color: white;
 }
 .cancel-button:hover {
-  background-color: #d32f2f;
+  background-color: #f44336;
 }
 
 .confirm-button {
@@ -396,13 +396,13 @@ a:visited {
   }
 }
 .plant-history-component {
+  transition: background 0.2s ease;
   padding: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   border-radius: 3px;
-  transition: background 0.2s ease;
 }
 .plant-history-component.light {
-  background: #f5f5f5;
+  background: #fff;
 }
 .plant-history-component.dark {
   background: #373737;
@@ -717,20 +717,8 @@ input[type=number]::-webkit-inner-spin-button {
   border-radius: 3px;
   padding: 15px;
 }
-.product-list-container .products-grid .product-card.light {
-  box-shadow: 0 2px 5px rgba(33, 33, 33, 0.1);
-}
-.product-list-container .products-grid .product-card.dark {
-  box-shadow: 0 3px 10px rgba(0, 125, 133, 0.2);
-}
 .product-list-container .products-grid .product-card:hover {
   transform: scale(1.01);
-}
-.product-list-container .products-grid .product-card:hover.light {
-  box-shadow: 0 2px 5px rgba(33, 33, 33, 0.1);
-}
-.product-list-container .products-grid .product-card:hover.dark {
-  box-shadow: 0 3px 10px rgba(0, 125, 133, 0.2);
 }
 .product-list-container .products-grid .product-card h3 {
   margin: 0 0 10px;

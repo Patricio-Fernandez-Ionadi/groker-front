@@ -1,11 +1,10 @@
 .plant-history-component {
+	@include useThemeBg($white_light, $black_light);
 	padding: 20px;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 	border-radius: $border_radius;
-	@include useThemeBg($white, $black_light);
 	h2 {
 		text-align: center;
-		// color: $text;
 	}
 
 	.history-entry {
@@ -13,11 +12,9 @@
 		padding: 8px;
 		border: 1px solid #ddd;
 		border-radius: $border_radius;
-		// background-color: #fff;
 
 		h3 {
 			margin-top: 0;
-			// color: #555;
 		}
 
 		ul {

@@ -1,7 +1,7 @@
 export const routes = {
 	home: '/',
-	plants: '/plants',
-	plantAdd: '/plants/ingreso',
+	plants: 'plants',
+	plantAdd: 'ingreso',
 	plantDetail: (id) => `/plants/${id}`,
-	products: '/products',
+	products: 'products',
 }

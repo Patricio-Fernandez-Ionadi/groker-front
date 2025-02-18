@@ -18,12 +18,10 @@
 		gap: 10px;
 
 		.product-card {
-			@include useThemeShadow($black, $primary);
 			border: 1px solid $white_dark;
 			border-radius: $border_radius;
 			padding: 15px;
 			&:hover {
-				@include useThemeShadow($black, $primary);
 				transform: scale(1.01);
 			}
 

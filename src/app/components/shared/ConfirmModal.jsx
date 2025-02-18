@@ -1,7 +1,9 @@
 import React from 'react'
+import { useTheme } from '../../context/ThemeContext'
 
-export function ConfirmModal({ isOpen, onClose, onConfirm, message, theme }) {
+export function ConfirmModal({ isOpen, onClose, onConfirm, message }) {
 	if (!isOpen) return null
+	const { theme } = useTheme()
 
 	return (
 		<div className="modal-overlay" onClick={onClose}>

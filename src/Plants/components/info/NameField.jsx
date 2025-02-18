@@ -1,12 +1,13 @@
 import React from 'react'
-import { Button, Cloud_arrow_up, Edit_icon } from '../../../app'
+import { Button, Cloud_arrow_up, Edit_icon, useTheme } from '../../../app'
 
 import { usePlantsActions } from '../../hooks/usePlantsActions'
 
 import { updateSimpleEvents } from '../history/utils/updateHistory'
 
-export const NameField = ({ edit, plant, iconSize, theme }) => {
+export const NameField = ({ edit, plant, iconSize }) => {
 	const { updatePlant } = usePlantsActions()
+	const { theme } = useTheme()
 	const { state, update } = edit
 	const nameRef = React.useRef(null)
 
