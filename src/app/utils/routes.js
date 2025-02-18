@@ -1,7 +1,7 @@
 export const routes = {
-	home: '/',
-	plants: 'plants',
-	plantAdd: 'ingreso',
-	plantDetail: (id) => `/plants/${id}`,
-	products: 'products',
+	home: { path: '/' },
+	plants: { path: 'plants' },
+	plantAdd: { path: 'ingreso' },
+	products: { path: 'products' },
+	plantDetail: { path: ':id', buildPath: (id) => `${id}` },
 }

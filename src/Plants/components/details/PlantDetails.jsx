@@ -13,7 +13,7 @@ export const PlantDetails = () => {
 			<h2>Detalles de la Planta</h2>
 			<Button>
 				<Link
-					to={routes.plantDetail(selectedPlant._id)}
+					to={routes.plantDetail.buildPath(selectedPlant._id)}
 					state={{ from: location.pathname }}
 				>
 					Ver más sobre esta planta

@@ -42,7 +42,7 @@ export const Navigation = () => {
 				</div>
 			</div>
 
-			<Link to={routes.home}>
+			<Link to={routes.home.path}>
 				<h1>Gestión de Inventario de Cultivos</h1>
 			</Link>
 
@@ -60,7 +60,7 @@ export const Navigation = () => {
 				<ul className="navigation-list">
 					<li>
 						<Link
-							to={routes.home}
+							to={routes.home.path}
 							state={sendFromLocation}
 							onClick={(e) => setIsOpen(false)}
 						>
@@ -69,7 +69,7 @@ export const Navigation = () => {
 					</li>
 					<li>
 						<Link
-							to={routes.plants}
+							to={routes.plants.path}
 							state={sendFromLocation}
 							onClick={(e) => setIsOpen(false)}
 						>
@@ -78,7 +78,7 @@ export const Navigation = () => {
 					</li>
 					<li>
 						<Link
-							to={routes.products}
+							to={routes.products.path}
 							state={sendFromLocation}
 							onClick={(e) => setIsOpen(false)}
 						>

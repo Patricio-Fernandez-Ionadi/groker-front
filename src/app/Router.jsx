@@ -1,8 +1,8 @@
 import React from 'react'
 import { Routes, Route } from 'react-router'
 
-import { App } from './App'
 import { routes } from './index'
+
 import { AddPlant, Inventory, PlantInfo, Detail } from '../Plants'
 import { ProductList } from '../Products'
 
@@ -19,7 +19,7 @@ export const Router = () => {
 				}
 			/>
 
-			<Route path={routes.plants}>
+			<Route path={routes.plants.path}>
 				<Route
 					index
 					element={
@@ -29,10 +29,10 @@ export const Router = () => {
 						</>
 					}
 				/>
-				<Route path={routes.plantAdd} element={<AddPlant />} />
-				<Route path=":id" element={<PlantInfo />} />
+				<Route path={routes.plantAdd.path} element={<AddPlant />} />
+				<Route path={routes.plantDetail.path} element={<PlantInfo />} />
 			</Route>
-			<Route path={routes.products} element={<ProductList />} />
+			<Route path={routes.products.path} element={<ProductList />} />
 		</Routes>
 	)
 }
