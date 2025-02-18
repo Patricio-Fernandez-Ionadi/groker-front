@@ -1,11 +1,10 @@
 export { AddPlant } from './components/AddPlant'
-export { PlantHistory } from './components/PlantHistory'
 
 export { Inventory } from './components/inventory/Inventory'
+export { PlantHistory } from './components/history/PlantHistory'
 
-export { Detail } from './components/details/Detail'
 export { PlantDetails } from './components/details/PlantDetails'
-export { InventoryDetails } from './components/details/InventoryDetails'
+export { InventoryDetails } from './components/inventory/InventoryDetails'
 
 export { PlantInfo } from './components/info/PlantInfo'
 

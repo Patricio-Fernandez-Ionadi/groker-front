@@ -2,11 +2,14 @@ export { CombinedProviders } from './context/CombinedProviders'
 export { FormContext } from './context/FormContext'
 export { useTheme } from './context/ThemeContext'
 
-export { ConfirmModal } from './components/ConfirmModal'
-export { AlertModal } from './components/AlertModal'
-export { Header } from './components/Header'
-export { ToggleSwitch } from './components/ToggleSwitch'
-export { Button } from './components/Button'
+export { Header } from './components/layout/Header'
+export { Navigation } from './components/layout/navigation/Navigation'
+export { Detail } from './components/layout/Detail'
+
+export { ConfirmModal } from './components/shared/ConfirmModal'
+export { AlertModal } from './components/shared/AlertModal'
+export { ToggleSwitch } from './components/shared/ToggleSwitch'
+export { Button } from './components/shared/Button'
 
 export { store } from './store/store'
 
