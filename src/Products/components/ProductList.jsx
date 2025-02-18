@@ -11,11 +11,12 @@ export const ProductList = () => {
 	const {
 		isAddProductFormOpen,
 		toggleAddProductForm,
-		openEditProductForm,
 		isEditProductFormOpen,
+		openEditProductForm,
+		closeEditProductForm,
 	} = useContext(FormContext)
 
-	const { products } = useProducts()
+	const { products, selectedProduct } = useProducts()
 	const { selectProduct, deleteProduct } = useProductsActions()
 
 	const handleEditProduct = (product) => {
@@ -48,9 +49,17 @@ export const ProductList = () => {
 	return (
 		<div className="product-list-container">
 			<h2>Inventario de Productos</h2>
-			<Button className="add-product-button" onEvent={toggleAddProductForm}>
-				{isAddProductFormOpen ? 'Cerrar' : 'Añadir Producto'}
-			</Button>
+
+			{isEditProductFormOpen && selectedProduct ? (
+				<Button className="add-product-button" onEvent={closeEditProductForm}>
+					Cancelar
+				</Button>
+			) : (
+				<Button className="add-product-button" onEvent={toggleAddProductForm}>
+					{isAddProductFormOpen ? 'Cerrar' : 'Añadir Producto'}
+				</Button>
+			)}
+
 			{(isAddProductFormOpen || isEditProductFormOpen) && <AddProduct />}
 
 			<div className="products-grid">
