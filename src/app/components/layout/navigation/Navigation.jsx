@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router'
 
-import { useTheme } from '../../context/ThemeContext'
+import { useTheme } from '../../../context/ThemeContext'
 
 import { BurguerIcon } from './BurguerIcon'
 import { BackButton } from './BackButton'
 
-import { routes } from '../../utils/routes'
-import { ToggleSwitch } from '../ToggleSwitch'
-import { Dark_icon, Light_icon } from '../../../assets/Icons'
+import { routes } from '../../../utils/routes'
+import { ToggleSwitch } from '../../shared/ToggleSwitch'
+import { Dark_icon, Light_icon } from '../../../../assets/Icons'
 
 export const Navigation = () => {
 	const [isOpen, setIsOpen] = useState(false)

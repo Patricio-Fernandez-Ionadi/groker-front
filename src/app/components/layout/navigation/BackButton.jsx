@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
-import { Arrow_left } from '../../../assets/Icons'
+import { Arrow_left } from '../../../../assets/Icons'
 
 export const BackButton = ({ route, size, color }) => {
 	return (
