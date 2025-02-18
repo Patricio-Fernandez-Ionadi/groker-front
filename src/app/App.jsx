@@ -3,7 +3,8 @@ import React from 'react'
 import { useProducts } from '../Products'
 import { useGenetics } from '../Genetics'
 
-import { usePlants, Inventory, Detail, PlantHistory } from '../Plants'
+import { Detail } from './index'
+import { usePlants, Inventory } from '../Plants'
 
 export const App = ({ theme }) => {
 	const plantsState = usePlants()

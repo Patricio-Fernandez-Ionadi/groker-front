@@ -4,11 +4,9 @@ import { Routes, Route } from 'react-router'
 import { useTheme } from './context/ThemeContext'
 import { GeneticsModal, GenModalContext } from '../Genetics'
 
-import { Header } from './components/Header'
-
 import { App } from './App'
-
-import { AddPlant, Detail, Inventory, PlantInfo } from '../Plants'
+import { Detail, Header } from './index'
+import { AddPlant, Inventory, PlantInfo } from '../Plants'
 import { ProductList } from '../Products'
 
 export const Router = () => {
