@@ -14,7 +14,7 @@ export const store_loadPlants = createAsyncThunk(
 			const data = await api_getPlants()
 			return data
 		} catch (error) {
-			throw new Error('Las plantas no pudieron ser cargadas', error)
+			return rejectWithValue('Las plantas no pudieron ser cargadas')
 		}
 	}
 )
@@ -30,7 +30,7 @@ export const store_addPlant = createAsyncThunk(
 			const data = await api_addPlant(plantToAdd)
 			return data
 		} catch (error) {
-			throw new Error('La planta no pudo ser agregada', error)
+			return rejectWithValue('La planta no pudo ser agregada')
 		}
 	}
 )
@@ -42,7 +42,7 @@ export const store_deletePlantById = createAsyncThunk(
 			const data = await api_deletePlant(id)
 			return data
 		} catch (error) {
-			throw new Error('La planta no pudo ser eliminada', error)
+			return rejectWithValue('La planta no pudo ser eliminada')
 		}
 	}
 )
@@ -55,7 +55,7 @@ export const store_updatePlant = createAsyncThunk(
 			const data = await api_updatePlant(updatedPlant)
 			return data
 		} catch (error) {
-			throw new Error('La planta no pudo ser editada', error)
+			return rejectWithValue('La planta no pudo ser editada')
 		}
 	}
 )
