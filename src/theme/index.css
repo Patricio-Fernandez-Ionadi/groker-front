@@ -303,6 +303,24 @@ a:visited {
   padding-top: 17px;
 }
 
+.details-component {
+  transition: background 0.2s ease;
+  padding: 20px;
+  border-radius: 8px;
+}
+.details-component.light {
+  background: #f5f5f5;
+}
+.details-component.dark {
+  background: #373737;
+}
+.details-component.light {
+  box-shadow: 0 2px 5px rgba(33, 33, 33, 0.1);
+}
+.details-component.dark {
+  box-shadow: 0 3px 10px rgba(0, 125, 133, 0.2);
+}
+
 .app-container {
   transition: background 0.2s ease;
   transition: color 0.2s ease;
@@ -375,183 +393,6 @@ a:visited {
   }
   .header-buttons button:first-child {
     margin-bottom: 10px;
-  }
-}
-/* Estilos generales */
-.dynamic-form {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f5f5f5;
-  border-radius: 3px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-.dynamic-form .action-buttons {
-  width: 100%;
-}
-.dynamic-form .action-buttons:first-child {
-  background-color: #eb6400;
-}
-.dynamic-form .action-buttons:first-child:hover {
-  background-color: #b35208;
-}
-.dynamic-form .watering-fields,
-.dynamic-form .advanced-fields {
-  margin-top: 10px;
-  padding: 15px;
-  border: 1px dashed #616161;
-  border-radius: 3px;
-}
-.dynamic-form .common-fields {
-  margin: 10px 0;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(2, 40px) 60px 100px;
-  gap: 10px;
-  grid-template-areas: "stage stage stage potSize potSize potSize" "temperature temperature temperature humidity humidity humidity" "switchPot switchPot switchObs switchObs switchWater switchWater" "notes notes notes notes notes notes";
-}
-.dynamic-form .stage-select {
-  grid-area: stage;
-}
-.dynamic-form .potSize-input {
-  grid-area: potSize;
-}
-.dynamic-form .temperature-input {
-  grid-area: temperature;
-}
-.dynamic-form .humidity-input {
-  grid-area: humidity;
-}
-.dynamic-form .isFinalPot-switch {
-  grid-area: switchPot;
-}
-.dynamic-form .underObservation-switch {
-  grid-area: switchObs;
-}
-.dynamic-form .watered-switch {
-  grid-area: switchWater;
-}
-.dynamic-form .notes-textarea {
-  grid-area: notes;
-  resize: none;
-}
-.dynamic-form .isFinalPot-switch,
-.dynamic-form .underObservation-switch,
-.dynamic-form .watered-switch {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-.dynamic-form .isFinalPot-switch p,
-.dynamic-form .underObservation-switch p,
-.dynamic-form .watered-switch p {
-  margin-bottom: 5px;
-}
-.dynamic-form .advanced-fields {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 80px 100px;
-  gap: 10px;
-  grid-template-areas: "date name" "change genetic";
-}
-.dynamic-form .advanced-date {
-  grid-area: date;
-}
-.dynamic-form .advanced-name {
-  grid-area: name;
-}
-.dynamic-form .advanced-genetic {
-  grid-area: genetic;
-}
-.dynamic-form .advanced-genetic button {
-  width: 100%;
-  padding: 5px 0;
-}
-.dynamic-form .advanced-change {
-  grid-area: change;
-}
-.dynamic-form .watering-fields {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas: "watering-date watering-amount" "watering-ph watering-ec" "watering-products watering-products" "watering-product-add watering-product-add";
-  align-items: end;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-.dynamic-form .watering-date {
-  grid-area: watering-date;
-  height: 60px;
-}
-.dynamic-form .watering-amount {
-  grid-area: watering-amount;
-}
-.dynamic-form .watering-ph {
-  grid-area: watering-ph;
-}
-.dynamic-form .watering-ec {
-  grid-area: watering-ec;
-}
-.dynamic-form .watering-products {
-  grid-area: watering-products;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.dynamic-form .watering-product-item {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr; /* Select, Amount, Remove */
-  gap: 10px;
-  align-items: center;
-}
-.dynamic-form .watering-product-select {
-  grid-column: 1/2;
-}
-.dynamic-form .watering-product-amount {
-  grid-column: 2/3;
-}
-.dynamic-form .watering-product-remove {
-  grid-column: 3/4;
-}
-.dynamic-form .watering-product-add {
-  grid-area: watering-product-add;
-}
-
-/* Media Queries para móviles */
-@media (max-width: 769px) {
-  .dynamic-form {
-    padding: 15px;
-  }
-  .dynamic-form .advanced-fields {
-    grid-template-columns: 1fr;
-    grid-template-areas: "date" "name" "genetic" "change";
-    grid-template-rows: auto auto auto auto;
-  }
-  .dynamic-form .common-fields {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 40px) auto 100px;
-    grid-template-areas: "stage stage stage" "potSize potSize potSize" "temperature temperature temperature" "humidity humidity humidity" "switchPot switchObs switchWater" "notes notes notes";
-  }
-  .dynamic-form .watering-fields {
-    grid-template-columns: 1fr;
-    grid-template-areas: "watering-date" "watering-amount" "watering-ph" "watering-ec" "watering-products" "watering-product-add";
-  }
-  .dynamic-form .watering-product-item {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas: "watprod-select watprod-select watprod-amount" "watprod-remove watprod-remove watprod-remove";
-    gap: 10px;
-    align-items: center;
-  }
-  .dynamic-form .watering-product-select {
-    grid-area: watprod-select;
-  }
-  .dynamic-form .watering-product-amount {
-    grid-area: watprod-amount;
-  }
-  .dynamic-form .watering-product-remove {
-    grid-area: watprod-remove;
   }
 }
 .plant-history-component {
@@ -698,24 +539,6 @@ a:visited {
     display: none; /* Ocultar columnas adicionales en móviles */
   }
 }
-.details-component {
-  transition: background 0.2s ease;
-  padding: 20px;
-  border-radius: 8px;
-}
-.details-component.light {
-  background: #f5f5f5;
-}
-.details-component.dark {
-  background: #373737;
-}
-.details-component.light {
-  box-shadow: 0 2px 5px rgba(33, 33, 33, 0.1);
-}
-.details-component.dark {
-  box-shadow: 0 3px 10px rgba(0, 125, 133, 0.2);
-}
-
 .plant-info-component input[type=date] {
   width: 115px;
 }
@@ -867,183 +690,6 @@ input[type=number]::-webkit-inner-spin-button {
   }
   .add-plant-form-button {
     font-size: 18px;
-  }
-}
-/* Estilos generales */
-.dynamic-form {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f5f5f5;
-  border-radius: 3px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-.dynamic-form .action-buttons {
-  width: 100%;
-}
-.dynamic-form .action-buttons:first-child {
-  background-color: #eb6400;
-}
-.dynamic-form .action-buttons:first-child:hover {
-  background-color: #b35208;
-}
-.dynamic-form .watering-fields,
-.dynamic-form .advanced-fields {
-  margin-top: 10px;
-  padding: 15px;
-  border: 1px dashed #616161;
-  border-radius: 3px;
-}
-.dynamic-form .common-fields {
-  margin: 10px 0;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(2, 40px) 60px 100px;
-  gap: 10px;
-  grid-template-areas: "stage stage stage potSize potSize potSize" "temperature temperature temperature humidity humidity humidity" "switchPot switchPot switchObs switchObs switchWater switchWater" "notes notes notes notes notes notes";
-}
-.dynamic-form .stage-select {
-  grid-area: stage;
-}
-.dynamic-form .potSize-input {
-  grid-area: potSize;
-}
-.dynamic-form .temperature-input {
-  grid-area: temperature;
-}
-.dynamic-form .humidity-input {
-  grid-area: humidity;
-}
-.dynamic-form .isFinalPot-switch {
-  grid-area: switchPot;
-}
-.dynamic-form .underObservation-switch {
-  grid-area: switchObs;
-}
-.dynamic-form .watered-switch {
-  grid-area: switchWater;
-}
-.dynamic-form .notes-textarea {
-  grid-area: notes;
-  resize: none;
-}
-.dynamic-form .isFinalPot-switch,
-.dynamic-form .underObservation-switch,
-.dynamic-form .watered-switch {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-.dynamic-form .isFinalPot-switch p,
-.dynamic-form .underObservation-switch p,
-.dynamic-form .watered-switch p {
-  margin-bottom: 5px;
-}
-.dynamic-form .advanced-fields {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 80px 100px;
-  gap: 10px;
-  grid-template-areas: "date name" "change genetic";
-}
-.dynamic-form .advanced-date {
-  grid-area: date;
-}
-.dynamic-form .advanced-name {
-  grid-area: name;
-}
-.dynamic-form .advanced-genetic {
-  grid-area: genetic;
-}
-.dynamic-form .advanced-genetic button {
-  width: 100%;
-  padding: 5px 0;
-}
-.dynamic-form .advanced-change {
-  grid-area: change;
-}
-.dynamic-form .watering-fields {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas: "watering-date watering-amount" "watering-ph watering-ec" "watering-products watering-products" "watering-product-add watering-product-add";
-  align-items: end;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-.dynamic-form .watering-date {
-  grid-area: watering-date;
-  height: 60px;
-}
-.dynamic-form .watering-amount {
-  grid-area: watering-amount;
-}
-.dynamic-form .watering-ph {
-  grid-area: watering-ph;
-}
-.dynamic-form .watering-ec {
-  grid-area: watering-ec;
-}
-.dynamic-form .watering-products {
-  grid-area: watering-products;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.dynamic-form .watering-product-item {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr; /* Select, Amount, Remove */
-  gap: 10px;
-  align-items: center;
-}
-.dynamic-form .watering-product-select {
-  grid-column: 1/2;
-}
-.dynamic-form .watering-product-amount {
-  grid-column: 2/3;
-}
-.dynamic-form .watering-product-remove {
-  grid-column: 3/4;
-}
-.dynamic-form .watering-product-add {
-  grid-area: watering-product-add;
-}
-
-/* Media Queries para móviles */
-@media (max-width: 769px) {
-  .dynamic-form {
-    padding: 15px;
-  }
-  .dynamic-form .advanced-fields {
-    grid-template-columns: 1fr;
-    grid-template-areas: "date" "name" "genetic" "change";
-    grid-template-rows: auto auto auto auto;
-  }
-  .dynamic-form .common-fields {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 40px) auto 100px;
-    grid-template-areas: "stage stage stage" "potSize potSize potSize" "temperature temperature temperature" "humidity humidity humidity" "switchPot switchObs switchWater" "notes notes notes";
-  }
-  .dynamic-form .watering-fields {
-    grid-template-columns: 1fr;
-    grid-template-areas: "watering-date" "watering-amount" "watering-ph" "watering-ec" "watering-products" "watering-product-add";
-  }
-  .dynamic-form .watering-product-item {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas: "watprod-select watprod-select watprod-amount" "watprod-remove watprod-remove watprod-remove";
-    gap: 10px;
-    align-items: center;
-  }
-  .dynamic-form .watering-product-select {
-    grid-area: watprod-select;
-  }
-  .dynamic-form .watering-product-amount {
-    grid-area: watprod-amount;
-  }
-  .dynamic-form .watering-product-remove {
-    grid-area: watprod-remove;
   }
 }
 .product-list-container {

@@ -1,5 +1,6 @@
 @import '../components/style/burger';
 @import '../components/style/navigation';
+@import '../components/style/details';
 
 .app-container {
 	@include useThemeBg($white, $black);
