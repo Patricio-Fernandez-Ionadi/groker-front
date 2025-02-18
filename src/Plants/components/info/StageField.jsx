@@ -4,7 +4,7 @@ import { Button, Cloud_arrow_up, Edit_icon } from '../../../app'
 import { usePlantsActions } from '../../hooks/usePlantsActions'
 
 import { translateField } from '../../utils/translations'
-import { formatDateToISO } from '../../utils/dateUtils'
+import { culateEstimatedChangeFromNow } from '../../utils/dateUtils'
 import { updateSimpleEvents } from '../history/utils/updateHistory'
 
 export const StageField = ({ edit, plant, iconSize }) => {
@@ -24,28 +24,11 @@ export const StageField = ({ edit, plant, iconSize }) => {
 				return
 			}
 
-			const recalculateEstimatedChange = () => {
-				const todayDate = new Date()
-
-				let newChangeDate
-
-				// Calcula la fecha estimada de cambio o corte de una planta segun la nueva etapa registrada
-				if (newStage === 'vegetative') {
-					newChangeDate = todayDate.setDate(todayDate.getDate() + 42) // 6 weeks
-				} else if (newStage === 'flowering') {
-					newChangeDate = todayDate.setDate(todayDate.getDate() + 56) // 8 weeks
-				} else if (newStage === 'germination') {
-					newChangeDate = todayDate.setDate(todayDate.getDate() + 28) // 4 weeks
-				}
-
-				return formatDateToISO(newChangeDate)
-			}
-
 			// Actualiza los datos de la planta
 			let updatedBasePlant = {
 				...plant,
 				stage: newStage,
-				estimatedChange: recalculateEstimatedChange(),
+				estimatedChange: culateEstimatedChangeFromNow(newStage),
 			}
 
 			// Actualiza el historial con el evento stage
@@ -65,7 +48,7 @@ export const StageField = ({ edit, plant, iconSize }) => {
 			const updateChangeEvent = updateSimpleEvents(
 				updatedPlantHistoryStage,
 				'estimatedChange',
-				recalculateEstimatedChange()
+				culateEstimatedChangeFromNow(newStage)
 			)
 
 			// Resultado de la planta con el nuevo historial (ambos eventos stage y estimatedChange)
