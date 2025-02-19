@@ -5,13 +5,11 @@ import {
 	Cloud_arrow_up,
 	Edit_icon,
 	ToggleSwitch,
-	useTheme,
 } from '../../../app'
 import { usePlantsActions } from '../../hooks/usePlantsActions'
 import { updateSimpleEvents } from '../history/utils/updateHistory'
 
 export function PotSizeField({ edit, plant, iconSize }) {
-	const { theme } = useTheme()
 	const { updatePlant } = usePlantsActions()
 	const { state, update } = edit
 	const potSizeRef = React.useRef(null)
@@ -138,11 +136,7 @@ export function PotSizeField({ edit, plant, iconSize }) {
 				</span>
 			)}
 			{showAlert && (
-				<AlertModal
-					message={alertMessage}
-					onClose={handleCloseAlert}
-					theme={theme}
-				/>
+				<AlertModal message={alertMessage} onClose={handleCloseAlert} />
 			)}
 		</>
 	)
