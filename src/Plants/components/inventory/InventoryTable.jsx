@@ -22,7 +22,7 @@ export const InventoryTable = ({ theme }) => {
 		if (isEditPlantFormOpen) closeEditPlantForm()
 	}
 
-	const abbreviate = (str, n) => str.slice(0, n)
+	const abbreviate = (str, n) => str?.slice(0, n) || str
 
 	if (!plants) return <p>...Cargando</p>
 
