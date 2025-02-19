@@ -1,83 +1,38 @@
-.plant-list-component {
-	@include useThemeBg($white, $black_light);
-	@include useThemeShadow($black, $primary);
-	padding: 20px;
-	border-radius: 8px;
-	h2 {
-		text-align: center;
-	}
-}
+.inventory-component {
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	gap: 20px;
 
-.inventory-table {
-	width: $full;
-	border-collapse: collapse;
-	th,
-	td {
-		border: 1px solid $white_dark;
-		padding: 2px;
-		height: 50px;
-		text-align: center;
-	}
-	& th {
-		@include useThemeBg($secondary_light, $secondary_dark);
-	}
+	.inventory-table-container {
+		@include useThemeBg($white, $black_light);
+		@include useThemeShadow($black, $white);
+		border-radius: 8px;
+		padding: 20px;
 
-	& tr {
-		cursor: pointer;
-		height: 50px;
-		&.selected {
-			@include useThemeBg($secondary, $primary);
+		h2 {
+			text-align: center;
 		}
-		&:last-child {
-			td:first-child {
-				border-radius: 0 0 0 $border_radius;
+
+		.inventory-empty {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			& p {
+				margin-bottom: 10px;
 			}
-			td:last-child {
-				border-radius: 0 0 $border_radius 0;
+			& button {
+				margin-top: 10px;
+				width: 200px;
+				font-size: 16px;
 			}
 		}
-	}
-
-	& .table-buttons {
-		border: 1px solid $secondary_dark;
-		width: $full;
-		padding: 2px 0;
-		&:first-child {
-			margin-bottom: 1px;
-		}
-	}
-}
-
-.inventory-empty {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
-	& p {
-		margin-bottom: 10px;
-	}
-	& button {
-		margin-top: 10px;
-		width: 200px;
-		font-size: 16px;
 	}
 }
 
 @media (max-width: $medium) {
-	.inventory-table th,
-	.inventory-table td {
-		font-size: 14px; /* Reducir el tamaño del texto */
-		padding: 6px; /* Reducir el padding */
-	}
-	.inventory-table th:nth-child(2),
-	.inventory-table td:nth-child(2),
-	.inventory-table th:nth-child(3),
-	.inventory-table td:nth-child(3),
-	.inventory-table th:nth-child(5),
-	.inventory-table td:nth-child(5),
-	.inventory-table th:nth-child(7),
-	.inventory-table td:nth-child(7) {
-		display: none; /* Ocultar columnas adicionales en móviles */
+	.inventory-component {
+		grid-template-columns: 1fr;
 	}
 }

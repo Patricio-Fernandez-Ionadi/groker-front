@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router'
 
 import { Button, useTheme } from '../../../app'
 
-import { usePlants } from '../..'
+import { Detail, usePlants } from '../..'
 
 import { InventoryTable } from './InventoryTable'
 import { InventoryEmpty } from './InventoryEmpty'
@@ -24,14 +24,21 @@ export const Inventory = () => {
 	if (!plants) return <p>...Cargando</p>
 
 	return (
-		<section className={`plant-list-component ${theme}`}>
-			{plants.length > 0 && <>{renderAddPlantButton()}</>}
-			<h2>Inventario de Plantas</h2>
-			{plants.length > 0 ? (
-				<InventoryTable theme={theme} />
-			) : (
-				<InventoryEmpty>{renderAddPlantButton()}</InventoryEmpty>
-			)}
-		</section>
+		<main>
+			<section className={`inventory-component ${theme}`}>
+				<div className={`inventory-table-container ${theme}`}>
+					<h2>Inventario de Plantas</h2>
+					{plants.length > 0 && <>{renderAddPlantButton()}</>}
+					{plants.length > 0 ? (
+						<>
+							<InventoryTable theme={theme} />
+						</>
+					) : (
+						<InventoryEmpty>{renderAddPlantButton()}</InventoryEmpty>
+					)}
+				</div>
+				<Detail />
+			</section>
+		</main>
 	)
 }

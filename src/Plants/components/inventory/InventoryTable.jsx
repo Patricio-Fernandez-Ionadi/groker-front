@@ -27,39 +27,37 @@ export const InventoryTable = ({ theme }) => {
 	if (!plants) return <p>...Cargando</p>
 
 	return (
-		<table className={`inventory-table ${theme}`}>
-			<thead>
-				<tr>
-					<th className={theme}>Nombre</th>
-					<th className={theme}>Genética</th>
-					<th className={theme}>Ingreso</th>
-					<th className={theme}>Etapa</th>
-					<th className={theme}>Cambio de Ciclo</th>
-					<th className={theme}>Último Riego</th>
-					<th className={theme}>En Observación</th>
-				</tr>
-			</thead>
-			<tbody>
-				{plants.map((plant) => (
-					<tr
-						key={plant._id}
-						onClick={() => handlePlantSelection(plant)}
-						className={`${
-							selectedPlant && selectedPlant._id === plant._id
-								? `selected ${theme}`
-								: ''
-						}`}
-					>
-						<td>{plant.name}</td>
-						<td>{abbreviate(plant.genetic.name, 4)}.</td>
-						<td>{formatDate(plant.entryDate)}</td>
-						<td>{abbreviate(translateField(plant.stage), 3)}.</td>
-						<td>{formatDate(plant.estimatedChange)}</td>
-						<td>{formatDate(plant.lastWatered)}</td>
-						<td>{plant.flags.underObservation && <Eye_icon />}</td>
-					</tr>
-				))}
-			</tbody>
-		</table>
+		<>
+			<div className="inventory-table-component">
+				<div className="table-head">
+					<p>n°</p>
+					<p>Nombre</p>
+					<p>Ingreso</p>
+					<p>Periodo</p>
+					<p>Cambio de Ciclo</p>
+					<p>Ultimo Riego</p>
+				</div>
+				<div className="table-body">
+					{plants.map((each, idx) => (
+						<div
+							key={each._id}
+							onClick={() => handlePlantSelection(each)}
+							className={`table-row ${
+								selectedPlant && selectedPlant._id === each._id
+									? `selected ${theme}`
+									: ''
+							}`}
+						>
+							<p>{idx}</p>
+							<p>{each.name}</p>
+							<p>{formatDate(each.entryDate)}</p>
+							<p>{abbreviate(translateField(each.stage), 3)}.</p>
+							<p>{formatDate(each.estimatedChange)}</p>
+							<p>{formatDate(each.lastWatered)}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</>
 	)
 }

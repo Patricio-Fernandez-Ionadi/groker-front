@@ -42,70 +42,74 @@ export function PlantInfo() {
 
 	if (!plant) return <p>Parece que la planta no existe</p>
 	return (
-		<div className="plant-info-component">
-			{/* NAME */}
-			<NameField
-				edit={{ state: edit, update: setEdit }}
-				plant={plant}
-				iconSize={iconSize}
-			/>
+		<main>
+			<div className="plant-info-component">
+				<div className="plant-info-fields">
+					{/* NAME */}
+					<NameField
+						edit={{ state: edit, update: setEdit }}
+						plant={plant}
+						iconSize={iconSize}
+					/>
 
-			{/* ENTRY DATE */}
-			<EntryDateField
-				edit={{ state: edit, update: setEdit }}
-				plant={plant}
-				iconSize={iconSize}
-			/>
+					{/* ENTRY DATE */}
+					<EntryDateField
+						edit={{ state: edit, update: setEdit }}
+						plant={plant}
+						iconSize={iconSize}
+					/>
 
-			{/* GENETIC */}
-			<GeneticField
-				edit={{ state: edit, update: setEdit }}
-				plant={plant}
-				iconSize={iconSize}
-			/>
+					{/* GENETIC */}
+					<GeneticField
+						edit={{ state: edit, update: setEdit }}
+						plant={plant}
+						iconSize={iconSize}
+					/>
 
-			{/* STAGE */}
-			<StageField
-				edit={{ state: edit, update: setEdit }}
-				plant={plant}
-				iconSize={iconSize}
-			/>
+					{/* STAGE */}
+					<StageField
+						edit={{ state: edit, update: setEdit }}
+						plant={plant}
+						iconSize={iconSize}
+					/>
 
-			{/* ESTIMATED CHANGE */}
-			<EstimatedChangeField
-				edit={{ state: edit, update: setEdit }}
-				plant={plant}
-				iconSize={iconSize}
-			/>
+					{/* ESTIMATED CHANGE */}
+					<EstimatedChangeField
+						edit={{ state: edit, update: setEdit }}
+						plant={plant}
+						iconSize={iconSize}
+					/>
 
-			{/* POT SIZE */}
-			<PotSizeField
-				edit={{ state: edit, update: setEdit }}
-				plant={plant}
-				iconSize={iconSize}
-			/>
+					{/* POT SIZE */}
+					<PotSizeField
+						edit={{ state: edit, update: setEdit }}
+						plant={plant}
+						iconSize={iconSize}
+					/>
 
-			{/* LAST WATERED */}
-			<WateringField
-				edit={{ state: edit, update: setEdit }}
-				plant={plant}
-				iconSize={iconSize}
-			/>
+					{/* LAST WATERED */}
+					<WateringField
+						edit={{ state: edit, update: setEdit }}
+						plant={plant}
+						iconSize={iconSize}
+					/>
 
-			{/* UNDER OBSERVATION */}
-			{/* <ToggleSwitch
+					{/* UNDER OBSERVATION */}
+					{/* <ToggleSwitch
 				switcher={plant.flags.underObservation}
 				onEvent={() => {}}
 			/> */}
 
-			{/* NOTES */}
-			<NotesField
-				edit={{ state: edit, update: setEdit }}
-				plant={plant}
-				iconSize={iconSize}
-			/>
+					{/* NOTES */}
+					<NotesField
+						edit={{ state: edit, update: setEdit }}
+						plant={plant}
+						iconSize={iconSize}
+					/>
+				</div>
 
-			<PlantHistory />
-		</div>
+				<PlantHistory />
+			</div>
+		</main>
 	)
 }

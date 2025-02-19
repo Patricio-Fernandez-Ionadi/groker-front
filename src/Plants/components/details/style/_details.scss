@@ -1,6 +1,6 @@
 .details-component {
 	@include useThemeBg($white, $black_light);
-	@include useThemeShadow($black, $primary);
+	@include useThemeShadow($black, $white);
 	padding: 20px;
 	border-radius: 8px;
 }

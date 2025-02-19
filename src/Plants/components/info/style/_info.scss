@@ -1,20 +1,26 @@
 .plant-info-component {
-	input[type='date'] {
-		width: 115px;
-	}
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	.plant-info-fields {
+		input[type='date'] {
+			width: 115px;
+		}
 
-	.text-input,
-	input[type='number'] {
-		@include useThemeText($text, $white);
-		width: 150px;
-		background: transparent;
-		border-radius: 0;
-		border: none;
-		border-bottom: 1px solid $primary;
-	}
+		.text-input,
+		input[type='number'] {
+			@include useThemeText($text, $white);
+			width: 150px;
+			background: transparent;
+			border-radius: 0;
+			border: none;
+			border-bottom: 1px solid $primary;
+		}
 
-	select {
-		width: 200px;
+		select {
+			width: 200px;
+		}
 	}
 }
 input[type='number']::-webkit-outer-spin-button,
