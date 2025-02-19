@@ -17,9 +17,6 @@ export function NotesField({ edit, plant, iconSize }) {
 		return entryDate === todayDate
 	})
 
-	console.log(todayEntry) // -> undefined
-	// hay notas en el registro
-
 	const noteEvent = todayEntry?.events.find((event) => event.type === 'note')
 	const notes = noteEvent?.details || []
 
