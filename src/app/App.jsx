@@ -24,9 +24,7 @@ export const App = () => {
 		<div className={`app-container ${theme}`}>
 			<Header />
 			{isGeneticModalOpen && (
-				<aside className="forms-section">
-					{isGeneticModalOpen && <GeneticsModal />}
-				</aside>
+				<aside>{isGeneticModalOpen && <GeneticsModal />}</aside>
 			)}
 			<Router />
 		</div>
