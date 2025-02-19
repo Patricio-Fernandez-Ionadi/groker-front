@@ -24,12 +24,7 @@ export const PlantHistory = () => {
 						<p>Notas:</p>
 						<ul>
 							{details.map((note) => (
-								<li key={note.id}>
-									{note.note}{' '}
-									<button onClick={() => handleDeleteNote(note.id)}>
-										eliminar nota
-									</button>
-								</li>
+								<li key={note.id}>{note.note}</li>
 							))}
 						</ul>
 					</>
@@ -109,7 +104,7 @@ export const PlantHistory = () => {
 			{[...selectedPlant.history]
 				.sort((a, b) => new Date(b.date) - new Date(a.date))
 				.map((entry) => (
-					<div key={entry._id} className="history-entry">
+					<div key={entry.date} className="history-entry">
 						<h3>{formatDate(entry.date)}</h3>
 						<ul>
 							{entry.events.map((event, eventIndex) => (
