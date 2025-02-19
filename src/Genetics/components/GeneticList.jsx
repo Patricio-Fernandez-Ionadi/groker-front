@@ -1,5 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+
+import { Button } from '../../app'
 import { deleteGenetic } from '../index'
 
 export function GeneticList() {
@@ -19,18 +21,13 @@ export function GeneticList() {
 				{genetics.map((genetic) => (
 					<li key={genetic._id}>
 						{genetic.name}
-
-						{genetic.name === 'Desconocida' ? (
-							<button className="delete-button disabled" disabled>
-								Eliminar
-							</button>
-						) : (
-							<button
+						{genetic.name !== 'Desconocida' && (
+							<Button
 								className="delete-button"
-								onClick={(e) => handleDeleteGenetic(genetic._id)}
+								onEvent={(e) => handleDeleteGenetic(genetic._id)}
 							>
 								Eliminar
-							</button>
+							</Button>
 						)}
 					</li>
 				))}

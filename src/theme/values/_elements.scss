@@ -27,6 +27,7 @@ select {
 
 button {
 	@include useThemeBg($primary, $secondary);
+	@include useThemeText($text, $white);
 	padding: 10px;
 	border: none;
 	border-radius: $border_radius;

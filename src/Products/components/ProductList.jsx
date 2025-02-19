@@ -94,18 +94,18 @@ export const ProductList = () => {
 							</tbody>
 						</table>
 						<div className="product-actions">
-							<button
+							<Button
 								className="edit-button"
-								onClick={() => handleEditProduct(product)}
+								onEvent={() => handleEditProduct(product)}
 							>
 								Editar
-							</button>
-							<button
+							</Button>
+							<Button
 								className="delete-button"
-								onClick={() => handleDeleteProduct(product._id)}
+								onEvent={() => handleDeleteProduct(product._id)}
 							>
 								Eliminar
-							</button>
+							</Button>
 						</div>
 					</div>
 				))}

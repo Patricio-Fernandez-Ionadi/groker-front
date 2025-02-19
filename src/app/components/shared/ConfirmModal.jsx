@@ -1,5 +1,6 @@
 import React from 'react'
 import { useTheme } from '../../context/ThemeContext'
+import { Button } from './Button'
 
 export function ConfirmModal({ isOpen, onClose, onConfirm, message }) {
 	if (!isOpen) return null
@@ -13,12 +14,12 @@ export function ConfirmModal({ isOpen, onClose, onConfirm, message }) {
 			>
 				<p>{message}</p>
 				<div className="modal-actions">
-					<button className="cancel-button" onClick={onClose}>
-						Cancelar
-					</button>
-					<button className="confirm-button" onClick={onConfirm}>
+					<Button className="confirm-button" onEvent={onConfirm}>
 						Confirmar
-					</button>
+					</Button>
+					<Button className="cancel-button" onEvent={onClose}>
+						Cancelar
+					</Button>
 				</div>
 			</div>
 		</div>

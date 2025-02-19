@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { addNewGenetic, GenModalContext } from '../index'
+import { Button } from '../../app'
 
 export function AddGenetic() {
 	const [newGenetic, setNewGenetic] = useState('')
@@ -26,9 +27,9 @@ export function AddGenetic() {
 					value={newGenetic}
 					onChange={(e) => setNewGenetic(e.target.value)}
 				/>
-				<button className="save-button" onClick={handleAddGenetic}>
+				<Button className="save-button" onEvent={handleAddGenetic}>
 					Guardar
-				</button>
+				</Button>
 			</div>
 		</div>
 	)

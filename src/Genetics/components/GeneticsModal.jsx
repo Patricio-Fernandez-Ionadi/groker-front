@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react'
+import { useTheme } from '../../app/context/ThemeContext'
 
 import { AddGenetic } from './AddGenetic'
 import { GeneticList } from './GeneticList'
@@ -6,6 +7,7 @@ import { GenModalContext } from '../index'
 
 export function GeneticsModal() {
 	const { closeGeneticModal, isGeneticModalOpen } = useContext(GenModalContext)
+	const { theme } = useTheme()
 
 	useEffect(() => {
 		if (isGeneticModalOpen) {
@@ -23,8 +25,11 @@ export function GeneticsModal() {
 	if (!isGeneticModalOpen) return null
 
 	return (
-		<div className="genetics-modal-overlay" onClick={closeGeneticModal}>
-			<div className="genetics-modal" onClick={(e) => e.stopPropagation()}>
+		<div className="modal-overlay" onClick={closeGeneticModal}>
+			<div
+				className={`genetics-modal modal-content ${theme}`}
+				onClick={(e) => e.stopPropagation()}
+			>
 				<button className="genetics-modal-close" onClick={closeGeneticModal}>
 					✖
 				</button>
