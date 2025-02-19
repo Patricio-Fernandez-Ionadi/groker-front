@@ -1,13 +1,17 @@
 import React from 'react'
+import { Button } from './Button'
+import { useTheme } from '../../context/ThemeContext'
 
-export function AlertModal({ message, onClose, theme }) {
+export const AlertModal = ({ message, onClose }) => {
+	const { theme } = useTheme()
+
 	return (
 		<div className="modal-overlay">
 			<div className={`modal-content ${theme}`}>
 				<p>{message}</p>
-				<button className="confirm-button" onClick={onClose}>
+				<Button className="confirm-button" onClick={onClose}>
 					Confirmar
-				</button>
+				</Button>
 			</div>
 		</div>
 	)
