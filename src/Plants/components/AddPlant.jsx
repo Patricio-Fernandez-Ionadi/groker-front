@@ -13,6 +13,7 @@ const defaultPlantData = {
 	stage: 'vegetative',
 	flags: { isFinalPot: false },
 	lastWatered: '',
+	potSize: '',
 }
 
 export const AddPlant = () => {
