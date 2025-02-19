@@ -68,15 +68,11 @@ export const updateObjectEvent = (plant, type, newValues) => {
 	}
 
 	// 🔹 Actualizar array de `productsUsed`
-	const updatedProducts = updateProductsArray(
+	const { updatedArray } = updateProductsArray(
 		existingEvent?.details.productsUsed || [],
 		newValues.productsUsed
 	)
-
-	// Si no hay cambios devuelve el historial sin modificar
-	if (updatedProducts.updatedArray.length > 0) {
-		filteredValues.productsUsed = updatedProducts.updatedArray
-	}
+	filteredValues.productsUsed = updatedArray
 
 	// 🔹 No actualizar si no hay cambios
 	if (Object.keys(filteredValues).length === 0) return updatedHistory
@@ -113,6 +109,68 @@ export const updateObjectEvent = (plant, type, newValues) => {
 	return updatedHistory
 }
 
+export const updateNoteEvents = (plant, type, newNote, action = 'add') => {
+	let [updatedHistory, todayEntryIndex, existingEntry] = historyCopy(plant)
+
+	if (existingEntry) {
+		// Ya existe un registro de hoy
+		let updatedEntry = { ...updatedHistory[todayEntryIndex] }
+		let updatedEvents = [...updatedEntry.events]
+
+		// Buscar si ya hay un evento del mismo type
+		const eventIndex = updatedEvents.findIndex((event) => event.type === type)
+
+		if (eventIndex !== -1) {
+			// Si ya existe, agregar la nueva nota al array de detalles
+
+			// 🔹 Si la acción es "add", agregamos la nota
+			if (action === 'add') {
+				updatedEvents[eventIndex] = {
+					...updatedEvents[eventIndex],
+					details: [...updatedEvents[eventIndex].details, newNote],
+				}
+			}
+
+			// 🔹 Si la acción es "delete", filtramos la nota por su ID
+			if (action === 'delete') {
+				const filteredNotes = updatedEvents[eventIndex].details.filter(
+					(note) => note.id !== newNote.id
+				)
+
+				// Si no quedan notas, eliminamos el evento
+				if (filteredNotes.length > 0) {
+					updatedEvents[eventIndex] = {
+						...updatedEvents[eventIndex], // Copia el objeto actual
+						details: filteredNotes, // Asigna la nueva lista de notas
+					}
+				} else {
+					updatedEvents.splice(eventIndex, 1)
+				}
+			}
+		} else if (action === 'add') {
+			// Si no existía el evento y la acción es agregar, lo creamos
+			updatedEvents.push({ type: type, details: [newNote] })
+		}
+		// Asignar la copia de los eventos actualizados al registro
+		updatedEntry.events = updatedEvents
+
+		// Actualizar el historial con la nueva versión del registro del día
+		updatedHistory[todayEntryIndex] = updatedEntry
+	} else if (action === 'add') {
+		// Si no hay registro de hoy, crear uno nuevo con el evento
+		updatedHistory = [
+			...updatedHistory,
+			{
+				date: new Date().toISOString(),
+				events: [{ type: type, details: [newNote] }],
+			},
+		]
+	}
+
+	// Retornar el historial actualizado
+	return updatedHistory
+}
+
 function historyCopy(plant) {
 	// Copia el historial de la planta
 	let updatedHistory = [...plant.history]
@@ -130,7 +188,8 @@ function historyCopy(plant) {
 }
 function updateProductsArray(prevArray, newArray) {
 	// Si newArray no tiene productos, devuelve prevArray sin cambios
-	if (!newArray || newArray.length === 0) return prevArray
+	if (!newArray || newArray.length === 0)
+		return { updatedArray: [], prev: prevArray, new: newArray }
 
 	// Crear un Set con los IDs de los productos nuevos
 	const newProductIds = new Set(newArray.map((item) => item.product._id))

@@ -11,6 +11,7 @@ import { StageField } from './StageField'
 import { EstimatedChangeField } from './EstimatedChangeField'
 import { PotSizeField } from './PotSizeField'
 import { WateringField } from './WateringField'
+import { NotesField } from './NotesField'
 
 export function PlantInfo() {
 	const plantId = useParams().id
@@ -27,6 +28,7 @@ export function PlantInfo() {
 		estimatedChange: false,
 		potSize: false,
 		lastWatered: false,
+		note: false,
 	})
 
 	const plant = React.useMemo(
@@ -95,6 +97,13 @@ export function PlantInfo() {
 				switcher={plant.flags.underObservation}
 				onEvent={() => {}}
 			/> */}
+
+			{/* NOTES */}
+			<NotesField
+				edit={{ state: edit, update: setEdit }}
+				plant={plant}
+				iconSize={iconSize}
+			/>
 
 			<PlantHistory />
 		</div>
