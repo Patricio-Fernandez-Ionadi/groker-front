@@ -23,7 +23,8 @@ export function WateringField({ edit, plant, iconSize }) {
 	const wateringDateRef = React.useRef(null)
 
 	// WIP
-	const currentPlantRegister = plant.history[plant.history.length - 1].events
+	const currentPlantRegister =
+		plant.history[plant.history.length - 1]?.events || []
 	const currentWateringEvent = currentPlantRegister.find(
 		(entry) => entry.type === 'watering'
 	)
