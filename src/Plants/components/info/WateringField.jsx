@@ -3,6 +3,11 @@ import React from 'react'
 import { Button, Cloud_arrow_up, Edit_icon } from '../../../app'
 
 import { usePlantsActions } from '../../hooks/usePlantsActions'
+import { useProductsActions } from '../../../Products'
+
+import { WateringForm } from './riego/WateringForm'
+import { ProductSelector } from './riego/ProductSelector'
+import { updateObjectEvent } from '../history/utils/updateHistory'
 
 import {
 	formatDate,
@@ -10,12 +15,10 @@ import {
 	formatDateToYYYYMMDD,
 	today,
 } from '../../utils/dateUtils'
-import { WateringForm } from './riego/WateringForm'
-import { ProductSelector } from './riego/ProductSelector'
-import { updateObjectEvent } from '../history/utils/updateHistory'
 
 export function WateringField({ edit, plant, iconSize }) {
 	const { updatePlant } = usePlantsActions()
+	const { updateProductStock } = useProductsActions()
 	const { state, update } = edit
 	const wateringDateRef = React.useRef(null)
 
@@ -32,12 +35,11 @@ export function WateringField({ edit, plant, iconSize }) {
 		productsUsed: currentWateringEvent?.details.productsUsed || [],
 	})
 
-	// console.log(wateringData)
-
 	const handleWateringEdition = () => {
 		if (!state.lastWatered) {
 			update({ ...state, lastWatered: true })
 		} else {
+			// Ignorar estas validaciones de momento. pasar al siguiente bloque de comentario.
 			/* Asegurarse de: 
 				- no se puede registrar si la fecha es posterior a la actual
 				- no se puede guardar ec ni ph si no hay amount
@@ -62,6 +64,11 @@ export function WateringField({ edit, plant, iconSize }) {
 				...updatedPlant,
 				history: updatedHistory,
 			}
+
+			// Obtener los productos antes y después del cambio
+			const previousProducts = currentWateringEvent?.details.productsUsed || []
+			const newProducts = wateringData.productsUsed
+			updateProductStock(previousProducts, newProducts)
 
 			updatePlant(plantToSave)
 

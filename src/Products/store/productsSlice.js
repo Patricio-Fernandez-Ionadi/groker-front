@@ -4,7 +4,7 @@ import {
 	store_deleteProduct,
 	store_updateProduct,
 	store_loadProducts,
-	updateStock,
+	store_updateStock,
 } from './productsAsyncActions'
 
 const products_InitialState = {
@@ -47,7 +47,7 @@ export const productsSlice = createSlice({
 				}
 			}),
 		}))
-		builder.addCase(updateStock.fulfilled, (state, action) => ({
+		builder.addCase(store_updateStock.fulfilled, (state, action) => ({
 			...state,
 			products: state.products.map((product) => {
 				if (product._id === action.payload._id) {

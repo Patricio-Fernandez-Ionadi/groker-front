@@ -6,6 +6,10 @@ import {
 	store_deleteProduct,
 	store_updateProduct,
 } from '../store/productsAsyncActions'
+import {
+	applyStockDifferences,
+	calculateStockDifference,
+} from '../utils/stockUtils'
 
 export function useProductsActions() {
 	const dispatch = useDispatch()
@@ -30,5 +34,22 @@ export function useProductsActions() {
 		dispatch(store_deleteProduct(id))
 	}
 
-	return { selectProduct, unselectProduct, addNewProduct, editProduct }
+	const updateProductStock = (previousProducts, newProducts) => {
+		// Calcular la diferencia de stock
+		const stockDifferences = calculateStockDifference(
+			previousProducts,
+			newProducts
+		)
+		// Aplicar cambios de stock antes de actualizar la planta
+		applyStockDifferences(stockDifferences, dispatch)
+	}
+
+	return {
+		selectProduct,
+		unselectProduct,
+		addNewProduct,
+		editProduct,
+		deleteProduct,
+		updateProductStock,
+	}
 }

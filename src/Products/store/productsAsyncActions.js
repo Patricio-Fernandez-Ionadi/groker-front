@@ -64,7 +64,7 @@ export const store_deleteProduct = createAsyncThunk(
 )
 
 // PARTE RELEVANTE PARA EL TEMA A TRATAR
-export const updateStock = createAsyncThunk(
+export const store_updateStock = createAsyncThunk(
 	'productsStore/updateStock',
 	async ({ productId, difference }, { getState }) => {
 		const { productsStore } = getState()
@@ -80,10 +80,10 @@ export const updateStock = createAsyncThunk(
 		const newStock = productToUpdate.stock + difference // Calcular el nuevo stock
 
 		try {
-			console.log('Updating stock for product:', productId)
-			console.log('Stock difference:', difference)
-			console.log('Product before update:', productToUpdate)
-			console.log('New stock:', newStock)
+			// console.log('Updating stock for product:', productId)
+			// console.log('Stock difference:', difference)
+			// console.log('Product before update:', productToUpdate)
+			// console.log('New stock:', newStock)
 
 			const data = await api_editProduct({
 				...productToUpdate,
