@@ -16,5 +16,6 @@ export function usePlants() {
 	return {
 		plants: plantsStore.plants,
 		selectedPlant: plantsStore.selectedPlant,
+		selectedIndex: plantsStore.selectedIndex,
 	}
 }

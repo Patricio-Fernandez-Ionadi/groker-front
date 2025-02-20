@@ -1,18 +1,25 @@
+import React from 'react'
 import { useDispatch } from 'react-redux'
 
-import { setPlantSelected } from '../store/plantsSlice'
+import { setPlantByIndex, setPlantSelected } from '../store/plantsSlice'
 import {
 	store_addPlant,
 	store_deletePlantById,
 	store_loadPlants,
 	store_updatePlant,
 } from '../store/plantsAsyncActions'
+import { usePlants } from './usePlants'
 
 export function usePlantsActions() {
 	const dispatch = useDispatch()
+	const { plants } = usePlants()
 
 	const selectPlant = (plant) => {
 		dispatch(setPlantSelected(plant))
+	}
+
+	const selectPlantByIndex = (index) => {
+		dispatch(setPlantByIndex(index))
 	}
 
 	const unselectPlant = () => {
@@ -37,5 +44,17 @@ export function usePlantsActions() {
 		selectPlant(plant)
 	}
 
-	return { selectPlant, unselectPlant, deletePlant, addNewPlant, updatePlant }
+	const getPlantById = (plantId) => {
+		return plants.find((p) => p._id === plantId)
+	}
+
+	return {
+		selectPlant,
+		unselectPlant,
+		deletePlant,
+		addNewPlant,
+		updatePlant,
+		getPlantById,
+		selectPlantByIndex,
+	}
 }

@@ -1,24 +1,32 @@
 import React from 'react'
-import { useParams } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
 
 import { PlantHistory, usePlants, usePlantsActions } from '../../'
 
 // Fields
-import { NameField } from './NameField'
-import { GeneticField } from './GeneticField'
-import { EntryDateField } from './EntryDateField'
-import { StageField } from './StageField'
-import { EstimatedChangeField } from './EstimatedChangeField'
-import { PotSizeField } from './PotSizeField'
-import { WateringField } from './WateringField'
-import { NotesField } from './NotesField'
-import { useTheme } from '../../../app'
+import { NameField } from './fields/NameField'
+import { GeneticField } from './fields/GeneticField'
+import { EntryDateField } from './fields/EntryDateField'
+import { StageField } from './fields/StageField'
+import { EstimatedChangeField } from './fields/EstimatedChangeField'
+import { PotSizeField } from './fields/PotSizeField'
+import { WateringField } from './fields/WateringField'
+import { NotesField } from './fields/NotesField'
+import {
+	Button,
+	Chevron_left_icon,
+	Chevron_right_icon,
+	routes,
+	useTheme,
+} from '../../../app'
 
 export function PlantInfo() {
-	const { plants, selectedPlant } = usePlants()
-	const { selectPlant } = usePlantsActions()
-	const plantId = useParams().id
 	const { theme } = useTheme()
+	const { selectedPlant, selectedIndex } = usePlants()
+	const { selectPlant, getPlantById, selectPlantByIndex } = usePlantsActions()
+	const plantId = useParams().id
+	const navigate = useNavigate()
+	const plant = getPlantById(plantId)
 
 	const iconSize = 25
 
@@ -33,14 +41,26 @@ export function PlantInfo() {
 		note: false,
 	})
 
-	const plant = React.useMemo(
-		() => plants.find((p) => p._id === plantId),
-		[plants, plantId]
-	)
-
+	/**
+	 * Selecciona la planta seleccionada si se entra en el componente por el link de la planta
+	 * y no hay una planta seleccionada
+	 */
 	React.useEffect(() => {
 		if (plant && !selectedPlant) selectPlant(plant)
 	}, [plant, selectPlant])
+
+	React.useEffect(() => {
+		if (selectedPlant) {
+			navigate(routes.plantDetail.buildPath(selectedPlant._id))
+		}
+	}, [selectedPlant, navigate])
+
+	const handlePrevPlant = () => {
+		selectPlantByIndex(selectedIndex - 1)
+	}
+	const handleNextPlant = () => {
+		selectPlantByIndex(selectedIndex + 1)
+	}
 
 	if (!plant) return <p>Parece que la planta no existe</p>
 	return (
@@ -49,8 +69,20 @@ export function PlantInfo() {
 				className={`plant-info-section ${theme}`}
 				aria-labelledby="plant-info-title"
 			>
-				<header>
+				<header
+					style={{
+						display: 'flex',
+						justifyContent: 'space-between',
+						alignItems: 'center',
+					}}
+				>
+					<Button onEvent={handlePrevPlant}>
+						<Chevron_left_icon size={iconSize} />
+					</Button>
 					<h1 id="plant-info-title">Información de la Planta</h1>
+					<Button onEvent={handleNextPlant}>
+						<Chevron_right_icon size={iconSize} />
+					</Button>
 				</header>
 
 				<div className={`plant-info-fields ${theme}`}>

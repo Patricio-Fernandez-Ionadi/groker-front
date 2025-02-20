@@ -10,6 +10,7 @@ import {
 const plants_initialState = {
 	plants: [],
 	selectedPlant: null,
+	selectedIndex: null,
 	selectedPlantHistory: null,
 	loaded: false,
 }
@@ -19,7 +20,28 @@ export const plantSlice = createSlice({
 	initialState: plants_initialState,
 	reducers: {
 		setPlantSelected: (state, action) => {
+			if (action.payload === null) {
+				state.selectedPlant = null
+				state.selectedIndex = null
+				return
+			}
+			const indexPlant = state.plants.findIndex(
+				(plant) => plant._id === action.payload._id
+			)
 			state.selectedPlant = action.payload
+			state.selectedIndex = indexPlant
+		},
+		setPlantByIndex: (state, action) => {
+			if (action.payload > state.plants.length - 1) {
+				state.selectedIndex = 0
+				state.selectedPlant = state.plants[0]
+			} else if (action.payload < 0) {
+				state.selectedIndex = state.plants.length - 1
+				state.selectedPlant = state.plants[state.plants.length - 1]
+			} else {
+				state.selectedIndex = action.payload
+				state.selectedPlant = state.plants[action.payload]
+			}
 		},
 	},
 	extraReducers: (builder) => {
@@ -78,4 +100,4 @@ export const plantSlice = createSlice({
 	},
 })
 
-export const { setPlantSelected } = plantSlice.actions
+export const { setPlantSelected, setPlantByIndex } = plantSlice.actions
