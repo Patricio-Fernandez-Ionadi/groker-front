@@ -184,6 +184,9 @@ a:visited {
 .menu_icon.dark {
   background: #007d85;
 }
+.menu_icon.fix {
+  position: fixed;
+}
 .menu_icon .bar {
   width: 30px;
   height: 3px;

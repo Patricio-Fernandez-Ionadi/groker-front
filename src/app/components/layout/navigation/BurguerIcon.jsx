@@ -5,7 +5,10 @@ export function BurguerIcon({ toggle, onEvent }) {
 	const { theme } = useTheme()
 
 	return (
-		<div className={`menu_icon ${theme}`} onClick={onEvent}>
+		<div
+			className={`menu_icon ${theme} ${toggle ? 'fix' : ''}`}
+			onClick={onEvent}
+		>
 			<div className={`bar${toggle ? ' toggle' : ''}`}></div>
 		</div>
 	)

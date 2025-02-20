@@ -10,6 +10,9 @@ $bar_height: 3px;
 	cursor: pointer;
 	position: relative;
 	z-index: 3;
+	&.fix {
+		position: fixed;
+	}
 	& .bar {
 		// <- barra principal (central)
 		width: $bar_width;
