@@ -8,7 +8,7 @@ console.log(process.env.VITE_API_URL)
 // https://vitejs.dev/config/
 export default defineConfig({
 	plugins: [react()],
-	base: '/',
+	base: './',
 	server: {
 		proxy: {
 			'/api': {
