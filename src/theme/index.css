@@ -316,7 +316,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 90%;
+  width: 90%;
   max-width: 1280px;
   margin: 0 auto;
   padding: 10px 20px 10px;
@@ -912,7 +912,7 @@ input[type=number]::-webkit-inner-spin-button {
     font-size: 20px;
   }
   .field-section {
-    height: auto;
+    margin-bottom: 10px;
   }
   .field-section .field-edit-mode,
   .field-section .field-view-mode {
@@ -935,6 +935,26 @@ input[type=number]::-webkit-inner-spin-button {
   .field-section .field-view-mode .field-actions button {
     width: 100%;
   }
+  .field-section .field-view-mode {
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid #c2c2c2;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 10px;
+  }
+  .field-section .field-view-mode div {
+    display: flex;
+    width: 100%;
+  }
+  .field-section .field-view-mode div label {
+    margin-right: 5px;
+  }
+  .field-section .field-edit-mode .field-actions {
+    flex-direction: row;
+    justify-content: space-around;
+  }
   .field-section .field-edit-mode.product-selection-form {
     flex-direction: column;
     height: auto;
@@ -948,7 +968,7 @@ input[type=number]::-webkit-inner-spin-button {
   .field-section .field-edit-mode.product-selection-form .field-actions {
     flex-direction: row;
   }
-  .field-section.notes .field-actions {
+  .field-section .notes .field-actions {
     flex-direction: column;
   }
   .field-section .watering-advanced-fields {

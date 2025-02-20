@@ -408,6 +408,7 @@ input[type='number']::-webkit-inner-spin-button {
 	}
 
 	.field-section {
+		margin-bottom: 10px;
 		.field-edit-mode,
 		.field-view-mode {
 			flex-direction: column;
@@ -429,7 +430,28 @@ input[type='number']::-webkit-inner-spin-button {
 			}
 		}
 
+		.field-view-mode {
+			border: none;
+			border-radius: 0;
+			border-bottom: 1px solid $white-dark;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			padding: 5px 10px;
+			div {
+				display: flex;
+				width: 100%;
+				label {
+					margin-right: 5px;
+				}
+			}
+		}
+
 		.field-edit-mode {
+			.field-actions {
+				flex-direction: row;
+				justify-content: space-around;
+			}
 			&.product-selection-form {
 				flex-direction: column;
 				height: auto;
@@ -447,7 +469,7 @@ input[type='number']::-webkit-inner-spin-button {
 			}
 		}
 
-		&.notes {
+		.notes {
 			.field-actions {
 				flex-direction: column;
 			}
@@ -460,7 +482,7 @@ input[type='number']::-webkit-inner-spin-button {
 				'ph'
 				'ec';
 		}
-		height: auto;
+		// height: auto;
 		.watering-products-added {
 			.watering-product-item {
 				& button {
