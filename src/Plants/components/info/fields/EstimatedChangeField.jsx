@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { usePlantsActions } from '../../hooks/usePlantsActions'
+import { usePlantsActions } from '../../../hooks/usePlantsActions'
 
 import {
 	Button,
@@ -8,15 +8,15 @@ import {
 	Cloud_arrow_up,
 	Edit_icon,
 	useTheme,
-} from '../../../app'
+} from '../../../../app'
 
-import { updateSimpleEvents } from '../history/utils/updateHistory'
+import { updateSimpleEvents } from '../../history/utils/updateHistory'
 
 import {
 	formatDate,
 	formatDateToISO,
 	formatDateToYYYYMMDD,
-} from '../../utils/dateUtils'
+} from '../../../utils/dateUtils'
 
 export function EstimatedChangeField({ plant, edit, iconSize }) {
 	const { updatePlant } = usePlantsActions()

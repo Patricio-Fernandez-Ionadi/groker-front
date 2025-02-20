@@ -5,17 +5,17 @@ import {
 	Cloud_arrow_up,
 	Edit_icon,
 	useTheme,
-} from '../../../app'
+} from '../../../../app'
 
-import { usePlantsActions } from '../../hooks/usePlantsActions'
+import { usePlantsActions } from '../../../hooks/usePlantsActions'
 
-import { updateSimpleEvents } from '../history/utils/updateHistory'
+import { updateSimpleEvents } from '../../history/utils/updateHistory'
 import {
 	calculateEstimatedChangeFromEntryDate,
 	formatDate,
 	formatDateToISO,
 	formatDateToYYYYMMDD,
-} from '../../utils/dateUtils'
+} from '../../../utils/dateUtils'
 
 export const EntryDateField = ({ edit, plant, iconSize }) => {
 	const { state, update } = edit

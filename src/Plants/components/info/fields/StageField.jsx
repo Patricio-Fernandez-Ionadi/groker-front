@@ -1,11 +1,11 @@
 import React from 'react'
-import { Button, Cloud_arrow_up, Edit_icon, useTheme } from '../../../app'
+import { Button, Cloud_arrow_up, Edit_icon, useTheme } from '../../../../app'
 
-import { usePlantsActions } from '../../hooks/usePlantsActions'
+import { usePlantsActions } from '../../../hooks/usePlantsActions'
 
-import { translateField } from '../../utils/translations'
-import { culateEstimatedChangeFromNow } from '../../utils/dateUtils'
-import { updateSimpleEvents } from '../history/utils/updateHistory'
+import { translateField } from '../../../utils/translations'
+import { culateEstimatedChangeFromNow } from '../../../utils/dateUtils'
+import { updateSimpleEvents } from '../../history/utils/updateHistory'
 
 export const StageField = ({ edit, plant, iconSize }) => {
 	const { state, update } = edit

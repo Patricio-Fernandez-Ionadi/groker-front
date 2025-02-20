@@ -6,9 +6,9 @@ import {
 	Edit_icon,
 	ToggleSwitch,
 	useTheme,
-} from '../../../app'
-import { usePlantsActions } from '../../hooks/usePlantsActions'
-import { updateSimpleEvents } from '../history/utils/updateHistory'
+} from '../../../../app'
+import { usePlantsActions } from '../../../hooks/usePlantsActions'
+import { updateSimpleEvents } from '../../history/utils/updateHistory'
 
 export function PotSizeField({ edit, plant, iconSize }) {
 	const { updatePlant } = usePlantsActions()

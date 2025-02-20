@@ -1,11 +1,11 @@
 import React from 'react'
-import { AlertModal, Button, ToggleSwitch, useTheme } from '../../../app'
-import { usePlantsActions } from '../../hooks/usePlantsActions'
+import { AlertModal, Button, ToggleSwitch, useTheme } from '../../../../app'
+import { usePlantsActions } from '../../../hooks/usePlantsActions'
 import {
 	updateNoteEvents,
 	updateSimpleEvents,
-} from '../history/utils/updateHistory'
-import { formatDateToYYYYMMDD, today } from '../../utils/dateUtils'
+} from '../../history/utils/updateHistory'
+import { formatDateToYYYYMMDD, today } from '../../../utils/dateUtils'
 
 export function NotesField({ edit, plant }) {
 	const { updatePlant } = usePlantsActions()

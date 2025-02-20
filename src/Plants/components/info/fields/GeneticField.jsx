@@ -1,9 +1,9 @@
 import React from 'react'
-import { useGenetics } from '../../../Genetics'
+import { useGenetics } from '../../../../Genetics'
 
-import { Button, Cloud_arrow_up, Edit_icon, useTheme } from '../../../app'
-import { usePlantsActions } from '../../hooks/usePlantsActions'
-import { updateSimpleEvents } from '../history/utils/updateHistory'
+import { Button, Cloud_arrow_up, Edit_icon, useTheme } from '../../../../app'
+import { usePlantsActions } from '../../../hooks/usePlantsActions'
+import { updateSimpleEvents } from '../../history/utils/updateHistory'
 
 export const GeneticField = ({ edit, plant, iconSize }) => {
 	const { genetics } = useGenetics()

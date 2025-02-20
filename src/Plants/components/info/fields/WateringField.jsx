@@ -6,21 +6,21 @@ import {
 	Cloud_arrow_up,
 	Edit_icon,
 	useTheme,
-} from '../../../app'
+} from '../../../../app'
 
-import { usePlantsActions } from '../../hooks/usePlantsActions'
-import { useProductsActions } from '../../../Products'
+import { usePlantsActions } from '../../../hooks/usePlantsActions'
+import { useProductsActions } from '../../../../Products'
 
 import { WateringForm } from './riego/WateringForm'
 import { ProductSelector } from './riego/ProductSelector'
-import { updateObjectEvent } from '../history/utils/updateHistory'
+import { updateObjectEvent } from '../../history/utils/updateHistory'
 
 import {
 	formatDate,
 	formatDateToISO,
 	formatDateToYYYYMMDD,
 	today,
-} from '../../utils/dateUtils'
+} from '../../../utils/dateUtils'
 
 export function WateringField({ edit, plant, iconSize }) {
 	const { updatePlant } = usePlantsActions()

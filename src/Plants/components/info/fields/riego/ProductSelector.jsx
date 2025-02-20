@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-import { useProducts } from '../../../../Products'
-import { Button, useTheme } from '../../../../app'
+import { useProducts } from '../../../../../Products'
+import { Button, useTheme } from '../../../../../app'
 
 export function ProductSelector({ edit, eventData }) {
 	const { products } = useProducts()
