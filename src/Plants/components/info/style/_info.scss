@@ -27,7 +27,7 @@
 
 /* Estilos generales para campos */
 .field-section {
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 
 	.field-view-mode,
 	.field-edit-mode {
@@ -482,7 +482,6 @@ input[type='number']::-webkit-inner-spin-button {
 				'ph'
 				'ec';
 		}
-		// height: auto;
 		.watering-products-added {
 			.watering-product-item {
 				& button {
