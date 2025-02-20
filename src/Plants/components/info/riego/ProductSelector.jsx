@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
 import { useProducts } from '../../../../Products'
-import { Button } from '../../../../app'
+import { Button, useTheme } from '../../../../app'
 
 export function ProductSelector({ edit, eventData }) {
 	const { products } = useProducts()
 	const { state, update } = edit
+	const { theme } = useTheme()
 
 	const [selectedProducts, setSelectedProducts] = React.useState(
 		() => eventData?.details.productsUsed || []
@@ -44,32 +45,35 @@ export function ProductSelector({ edit, eventData }) {
 	}
 
 	return (
-		<>
-			<div className="watering-products">
+		<section className="field-section" aria-labelledby="product-selector-label">
+			<div className={`watering-products-added ${theme}`}>
+				{selectedProducts.length > 0 && (
+					<span className="field-label">Productos añadidos</span>
+				)}
 				{selectedProducts.map((product, index) => (
-					<div key={index} className="watering-product-item">
+					<div key={index} className={`watering-product-item ${theme}`}>
 						<p>
-							{product.product.name}
-
+							<span>{product.product.name}</span>
 							<span>{product.productAmount}ml</span>
-
-							<Button
-								className="watering-product-remove"
-								onEvent={() => removeProductField(index)}
-							>
-								Eliminar Producto
-							</Button>
 						</p>
+						<Button
+							className="watering-product-remove"
+							onEvent={() => removeProductField(index)}
+							aria-label={`Eliminar producto ${product.product.name}`}
+						>
+							Eliminar
+						</Button>
 					</div>
 				))}
 			</div>
 
 			{showAddProduct && (
-				<div className="watering-product-add">
+				<div className={`field-edit-mode product-selection-form ${theme}`}>
 					<select
 						name="product"
 						value={newProduct.product}
 						onChange={handleProductChange}
+						aria-label="Seleccionar producto"
 					>
 						<option value="">Seleccionar producto</option>
 						{products
@@ -82,26 +86,42 @@ export function ProductSelector({ edit, eventData }) {
 								</option>
 							))}
 					</select>
-
 					<input
 						type="number"
 						name="productAmount"
 						value={newProduct.productAmount}
 						onChange={handleProductChange}
 						placeholder="Cant. de producto (ml)"
+						aria-label="Cantidad de producto"
 					/>
-
-					<Button onEvent={addProductField}>Confirmar Producto</Button>
-					<Button onEvent={() => setShowAddProduct(false)}>Cancelar</Button>
+					<div className="field-actions">
+						<Button
+							onEvent={addProductField}
+							aria-label="Confirmar producto"
+							className="primary"
+						>
+							Confirmar
+						</Button>
+						<Button
+							onEvent={() => setShowAddProduct(false)}
+							aria-label="Cancelar edición"
+							className="secondary"
+						>
+							Cancelar
+						</Button>
+					</div>
 				</div>
 			)}
 
-			<Button
-				className="watering-product-add-button"
-				onEvent={() => setShowAddProduct(true)}
-			>
-				Añadir Producto
-			</Button>
-		</>
+			<div className="field-view-mode product-selector">
+				<Button
+					className="watering-product-add-button primary"
+					onEvent={() => setShowAddProduct(true)}
+					aria-label="Añadir producto"
+				>
+					Añadir Producto
+				</Button>
+			</div>
+		</section>
 	)
 }

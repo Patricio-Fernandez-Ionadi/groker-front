@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Cloud_arrow_up, Edit_icon } from '../../../app'
+import { Button, Cloud_arrow_up, Edit_icon, useTheme } from '../../../app'
 
 import { usePlantsActions } from '../../hooks/usePlantsActions'
 
@@ -10,6 +10,7 @@ import { updateSimpleEvents } from '../history/utils/updateHistory'
 export const StageField = ({ edit, plant, iconSize }) => {
 	const { state, update } = edit
 	const { updatePlant } = usePlantsActions()
+	const { theme } = useTheme()
 
 	const stageRef = React.useRef(null)
 
@@ -62,28 +63,48 @@ export const StageField = ({ edit, plant, iconSize }) => {
 	}
 
 	return (
-		<>
-			Periodo:{' '}
+		<section className="field-section" aria-labelledby="stage-field-label">
 			{state.stage ? (
-				<select defaultValue={plant.stage} ref={stageRef}>
-					<option value="germination">Germinación</option>
-					<option value="vegetative">Vegetativo</option>
-					<option value="flowering">Floración</option>
-				</select>
+				<div className={`field-edit-mode ${theme}`}>
+					<label className={`input-label ${theme}`}>Periodo</label>
+					<select
+						defaultValue={plant.stage}
+						ref={stageRef}
+						aria-labelledby="stage-field-label"
+						className={`input-field ${theme}`}
+					>
+						<option value="germination">Germinación</option>
+						<option value="vegetative">Vegetativo</option>
+						<option value="flowering">Floración</option>
+					</select>
+					<div className="field-actions">
+						<Cloud_arrow_up
+							size={iconSize}
+							onEvent={handleStageEdition}
+							aria-label="Guardar periodo"
+						/>
+						<Button
+							onEvent={() => update({ ...state, stage: false })}
+							aria-label="Cancelar edición"
+							className="info-action-button"
+						>
+							Cancelar
+						</Button>
+					</div>
+				</div>
 			) : (
-				<>{translateField(plant.stage)}</>
+				<div className="field-view-mode">
+					<div>
+						<label className="field-label">Periodo</label>
+						<span>{translateField(plant.stage)}</span>
+					</div>
+					<Edit_icon
+						size={iconSize}
+						onEvent={handleStageEdition}
+						aria-label="Editar periodo"
+					/>
+				</div>
 			)}
-			{/* ACTIONS */}
-			{state.stage ? (
-				<>
-					<Cloud_arrow_up onEvent={handleStageEdition} size={iconSize} />
-					<Button onEvent={() => update({ ...state, stage: false })}>
-						Cancelar
-					</Button>
-				</>
-			) : (
-				<Edit_icon onEvent={handleStageEdition} size={iconSize} />
-			)}
-		</>
+		</section>
 	)
 }

@@ -5,6 +5,7 @@ import {
 	Cloud_arrow_up,
 	Edit_icon,
 	ToggleSwitch,
+	useTheme,
 } from '../../../app'
 import { usePlantsActions } from '../../hooks/usePlantsActions'
 import { updateSimpleEvents } from '../history/utils/updateHistory'
@@ -12,6 +13,7 @@ import { updateSimpleEvents } from '../history/utils/updateHistory'
 export function PotSizeField({ edit, plant, iconSize }) {
 	const { updatePlant } = usePlantsActions()
 	const { state, update } = edit
+	const { theme } = useTheme()
 	const potSizeRef = React.useRef(null)
 
 	const [finalPotClicks, setFinalPotClicks] = React.useState(0)
@@ -55,11 +57,11 @@ export function PotSizeField({ edit, plant, iconSize }) {
 	}
 
 	const handleFinalPotEdition = () => {
-		const clickTimeout = localStorage.getItem('clickTimeOut')
+		const clickTimeoutPot = localStorage.getItem('clickTimeOutPot')
 		const now = new Date().getTime() // Tiempo actual en milisegundos
-		// Si hay un clickTimeout y no han pasado 2 minutos, se muestra la alerta
-		if (clickTimeout && now - clickTimeout < 2 * 60 * 1000) {
-			const remainingTime = 2 * 60 * 1000 - (now - clickTimeout)
+		// Si hay un clickTimeoutPot y no han pasado 2 minutos, se muestra la alerta
+		if (clickTimeoutPot && now - clickTimeoutPot < 2 * 60 * 1000) {
+			const remainingTime = 2 * 60 * 1000 - (now - clickTimeoutPot)
 			setAlertMessage(
 				`Demasiados clicks realizados. Debes esperar un tiempo antes de realizar esta accion. Restan ${Math.ceil(
 					remainingTime / 1000
@@ -75,7 +77,7 @@ export function PotSizeField({ edit, plant, iconSize }) {
 			setShowAlert(true)
 
 			// Guardar el timestamp actual en localStorage
-			localStorage.setItem('clickTimeOut', now)
+			localStorage.setItem('clickTimeOutPot', now)
 
 			setFinalPotClicks(0)
 			return
@@ -104,40 +106,58 @@ export function PotSizeField({ edit, plant, iconSize }) {
 	}
 
 	return (
-		<>
-			<span>
-				Tamaño de la maceta:{' '}
-				{state.potSize ? (
-					<>
-						<input type="number" ref={potSizeRef} />
-						<Cloud_arrow_up size={iconSize} onEvent={handlePotSizeEdition} />
-
-						<Button onEvent={() => update({ ...state, potSize: false })}>
+		<section className="field-section" aria-labelledby="pot-size-field-label">
+			{state.potSize ? (
+				<div className={`field-edit-mode ${theme}`}>
+					<label className={`input-label ${theme}`}>Tamaño de la maceta</label>
+					<input
+						type="number"
+						ref={potSizeRef}
+						aria-labelledby="pot-size-field-label"
+						className={`input-field ${theme}`}
+					/>
+					<div className="field-actions">
+						<Cloud_arrow_up
+							size={iconSize}
+							onEvent={handlePotSizeEdition}
+							aria-label="Guardar tamaño de maceta"
+						/>
+						<Button
+							onEvent={() => update({ ...state, potSize: false })}
+							aria-label="Cancelar edición"
+							className="info-action-button"
+						>
 							Cancelar
 						</Button>
-					</>
-				) : (
-					<>
-						<span>{plant.potSize !== 0 ? `${plant.potSize}L` : 'N/A'} </span>
-						<span onClick={handlePotSizeEdition}>
-							<Edit_icon size={iconSize} />
-						</span>
-					</>
-				)}
-			</span>
+					</div>
+				</div>
+			) : (
+				<div className="field-view-mode">
+					<div>
+						<label className="field-label">Tamaño de la maceta</label>
+						<span>{plant.potSize !== 0 ? `${plant.potSize}L` : 'N/A'}</span>
+					</div>
+					<Edit_icon
+						size={iconSize}
+						onEvent={handlePotSizeEdition}
+						aria-label="Editar tamaño de maceta"
+					/>
+				</div>
+			)}
 			{plant.potSize !== 0 && (
-				<span>
-					- Maceta final:{' '}
+				<div className="final-pot-toggle">
+					<span>Maceta final: </span>
 					<ToggleSwitch
 						switcher={plant.flags.isFinalPot}
 						onEvent={handleFinalPotEdition}
 						name="isFinalPot"
+						aria-label="Cambiar estado de maceta final"
 					/>
-				</span>
+				</div>
 			)}
 			{showAlert && (
 				<AlertModal message={alertMessage} onClose={handleCloseAlert} />
 			)}
-		</>
+		</section>
 	)
 }

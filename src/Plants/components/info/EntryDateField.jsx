@@ -1,5 +1,11 @@
 import React from 'react'
-import { Button, Cloud_arrow_up, Edit_icon } from '../../../app'
+import {
+	Button,
+	Calendar_icon,
+	Cloud_arrow_up,
+	Edit_icon,
+	useTheme,
+} from '../../../app'
 
 import { usePlantsActions } from '../../hooks/usePlantsActions'
 
@@ -11,17 +17,21 @@ import {
 	formatDateToYYYYMMDD,
 } from '../../utils/dateUtils'
 
-export const EntryDateField = ({ edit, plant }) => {
+export const EntryDateField = ({ edit, plant, iconSize }) => {
 	const { state, update } = edit
+	const { theme } = useTheme()
 	const { updatePlant } = usePlantsActions()
+	const [selectedDate, setSelectedDate] = React.useState(
+		formatDateToYYYYMMDD(plant.entryDate)
+	)
 
-	const enrtyDateRef = React.useRef(null)
+	const entryDateRef = React.useRef(null)
 
 	const handleDateEdition = () => {
 		if (!state.entryDate) {
 			update({ ...state, entryDate: true })
 		} else {
-			const newDate = formatDateToISO(enrtyDateRef.current.value)
+			const newDate = formatDateToISO(entryDateRef.current.value)
 
 			let updatedPlant = { ...plant, entryDate: newDate }
 
@@ -62,28 +72,67 @@ export const EntryDateField = ({ edit, plant }) => {
 	}
 
 	return (
-		<p>
-			Fecha de ingreso:
+		<section className="field-section" aria-labelledby="entry-date-field-label">
 			{state.entryDate ? (
-				<input
-					ref={enrtyDateRef}
-					type="date"
-					name="entryDate"
-					defaultValue={formatDateToYYYYMMDD(plant.entryDate)}
-				/>
+				<div className={`field-edit-mode ${theme}`}>
+					<label className={`input-label ${theme}`}>Fecha de ingreso</label>
+					<div className={`input-field ${theme}`}>
+						<input
+							ref={entryDateRef}
+							type="date"
+							style={{
+								opacity: 0,
+								position: 'absolute',
+								zIndex: -1,
+							}}
+							defaultValue={selectedDate}
+							onChange={(e) => {
+								setSelectedDate(e.target.value)
+							}}
+						/>
+						<input
+							type="text"
+							readOnly
+							value={formatDate(selectedDate)}
+							onClick={() => entryDateRef.current.showPicker()}
+							className="custom-date-input"
+						/>
+						<button
+							className="custom-date-button"
+							onClick={() => entryDateRef.current.showPicker()}
+							aria-label="Abrir selector de fecha"
+						>
+							<Calendar_icon size={iconSize} />
+						</button>
+					</div>
+					<div className="field-actions">
+						<Cloud_arrow_up
+							size={iconSize}
+							onEvent={handleDateEdition}
+							aria-label="Guardar fecha de ingreso"
+						/>
+						<Button
+							onEvent={() => update({ ...state, entryDate: false })}
+							aria-label="Cancelar edición"
+							className="info-action-button"
+						>
+							Cancelar
+						</Button>
+					</div>
+				</div>
 			) : (
-				formatDate(plant.entryDate)
+				<div className="field-view-mode">
+					<div>
+						<label className={`field-label`}>Fecha de ingreso</label>
+						<span>{formatDate(plant.entryDate)}</span>
+					</div>
+					<Edit_icon
+						size={iconSize}
+						onEvent={handleDateEdition}
+						aria-label="Editar fecha de ingreso"
+					/>
+				</div>
 			)}
-			{state.entryDate ? (
-				<>
-					<Cloud_arrow_up size={25} onEvent={handleDateEdition} />
-					<Button onEvent={() => update({ ...state, entryDate: false })}>
-						Cancelar
-					</Button>
-				</>
-			) : (
-				<Edit_icon size={25} onEvent={handleDateEdition} />
-			)}
-		</p>
+		</section>
 	)
 }

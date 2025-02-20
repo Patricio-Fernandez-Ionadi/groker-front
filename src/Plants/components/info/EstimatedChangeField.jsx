@@ -2,7 +2,13 @@ import React from 'react'
 
 import { usePlantsActions } from '../../hooks/usePlantsActions'
 
-import { Button, Cloud_arrow_up, Edit_icon } from '../../../app'
+import {
+	Button,
+	Calendar_icon,
+	Cloud_arrow_up,
+	Edit_icon,
+	useTheme,
+} from '../../../app'
 
 import { updateSimpleEvents } from '../history/utils/updateHistory'
 
@@ -15,7 +21,11 @@ import {
 export function EstimatedChangeField({ plant, edit, iconSize }) {
 	const { updatePlant } = usePlantsActions()
 	const changeRef = React.useRef(null)
+	const { theme } = useTheme()
 	const { state, update } = edit
+	const [selectedDate, setSelectedDate] = React.useState(
+		formatDateToYYYYMMDD(plant.estimatedChange)
+	)
 
 	const handleEstimatedChangeEdition = () => {
 		if (!state.estimatedChange) {
@@ -53,46 +63,78 @@ export function EstimatedChangeField({ plant, edit, iconSize }) {
 	const calculatedWeeks = calculateWeeksUntilChange(plant.estimatedChange)
 
 	return (
-		<>
-			<p>
-				{plant.stage === 'flowering' ? (
-					<>Fecha de corte: </>
-				) : (
-					<>Cambio estimado: </>
-				)}
-				{state.estimatedChange ? (
-					<>
+		<section
+			className="field-section"
+			aria-labelledby="estimated-change-field-label"
+		>
+			{state.estimatedChange ? (
+				<div className={`field-edit-mode ${theme}`}>
+					<label className={`input-label ${theme}`}>
+						{plant.stage === 'flowering' ? 'Fecha de corte' : 'Cambio estimado'}
+					</label>
+					<div className={`input-field ${theme}`}>
 						<input
 							ref={changeRef}
 							type="date"
-							defaultValue={formatDateToYYYYMMDD(plant.estimatedChange)}
+							style={{
+								opacity: 0,
+								position: 'absolute',
+								zIndex: -1,
+							}}
+							defaultValue={selectedDate}
+							onChange={(e) => {
+								setSelectedDate(e.target.value)
+							}}
 						/>
-
+						<input
+							type="text"
+							readOnly
+							value={formatDate(selectedDate)}
+							onClick={() => changeRef.current.showPicker()}
+							className="custom-date-input"
+						/>
+						<button
+							className="custom-date-button"
+							onClick={() => changeRef.current.showPicker()}
+							aria-label="Abrir selector de fecha"
+						>
+							<Calendar_icon size={iconSize} />
+						</button>
+					</div>
+					<div className="field-actions">
 						<Cloud_arrow_up
 							size={iconSize}
 							onEvent={handleEstimatedChangeEdition}
+							aria-label="Guardar cambio estimado"
 						/>
 						<Button
 							onEvent={() => update({ ...state, estimatedChange: false })}
+							aria-label="Cancelar edición"
+							className="info-action-button"
 						>
 							Cancelar
 						</Button>
-					</>
-				) : (
-					<>
+					</div>
+				</div>
+			) : (
+				<div className="field-view-mode">
+					<div>
+						<label className={`field-label ${theme}`}>
+							{plant.stage === 'flowering'
+								? 'Fecha de corte'
+								: 'Cambio estimado'}
+						</label>
 						<span>
 							{formatDate(plant.estimatedChange)} ({calculatedWeeks} semanas)
 						</span>
-						{/* {calculateWeeksUntilChange(plant.estimatedChange)} */}
-						<span>
-							<Edit_icon
-								size={iconSize}
-								onEvent={handleEstimatedChangeEdition}
-							/>
-						</span>
-					</>
-				)}
-			</p>
-		</>
+					</div>
+					<Edit_icon
+						size={iconSize}
+						onEvent={handleEstimatedChangeEdition}
+						aria-label="Editar cambio estimado"
+					/>
+				</div>
+			)}
+		</section>
 	)
 }

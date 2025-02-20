@@ -12,11 +12,13 @@ import { EstimatedChangeField } from './EstimatedChangeField'
 import { PotSizeField } from './PotSizeField'
 import { WateringField } from './WateringField'
 import { NotesField } from './NotesField'
+import { useTheme } from '../../../app'
 
 export function PlantInfo() {
-	const plantId = useParams().id
 	const { plants, selectedPlant } = usePlants()
 	const { selectPlant } = usePlantsActions()
+	const plantId = useParams().id
+	const { theme } = useTheme()
 
 	const iconSize = 25
 
@@ -42,9 +44,16 @@ export function PlantInfo() {
 
 	if (!plant) return <p>Parece que la planta no existe</p>
 	return (
-		<main>
-			<div className="plant-info-component">
-				<div className="plant-info-fields">
+		<main className="plant-info-container">
+			<section
+				className={`plant-info-section ${theme}`}
+				aria-labelledby="plant-info-title"
+			>
+				<header>
+					<h1 id="plant-info-title">Información de la Planta</h1>
+				</header>
+
+				<div className={`plant-info-fields ${theme}`}>
 					{/* NAME */}
 					<NameField
 						edit={{ state: edit, update: setEdit }}
@@ -107,9 +116,8 @@ export function PlantInfo() {
 						iconSize={iconSize}
 					/>
 				</div>
-
-				<PlantHistory />
-			</div>
+			</section>
+			<PlantHistory />
 		</main>
 	)
 }

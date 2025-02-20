@@ -21,68 +21,48 @@
   min-height: 100vh;
 }
 
-input,
-select,
-textarea {
-  width: 100%;
-  border-radius: 3px;
-  border: 1px solid #616161;
-  padding: 10px;
-}
-input:focus,
-select:focus,
-textarea:focus {
-  outline: none;
-  border: 1px solid #007d85;
-}
-
-input,
-select {
-  height: 40px;
-}
-
-button {
-  transition: background 0.2s ease;
-  transition: color 0.2s ease;
-  padding: 10px;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-}
-button.light {
-  background: #007d85;
-}
-button.dark {
-  background: #eb6400;
-}
-button.light {
-  color: #333;
-}
-button.light a {
-  color: #333;
-}
-button.dark {
-  color: #f5f5f5;
-}
-button.dark a {
-  color: #f5f5f5;
-}
-button:hover {
-  transition: background 0.2s ease;
-}
-button:hover.light {
-  background: #eb6400;
-}
-button:hover.dark {
-  background: #007d85;
-}
-
 a {
   text-decoration: none;
   color: inherit;
 }
 a:visited {
   color: inherit;
+}
+
+.btn {
+  transition: background 0.2s ease;
+  transition: color 0.2s ease;
+  padding: 5px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.btn.light {
+  background: #007d85;
+}
+.btn.dark {
+  background: #eb6400;
+}
+.btn.light {
+  color: #333;
+}
+.btn.light a {
+  color: #333;
+}
+.btn.dark {
+  color: #f5f5f5;
+}
+.btn.dark a {
+  color: #f5f5f5;
+}
+.btn:hover {
+  transition: background 0.2s ease;
+}
+.btn:hover.light {
+  background: #eb6400;
+}
+.btn:hover.dark {
+  background: #007d85;
 }
 
 .modal-overlay {
@@ -544,42 +524,377 @@ main {
   box-shadow: 0 0 5px 1px rgba(245, 245, 245, 0.3);
 }
 
-.plant-info-component {
+/* Reset básico */
+.plant-info-container {
+  line-height: 1.6;
+  padding: 20px;
+}
+
+/* Sección principal */
+.plant-info-section {
+  transition: background 0.2s ease;
   width: 100%;
+  max-width: 1025px;
+  border-radius: 3px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.plant-info-section.light {
+  background: #f5f5f5;
+}
+.plant-info-section.dark {
+  background: #373737;
+}
+.plant-info-section.light {
+  box-shadow: 0 0 5px 1px rgba(33, 33, 33, 0.2);
+}
+.plant-info-section.dark {
+  box-shadow: 0 0 5px 1px rgba(245, 245, 245, 0.3);
+}
+.plant-info-section header {
+  margin-bottom: 15px;
+}
+.plant-info-section header h1 {
+  font-size: 24px;
+  color: #007d85;
+  text-align: center;
+}
+
+/* Estilos generales para campos */
+.field-section {
+  margin-bottom: 20px;
+  /* Modo edición */
+  /* Modo visualización */
+  /* Notas */
+  /* Selector de productos */
+  /* Campos avanzados de riego */
+  /* Productos añadidos */
+  /* Toggle final pot */
+}
+.field-section .field-view-mode,
+.field-section .field-edit-mode {
+  display: flex;
+  justify-content: space-between;
+  height: 60px;
+}
+.field-section .field-label {
+  font-weight: bold;
+  display: block;
+}
+.field-section .field-edit-mode {
+  transition: color 0.2s ease;
+  gap: 10px;
+  position: relative;
+}
+.field-section .field-edit-mode.light {
+  color: #212121;
+}
+.field-section .field-edit-mode.light a {
+  color: #212121;
+}
+.field-section .field-edit-mode.dark {
+  color: #f5f5f5;
+}
+.field-section .field-edit-mode.dark a {
+  color: #f5f5f5;
+}
+.field-section .field-edit-mode .input-label {
+  transition: background 0.2s ease;
+  position: absolute;
+  top: -8px;
+  left: 10px;
+  padding: 0 5px;
+  font-size: 12px;
+  font-weight: normal;
+}
+.field-section .field-edit-mode .input-label.light {
+  background: #f5f5f5;
+}
+.field-section .field-edit-mode .input-label.dark {
+  background: #373737;
+}
+.field-section .field-edit-mode .input-field {
+  transition: color 0.2s ease;
+  width: 80%;
+  background: transparent;
+  border: 1px solid #c2c2c2;
+  border-radius: 3px;
+  font-size: 16px;
+  height: 100%;
+  padding: 10px;
+  outline: none;
+}
+.field-section .field-edit-mode .input-field.light {
+  color: #212121;
+}
+.field-section .field-edit-mode .input-field.light a {
+  color: #212121;
+}
+.field-section .field-edit-mode .input-field.dark {
+  color: #f5f5f5;
+}
+.field-section .field-edit-mode .input-field.dark a {
+  color: #f5f5f5;
+}
+.field-section .field-edit-mode .input-field:focus {
+  border-color: #007d85;
+}
+.field-section .field-edit-mode .input-field.dark option {
+  background: #373737;
+}
+.field-section .field-edit-mode .input-field .custom-date-input,
+.field-section .field-edit-mode .input-field .custom-date-button {
+  color: inherit;
+  cursor: pointer;
+  height: 100%;
+  border: none;
+}
+.field-section .field-edit-mode .input-field .custom-date-input {
+  background: transparent;
+  width: 90%;
+  font-size: inherit;
+  outline: none;
+}
+.field-section .field-edit-mode .input-field .custom-date-button {
+  width: 10%;
+  background: none;
+}
+.field-section .field-edit-mode .field-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  width: 20%;
+}
+.field-section .field-edit-mode .field-actions svg {
+  transition: border 0.3s ease;
+  border-radius: 3px;
+  width: 35px;
+  height: 35px;
+  padding: 5px;
+  color: #66bb6a;
+}
+.field-section .field-edit-mode .field-actions svg:hover {
+  border: 1px solid #c2c2c2;
+  color: #2f89fc;
+}
+.field-section .field-edit-mode .field-actions button {
+  padding: 5px 10px;
+}
+.field-section .field-edit-mode .field-actions button.info-action-button {
+  width: 100px;
+}
+.field-section .field-edit-mode .field-actions button:nth-child(3) {
+  background: #f44336;
+}
+.field-section .field-edit-mode .field-actions button:nth-child(3):hover {
+  background: #ea1c0d;
+}
+.field-section .field-view-mode {
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #c2c2c2;
+  border-radius: 3px;
+}
+.field-section .field-view-mode h2,
+.field-section .field-view-mode span {
+  margin: 0;
+}
+.field-section .field-view-mode button {
+  width: 150px;
+  padding: 10px;
+}
+.field-section .field-view-mode.product-selector button {
+  width: 100%;
+  height: 40px;
+}
+.field-section .field-view-mode .notes {
+  background: red;
+}
+.field-section .notes,
+.field-section .product-selector {
+  border: none;
+}
+.field-section .notes {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  height: auto;
 }
-.plant-info-component .plant-info-fields input[type=date] {
-  width: 115px;
-}
-.plant-info-component .plant-info-fields .text-input,
-.plant-info-component .plant-info-fields input[type=number] {
-  transition: color 0.2s ease;
-  width: 150px;
+.field-section .notes textarea {
+  flex: 1;
+  outline: none;
+  resize: none;
+  min-height: 80px;
+  border-radius: 3px;
+  padding: 5px 10px;
+  font-size: inherit;
   background: transparent;
-  border-radius: 0;
-  border: none;
-  border-bottom: 1px solid #007d85;
+  color: inherit;
 }
-.plant-info-component .plant-info-fields .text-input.light,
-.plant-info-component .plant-info-fields input[type=number].light {
-  color: #333;
+.field-section .notes textarea:focus {
+  border: 1px solid #007d85;
 }
-.plant-info-component .plant-info-fields .text-input.light a,
-.plant-info-component .plant-info-fields input[type=number].light a {
-  color: #333;
+.field-section .notes .field-actions {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.plant-info-component .plant-info-fields .text-input.dark,
-.plant-info-component .plant-info-fields input[type=number].dark {
-  color: #f5f5f5;
+.field-section .notes .field-actions .underObservation-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
 }
-.plant-info-component .plant-info-fields .text-input.dark a,
-.plant-info-component .plant-info-fields input[type=number].dark a {
-  color: #f5f5f5;
+.field-section .notes .field-actions .underObservation-field span {
+  cursor: pointer;
 }
-.plant-info-component .plant-info-fields select {
-  width: 200px;
+.field-section .notes .field-actions button {
+  width: 100px;
+  padding: 10px;
+}
+.field-section .notes .field-actions button:nth-child(3) {
+  background: #f44336;
+}
+.field-section .notes .field-actions button:nth-child(3):hover {
+  background: #ea1c0d;
+}
+.field-section .notes .notes-list {
+  list-style: none;
+  border: 1px solid #c2c2c2;
+  border-radius: 3px;
+}
+.field-section .notes .notes-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+.field-section .notes .notes-list li:nth-child(even) {
+  background: gainsboro;
+}
+.field-section .notes .notes-list li:last-child {
+  margin-bottom: 0;
+}
+.field-section .notes .notes-list li span {
+  cursor: default;
+}
+.field-section .notes .notes-list li button {
+  background: #f44336;
+}
+.field-section .notes .notes-list li button:hover {
+  background: #ea1c0d;
+}
+.field-section .notes .notes-list.dark li:nth-child(even) {
+  background: #515151;
+}
+.field-section .product-selection-form {
+  gap: 0;
+  height: 60px;
+}
+.field-section .product-selection-form select {
+  flex: 3;
+  background: transparent;
+  color: inherit;
+  border: 1px solid #c2c2c2;
+  border-radius: 3px 0 0 3px;
+  font-size: inherit;
+  outline: none;
+}
+.field-section .product-selection-form select:focus {
+  border-color: #007d85;
+}
+.field-section .product-selection-form input {
+  flex: 1;
+  background: transparent;
+  color: inherit;
+  border: 1px solid #c2c2c2;
+  border-radius: 0 3px 3px 0;
+  outline: none;
+  font-size: inherit;
+  padding-left: 10px;
+  margin-right: 5px;
+}
+.field-section .product-selection-form input:focus {
+  border-color: #007d85;
+}
+.field-section .product-selection-form .field-actions {
+  gap: 2px;
+}
+.field-section .product-selection-form .field-actions button {
+  height: 30px;
+  padding: 5px 10px;
+}
+.field-section .product-selection-form .field-actions button:nth-child(2) {
+  background: #f44336;
+}
+.field-section .product-selection-form .field-actions button:nth-child(2):hover {
+  background: #ea1c0d;
+}
+.field-section .product-selection-form.dark select option {
+  background: #373737;
+}
+.field-section .watering-advanced-fields {
+  margin: 5px 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas: "water water" "ph ec";
+  gap: 5px;
+}
+.field-section .watering-advanced-fields .amount-field input,
+.field-section .watering-advanced-fields .ph-field input,
+.field-section .watering-advanced-fields .ec-field input {
+  width: 100%;
+  height: 60px;
+  background: transparent;
+  padding: 5px 10px;
+  border: 1px solid #c2c2c2;
+  border-radius: 3px;
+  color: inherit;
+  font-size: inherit;
+}
+.field-section .watering-advanced-fields .amount-field input:focus,
+.field-section .watering-advanced-fields .ph-field input:focus,
+.field-section .watering-advanced-fields .ec-field input:focus {
+  border-color: #007d85;
+}
+.field-section .watering-advanced-fields .amount-field {
+  grid-area: water;
+}
+.field-section .watering-advanced-fields .ph-field {
+  grid-area: ph;
+}
+.field-section .watering-advanced-fields .ec-field {
+  grid-area: ec;
+}
+.field-section .watering-products-added {
+  margin-top: 15px;
+}
+.field-section .watering-products-added .watering-product-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+.field-section .watering-products-added .watering-product-item span {
+  margin-right: 10px;
+}
+.field-section .watering-products-added .watering-product-item .watering-product-remove {
+  background: #f44336;
+  font-size: 14px;
+}
+.field-section .watering-products-added .watering-product-item .watering-product-remove:hover {
+  background: #ea1c0d;
+}
+.field-section .final-pot-toggle {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  gap: 20px;
+  margin-top: 10px;
 }
 
 input[type=number]::-webkit-outer-spin-button,
@@ -588,6 +903,62 @@ input[type=number]::-webkit-inner-spin-button {
   margin: 0;
 }
 
+/* Responsive Design */
+@media (max-width: 769px) {
+  .plant-info-section {
+    padding: 15px;
+  }
+  .plant-info-section header h1 {
+    font-size: 20px;
+  }
+  .field-section {
+    height: auto;
+  }
+  .field-section .field-edit-mode,
+  .field-section .field-view-mode {
+    flex-direction: column;
+    height: auto;
+    gap: 5px;
+    width: 100%;
+  }
+  .field-section .field-edit-mode .input-field,
+  .field-section .field-view-mode .input-field {
+    width: 100%;
+  }
+  .field-section .field-edit-mode .field-actions,
+  .field-section .field-view-mode .field-actions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .field-section .field-edit-mode .field-actions button,
+  .field-section .field-view-mode .field-actions button {
+    width: 100%;
+  }
+  .field-section .field-edit-mode.product-selection-form {
+    flex-direction: column;
+    height: auto;
+  }
+  .field-section .field-edit-mode.product-selection-form select,
+  .field-section .field-edit-mode.product-selection-form input {
+    flex: auto;
+    width: 100%;
+    height: 50px;
+  }
+  .field-section .field-edit-mode.product-selection-form .field-actions {
+    flex-direction: row;
+  }
+  .field-section.notes .field-actions {
+    flex-direction: column;
+  }
+  .field-section .watering-advanced-fields {
+    grid-template-columns: 1fr;
+    grid-template-areas: "water" "ph" "ec";
+  }
+  .field-section .watering-products-added .watering-product-item button {
+    width: 70px;
+  }
+}
 .add-plant-form-container {
   display: grid;
   grid-template-columns: 1fr 1fr;

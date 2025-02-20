@@ -12,8 +12,17 @@ export function WateringForm({ edit }) {
 	}
 
 	return (
-		<div>
-			<label>
+		<div className="watering-advanced-fields">
+			<label className="amount-field">
+				<input
+					type="number"
+					placeholder="Cant. agua (ml)"
+					name="amount"
+					value={state.amount || ''}
+					onChange={handleChange}
+				/>
+			</label>
+			<label className="ph-field">
 				<input
 					type="number"
 					placeholder="pH"
@@ -22,21 +31,12 @@ export function WateringForm({ edit }) {
 					onChange={handleChange}
 				/>
 			</label>
-			<label>
+			<label className="ec-field">
 				<input
 					type="number"
 					placeholder="EC"
 					name="ec"
 					value={state.ec || ''}
-					onChange={handleChange}
-				/>
-			</label>
-			<label>
-				<input
-					type="number"
-					placeholder="Cant. agua (ml)"
-					name="amount"
-					value={state.amount || ''}
 					onChange={handleChange}
 				/>
 			</label>
