@@ -1,10 +1,12 @@
+const API_URL = import.meta.env.VITE_API_URL
+
 /**
  * Obtiene todas las plantas del inventario haciendo una solicitud GET a la API.
  * @returns {Promise<Object[]>} - Un arreglo de objetos que representan a las plantas.
  */
 export const api_getPlants = async () => {
 	try {
-		const response = await fetch('/api/plants')
+		const response = await fetch(`${API_URL}/api/plants`)
 		const data = await response.json()
 		// console.log('Plantas obtenidas:', data)
 		return data
@@ -20,7 +22,7 @@ export const api_getPlants = async () => {
  */
 export const api_addPlant = async (plantData) => {
 	try {
-		const response = await fetch('/api/plants', {
+		const response = await fetch(`${API_URL}/api/plants`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -42,7 +44,7 @@ export const api_addPlant = async (plantData) => {
  */
 export const api_deletePlant = async (plantId) => {
 	try {
-		const response = await fetch(`/api/plants/${plantId}`, {
+		const response = await fetch(`${API_URL}/api/plants/${plantId}`, {
 			method: 'DELETE',
 		})
 		const data = await response.json()
@@ -60,7 +62,7 @@ export const api_deletePlant = async (plantId) => {
  */
 export const api_updatePlant = async (plantData) => {
 	try {
-		const response = await fetch(`/api/plants/${plantData._id}`, {
+		const response = await fetch(`${API_URL}/api/plants/${plantData._id}`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',
