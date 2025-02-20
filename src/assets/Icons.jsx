@@ -161,15 +161,11 @@ export const Arrow_left = (props) => {
 			fill={color}
 			width={size}
 			height={size}
-			// stroke={color}
-			// strokeWidth={strokeWidth}
 		>
 			<path
 				fillRule="evenodd"
-				d="M11.03 3.97a.75.75 0 0 1 0 1.06l-6.22 6.22H21a.75.75 0 0 1 0 1.5H4.81l6.22 6.22a.75.75 0 1 1-1.06 1.06l-7.5-7.5a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 0 1 1.06 0Z"
+				d="M9.53 2.47a.75.75 0 0 1 0 1.06L4.81 8.25H15a6.75 6.75 0 0 1 0 13.5h-3a.75.75 0 0 1 0-1.5h3a5.25 5.25 0 1 0 0-10.5H4.81l4.72 4.72a.75.75 0 1 1-1.06 1.06l-6-6a.75.75 0 0 1 0-1.06l6-6a.75.75 0 0 1 1.06 0Z"
 				clipRule="evenodd"
-				stroke={color}
-				strokeWidth={strokeWidth}
 			/>
 		</svg>
 	)
@@ -295,6 +291,68 @@ export const Calendar_icon = (props) => {
 			<path
 				fillRule="evenodd"
 				d="M6.75 2.25A.75.75 0 0 1 7.5 3v1.5h9V3A.75.75 0 0 1 18 3v1.5h.75a3 3 0 0 1 3 3v11.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3H6V3a.75.75 0 0 1 .75-.75Zm13.5 9a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5Z"
+				clipRule="evenodd"
+			/>
+		</svg>
+	)
+}
+
+export const Chevron_left_icon = (props) => {
+	const { size, color = 'currentColor', getProps } = props
+
+	if (getProps)
+		console.log({
+			size: 'number',
+			color: 'string',
+		})
+
+	return (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 24 24"
+			fill={color}
+			width={size}
+			height={size}
+		>
+			<path
+				fillRule="evenodd"
+				d="M10.72 11.47a.75.75 0 0 0 0 1.06l7.5 7.5a.75.75 0 1 0 1.06-1.06L12.31 12l6.97-6.97a.75.75 0 0 0-1.06-1.06l-7.5 7.5Z"
+				clipRule="evenodd"
+			/>
+			<path
+				fillRule="evenodd"
+				d="M4.72 11.47a.75.75 0 0 0 0 1.06l7.5 7.5a.75.75 0 1 0 1.06-1.06L6.31 12l6.97-6.97a.75.75 0 0 0-1.06-1.06l-7.5 7.5Z"
+				clipRule="evenodd"
+			/>
+		</svg>
+	)
+}
+
+export const Chevron_right_icon = (props) => {
+	const { size, color = 'currentColor', getProps } = props
+
+	if (getProps)
+		console.log({
+			size: 'number',
+			color: 'string',
+		})
+
+	return (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 24 24"
+			fill={color}
+			width={size}
+			height={size}
+		>
+			<path
+				fillRule="evenodd"
+				d="M13.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L11.69 12 4.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+				clipRule="evenodd"
+			/>
+			<path
+				fillRule="evenodd"
+				d="M19.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06L17.69 12l-6.97-6.97a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
 				clipRule="evenodd"
 			/>
 		</svg>
