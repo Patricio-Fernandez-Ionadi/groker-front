@@ -8,34 +8,7 @@
 	max-width: $vw;
 	min-height: $vh;
 }
-input,
-select,
-textarea {
-	width: $full;
-	border-radius: $border_radius;
-	border: 1px solid $grey;
-	padding: 10px;
-	&:focus {
-		outline: none;
-		border: 1px solid $primary;
-	}
-}
-input,
-select {
-	height: 40px;
-}
 
-button {
-	@include useThemeBg($primary, $secondary);
-	@include useThemeText($text, $white);
-	padding: 10px;
-	border: none;
-	border-radius: $border_radius;
-	cursor: pointer;
-	&:hover {
-		@include useThemeBg($secondary, $primary);
-	}
-}
 a {
 	text-decoration: none;
 	color: inherit;
