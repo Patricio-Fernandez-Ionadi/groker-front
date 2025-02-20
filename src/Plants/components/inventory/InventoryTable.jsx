@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 
-import { Eye_icon } from '../../../app'
 import { FormContext } from '../../../app/context/FormContext'
 
 import { usePlantsActions } from '../../hooks/usePlantsActions'
@@ -48,7 +47,7 @@ export const InventoryTable = ({ theme }) => {
 									: ''
 							}`}
 						>
-							<p>{idx}</p>
+							<p>{idx + 1}</p>
 							<p>{each.name}</p>
 							<p>{formatDate(each.entryDate)}</p>
 							<p>{abbreviate(translateField(each.stage), 3)}.</p>
