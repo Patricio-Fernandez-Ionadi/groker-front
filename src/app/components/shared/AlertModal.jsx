@@ -9,7 +9,7 @@ export const AlertModal = ({ message, onClose }) => {
 		<div className="modal-overlay">
 			<div className={`modal-content ${theme}`}>
 				<p>{message}</p>
-				<Button className="confirm-button" onClick={onClose}>
+				<Button className="confirm-button" onEvent={onClose}>
 					Confirmar
 				</Button>
 			</div>
