@@ -1204,12 +1204,20 @@ input[type=number]::-webkit-inner-spin-button {
   position: absolute;
   top: 10px;
   right: 10px;
-  background-color: transparent;
   font-size: 20px;
+  width: 30px;
+  height: 30px;
+  line-height: 20px;
   transition: color 0.3s ease;
 }
 .genetics-modal-close:hover {
   color: #0b686e;
+}
+.genetics-modal-close.dark {
+  background: transparent;
+}
+.genetics-modal-close.light {
+  background: transparent;
 }
 
 .genetics-modal-title {

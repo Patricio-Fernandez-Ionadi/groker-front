@@ -4,6 +4,7 @@ import { useTheme } from '../../app/context/ThemeContext'
 import { AddGenetic } from './AddGenetic'
 import { GeneticList } from './GeneticList'
 import { GenModalContext } from '../index'
+import { Button } from '../../app'
 
 export function GeneticsModal() {
 	const { closeGeneticModal, isGeneticModalOpen } = useContext(GenModalContext)
@@ -30,9 +31,9 @@ export function GeneticsModal() {
 				className={`genetics-modal modal-content ${theme}`}
 				onClick={(e) => e.stopPropagation()}
 			>
-				<button className="genetics-modal-close" onClick={closeGeneticModal}>
+				<Button className="genetics-modal-close" onEvent={closeGeneticModal}>
 					✖
-				</button>
+				</Button>
 				<h2 className="genetics-modal-title">Gestión de Genética</h2>
 
 				<AddGenetic />
