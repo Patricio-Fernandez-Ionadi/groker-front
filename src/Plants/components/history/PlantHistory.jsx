@@ -12,10 +12,6 @@ export const PlantHistory = () => {
 
 	if (!selectedPlant || selectedPlant.history.length === 0) return null
 
-	const handleDeleteNote = (noteId) => {
-		console.log(noteId) // -> loguea bien el id de la nota
-	}
-
 	const renderDetails = (type, details, date) => {
 		switch (type) {
 			case 'note':
