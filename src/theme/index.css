@@ -377,6 +377,7 @@ main {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 20px;
+  grid-template-areas: "inventoryTable inventoryDetails";
 }
 .inventory-component .inventory-table-container {
   transition: background 0.2s ease;
@@ -417,12 +418,14 @@ main {
 @media (max-width: 769px) {
   .inventory-component {
     grid-template-columns: 1fr;
+    grid-template-areas: "inventoryDetails" "inventoryTable";
   }
 }
 .inventory-table-component {
   margin-top: 10px;
   max-height: 600px;
   overflow: hidden scroll;
+  grid-area: inventoryTable;
   /* Estilo para la barra de desplazamiento en navegadores basados en WebKit (Chrome, Safari) */
 }
 .inventory-table-component p {
@@ -454,6 +457,8 @@ main {
 .inventory-table-component .table-head {
   border-radius: 3px 3px 0 0;
   background: #e78437;
+  position: sticky;
+  top: 0;
 }
 .inventory-table-component .table-head,
 .inventory-table-component .table-row {
@@ -498,6 +503,7 @@ main {
 @media (max-width: 769px) {
   .inventory-table-component {
     width: 280px;
+    max-height: 400px;
   }
   .inventory-table-component p:nth-child(3), .inventory-table-component p:nth-child(4), .inventory-table-component p:nth-child(5) {
     display: none;
@@ -510,6 +516,7 @@ main {
   transition: background 0.2s ease;
   padding: 20px;
   border-radius: 8px;
+  grid-area: inventoryDetails;
 }
 .details-component.light {
   background: #f5f5f5;

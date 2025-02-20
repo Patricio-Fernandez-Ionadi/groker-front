@@ -2,6 +2,7 @@
 	display: grid;
 	grid-template-columns: 2fr 1fr;
 	gap: 20px;
+	grid-template-areas: 'inventoryTable inventoryDetails';
 
 	.inventory-table-container {
 		@include useThemeBg($white, $black_light);
@@ -34,5 +35,6 @@
 @media (max-width: $medium) {
 	.inventory-component {
 		grid-template-columns: 1fr;
+		grid-template-areas: 'inventoryDetails' 'inventoryTable';
 	}
 }
