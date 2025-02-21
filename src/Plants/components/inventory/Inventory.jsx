@@ -7,11 +7,13 @@ import { Detail, usePlants } from '../..'
 
 import { InventoryTable } from './InventoryTable'
 import { InventoryEmpty } from './InventoryEmpty'
+import { InventorySkeleton } from './InventorySkeleton'
 
 export const Inventory = () => {
 	const location = useLocation()
 	const { plants } = usePlants()
 	const { theme } = useTheme()
+	// const plants = null
 
 	const renderAddPlantButton = () => (
 		<Button>
@@ -21,7 +23,7 @@ export const Inventory = () => {
 		</Button>
 	)
 
-	if (!plants) return <p>...Cargando</p>
+	if (!plants) return <InventorySkeleton />
 
 	return (
 		<main>
