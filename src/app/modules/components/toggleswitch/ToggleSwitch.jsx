@@ -2,14 +2,14 @@ import React from 'react'
 
 export const ToggleSwitch = ({ switcher, onEvent, name }) => {
 	return (
-		<label className="toggle-switch">
+		<label className="groker__toggle-switch">
 			<input
 				type="checkbox"
 				checked={switcher}
 				onChange={onEvent}
 				name={name}
 			/>
-			<span className="slider"></span>
+			<span className="groker__slider"></span>
 		</label>
 	)
 }

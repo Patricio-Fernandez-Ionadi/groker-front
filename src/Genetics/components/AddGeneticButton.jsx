@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Button } from 'Groker/components'
 
-import { GenModalContext } from '../context/GenModalContext'
+import { GenModalContext } from '@/Genetics'
 import { useTheme } from '@/app'
 
 export function AddGeneticButton() {

@@ -1,7 +1,7 @@
 import React from 'react'
-import { Button } from 'Groker/components'
+import { Button, ToggleSwitch } from 'Groker/components'
 import { Cloud_arrow_up, Edit_icon } from 'Groker/icons'
-import { AlertModal, ToggleSwitch, useTheme } from '@/app'
+import { AlertModal, useTheme } from '@/app'
 import { usePlantsActions } from '../../../hooks/usePlantsActions'
 import { updateSimpleEvents } from '../../history/utils/updateHistory'
 

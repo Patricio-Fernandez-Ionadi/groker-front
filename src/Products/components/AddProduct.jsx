@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Button } from 'Groker/components'
-import { FormContext, useTheme } from '../../app'
+
+import { FormContext, useTheme } from '@/app'
 
 import { useProducts, useProductsActions, validateProductData } from '../'
 

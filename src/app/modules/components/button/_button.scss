@@ -3,7 +3,7 @@
 @import '../../../../theme/values/_animations.scss';
 @import '../../../../theme/values/_mixins.scss';
 
-.btn {
+.groker__btn {
 	@include useThemeBg($primary, $secondary);
 	@include useThemeText($text, $white);
 	padding: 5px;

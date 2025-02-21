@@ -3,6 +3,7 @@ export { PlantDetails } from './components/details/PlantDetails'
 export { PlantHistory } from './components/history/PlantHistory'
 export { PlantInfo } from './components/info/PlantInfo'
 export { Inventory } from './components/inventory/Inventory'
+export { InventoryDetails } from './components/inventory/InventoryDetails'
 export { Detail } from './components/shared/Detail'
 export { AddPlant } from './components/AddPlant'
 

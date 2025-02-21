@@ -71,68 +71,6 @@ a:visited {
   background-color: #f44336;
 }
 
-/* Estilo base para el contenedor del label */
-.toggle-switch-label {
-  display: flex;
-  align-items: center; /* Alinea verticalmente el texto y el toggle */
-  justify-content: space-between;
-  gap: 10px; /* Espacio entre el texto y el toggle */
-  font-size: 14px;
-  color: #333;
-  cursor: pointer;
-}
-
-/* Estilo base para el contenedor del toggle */
-.toggle-switch {
-  position: relative;
-  display: inline-block;
-  width: 50px; /* Ancho del toggle */
-  height: 24px; /* Altura del toggle */
-}
-
-/* Esconde el checkbox real */
-.toggle-switch input[type=checkbox] {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-/* Estilo del slider (la parte visible del toggle) */
-.slider {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc; /* Color cuando está desactivado */
-  border-radius: 12px; /* Bordes redondeados para darle forma ovoide */
-  cursor: pointer;
-  transition: 0.3s; /* Transición suave */
-}
-
-/* Efecto al activar el toggle */
-.toggle-switch input[type=checkbox]:checked + .slider {
-  background-color: #007d85; /* Color cuando está activado */
-}
-
-/* Punto que se mueve dentro del toggle */
-.slider::before {
-  position: absolute;
-  content: "";
-  height: 18px;
-  width: 18px;
-  left: 3px;
-  bottom: 3px;
-  background-color: white; /* Color del punto */
-  border-radius: 50%; /* Forma circular */
-  transition: 0.3s; /* Transición suave */
-}
-
-/* Mover el punto hacia la derecha cuando está activado */
-.toggle-switch input[type=checkbox]:checked + .slider::before {
-  transform: translateX(26px); /* Distancia que se mueve el punto */
-}
-
 /* Skeleton.css */
 .skeleton {
   background-color: red;
@@ -1399,7 +1337,7 @@ input[type=number]::-webkit-inner-spin-button {
   background: #373737;
 }
 
-.btn {
+.groker__btn {
   transition: background 0.2s ease;
   transition: color 0.2s ease;
   padding: 5px;
@@ -1407,30 +1345,82 @@ input[type=number]::-webkit-inner-spin-button {
   border-radius: 3px;
   cursor: pointer;
 }
-.btn.light {
+.groker__btn.light {
   background: #007d85;
 }
-.btn.dark {
+.groker__btn.dark {
   background: #eb6400;
 }
-.btn.light {
+.groker__btn.light {
   color: #333;
 }
-.btn.light a {
+.groker__btn.light a {
   color: #333;
 }
-.btn.dark {
+.groker__btn.dark {
   color: #f5f5f5;
 }
-.btn.dark a {
+.groker__btn.dark a {
   color: #f5f5f5;
 }
-.btn:hover {
+.groker__btn:hover {
   transition: background 0.2s ease;
 }
-.btn:hover.light {
+.groker__btn:hover.light {
   background: #eb6400;
 }
-.btn:hover.dark {
+.groker__btn:hover.dark {
   background: #007d85;
+}
+
+/* Estilo base para el contenedor del label */
+/* Estilo base para el contenedor del toggle */
+.groker__toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px; /* Ancho del toggle */
+  height: 24px; /* Altura del toggle */
+}
+
+/* Esconde el checkbox real */
+.groker__toggle-switch input[type=checkbox] {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Estilo del slider (la parte visible del toggle) */
+.groker__slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc; /* Color cuando está desactivado */
+  border-radius: 12px; /* Bordes redondeados para darle forma ovoide */
+  cursor: pointer;
+  transition: 0.3s; /* Transición suave */
+}
+
+/* Efecto al activar el toggle */
+.groker__toggle-switch input[type=checkbox]:checked + .groker__slider {
+  background-color: #007d85; /* Color cuando está activado */
+}
+
+/* Punto que se mueve dentro del toggle */
+.groker__slider::before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white; /* Color del punto */
+  border-radius: 50%; /* Forma circular */
+  transition: 0.3s; /* Transición suave */
+}
+
+/* Mover el punto hacia la derecha cuando está activado */
+.groker__toggle-switch input[type=checkbox]:checked + .groker__slider::before {
+  transform: translateX(26px); /* Distancia que se mueve el punto */
 }/*# sourceMappingURL=index.css.map */

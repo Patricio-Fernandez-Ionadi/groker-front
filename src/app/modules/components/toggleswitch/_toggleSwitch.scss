@@ -1,29 +1,29 @@
 // TOGGLE SWITCH
 /* Estilo base para el contenedor del label */
-.toggle-switch-label {
-	display: flex;
-	align-items: center; /* Alinea verticalmente el texto y el toggle */
-	justify-content: space-between;
-	gap: 10px; /* Espacio entre el texto y el toggle */
-	font-size: 14px;
-	color: $text;
-	cursor: pointer;
-}
+// .toggle-switch-label {
+// 	display: flex;
+// 	align-items: center; /* Alinea verticalmente el texto y el toggle */
+// 	justify-content: space-between;
+// 	gap: 10px; /* Espacio entre el texto y el toggle */
+// 	font-size: 14px;
+// 	color: $text;
+// 	cursor: pointer;
+// }
 /* Estilo base para el contenedor del toggle */
-.toggle-switch {
+.groker__toggle-switch {
 	position: relative;
 	display: inline-block;
 	width: 50px; /* Ancho del toggle */
 	height: 24px; /* Altura del toggle */
 }
 /* Esconde el checkbox real */
-.toggle-switch input[type='checkbox'] {
+.groker__toggle-switch input[type='checkbox'] {
 	opacity: 0;
 	width: 0;
 	height: 0;
 }
 /* Estilo del slider (la parte visible del toggle) */
-.slider {
+.groker__slider {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -35,11 +35,11 @@
 	transition: 0.3s; /* Transición suave */
 }
 /* Efecto al activar el toggle */
-.toggle-switch input[type='checkbox']:checked + .slider {
+.groker__toggle-switch input[type='checkbox']:checked + .groker__slider {
 	background-color: $primary; /* Color cuando está activado */
 }
 /* Punto que se mueve dentro del toggle */
-.slider::before {
+.groker__slider::before {
 	position: absolute;
 	content: '';
 	height: 18px;
@@ -51,6 +51,8 @@
 	transition: 0.3s; /* Transición suave */
 }
 /* Mover el punto hacia la derecha cuando está activado */
-.toggle-switch input[type='checkbox']:checked + .slider::before {
+.groker__toggle-switch
+	input[type='checkbox']:checked
+	+ .groker__slider::before {
 	transform: translateX(26px); /* Distancia que se mueve el punto */
 }

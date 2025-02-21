@@ -8,7 +8,6 @@ export { Navigation } from './components/layout/navigation/Navigation'
 export { Skeleton } from './components/shared/Skeleton'
 export { ConfirmModal } from './components/shared/ConfirmModal'
 export { AlertModal } from './components/shared/AlertModal'
-export { ToggleSwitch } from './components/shared/ToggleSwitch'
 
 export { store } from './store/store'
 

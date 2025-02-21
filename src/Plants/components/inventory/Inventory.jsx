@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, useLocation } from 'react-router'
 import { Button } from 'Groker/components'
 
-import { useTheme } from '../../../app'
+import { useTheme } from '@/app'
 
 import { Detail, usePlants } from '../..'
 

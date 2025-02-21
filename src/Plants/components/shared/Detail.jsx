@@ -1,9 +1,7 @@
 import React from 'react'
-import { usePlants } from '../../../Plants/hooks/usePlants'
+import { usePlants, PlantDetails, InventoryDetails } from '@/Plants'
 
-import { PlantDetails } from '../../../Plants/components/details/PlantDetails'
-import { InventoryDetails } from '../../../Plants/components/inventory/InventoryDetails'
-import { useTheme } from '../../../app'
+import { useTheme } from '@/app'
 
 export const Detail = () => {
 	const { theme } = useTheme()

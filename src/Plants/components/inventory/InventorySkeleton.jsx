@@ -1,5 +1,5 @@
 import React from 'react'
-import { Skeleton, useTheme } from '../../../app'
+import { Skeleton, useTheme } from '@/app'
 import { DetailSkeleton } from '../shared/DetailSkeleton'
 
 export function InventorySkeleton() {
