@@ -1,7 +1,7 @@
 import React from 'react'
-import { Button } from 'Groker/components'
+import { Button, DateInput } from 'Groker/components'
 import { toNormal, toISO, toYYYYMMDD, today } from 'Groker/date'
-import { Calendar_icon, Cloud_arrow_up, Edit_icon } from 'Groker/icons'
+import { Cloud_arrow_up, Edit_icon } from 'Groker/icons'
 
 import { useTheme } from '@/app'
 import { useProductsActions } from '@/Products'
@@ -81,36 +81,16 @@ export function WateringField({ edit, plant, iconSize }) {
 			{state.lastWatered ? (
 				<>
 					<div className={`field-edit-mode ${theme}`}>
-						<label className={`input-label ${theme}`}>Ultimo Riego</label>
-						<div className={`input-field ${theme}`}>
-							<input
-								ref={wateringDateRef}
-								type="date"
-								style={{
-									opacity: 0,
-									position: 'absolute',
-									zIndex: -1,
-								}}
-								defaultValue={selectedDate}
-								onChange={(e) => {
-									setSelectedDate(e.target.value)
-								}}
-							/>
-							<input
-								type="text"
-								readOnly
-								value={toNormal(selectedDate)}
-								onClick={() => wateringDateRef.current.showPicker()}
-								className="custom-date-input"
-							/>
-							<button
-								className="custom-date-button"
-								onClick={() => wateringDateRef.current.showPicker()}
-								aria-label="Abrir selector de fecha"
-							>
-								<Calendar_icon size={iconSize} />
-							</button>
-						</div>
+						<DateInput
+							theme={theme}
+							change={(e) => setSelectedDate(e.target.value)}
+							click={() => wateringDateRef.current.showPicker()}
+							defaultValue={selectedDate}
+							toShowValue={toNormal(selectedDate)}
+							iconSize={iconSize}
+							ref={wateringDateRef}
+							label="Ultimo Riego"
+						/>
 						<div className="field-actions">
 							<Cloud_arrow_up
 								size={iconSize}

@@ -715,23 +715,6 @@ main {
 .field-section .field-edit-mode .input-field.dark option {
   background: #373737;
 }
-.field-section .field-edit-mode .input-field .custom-date-input,
-.field-section .field-edit-mode .input-field .custom-date-button {
-  color: inherit;
-  cursor: pointer;
-  height: 100%;
-  border: none;
-}
-.field-section .field-edit-mode .input-field .custom-date-input {
-  background: transparent;
-  width: 90%;
-  font-size: inherit;
-  outline: none;
-}
-.field-section .field-edit-mode .input-field .custom-date-button {
-  width: 10%;
-  background: none;
-}
 .field-section .field-edit-mode .field-actions {
   display: flex;
   gap: 10px;
@@ -1249,7 +1232,7 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 /* para cuando se cree un package independiente */
-.groker__textInput-label {
+.groker__input-label {
   transition: background 0.2s ease;
   position: absolute;
   top: -8px;
@@ -1258,14 +1241,14 @@ input[type=number]::-webkit-inner-spin-button {
   font-size: 12px;
   font-weight: normal;
 }
-.groker__textInput-label.light {
+.groker__input-label.light {
   background: #f5f5f5;
 }
-.groker__textInput-label.dark {
+.groker__input-label.dark {
   background: #373737;
 }
 
-.groker__textInput-field {
+.groker__input-field {
   transition: color 0.2s ease;
   width: 80%;
   background: transparent;
@@ -1276,23 +1259,40 @@ input[type=number]::-webkit-inner-spin-button {
   padding: 10px;
   outline: none;
 }
-.groker__textInput-field.light {
+.groker__input-field.light {
   color: #212121;
 }
-.groker__textInput-field.light a {
+.groker__input-field.light a {
   color: #212121;
 }
-.groker__textInput-field.dark {
+.groker__input-field.dark {
   color: #f5f5f5;
 }
-.groker__textInput-field.dark a {
+.groker__input-field.dark a {
   color: #f5f5f5;
 }
-.groker__textInput-field:focus {
+.groker__input-field:focus {
   border-color: #007d85;
 }
-.groker__textInput-field.dark option {
+.groker__input-field.dark option {
   background: #373737;
+}
+.groker__input-field .custom-date-input,
+.groker__input-field .custom-date-button {
+  color: inherit;
+  cursor: pointer;
+  height: 100%;
+  border: none;
+}
+.groker__input-field .custom-date-input {
+  background: transparent;
+  width: 90%;
+  font-size: inherit;
+  outline: none;
+}
+.groker__input-field .custom-date-button {
+  width: 10%;
+  background: none;
 }
 
 .groker__btn {

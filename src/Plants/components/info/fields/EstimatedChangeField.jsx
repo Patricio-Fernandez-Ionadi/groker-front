@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from 'Groker/components'
+import { Button, DateInput } from 'Groker/components'
 import { toNormal, toYYYYMMDD, toISO } from 'Groker/date'
 
 import { Calendar_icon, Cloud_arrow_up, Edit_icon } from 'Groker/icons'
@@ -58,38 +58,19 @@ export function EstimatedChangeField({ plant, edit, iconSize }) {
 		>
 			{state.estimatedChange ? (
 				<div className={`field-edit-mode ${theme}`}>
-					<label className={`input-label ${theme}`}>
-						{plant.stage === 'flowering' ? 'Fecha de corte' : 'Cambio estimado'}
-					</label>
-					<div className={`input-field ${theme}`}>
-						<input
-							ref={changeRef}
-							type="date"
-							style={{
-								opacity: 0,
-								position: 'absolute',
-								zIndex: -1,
-							}}
-							defaultValue={selectedDate}
-							onChange={(e) => {
-								setSelectedDate(e.target.value)
-							}}
-						/>
-						<input
-							type="text"
-							readOnly
-							value={toNormal(selectedDate)}
-							onClick={() => changeRef.current.showPicker()}
-							className="custom-date-input"
-						/>
-						<button
-							className="custom-date-button"
-							onClick={() => changeRef.current.showPicker()}
-							aria-label="Abrir selector de fecha"
-						>
-							<Calendar_icon size={iconSize} />
-						</button>
-					</div>
+					<DateInput
+						theme={theme}
+						change={(e) => setSelectedDate(e.target.value)}
+						click={() => changeRef.current.showPicker()}
+						defaultValue={selectedDate}
+						toShowValue={toNormal(selectedDate)}
+						iconSize={iconSize}
+						ref={changeRef}
+						label={
+							plant.stage === 'flowering' ? 'Fecha de corte' : 'Cambio estimado'
+						}
+					/>
+
 					<div className="field-actions">
 						<Cloud_arrow_up
 							size={iconSize}

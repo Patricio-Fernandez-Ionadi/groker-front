@@ -75,25 +75,6 @@
 			&.dark option {
 				background: $black-light;
 			}
-
-			.custom-date-input,
-			.custom-date-button {
-				color: inherit;
-				cursor: pointer;
-				height: 100%;
-				border: none;
-			}
-
-			.custom-date-input {
-				background: transparent;
-				width: 90%;
-				font-size: inherit;
-				outline: none;
-			}
-			.custom-date-button {
-				width: 10%;
-				background: none;
-			}
 		}
 
 		.field-actions {

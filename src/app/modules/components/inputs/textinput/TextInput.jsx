@@ -12,12 +12,12 @@ export const TextInput = React.forwardRef(function TextInput(props, ref) {
 
 	return (
 		<>
-			<label className={`groker__textInput-label ${className} ${theme}`}>
+			<label className={`groker__input-label ${className} ${theme}`}>
 				{label}
 			</label>
 			<input
 				type={type}
-				className={`groker__textInput-field ${theme}`}
+				className={`groker__input-field ${theme}`}
 				name={name}
 				defaultValue={defaultValue}
 				ref={ref}

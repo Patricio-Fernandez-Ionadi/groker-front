@@ -1,6 +1,6 @@
 import React from 'react'
-import { Button } from 'Groker/components'
-import { Calendar_icon, Cloud_arrow_up, Edit_icon } from 'Groker/icons'
+import { Button, DateInput } from 'Groker/components'
+import { Cloud_arrow_up, Edit_icon } from 'Groker/icons'
 import { useTheme } from '@/app'
 import { toNormal, toISO, toYYYYMMDD } from 'Groker/date'
 
@@ -68,36 +68,16 @@ export const EntryDateField = ({ edit, plant, iconSize }) => {
 		<section className="field-section" aria-labelledby="entry-date-field-label">
 			{state.entryDate ? (
 				<div className={`field-edit-mode ${theme}`}>
-					<label className={`input-label ${theme}`}>Fecha de ingreso</label>
-					<div className={`input-field ${theme}`}>
-						<input
-							ref={entryDateRef}
-							type="date"
-							style={{
-								opacity: 0,
-								position: 'absolute',
-								zIndex: -1,
-							}}
-							defaultValue={selectedDate}
-							onChange={(e) => {
-								setSelectedDate(e.target.value)
-							}}
-						/>
-						<input
-							type="text"
-							readOnly
-							value={toNormal(selectedDate)}
-							onClick={() => entryDateRef.current.showPicker()}
-							className="custom-date-input"
-						/>
-						<button
-							className="custom-date-button"
-							onClick={() => entryDateRef.current.showPicker()}
-							aria-label="Abrir selector de fecha"
-						>
-							<Calendar_icon size={iconSize} />
-						</button>
-					</div>
+					<DateInput
+						theme={theme}
+						change={(e) => setSelectedDate(e.target.value)}
+						click={() => entryDateRef.current.showPicker()}
+						defaultValue={selectedDate}
+						toShowValue={toNormal(selectedDate)}
+						iconSize={iconSize}
+						ref={entryDateRef}
+						label="Fecha de ingreso"
+					/>
 					<div className="field-actions">
 						<Cloud_arrow_up
 							size={iconSize}
