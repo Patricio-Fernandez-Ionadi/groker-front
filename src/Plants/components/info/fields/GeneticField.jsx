@@ -1,9 +1,10 @@
 import React from 'react'
-import { useGenetics } from '../../../../Genetics'
+import { Button } from 'Groker/components'
+import { Cloud_arrow_up, Edit_icon } from 'Groker/icons'
+import { useTheme } from '@/app'
 
-import { Button, Cloud_arrow_up, Edit_icon, useTheme } from '../../../../app'
-import { usePlantsActions } from '../../../hooks/usePlantsActions'
-import { updateSimpleEvents } from '../../history/utils/updateHistory'
+import { useGenetics } from '@/Genetics'
+import { usePlantsActions, updateSimpleEvents } from '@/Plants'
 
 export const GeneticField = ({ edit, plant, iconSize }) => {
 	const { genetics } = useGenetics()
@@ -67,6 +68,7 @@ export const GeneticField = ({ edit, plant, iconSize }) => {
 							onEvent={() => update({ ...state, genetic: false })}
 							aria-label="Cancelar edición"
 							className="info-action-button"
+							theme={theme}
 						>
 							Cancelar
 						</Button>

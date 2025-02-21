@@ -1,18 +1,22 @@
 import React from 'react'
 import { Link } from 'react-router'
+import { toNormal } from 'Groker/date'
+import { Button } from 'Groker/components'
+import { Eye_icon } from 'Groker/icons'
 
-import { Button, Eye_icon, routes } from '../../../app'
+import { routes, useTheme } from '@/app'
 
-import { formatDate, translateField, usePlants } from '../../'
+import { translateField, usePlants } from '@/Plants'
 
 export const PlantDetails = () => {
 	const { selectedPlant } = usePlants()
+	const { theme } = useTheme()
 
 	return (
 		<>
 			<header className="plant-details-header">
 				<h2 className="plant-details-title">Detalles de la Planta</h2>
-				<Button className="plant-details-button">
+				<Button className="plant-details-button" theme={theme}>
 					<Link
 						to={routes.plantDetail.buildPath(selectedPlant._id)}
 						state={{ from: location.pathname }}
@@ -23,7 +27,7 @@ export const PlantDetails = () => {
 			</header>
 			<div className="plant-details-info">
 				<p className="plant-details-item">
-					Fecha de ingreso: <span>{formatDate(selectedPlant.entryDate)}</span>
+					Fecha de ingreso: <span>{toNormal(selectedPlant.entryDate)}</span>
 				</p>
 				<p className="plant-details-item">
 					Nombre: <span>{selectedPlant.name}</span>
@@ -36,11 +40,11 @@ export const PlantDetails = () => {
 				</p>
 				<p className="plant-details-item">
 					Cambio estimado:{' '}
-					<span>{formatDate(selectedPlant.estimatedChange)}</span>
+					<span>{toNormal(selectedPlant.estimatedChange)}</span>
 				</p>
 				{selectedPlant.lastWatered && (
 					<p className="plant-details-item">
-						Último riego: <span>{formatDate(selectedPlant.lastWatered)}</span>
+						Último riego: <span>{toNormal(selectedPlant.lastWatered)}</span>
 					</p>
 				)}
 				{selectedPlant.potSize !== 0 && (

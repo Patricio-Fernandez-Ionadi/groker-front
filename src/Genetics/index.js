@@ -1,13 +1,16 @@
-export { AddGenetic } from './components/AddGenetic'
-export { AddGeneticButton } from './components/AddGeneticButton'
-export { GeneticList } from './components/GeneticList'
+// Components
 export { GeneticsModal } from './components/GeneticsModal'
+export { AddGeneticButton } from './components/AddGeneticButton'
 
+// Context
 export * from './context/GenModalContext'
 
-export * from './store/geneticsAsyncActions'
-export * from './store/geneticsSlice'
-
+// Hooks
 export * from './hooks/useGenetics'
 
+// Services
 export * from './services/genetics'
+
+// Store
+export * from './store/geneticsAsyncActions'
+export * from './store/geneticsSlice'

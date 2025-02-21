@@ -1,12 +1,14 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Button } from 'Groker/components'
 
-import { Button } from '../../app'
 import { deleteGenetic } from '../index'
+import { useTheme } from '@/app'
 
 export function GeneticList() {
 	const dispatch = useDispatch()
 	const { genetics } = useSelector((state) => state.geneticsStore)
+	const { theme } = useTheme()
 
 	const handleDeleteGenetic = async (id) => {
 		dispatch(deleteGenetic(id))
@@ -25,6 +27,7 @@ export function GeneticList() {
 							<Button
 								className="delete-button"
 								onEvent={(e) => handleDeleteGenetic(genetic._id)}
+								theme={theme}
 							>
 								Eliminar
 							</Button>

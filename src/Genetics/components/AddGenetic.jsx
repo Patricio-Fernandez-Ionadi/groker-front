@@ -1,12 +1,15 @@
 import React, { useContext, useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { Button } from 'Groker/components'
+
 import { addNewGenetic, GenModalContext } from '../index'
-import { Button } from '../../app'
+import { useTheme } from '@/app'
 
 export function AddGenetic() {
 	const [newGenetic, setNewGenetic] = useState('')
 	const dispatch = useDispatch()
 	const { closeGeneticModal } = useContext(GenModalContext)
+	const { theme } = useTheme()
 
 	const handleAddGenetic = async (e) => {
 		e.preventDefault()
@@ -27,7 +30,11 @@ export function AddGenetic() {
 					value={newGenetic}
 					onChange={(e) => setNewGenetic(e.target.value)}
 				/>
-				<Button className="save-button" onEvent={handleAddGenetic}>
+				<Button
+					className="save-button"
+					onEvent={handleAddGenetic}
+					theme={theme}
+				>
 					Guardar
 				</Button>
 			</div>

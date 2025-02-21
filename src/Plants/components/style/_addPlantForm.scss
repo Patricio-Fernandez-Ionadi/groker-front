@@ -1,0 +1,122 @@
+// ### ADD PLANT FORM ###
+.add-plant-form-container {
+	display: grid;
+	grid-template-columns: 1fr 1fr; // Dos columnas
+	grid-template-rows: repeat(5, 60px);
+	gap: 10px; // Espacio entre los elementos
+	max-width: 1280px; // Ancho máximo del formulario
+	width: $full;
+	margin: 0 auto; // Centrar el formulario
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+	align-items: center;
+
+	grid-template-areas:
+		'. cancel'
+		'name genetic'
+		'date stage'
+		'potSize potCheckbox'
+		'button button';
+}
+.cancel-button {
+	grid-area: cancel;
+	width: 100px;
+	justify-self: flex-end;
+	align-self: center;
+}
+
+.add-plant-form-name {
+	grid-area: name;
+	display: flex;
+	flex-direction: column;
+}
+.add-plant-form-genetic {
+	grid-area: genetic;
+	display: flex;
+	& select {
+		border-radius: $border_radius 0 0 $border_radius !important;
+	}
+	& button {
+		height: 40px;
+		padding: 0 10px;
+		border-radius: 0 $border_radius $border_radius 0;
+	}
+}
+.add-plant-form-date {
+	grid-area: date;
+}
+.add-plant-form-stage {
+	grid-area: stage;
+}
+.add-plant-form-potSize {
+	grid-area: potSize;
+}
+.add-plant-form-potCheckbox {
+	grid-area: potCheckbox;
+	font-size: 14px;
+	display: flex;
+	gap: 15px;
+	justify-content: center;
+}
+.add-plant-form-button {
+	grid-area: button;
+	padding: 10px;
+	font-size: 16px;
+}
+
+.add-plant-form-name input,
+.add-plant-form-genetic select,
+.add-plant-form-date input,
+.add-plant-form-stage select,
+.add-plant-form-potSize {
+	width: $full;
+	padding: 8px;
+	border: 1px solid $grey;
+	border-radius: $border_radius;
+	font-size: 14px;
+	&:focus {
+		border-color: $primary;
+		outline: none;
+	}
+}
+
+.error {
+	color: $error;
+	font-size: 12px;
+	margin-top: 2px; // Espacio pequeño arriba del error
+}
+
+@media (max-width: $medium) {
+	.add-plant-form-container {
+		grid-template-columns: 1fr;
+		gap: 15px;
+		grid-template-areas:
+			'cancel'
+			'name'
+			'genetic'
+			'date'
+			'stage'
+			'potSize'
+			'potCheckbox'
+			'button';
+	}
+
+	.add-plant-form-name input,
+	.add-plant-form-genetic select,
+	.add-plant-form-date input,
+	.add-plant-form-stage select,
+	.add-plant-form-potSize {
+		font-size: 16px;
+	}
+
+	.add-plant-form-potCheckbox {
+		flex-direction: column;
+		gap: 0;
+		align-items: center;
+	}
+
+	.add-plant-form-button {
+		font-size: 18px;
+	}
+}

@@ -1,5 +1,7 @@
 import React from 'react'
-import { Button, Cloud_arrow_up, Edit_icon, useTheme } from '../../../../app'
+import { Button } from 'Groker/components'
+import { Cloud_arrow_up, Edit_icon } from 'Groker/icons'
+import { useTheme } from '@/app'
 
 import { usePlantsActions } from '../../../hooks/usePlantsActions'
 
@@ -87,6 +89,7 @@ export const StageField = ({ edit, plant, iconSize }) => {
 							onEvent={() => update({ ...state, stage: false })}
 							aria-label="Cancelar edición"
 							className="info-action-button"
+							theme={theme}
 						>
 							Cancelar
 						</Button>

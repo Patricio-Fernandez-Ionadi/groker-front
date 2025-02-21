@@ -1,5 +1,5 @@
 import React from 'react'
-import { Exlamation_cicle } from '../../../app'
+import { Exlamation_cicle } from 'Groker/icons'
 
 export function InventoryEmpty({ children }) {
 	return (

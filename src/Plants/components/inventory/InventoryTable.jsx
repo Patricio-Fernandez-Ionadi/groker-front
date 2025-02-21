@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
 
+import { toNormal } from 'Groker/date'
+
 import { FormContext } from '../../../app/context/FormContext'
 
-import { usePlantsActions } from '../../hooks/usePlantsActions'
-
-import { formatDate, translateField, usePlants } from '../../'
+import { usePlantsActions, translateField, usePlants } from '@/Plants'
 
 export const InventoryTable = ({ theme }) => {
 	const { isEditPlantFormOpen, closeEditPlantForm } = useContext(FormContext)
@@ -49,10 +49,10 @@ export const InventoryTable = ({ theme }) => {
 						>
 							<p>{idx + 1}</p>
 							<p>{each.name}</p>
-							<p>{formatDate(each.entryDate)}</p>
+							<p>{toNormal(each.entryDate)}</p>
 							<p>{abbreviate(translateField(each.stage), 3)}.</p>
-							<p>{formatDate(each.estimatedChange)}</p>
-							<p>{formatDate(each.lastWatered)}</p>
+							<p>{toNormal(each.estimatedChange)}</p>
+							<p>{toNormal(each.lastWatered)}</p>
 						</div>
 					))}
 				</div>

@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router'
+import { Button } from 'Groker/components'
 
-import { Button, useTheme } from '../../../app'
+import { useTheme } from '../../../app'
 
 import { Detail, usePlants } from '../..'
 
@@ -15,7 +16,7 @@ export const Inventory = () => {
 	const { theme } = useTheme()
 
 	const renderAddPlantButton = () => (
-		<Button>
+		<Button theme={theme}>
 			<Link to="/plants/ingreso" state={{ from: location.pathname }}>
 				Añadir Planta
 			</Link>

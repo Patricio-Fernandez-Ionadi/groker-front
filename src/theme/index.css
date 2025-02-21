@@ -29,42 +29,6 @@ a:visited {
   color: inherit;
 }
 
-.btn {
-  transition: background 0.2s ease;
-  transition: color 0.2s ease;
-  padding: 5px;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-}
-.btn.light {
-  background: #007d85;
-}
-.btn.dark {
-  background: #eb6400;
-}
-.btn.light {
-  color: #333;
-}
-.btn.light a {
-  color: #333;
-}
-.btn.dark {
-  color: #f5f5f5;
-}
-.btn.dark a {
-  color: #f5f5f5;
-}
-.btn:hover {
-  transition: background 0.2s ease;
-}
-.btn:hover.light {
-  background: #eb6400;
-}
-.btn:hover.dark {
-  background: #007d85;
-}
-
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -410,6 +374,121 @@ main {
   box-shadow: 0 0 5px 1px rgba(245, 245, 245, 0.3);
 }
 
+.add-plant-form-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(5, 60px);
+  gap: 10px;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  align-items: center;
+  grid-template-areas: ". cancel" "name genetic" "date stage" "potSize potCheckbox" "button button";
+}
+
+.cancel-button {
+  grid-area: cancel;
+  width: 100px;
+  justify-self: flex-end;
+  align-self: center;
+}
+
+.add-plant-form-name {
+  grid-area: name;
+  display: flex;
+  flex-direction: column;
+}
+
+.add-plant-form-genetic {
+  grid-area: genetic;
+  display: flex;
+}
+.add-plant-form-genetic select {
+  border-radius: 3px 0 0 3px !important;
+}
+.add-plant-form-genetic button {
+  height: 40px;
+  padding: 0 10px;
+  border-radius: 0 3px 3px 0;
+}
+
+.add-plant-form-date {
+  grid-area: date;
+}
+
+.add-plant-form-stage {
+  grid-area: stage;
+}
+
+.add-plant-form-potSize {
+  grid-area: potSize;
+}
+
+.add-plant-form-potCheckbox {
+  grid-area: potCheckbox;
+  font-size: 14px;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.add-plant-form-button {
+  grid-area: button;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.add-plant-form-name input,
+.add-plant-form-genetic select,
+.add-plant-form-date input,
+.add-plant-form-stage select,
+.add-plant-form-potSize {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #616161;
+  border-radius: 3px;
+  font-size: 14px;
+}
+.add-plant-form-name input:focus,
+.add-plant-form-genetic select:focus,
+.add-plant-form-date input:focus,
+.add-plant-form-stage select:focus,
+.add-plant-form-potSize:focus {
+  border-color: #007d85;
+  outline: none;
+}
+
+.error {
+  color: #f44336;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+@media (max-width: 769px) {
+  .add-plant-form-container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    grid-template-areas: "cancel" "name" "genetic" "date" "stage" "potSize" "potCheckbox" "button";
+  }
+  .add-plant-form-name input,
+  .add-plant-form-genetic select,
+  .add-plant-form-date input,
+  .add-plant-form-stage select,
+  .add-plant-form-potSize {
+    font-size: 16px;
+  }
+  .add-plant-form-potCheckbox {
+    flex-direction: column;
+    gap: 0;
+    align-items: center;
+  }
+  .add-plant-form-button {
+    font-size: 18px;
+  }
+}
 .plant-details-header {
   display: flex;
   flex-direction: column;
@@ -1077,121 +1156,6 @@ input[type=number]::-webkit-inner-spin-button {
     width: 70px;
   }
 }
-.add-plant-form-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(5, 60px);
-  gap: 10px;
-  max-width: 1280px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-  align-items: center;
-  grid-template-areas: ". cancel" "name genetic" "date stage" "potSize potCheckbox" "button button";
-}
-
-.cancel-button {
-  grid-area: cancel;
-  width: 100px;
-  justify-self: flex-end;
-  align-self: center;
-}
-
-.add-plant-form-name {
-  grid-area: name;
-  display: flex;
-  flex-direction: column;
-}
-
-.add-plant-form-genetic {
-  grid-area: genetic;
-  display: flex;
-}
-.add-plant-form-genetic select {
-  border-radius: 3px 0 0 3px !important;
-}
-.add-plant-form-genetic button {
-  height: 40px;
-  padding: 0 10px;
-  border-radius: 0 3px 3px 0;
-}
-
-.add-plant-form-date {
-  grid-area: date;
-}
-
-.add-plant-form-stage {
-  grid-area: stage;
-}
-
-.add-plant-form-potSize {
-  grid-area: potSize;
-}
-
-.add-plant-form-potCheckbox {
-  grid-area: potCheckbox;
-  font-size: 14px;
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-}
-
-.add-plant-form-button {
-  grid-area: button;
-  padding: 10px;
-  font-size: 16px;
-}
-
-.add-plant-form-name input,
-.add-plant-form-genetic select,
-.add-plant-form-date input,
-.add-plant-form-stage select,
-.add-plant-form-potSize {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #616161;
-  border-radius: 3px;
-  font-size: 14px;
-}
-.add-plant-form-name input:focus,
-.add-plant-form-genetic select:focus,
-.add-plant-form-date input:focus,
-.add-plant-form-stage select:focus,
-.add-plant-form-potSize:focus {
-  border-color: #007d85;
-  outline: none;
-}
-
-.error {
-  color: #f44336;
-  font-size: 12px;
-  margin-top: 2px;
-}
-
-@media (max-width: 769px) {
-  .add-plant-form-container {
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 15px;
-    grid-template-areas: "name name name" "genetic genetic genetic" "date date date" "stage stage stage" "potSize potSize potCheckbox" "button button button";
-  }
-  .add-plant-form-name input,
-  .add-plant-form-genetic select,
-  .add-plant-form-date input,
-  .add-plant-form-stage select,
-  .add-plant-form-potSize {
-    font-size: 16px;
-  }
-  .add-plant-form-potCheckbox {
-    flex-direction: column;
-    gap: 0;
-    align-items: center;
-  }
-  .add-plant-form-button {
-    font-size: 18px;
-  }
-}
 .product-list-container {
   width: 100%;
   max-width: 1280px;
@@ -1386,4 +1350,87 @@ input[type=number]::-webkit-inner-spin-button {
 }
 .genetic-list ul li .delete-button:hover {
   background-color: #f44336;
+}
+
+/* para cuando se cree un package independiente */
+.groker__textInput-label {
+  transition: background 0.2s ease;
+  position: absolute;
+  top: -8px;
+  left: 10px;
+  padding: 0 5px;
+  font-size: 12px;
+  font-weight: normal;
+}
+.groker__textInput-label.light {
+  background: #f5f5f5;
+}
+.groker__textInput-label.dark {
+  background: #373737;
+}
+
+.groker__textInput-field {
+  transition: color 0.2s ease;
+  width: 80%;
+  background: transparent;
+  border: 1px solid #c2c2c2;
+  border-radius: 3px;
+  font-size: 16px;
+  height: 100%;
+  padding: 10px;
+  outline: none;
+}
+.groker__textInput-field.light {
+  color: #212121;
+}
+.groker__textInput-field.light a {
+  color: #212121;
+}
+.groker__textInput-field.dark {
+  color: #f5f5f5;
+}
+.groker__textInput-field.dark a {
+  color: #f5f5f5;
+}
+.groker__textInput-field:focus {
+  border-color: #007d85;
+}
+.groker__textInput-field.dark option {
+  background: #373737;
+}
+
+.btn {
+  transition: background 0.2s ease;
+  transition: color 0.2s ease;
+  padding: 5px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.btn.light {
+  background: #007d85;
+}
+.btn.dark {
+  background: #eb6400;
+}
+.btn.light {
+  color: #333;
+}
+.btn.light a {
+  color: #333;
+}
+.btn.dark {
+  color: #f5f5f5;
+}
+.btn.dark a {
+  color: #f5f5f5;
+}
+.btn:hover {
+  transition: background 0.2s ease;
+}
+.btn:hover.light {
+  background: #eb6400;
+}
+.btn:hover.dark {
+  background: #007d85;
 }/*# sourceMappingURL=index.css.map */

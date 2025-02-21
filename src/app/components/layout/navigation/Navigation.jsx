@@ -8,7 +8,7 @@ import { BackButton } from './BackButton'
 
 import { routes } from '../../../utils/routes'
 import { ToggleSwitch } from '../../shared/ToggleSwitch'
-import { Dark_icon, Light_icon } from '../../../../assets/Icons'
+import { Dark_icon, Light_icon } from 'Groker/icons'
 
 export const Navigation = () => {
 	const [isOpen, setIsOpen] = useState(false)

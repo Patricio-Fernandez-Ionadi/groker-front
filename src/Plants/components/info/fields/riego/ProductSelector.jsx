@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
-import { useProducts } from '../../../../../Products'
-import { Button, useTheme } from '../../../../../app'
+import { Button } from 'Groker/components'
+import { useTheme } from '@/app'
+import { useProducts } from '@/Products'
 
 export function ProductSelector({ edit, eventData }) {
 	const { products } = useProducts()
@@ -60,6 +61,7 @@ export function ProductSelector({ edit, eventData }) {
 							className="watering-product-remove"
 							onEvent={() => removeProductField(index)}
 							aria-label={`Eliminar producto ${product.product.name}`}
+							theme={theme}
 						>
 							Eliminar
 						</Button>
@@ -99,6 +101,7 @@ export function ProductSelector({ edit, eventData }) {
 							onEvent={addProductField}
 							aria-label="Confirmar producto"
 							className="primary"
+							theme={theme}
 						>
 							Confirmar
 						</Button>
@@ -106,6 +109,7 @@ export function ProductSelector({ edit, eventData }) {
 							onEvent={() => setShowAddProduct(false)}
 							aria-label="Cancelar edición"
 							className="secondary"
+							theme={theme}
 						>
 							Cancelar
 						</Button>
@@ -118,6 +122,7 @@ export function ProductSelector({ edit, eventData }) {
 					className="watering-product-add-button primary"
 					onEvent={() => setShowAddProduct(true)}
 					aria-label="Añadir producto"
+					theme={theme}
 				>
 					Añadir Producto
 				</Button>

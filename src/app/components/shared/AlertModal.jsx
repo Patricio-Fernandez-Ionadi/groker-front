@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from './Button'
+import { Button } from '../../modules/components/button/Button'
 import { useTheme } from '../../context/ThemeContext'
 
 export const AlertModal = ({ message, onClose }) => {

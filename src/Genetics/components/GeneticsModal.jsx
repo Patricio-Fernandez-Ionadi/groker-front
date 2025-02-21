@@ -1,10 +1,10 @@
 import React, { useContext, useEffect } from 'react'
+import { Button } from 'Groker/components'
 import { useTheme } from '../../app/context/ThemeContext'
 
 import { AddGenetic } from './AddGenetic'
 import { GeneticList } from './GeneticList'
 import { GenModalContext } from '../index'
-import { Button } from '../../app'
 
 export function GeneticsModal() {
 	const { closeGeneticModal, isGeneticModalOpen } = useContext(GenModalContext)
@@ -31,10 +31,16 @@ export function GeneticsModal() {
 				className={`genetics-modal modal-content ${theme}`}
 				onClick={(e) => e.stopPropagation()}
 			>
-				<Button className="genetics-modal-close" onEvent={closeGeneticModal}>
+				<Button
+					className="genetics-modal-close"
+					onEvent={closeGeneticModal}
+					theme={theme}
+				>
 					✖
 				</Button>
-				<h2 className="genetics-modal-title">Gestión de Genética</h2>
+				<h2 className="genetics-modal-title" theme={theme}>
+					Gestión de Genética
+				</h2>
 
 				<AddGenetic />
 				<GeneticList />

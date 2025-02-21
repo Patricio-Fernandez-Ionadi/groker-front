@@ -1,12 +1,7 @@
 import React from 'react'
-import {
-	AlertModal,
-	Button,
-	Cloud_arrow_up,
-	Edit_icon,
-	ToggleSwitch,
-	useTheme,
-} from '../../../../app'
+import { Button } from 'Groker/components'
+import { Cloud_arrow_up, Edit_icon } from 'Groker/icons'
+import { AlertModal, ToggleSwitch, useTheme } from '@/app'
 import { usePlantsActions } from '../../../hooks/usePlantsActions'
 import { updateSimpleEvents } from '../../history/utils/updateHistory'
 
@@ -126,6 +121,7 @@ export function PotSizeField({ edit, plant, iconSize }) {
 							onEvent={() => update({ ...state, potSize: false })}
 							aria-label="Cancelar edición"
 							className="info-action-button"
+							theme={theme}
 						>
 							Cancelar
 						</Button>

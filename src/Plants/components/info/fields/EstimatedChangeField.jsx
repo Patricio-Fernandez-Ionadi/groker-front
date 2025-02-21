@@ -1,22 +1,11 @@
 import React from 'react'
+import { Button } from 'Groker/components'
+import { toNormal, toYYYYMMDD, toISO } from 'Groker/date'
 
-import { usePlantsActions } from '../../../hooks/usePlantsActions'
+import { Calendar_icon, Cloud_arrow_up, Edit_icon } from 'Groker/icons'
+import { useTheme } from '@/app'
 
-import {
-	Button,
-	Calendar_icon,
-	Cloud_arrow_up,
-	Edit_icon,
-	useTheme,
-} from '../../../../app'
-
-import { updateSimpleEvents } from '../../history/utils/updateHistory'
-
-import {
-	formatDate,
-	formatDateToISO,
-	formatDateToYYYYMMDD,
-} from '../../../utils/dateUtils'
+import { usePlantsActions, updateSimpleEvents } from '@/Plants'
 
 export function EstimatedChangeField({ plant, edit, iconSize }) {
 	const { updatePlant } = usePlantsActions()
@@ -24,14 +13,14 @@ export function EstimatedChangeField({ plant, edit, iconSize }) {
 	const { theme } = useTheme()
 	const { state, update } = edit
 	const [selectedDate, setSelectedDate] = React.useState(
-		formatDateToYYYYMMDD(plant.estimatedChange)
+		toYYYYMMDD(plant.estimatedChange)
 	)
 
 	const handleEstimatedChangeEdition = () => {
 		if (!state.estimatedChange) {
 			update({ ...state, estimatedChange: true })
 		} else {
-			const newCahngeDate = formatDateToISO(changeRef.current.value)
+			const newCahngeDate = toISO(changeRef.current.value)
 
 			let updatedPlant = { ...plant, estimatedChange: newCahngeDate }
 
@@ -89,7 +78,7 @@ export function EstimatedChangeField({ plant, edit, iconSize }) {
 						<input
 							type="text"
 							readOnly
-							value={formatDate(selectedDate)}
+							value={toNormal(selectedDate)}
 							onClick={() => changeRef.current.showPicker()}
 							className="custom-date-input"
 						/>
@@ -111,6 +100,7 @@ export function EstimatedChangeField({ plant, edit, iconSize }) {
 							onEvent={() => update({ ...state, estimatedChange: false })}
 							aria-label="Cancelar edición"
 							className="info-action-button"
+							theme={theme}
 						>
 							Cancelar
 						</Button>
@@ -125,7 +115,7 @@ export function EstimatedChangeField({ plant, edit, iconSize }) {
 								: 'Cambio estimado'}
 						</label>
 						<span>
-							{formatDate(plant.estimatedChange)} ({calculatedWeeks} semanas)
+							{toNormal(plant.estimatedChange)} ({calculatedWeeks} semanas)
 						</span>
 					</div>
 					<Edit_icon

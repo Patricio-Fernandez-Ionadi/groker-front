@@ -1,7 +1,8 @@
 import React, { useContext, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router'
+import { Button } from 'Groker/components'
 
-import { Button, FormContext, ToggleSwitch } from '../../app'
+import { FormContext, ToggleSwitch, useTheme } from '../../app'
 import { AddGeneticButton, useGenetics } from '../../Genetics'
 
 import { validatePlantData, usePlantsActions } from '../'
@@ -22,6 +23,7 @@ export const AddPlant = () => {
 	const { closeAddPlantForm } = useContext(FormContext)
 	const { genetics } = useGenetics()
 	const { addNewPlant } = usePlantsActions()
+	const { theme } = useTheme()
 
 	const [newPlantData, setPlantData] = useState(defaultPlantData)
 	const [errors, setErrors] = useState({})
@@ -71,9 +73,13 @@ export const AddPlant = () => {
 	}
 
 	return (
-		<>
+		<main>
 			<div className="add-plant-form-container">
-				<Button className="cancel-button" onEvent={handleCancelForm}>
+				<Button
+					className="cancel-button"
+					onEvent={handleCancelForm}
+					theme={theme}
+				>
 					Cerrar
 				</Button>
 				<div className="add-plant-form-name">
@@ -152,6 +158,6 @@ export const AddPlant = () => {
 					Añadir Planta
 				</Button>
 			</div>
-		</>
+		</main>
 	)
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useTheme } from '../../context/ThemeContext'
-import { Button } from './Button'
+import { Button } from '../../modules/components/button/Button'
 
 export function ConfirmModal({ isOpen, onClose, onConfirm, message }) {
 	if (!isOpen) return null

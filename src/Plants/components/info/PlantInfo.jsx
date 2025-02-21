@@ -1,5 +1,8 @@
 import React from 'react'
-import { useLocation, useNavigate, useParams } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
+import { Button } from 'Groker/components'
+import { Chevron_left_icon, Chevron_right_icon } from 'Groker/icons'
+import { routes, useTheme } from '@/app'
 
 import { PlantHistory, usePlants, usePlantsActions } from '../../'
 
@@ -12,13 +15,6 @@ import { EstimatedChangeField } from './fields/EstimatedChangeField'
 import { PotSizeField } from './fields/PotSizeField'
 import { WateringField } from './fields/WateringField'
 import { NotesField } from './fields/NotesField'
-import {
-	Button,
-	Chevron_left_icon,
-	Chevron_right_icon,
-	routes,
-	useTheme,
-} from '../../../app'
 
 export function PlantInfo() {
 	const { theme } = useTheme()
@@ -77,11 +73,11 @@ export function PlantInfo() {
 						alignItems: 'center',
 					}}
 				>
-					<Button onEvent={handlePrevPlant}>
+					<Button onEvent={handlePrevPlant} theme={theme}>
 						<Chevron_left_icon size={iconSize} />
 					</Button>
 					<h1 id="plant-info-title">Información de la Planta</h1>
-					<Button onEvent={handleNextPlant}>
+					<Button onEvent={handleNextPlant} theme={theme}>
 						<Chevron_right_icon size={iconSize} />
 					</Button>
 				</header>

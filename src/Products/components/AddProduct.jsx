@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Button, FormContext } from '../../app'
+import { Button } from 'Groker/components'
+import { FormContext, useTheme } from '../../app'
 
 import { useProducts, useProductsActions, validateProductData } from '../'
 
@@ -15,6 +16,7 @@ const defaultProductData = {
 export const AddProduct = () => {
 	const [productData, setProductData] = useState(defaultProductData)
 	const [errors, setErrors] = useState({})
+	const { theme } = useTheme()
 
 	const { selectedProduct } = useProducts()
 	const { unselectProduct, addNewProduct, editProduct } = useProductsActions()
@@ -129,7 +131,7 @@ export const AddProduct = () => {
 					<option value="mineral">Mineral</option>
 				</select>
 			</label>
-			<Button onEvent={handleSubmit} className="submit-button">
+			<Button onEvent={handleSubmit} className="submit-button" theme={theme}>
 				{isEditProductFormOpen ? 'Guardar Cambios' : 'Añadir Producto'}
 			</Button>
 		</div>

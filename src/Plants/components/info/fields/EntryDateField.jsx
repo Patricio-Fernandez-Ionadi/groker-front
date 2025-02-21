@@ -1,28 +1,21 @@
 import React from 'react'
-import {
-	Button,
-	Calendar_icon,
-	Cloud_arrow_up,
-	Edit_icon,
-	useTheme,
-} from '../../../../app'
+import { Button } from 'Groker/components'
+import { Calendar_icon, Cloud_arrow_up, Edit_icon } from 'Groker/icons'
+import { useTheme } from '@/app'
+import { toNormal, toISO, toYYYYMMDD } from 'Groker/date'
 
-import { usePlantsActions } from '../../../hooks/usePlantsActions'
-
-import { updateSimpleEvents } from '../../history/utils/updateHistory'
 import {
 	calculateEstimatedChangeFromEntryDate,
-	formatDate,
-	formatDateToISO,
-	formatDateToYYYYMMDD,
-} from '../../../utils/dateUtils'
+	usePlantsActions,
+	updateSimpleEvents,
+} from '@/Plants'
 
 export const EntryDateField = ({ edit, plant, iconSize }) => {
 	const { state, update } = edit
 	const { theme } = useTheme()
 	const { updatePlant } = usePlantsActions()
 	const [selectedDate, setSelectedDate] = React.useState(
-		formatDateToYYYYMMDD(plant.entryDate)
+		toYYYYMMDD(plant.entryDate)
 	)
 
 	const entryDateRef = React.useRef(null)
@@ -31,7 +24,7 @@ export const EntryDateField = ({ edit, plant, iconSize }) => {
 		if (!state.entryDate) {
 			update({ ...state, entryDate: true })
 		} else {
-			const newDate = formatDateToISO(entryDateRef.current.value)
+			const newDate = toISO(entryDateRef.current.value)
 
 			let updatedPlant = { ...plant, entryDate: newDate }
 
@@ -53,15 +46,15 @@ export const EntryDateField = ({ edit, plant, iconSize }) => {
 			const updateEstimatedChangeHistory = updateSimpleEvents(
 				{
 					...plantEDyHistoryUpdated,
-					estimatedChange: formatDateToISO(newChangeDate),
+					estimatedChange: toISO(newChangeDate),
 				},
 				'estimatedChange',
-				formatDateToISO(newChangeDate)
+				toISO(newChangeDate)
 			)
 
 			const plantToSave = {
 				...updatedPlant,
-				estimatedChange: formatDateToISO(newChangeDate),
+				estimatedChange: toISO(newChangeDate),
 				history: updateEstimatedChangeHistory,
 			}
 
@@ -93,7 +86,7 @@ export const EntryDateField = ({ edit, plant, iconSize }) => {
 						<input
 							type="text"
 							readOnly
-							value={formatDate(selectedDate)}
+							value={toNormal(selectedDate)}
 							onClick={() => entryDateRef.current.showPicker()}
 							className="custom-date-input"
 						/>
@@ -115,6 +108,7 @@ export const EntryDateField = ({ edit, plant, iconSize }) => {
 							onEvent={() => update({ ...state, entryDate: false })}
 							aria-label="Cancelar edición"
 							className="info-action-button"
+							theme={theme}
 						>
 							Cancelar
 						</Button>
@@ -124,7 +118,7 @@ export const EntryDateField = ({ edit, plant, iconSize }) => {
 				<div className="field-view-mode">
 					<div>
 						<label className={`field-label`}>Fecha de ingreso</label>
-						<span>{formatDate(plant.entryDate)}</span>
+						<span>{toNormal(plant.entryDate)}</span>
 					</div>
 					<Edit_icon
 						size={iconSize}

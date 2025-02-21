@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
+import { Button } from 'Groker/components'
 
-import { Button, FormContext } from '../../app'
+import { FormContext, useTheme } from '../../app'
 import { ConfirmModal } from '../../app'
 
 import { AddProduct } from './AddProduct'
@@ -15,6 +16,8 @@ export const ProductList = () => {
 		openEditProductForm,
 		closeEditProductForm,
 	} = useContext(FormContext)
+
+	const { theme } = useTheme()
 
 	const { products, selectedProduct } = useProducts()
 	const { selectProduct, deleteProduct } = useProductsActions()
@@ -51,11 +54,19 @@ export const ProductList = () => {
 			<h2>Inventario de Productos</h2>
 
 			{isEditProductFormOpen && selectedProduct ? (
-				<Button className="add-product-button" onEvent={closeEditProductForm}>
+				<Button
+					className="add-product-button"
+					onEvent={closeEditProductForm}
+					theme={theme}
+				>
 					Cancelar
 				</Button>
 			) : (
-				<Button className="add-product-button" onEvent={toggleAddProductForm}>
+				<Button
+					className="add-product-button"
+					onEvent={toggleAddProductForm}
+					theme={theme}
+				>
 					{isAddProductFormOpen ? 'Cerrar' : 'Añadir Producto'}
 				</Button>
 			)}
@@ -97,12 +108,14 @@ export const ProductList = () => {
 							<Button
 								className="edit-button"
 								onEvent={() => handleEditProduct(product)}
+								theme={theme}
 							>
 								Editar
 							</Button>
 							<Button
 								className="delete-button"
 								onEvent={() => handleDeleteProduct(product._id)}
+								theme={theme}
 							>
 								Eliminar
 							</Button>

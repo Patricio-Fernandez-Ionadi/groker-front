@@ -1,24 +1,24 @@
+// Components
+export { PlantDetails } from './components/details/PlantDetails'
+export { PlantHistory } from './components/history/PlantHistory'
+export { PlantInfo } from './components/info/PlantInfo'
+export { Inventory } from './components/inventory/Inventory'
+export { Detail } from './components/shared/Detail'
 export { AddPlant } from './components/AddPlant'
 
-export { PlantHistory } from './components/history/PlantHistory'
-
-export { Inventory } from './components/inventory/Inventory'
-export { InventoryDetails } from './components/inventory/InventoryDetails'
-
-export { PlantDetails } from './components/details/PlantDetails'
-
-export { PlantInfo } from './components/info/PlantInfo'
-
-export { Detail } from './components/shared/Detail'
-
+// Hooks
 export * from './hooks/usePlants'
 export * from './hooks/usePlantsActions'
 
+// Services
 export * from './services/plants'
 
+// Store
+export * from './store/plantsAsyncActions'
+export * from './store/plantsSlice'
+
+// Utils
+export * from './components/history/utils/updateHistory'
 export * from './utils/dateUtils'
 export * from './utils/translations'
 export * from './utils/validations'
-
-export * from './store/plantsAsyncActions'
-export * from './store/plantsSlice'

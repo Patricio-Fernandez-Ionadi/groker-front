@@ -1,9 +1,9 @@
 import React from 'react'
-import { Button, Cloud_arrow_up, Edit_icon, useTheme } from '../../../../app'
+import { TextInput, Button } from 'Groker/components'
 
-import { usePlantsActions } from '../../../hooks/usePlantsActions'
-
-import { updateSimpleEvents } from '../../history/utils/updateHistory'
+import { Cloud_arrow_up, Edit_icon } from 'Groker/icons'
+import { useTheme } from '@/app'
+import { usePlantsActions, updateSimpleEvents } from '@/Plants'
 
 export const NameField = ({ edit, plant, iconSize }) => {
 	const { updatePlant } = usePlantsActions()
@@ -41,14 +41,12 @@ export const NameField = ({ edit, plant, iconSize }) => {
 		<section className="field-section" aria-labelledby="name-field-label">
 			{state.name ? (
 				<div className={`field-edit-mode ${theme}`}>
-					<label className={`input-label ${theme}`}>Nombre</label>
-					<input
-						type="text"
-						className={`input-field ${theme}`}
-						name="name"
+					<TextInput
+						label="Nombre"
 						defaultValue={plant.name}
+						name="name"
 						ref={nameRef}
-						aria-labelledby="name-field-label"
+						theme={theme}
 					/>
 					<div className="field-actions">
 						<Cloud_arrow_up
@@ -60,6 +58,7 @@ export const NameField = ({ edit, plant, iconSize }) => {
 							onEvent={() => update({ ...state, name: false })}
 							aria-label="Cancelar edición"
 							className="info-action-button"
+							theme={theme}
 						>
 							Cancelar
 						</Button>

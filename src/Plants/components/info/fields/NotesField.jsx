@@ -1,11 +1,12 @@
 import React from 'react'
-import { AlertModal, Button, ToggleSwitch, useTheme } from '../../../../app'
-import { usePlantsActions } from '../../../hooks/usePlantsActions'
+import { Button } from 'Groker/components'
+import { AlertModal, ToggleSwitch, useTheme } from '@/app'
+import { toYYYYMMDD, today } from 'Groker/date'
 import {
+	usePlantsActions,
 	updateNoteEvents,
 	updateSimpleEvents,
-} from '../../history/utils/updateHistory'
-import { formatDateToYYYYMMDD, today } from '../../../utils/dateUtils'
+} from '@/Plants'
 
 export function NotesField({ edit, plant }) {
 	const { updatePlant } = usePlantsActions()
@@ -20,8 +21,8 @@ export function NotesField({ edit, plant }) {
 
 	// Buscar notas previas
 	const todayEntry = plant.history.find((entry) => {
-		const entryDate = formatDateToYYYYMMDD(entry.date)
-		const todayDate = formatDateToYYYYMMDD(today)
+		const entryDate = toYYYYMMDD(entry.date)
+		const todayDate = toYYYYMMDD(today)
 		return entryDate === todayDate
 	})
 
@@ -134,6 +135,7 @@ export function NotesField({ edit, plant }) {
 							onEvent={handleAddNote}
 							aria-label="Guardar nota"
 							className="info-action-button"
+							theme={theme}
 						>
 							Guardar nota
 						</Button>
@@ -141,6 +143,7 @@ export function NotesField({ edit, plant }) {
 							onEvent={() => update({ ...state, note: false })}
 							aria-label="Cancelar edición"
 							className="info-action-button"
+							theme={theme}
 						>
 							Cancelar
 						</Button>
@@ -157,6 +160,7 @@ export function NotesField({ edit, plant }) {
 											onEvent={() => handleDeleteNote(note.id)}
 											aria-label="Eliminar nota"
 											className="delete-note-button"
+											theme={theme}
 										>
 											Eliminar
 										</Button>
@@ -168,7 +172,11 @@ export function NotesField({ edit, plant }) {
 				</div>
 			) : (
 				<div className="field-view-mode notes">
-					<Button onEvent={handleAddNote} aria-label="Añadir una nota">
+					<Button
+						onEvent={handleAddNote}
+						aria-label="Añadir una nota"
+						theme={theme}
+					>
 						Añadir una nota
 					</Button>
 				</div>

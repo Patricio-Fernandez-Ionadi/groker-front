@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from '../shared/Button'
+import { Button } from '../../modules/components/button/Button'
 import { Link } from 'react-router'
 import { routes } from '../../utils/routes'
 import { useTheme } from '../../context/ThemeContext'
