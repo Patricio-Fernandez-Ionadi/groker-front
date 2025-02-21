@@ -445,6 +445,9 @@ main {
 .inventory-component .inventory-table-container.dark {
   box-shadow: 0 0 5px 1px rgba(245, 245, 245, 0.3);
 }
+.inventory-component .inventory-table-container button {
+  padding: 10px;
+}
 .inventory-component .inventory-table-container h2 {
   text-align: center;
 }
