@@ -1,0 +1,28 @@
+.plant-details-header {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 20px;
+	.plant-details-title {
+		font-size: 1.3rem;
+		margin-bottom: 10px;
+		text-align: center;
+	}
+	.plant-details-button {
+		padding: 10px 15px;
+	}
+}
+
+.plant-details-info {
+	margin-top: 10px;
+
+	.plant-details-item {
+		font-size: 1rem;
+		margin: 5px 0;
+		font-weight: bold;
+
+		span {
+			font-weight: normal;
+			color: $primary_light;
+		}
+	}
+}

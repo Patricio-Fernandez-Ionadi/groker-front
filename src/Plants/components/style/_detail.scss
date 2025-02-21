@@ -2,6 +2,6 @@
 	@include useThemeBg($white, $black_light);
 	@include useThemeShadow($black, $white);
 	padding: 20px;
-	border-radius: 8px;
+	border-radius: $border-radius;
 	grid-area: inventoryDetails;
 }

@@ -334,6 +334,52 @@ main {
     font-size: 22px;
   }
 }
+.details-component {
+  transition: background 0.2s ease;
+  padding: 20px;
+  border-radius: 3px;
+  grid-area: inventoryDetails;
+}
+.details-component.light {
+  background: #f5f5f5;
+}
+.details-component.dark {
+  background: #373737;
+}
+.details-component.light {
+  box-shadow: 0 0 5px 1px rgba(33, 33, 33, 0.2);
+}
+.details-component.dark {
+  box-shadow: 0 0 5px 1px rgba(245, 245, 245, 0.3);
+}
+
+.plant-details-header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+.plant-details-header .plant-details-title {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.plant-details-header .plant-details-button {
+  padding: 10px 15px;
+}
+
+.plant-details-info {
+  margin-top: 10px;
+}
+.plant-details-info .plant-details-item {
+  font-size: 1rem;
+  margin: 5px 0;
+  font-weight: bold;
+}
+.plant-details-info .plant-details-item span {
+  font-weight: normal;
+  color: #09a4af;
+}
+
 .plant-history-component {
   transition: background 0.2s ease;
   padding: 20px;
@@ -515,25 +561,6 @@ main {
     flex: 1;
   }
 }
-.details-component {
-  transition: background 0.2s ease;
-  padding: 20px;
-  border-radius: 8px;
-  grid-area: inventoryDetails;
-}
-.details-component.light {
-  background: #f5f5f5;
-}
-.details-component.dark {
-  background: #373737;
-}
-.details-component.light {
-  box-shadow: 0 0 5px 1px rgba(33, 33, 33, 0.2);
-}
-.details-component.dark {
-  box-shadow: 0 0 5px 1px rgba(245, 245, 245, 0.3);
-}
-
 /* Reset básico */
 .plant-info-container {
   line-height: 1.6;
