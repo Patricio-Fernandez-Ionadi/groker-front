@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
-import { Button } from 'Groker/components'
+import { Button, ConfirmModal } from 'Groker/components'
 
-import { FormContext, useTheme, ConfirmModal } from '@/app'
+import { FormContext, useTheme } from '@/app'
 
 import { AddProduct } from './AddProduct'
 
@@ -128,6 +128,7 @@ export const ProductList = () => {
 				onClose={closeModal}
 				onConfirm={confirmDelete}
 				message={`¿Estás seguro de que deseas eliminar el producto "${productToDelete?.name}"?`}
+				theme={theme}
 			/>
 		</div>
 	)

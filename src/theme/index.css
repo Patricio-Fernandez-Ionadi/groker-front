@@ -29,48 +29,6 @@ a:visited {
   color: inherit;
 }
 
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-.modal-overlay .modal-content {
-  transition: background 0.2s ease;
-  padding: 20px;
-  border-radius: 3px;
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-.modal-overlay .modal-content.light {
-  background: #f5f5f5;
-}
-.modal-overlay .modal-content.dark {
-  background: #373737;
-}
-.modal-overlay .modal-content .modal-actions {
-  margin-top: 15px;
-  display: flex;
-  justify-content: space-between;
-}
-.modal-overlay .modal-content .modal-actions .cancel-button,
-.modal-overlay .modal-content .modal-actions .confirm-button {
-  padding: 8px 16px;
-  font-size: 14px;
-}
-.modal-overlay .modal-content .modal-actions .cancel-button {
-  background-color: #d32f2f;
-}
-.modal-overlay .modal-content .modal-actions .cancel-button:hover {
-  background-color: #f44336;
-}
-
 /* Skeleton.css */
 .skeleton {
   background-color: red;
@@ -1423,4 +1381,46 @@ input[type=number]::-webkit-inner-spin-button {
 /* Mover el punto hacia la derecha cuando está activado */
 .groker__toggle-switch input[type=checkbox]:checked + .groker__slider::before {
   transform: translateX(26px); /* Distancia que se mueve el punto */
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.modal-overlay .modal-content {
+  transition: background 0.2s ease;
+  padding: 20px;
+  border-radius: 3px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.modal-overlay .modal-content.light {
+  background: #f5f5f5;
+}
+.modal-overlay .modal-content.dark {
+  background: #373737;
+}
+.modal-overlay .modal-content .modal-actions {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+.modal-overlay .modal-content .modal-actions .cancel-button,
+.modal-overlay .modal-content .modal-actions .confirm-button {
+  padding: 8px 16px;
+  font-size: 14px;
+}
+.modal-overlay .modal-content .modal-actions .cancel-button {
+  background-color: #d32f2f;
+}
+.modal-overlay .modal-content .modal-actions .cancel-button:hover {
+  background-color: #f44336;
 }/*# sourceMappingURL=index.css.map */

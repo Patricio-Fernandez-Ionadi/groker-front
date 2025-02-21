@@ -1,10 +1,7 @@
 import React from 'react'
-import { Button } from '../../modules/components/button/Button'
-import { useTheme } from '../../context/ThemeContext'
+import { Button } from 'Groker/components'
 
-export const AlertModal = ({ message, onClose }) => {
-	const { theme } = useTheme()
-
+export const AlertModal = ({ message, onClose, theme = 'light' }) => {
 	return (
 		<div className="modal-overlay">
 			<div className={`modal-content ${theme}`}>

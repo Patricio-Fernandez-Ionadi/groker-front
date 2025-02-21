@@ -1,10 +1,14 @@
 import React from 'react'
-import { useTheme } from '../../context/ThemeContext'
-import { Button } from '../../modules/components/button/Button'
+import { Button } from 'Groker/components'
 
-export function ConfirmModal({ isOpen, onClose, onConfirm, message }) {
+export function ConfirmModal({
+	isOpen,
+	onClose,
+	onConfirm,
+	message,
+	theme = 'light',
+}) {
 	if (!isOpen) return null
-	const { theme } = useTheme()
 
 	return (
 		<div className="modal-overlay" onClick={onClose}>
@@ -14,10 +18,10 @@ export function ConfirmModal({ isOpen, onClose, onConfirm, message }) {
 			>
 				<p>{message}</p>
 				<div className="modal-actions">
-					<Button className="confirm-button" onEvent={onConfirm}>
+					<Button className="confirm-button" onEvent={onConfirm} theme={theme}>
 						Confirmar
 					</Button>
-					<Button className="cancel-button" onEvent={onClose}>
+					<Button className="cancel-button" onEvent={onClose} theme={theme}>
 						Cancelar
 					</Button>
 				</div>

@@ -1,3 +1,5 @@
 export { TextInput } from './textinput/TextInput'
 export { Button } from './button/Button'
 export { ToggleSwitch } from './toggleswitch/ToggleSwitch'
+export { AlertModal } from './modals/modalalert/AlertModal'
+export { ConfirmModal } from './modals/modalconfirm/ConfirmModal'

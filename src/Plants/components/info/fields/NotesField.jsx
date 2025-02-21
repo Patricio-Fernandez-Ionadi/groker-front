@@ -1,6 +1,6 @@
 import React from 'react'
-import { Button, ToggleSwitch } from 'Groker/components'
-import { AlertModal, useTheme } from '@/app'
+import { Button, ToggleSwitch, AlertModal } from 'Groker/components'
+import { useTheme } from '@/app'
 import { toYYYYMMDD, today } from 'Groker/date'
 import {
 	usePlantsActions,
@@ -183,7 +183,11 @@ export function NotesField({ edit, plant }) {
 			)}
 
 			{showAlert && (
-				<AlertModal message={alertMessage} onClose={handleCloseAlert} />
+				<AlertModal
+					message={alertMessage}
+					onClose={handleCloseAlert}
+					theme={theme}
+				/>
 			)}
 		</section>
 	)
