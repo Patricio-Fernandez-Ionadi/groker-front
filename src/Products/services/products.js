@@ -1,8 +1,8 @@
-const API_URL = import.meta.env.VITE_API_URL
+import config from '../../app/utils/config'
 
 export const api_getProducts = async () => {
 	try {
-		const response = await fetch(`${API_URL}/api/products`)
+		const response = await fetch(`${config.apiUrl}/api/products`)
 		const data = await response.json()
 		// console.log('Productos obtenidos:', data)
 		return data
@@ -14,7 +14,7 @@ export const api_getProducts = async () => {
 // Ejemplo de cómo agregar un producto
 export const api_addProduct = async (productData) => {
 	try {
-		const response = await fetch(`${API_URL}/api/products`, {
+		const response = await fetch(`${config.apiUrl}/api/products`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ export const api_addProduct = async (productData) => {
 export const api_editProduct = async (updatedProduct) => {
 	try {
 		const response = await fetch(
-			`${API_URL}/api/products/${updatedProduct._id}`,
+			`${config.apiUrl}/api/products/${updatedProduct._id}`,
 			{
 				method: 'PUT',
 				headers: {
@@ -54,7 +54,7 @@ export const api_editProduct = async (updatedProduct) => {
 // Ejemplo de cómo eliminar un producto
 export const api_deleteProduct = async (productId) => {
 	try {
-		const response = await fetch(`${API_URL}/api/products/${productId}`, {
+		const response = await fetch(`${config.apiUrl}/api/products/${productId}`, {
 			method: 'DELETE',
 		})
 		const data = await response.json()

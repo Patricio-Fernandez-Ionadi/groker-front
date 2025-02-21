@@ -1,9 +1,9 @@
-const API_URL = import.meta.env.VITE_API_URL
+import config from '../../app/utils/config'
 
 // Ejemplo de cómo obtener todas las genéticas
 export const api_getGenetics = async () => {
 	try {
-		const response = await fetch(`${API_URL}/api/genetics`)
+		const response = await fetch(`${config.apiUrl}/api/genetics`)
 		const data = await response.json()
 		// console.log('Genéticas obtenidas:', data)
 		return data
@@ -14,7 +14,7 @@ export const api_getGenetics = async () => {
 // Ejemplo de cómo agregar una nueva genética
 export const api_addGenetic = async (geneticData) => {
 	try {
-		const response = await fetch(`${API_URL}/api/genetics`, {
+		const response = await fetch(`${config.apiUrl}/api/genetics`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ export const api_addGenetic = async (geneticData) => {
 
 export const api_deleteGenetic = async (id) => {
 	try {
-		const response = await fetch(`${API_URL}/api/genetics/${id}`, {
+		const response = await fetch(`${config.apiUrl}/api/genetics/${id}`, {
 			method: 'DELETE',
 		})
 		if (!response.ok) {

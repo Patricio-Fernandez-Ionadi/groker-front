@@ -4,9 +4,9 @@
 	"version": "1.0.0",
 	"type": "module",
 	"scripts": {
-		"dev": "cross-env NODE_ENV=development vite",
-		"build": "cross-env NODE_ENV=production vite build",
-		"serve": "cross-env NODE_ENV=production vite preview",
+		"dev": "cross-env VITE_ENVIRONMENT=development vite",
+		"build": "cross-env VITE_ENVIRONMENT=production vite build",
+		"serve": "cross-env VITE_ENVIRONMENT=production vite preview",
 		"lint": "eslint ."
 	},
 	"dependencies": {

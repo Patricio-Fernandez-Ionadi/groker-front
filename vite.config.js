@@ -4,15 +4,12 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 
-const environment = process.env.NODE_ENV || 'development'
+const apiUrl =
+	process.env.VITE_ENVIRONMENT === 'development'
+		? process.env.VITE_API_URL_LOCAL
+		: process.env.VITE_API_URL
 
-let enve
-
-if (environment === 'development') {
-	enve = process.env.VITE_API_URL_LOCAL
-} else {
-	enve = process.env.VITE_API_URL
-}
+console.log('API URL:', apiUrl)
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -21,7 +18,7 @@ export default defineConfig({
 	server: {
 		proxy: {
 			'/api': {
-				target: enve,
+				target: apiUrl,
 				changeOrigin: true,
 				secure: false,
 			},
