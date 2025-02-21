@@ -13,7 +13,6 @@ export const Inventory = () => {
 	const location = useLocation()
 	const { plants } = usePlants()
 	const { theme } = useTheme()
-	// const plants = null
 
 	const renderAddPlantButton = () => (
 		<Button>

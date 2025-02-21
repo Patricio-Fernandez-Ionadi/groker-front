@@ -5,6 +5,7 @@ import { routes } from './index'
 
 import { AddPlant, Inventory, PlantInfo, Detail } from '../Plants'
 import { ProductList } from '../Products'
+import { RouteNotFound } from './components/layout/RouteNotFound'
 
 export const Router = () => {
 	return (
@@ -17,6 +18,7 @@ export const Router = () => {
 				<Route path={routes.plantDetail.path} element={<PlantInfo />} />
 			</Route>
 			<Route path={routes.products.path} element={<ProductList />} />
+			<Route path="*" element={<RouteNotFound />} />
 		</Routes>
 	)
 }

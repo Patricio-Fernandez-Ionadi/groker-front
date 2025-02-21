@@ -1,0 +1,31 @@
+$background-color: #f9f9f9;
+
+.not-found {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: Arial, sans-serif;
+
+	.not-found-content {
+		@include useThemeBg($white, $black_light);
+		@include useThemeShadow($black, $white);
+		text-align: center;
+		padding: 20px;
+		border-radius: $border-radius;
+	}
+
+	.not-found-title {
+		font-size: 2.5rem;
+		color: $error;
+		margin: 0 0 15px 0;
+	}
+
+	.not-found-message {
+		font-size: 1.2rem;
+		margin-bottom: 20px;
+	}
+
+	.not-found-button {
+		padding: 10px 20px;
+	}
+}
