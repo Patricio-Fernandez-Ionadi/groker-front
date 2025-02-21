@@ -1,0 +1,35 @@
+/* para cuando se cree un package independiente */
+@import '../../../../theme/values/_colors.scss';
+@import '../../../../theme/values/_sizes.scss';
+@import '../../../../theme/values/_animations.scss';
+@import '../../../../theme/values/_mixins.scss';
+
+.groker__textInput-label {
+	@include useThemeBg($white, $black-light);
+	position: absolute;
+	top: -8px;
+	left: 10px;
+	padding: 0 5px;
+	font-size: 12px;
+	font-weight: normal;
+}
+
+.groker__textInput-field {
+	@include useThemeText($black, $white);
+	width: 80%;
+	background: transparent;
+	border: 1px solid $white-dark;
+	border-radius: $border-radius;
+	font-size: 16px;
+	height: 100%;
+	padding: 10px;
+	outline: none;
+
+	&:focus {
+		border-color: $primary;
+	}
+
+	&.dark option {
+		background: $black-light;
+	}
+}
