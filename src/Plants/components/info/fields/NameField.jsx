@@ -66,7 +66,9 @@ export const NameField = ({ edit, plant, iconSize }) => {
 				</div>
 			) : (
 				<div className="field-view-mode">
-					<h2>{plant.name}</h2>
+					<div>
+						<h2>{plant.name}</h2>
+					</div>
 					<Edit_icon
 						size={iconSize}
 						onEvent={handleNameEdition}
