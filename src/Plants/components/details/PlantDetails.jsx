@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 
-import { Button, routes } from '../../../app'
+import { Button, Eye_icon, routes } from '../../../app'
 
 import { formatDate, translateField, usePlants } from '../../'
 
@@ -55,7 +55,10 @@ export const PlantDetails = () => {
 				)}
 				{selectedPlant.flags.underObservation && (
 					<p className="plant-details-item">
-						Bajo observación: <span>👁️</span>
+						Bajo observación:{' '}
+						<span>
+							<Eye_icon size={20} />
+						</span>
 					</p>
 				)}
 			</div>
