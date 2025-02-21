@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate, useParams } from 'react-router'
+import { useLocation, useNavigate, useParams } from 'react-router'
 
 import { PlantHistory, usePlants, usePlantsActions } from '../../'
 
@@ -26,6 +26,7 @@ export function PlantInfo() {
 	const { selectPlant, getPlantById, selectPlantByIndex } = usePlantsActions()
 	const plantId = useParams().id
 	const navigate = useNavigate()
+
 	const plant = getPlantById(plantId)
 
 	const iconSize = 25
