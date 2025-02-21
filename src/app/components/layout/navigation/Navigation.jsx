@@ -17,8 +17,7 @@ export const Navigation = () => {
 	const location = useLocation()
 	const prevRoute = location.state?.from
 
-	const isBackAvailable =
-		location.pathname !== routes.home && location.state != null
+	const isBackAvailable = location.pathname !== routes.home.path && prevRoute
 
 	const sendFromLocation = {
 		from: location.pathname,
