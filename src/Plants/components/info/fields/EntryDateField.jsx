@@ -1,8 +1,8 @@
 import React from 'react'
-import { Button, DateInput } from 'Groker/components'
-import { Cloud_arrow_up, Edit_icon } from 'Groker/icons'
+import { calendarFormat, isoFormat, inputsFormat } from 'groker/date'
+import { Button, DateInput } from 'groker/components'
+import { Cloud_arrow_up, Edit_icon } from 'groker/icons'
 import { useTheme } from '@/app'
-import { toNormal, toISO, toYYYYMMDD } from 'Groker/date'
 
 import {
 	calculateEstimatedChangeFromEntryDate,
@@ -15,7 +15,7 @@ export const EntryDateField = ({ edit, plant, iconSize }) => {
 	const { theme } = useTheme()
 	const { updatePlant } = usePlantsActions()
 	const [selectedDate, setSelectedDate] = React.useState(
-		toYYYYMMDD(plant.entryDate)
+		inputsFormat(plant.entryDate)
 	)
 
 	const entryDateRef = React.useRef(null)
@@ -24,7 +24,7 @@ export const EntryDateField = ({ edit, plant, iconSize }) => {
 		if (!state.entryDate) {
 			update({ ...state, entryDate: true })
 		} else {
-			const newDate = toISO(entryDateRef.current.value)
+			const newDate = isoFormat(entryDateRef.current.value)
 
 			let updatedPlant = { ...plant, entryDate: newDate }
 
@@ -46,15 +46,15 @@ export const EntryDateField = ({ edit, plant, iconSize }) => {
 			const updateEstimatedChangeHistory = updateSimpleEvents(
 				{
 					...plantEDyHistoryUpdated,
-					estimatedChange: toISO(newChangeDate),
+					estimatedChange: isoFormat(newChangeDate),
 				},
 				'estimatedChange',
-				toISO(newChangeDate)
+				isoFormat(newChangeDate)
 			)
 
 			const plantToSave = {
 				...updatedPlant,
-				estimatedChange: toISO(newChangeDate),
+				estimatedChange: isoFormat(newChangeDate),
 				history: updateEstimatedChangeHistory,
 			}
 
@@ -70,13 +70,13 @@ export const EntryDateField = ({ edit, plant, iconSize }) => {
 				<div className={`field-edit-mode ${theme}`}>
 					<DateInput
 						theme={theme}
-						change={(e) => setSelectedDate(e.target.value)}
-						click={() => entryDateRef.current.showPicker()}
+						onChangeEvent={(e) => setSelectedDate(e.target.value)}
 						defaultValue={selectedDate}
-						toShowValue={toNormal(selectedDate)}
+						toShowValue={calendarFormat(selectedDate)}
 						iconSize={iconSize}
 						ref={entryDateRef}
 						label="Fecha de ingreso"
+						className="groker-date"
 					/>
 					<div className="field-actions">
 						<Cloud_arrow_up
@@ -98,7 +98,7 @@ export const EntryDateField = ({ edit, plant, iconSize }) => {
 				<div className="field-view-mode">
 					<div>
 						<label className={`field-label`}>Fecha de ingreso</label>
-						<span>{toNormal(plant.entryDate)}</span>
+						<span>{calendarFormat(plant.entryDate)}</span>
 					</div>
 					<Edit_icon
 						size={iconSize}

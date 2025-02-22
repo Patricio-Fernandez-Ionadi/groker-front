@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { Button } from 'Groker/components'
+import { Button } from 'groker'
 
 import { addNewGenetic, GenModalContext } from '../index'
 import { useTheme } from '@/app'

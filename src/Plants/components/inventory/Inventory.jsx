@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router'
-import { Button } from 'Groker/components'
+import { Button } from 'groker/components'
 
 import { useTheme } from '@/app'
 

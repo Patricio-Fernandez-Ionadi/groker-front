@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router'
-import { toNormal } from 'Groker/date'
-import { Button } from 'Groker/components'
-import { Eye_icon } from 'Groker/icons'
+import { calendarFormat } from 'groker/date'
+import { Button } from 'groker/components'
+import { Eye } from 'groker/icons'
 
 import { routes, useTheme } from '@/app'
 
@@ -27,7 +27,8 @@ export const PlantDetails = () => {
 			</header>
 			<div className="plant-details-info">
 				<p className="plant-details-item">
-					Fecha de ingreso: <span>{toNormal(selectedPlant.entryDate)}</span>
+					Fecha de ingreso:{' '}
+					<span>{calendarFormat(selectedPlant.entryDate)}</span>
 				</p>
 				<p className="plant-details-item">
 					Nombre: <span>{selectedPlant.name}</span>
@@ -40,11 +41,12 @@ export const PlantDetails = () => {
 				</p>
 				<p className="plant-details-item">
 					Cambio estimado:{' '}
-					<span>{toNormal(selectedPlant.estimatedChange)}</span>
+					<span>{calendarFormat(selectedPlant.estimatedChange)}</span>
 				</p>
 				{selectedPlant.lastWatered && (
 					<p className="plant-details-item">
-						Último riego: <span>{toNormal(selectedPlant.lastWatered)}</span>
+						Último riego:{' '}
+						<span>{calendarFormat(selectedPlant.lastWatered)}</span>
 					</p>
 				)}
 				{selectedPlant.potSize !== 0 && (
@@ -59,10 +61,7 @@ export const PlantDetails = () => {
 				)}
 				{selectedPlant.flags.underObservation && (
 					<p className="plant-details-item">
-						Bajo observación:{' '}
-						<span>
-							<Eye_icon size={20} />
-						</span>
+						Bajo observación: <span>{<Eye size={20} />}</span>
 					</p>
 				)}
 			</div>

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { toNormal } from 'Groker/date'
+import { calendarFormat } from 'groker/date'
 
 import { FormContext } from '@/app'
 
@@ -48,10 +48,10 @@ export const InventoryTable = ({ theme }) => {
 						>
 							<p>{idx + 1}</p>
 							<p>{each.name}</p>
-							<p>{toNormal(each.entryDate)}</p>
+							<p>{calendarFormat(each.entryDate)}</p>
 							<p>{abbreviate(translateField(each.stage), 3)}.</p>
-							<p>{toNormal(each.estimatedChange)}</p>
-							<p>{toNormal(each.lastWatered)}</p>
+							<p>{calendarFormat(each.estimatedChange)}</p>
+							<p>{calendarFormat(each.lastWatered)}</p>
 						</div>
 					))}
 				</div>

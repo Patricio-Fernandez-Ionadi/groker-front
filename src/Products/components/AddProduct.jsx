@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Button } from 'Groker/components'
+import { Button } from 'groker/components'
 
 import { FormContext, useTheme } from '@/app'
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { toNormal } from 'Groker/date'
+import { calendarFormat } from 'groker/date'
 import { useTheme } from '@/app'
 
 import { usePlants, translateField } from '@/Plants'
@@ -43,13 +43,13 @@ export const PlantHistory = () => {
 				return details && <p>Maceta final ✔️</p>
 
 			case 'estimatedChange':
-				return <p>Cambio estimado: {toNormal(details)}</p>
+				return <p>Cambio estimado: {calendarFormat(details)}</p>
 
 			case 'genetic':
 				return <p>Genética: {details}</p>
 
 			case 'entryDate':
-				return <p>Fecha de ingreso: {toNormal(details)}</p>
+				return <p>Fecha de ingreso: {calendarFormat(details)}</p>
 
 			case 'temperature':
 				return <p>Temperatura: {details}° 🌡️</p>
@@ -61,7 +61,7 @@ export const PlantHistory = () => {
 				return (
 					<>
 						<p>
-							Último riego: {toNormal(date)} 💧
+							Último riego: {calendarFormat(date)} 💧
 							{details.amount && details.amount !== 0 && (
 								<span> {details.amount / 1000}Lts</span>
 							)}
@@ -99,7 +99,7 @@ export const PlantHistory = () => {
 				.sort((a, b) => new Date(b.date) - new Date(a.date))
 				.map((entry) => (
 					<div key={entry.date} className="history-entry">
-						<h3>{toNormal(entry.date)}</h3>
+						<h3>{calendarFormat(entry.date)}</h3>
 						<ul>
 							{entry.events.map((event, eventIndex) => (
 								<li key={eventIndex}>

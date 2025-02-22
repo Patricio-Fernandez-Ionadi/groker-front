@@ -1,6 +1,6 @@
 import React from 'react'
-import { Button } from 'Groker/components'
-import { Cloud_arrow_up, Edit_icon } from 'Groker/icons'
+import { Button } from 'groker/components'
+import { Cloud_arrow_up, Edit_icon } from 'groker/icons'
 import { useTheme } from '@/app'
 
 import { useGenetics } from '@/Genetics'

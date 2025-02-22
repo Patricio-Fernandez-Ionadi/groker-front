@@ -1,4 +1,4 @@
-import { today } from 'Groker/date'
+import { today } from 'groker/date'
 
 export const updateSimpleEvents = (plant, type, newValue) => {
 	let [updatedHistory, todayEntryIndex, existingEntry] = historyCopy(plant)

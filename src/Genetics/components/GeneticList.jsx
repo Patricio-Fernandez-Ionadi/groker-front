@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Button } from 'Groker/components'
+import { Button } from 'groker'
 
 import { deleteGenetic } from '../index'
 import { useTheme } from '@/app'

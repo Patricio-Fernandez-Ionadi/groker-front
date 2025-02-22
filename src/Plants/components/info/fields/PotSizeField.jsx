@@ -1,6 +1,6 @@
 import React from 'react'
-import { Button, ToggleSwitch, AlertModal } from 'Groker/components'
-import { Cloud_arrow_up, Edit_icon } from 'Groker/icons'
+import { Button, ToggleSwitch, AlertModal } from 'groker/components'
+import { Cloud_arrow_up, Edit_icon } from 'groker/icons'
 import { useTheme } from '@/app'
 import { usePlantsActions } from '../../../hooks/usePlantsActions'
 import { updateSimpleEvents } from '../../history/utils/updateHistory'
@@ -151,13 +151,12 @@ export function PotSizeField({ edit, plant, iconSize }) {
 					/>
 				</div>
 			)}
-			{showAlert && (
-				<AlertModal
-					message={alertMessage}
-					onClose={handleCloseAlert}
-					theme={theme}
-				/>
-			)}
+			<AlertModal
+				isOpen={showAlert}
+				message={alertMessage}
+				onClose={handleCloseAlert}
+				theme={theme}
+			/>
 		</section>
 	)
 }

@@ -1,7 +1,7 @@
 import React from 'react'
-import { Button, ToggleSwitch, AlertModal } from 'Groker/components'
+import { Button, ToggleSwitch, AlertModal } from 'groker/components'
+import { inputsFormat, today } from 'groker/date'
 import { useTheme } from '@/app'
-import { toYYYYMMDD, today } from 'Groker/date'
 import {
 	usePlantsActions,
 	updateNoteEvents,
@@ -21,8 +21,8 @@ export function NotesField({ edit, plant }) {
 
 	// Buscar notas previas
 	const todayEntry = plant.history.find((entry) => {
-		const entryDate = toYYYYMMDD(entry.date)
-		const todayDate = toYYYYMMDD(today)
+		const entryDate = inputsFormat(entry.date)
+		const todayDate = inputsFormat(today)
 		return entryDate === todayDate
 	})
 
@@ -182,13 +182,12 @@ export function NotesField({ edit, plant }) {
 				</div>
 			)}
 
-			{showAlert && (
-				<AlertModal
-					message={alertMessage}
-					onClose={handleCloseAlert}
-					theme={theme}
-				/>
-			)}
+			<AlertModal
+				isOpen={showAlert}
+				message={alertMessage}
+				onClose={handleCloseAlert}
+				theme={theme}
+			/>
 		</section>
 	)
 }

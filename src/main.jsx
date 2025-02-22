@@ -9,6 +9,7 @@ import { CombinedProviders } from './app'
 import { App } from './app/App'
 
 import './theme/index.css'
+import 'groker/dist/groker.css'
 
 createRoot(document.getElementById('root')).render(
 	<BrowserRouter>

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router'
-import { Button, ToggleSwitch } from 'Groker/components'
+import { Button, ToggleSwitch } from 'groker/components'
 
 import { FormContext, useTheme } from '@/app'
 import { AddGeneticButton, useGenetics } from '@/Genetics'

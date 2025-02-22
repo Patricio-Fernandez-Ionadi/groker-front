@@ -1,8 +1,8 @@
 import React from 'react'
-import { Button, DateInput } from 'Groker/components'
-import { toNormal, toYYYYMMDD, toISO } from 'Groker/date'
+import { Button, DateInput } from 'groker/components'
+import { calendarFormat, inputsFormat, isoFormat } from 'groker/date'
+import { Cloud_arrow_up, Edit_icon } from 'groker/icons'
 
-import { Calendar_icon, Cloud_arrow_up, Edit_icon } from 'Groker/icons'
 import { useTheme } from '@/app'
 
 import { usePlantsActions, updateSimpleEvents } from '@/Plants'
@@ -13,14 +13,14 @@ export function EstimatedChangeField({ plant, edit, iconSize }) {
 	const { theme } = useTheme()
 	const { state, update } = edit
 	const [selectedDate, setSelectedDate] = React.useState(
-		toYYYYMMDD(plant.estimatedChange)
+		inputsFormat(plant.estimatedChange)
 	)
 
 	const handleEstimatedChangeEdition = () => {
 		if (!state.estimatedChange) {
 			update({ ...state, estimatedChange: true })
 		} else {
-			const newCahngeDate = toISO(changeRef.current.value)
+			const newCahngeDate = isoFormat(changeRef.current.value)
 
 			let updatedPlant = { ...plant, estimatedChange: newCahngeDate }
 
@@ -60,15 +60,15 @@ export function EstimatedChangeField({ plant, edit, iconSize }) {
 				<div className={`field-edit-mode ${theme}`}>
 					<DateInput
 						theme={theme}
-						change={(e) => setSelectedDate(e.target.value)}
-						click={() => changeRef.current.showPicker()}
+						onChangeEvent={(e) => setSelectedDate(e.target.value)}
 						defaultValue={selectedDate}
-						toShowValue={toNormal(selectedDate)}
+						toShowValue={calendarFormat(selectedDate)}
 						iconSize={iconSize}
 						ref={changeRef}
 						label={
 							plant.stage === 'flowering' ? 'Fecha de corte' : 'Cambio estimado'
 						}
+						className="groker-date"
 					/>
 
 					<div className="field-actions">
@@ -96,7 +96,8 @@ export function EstimatedChangeField({ plant, edit, iconSize }) {
 								: 'Cambio estimado'}
 						</label>
 						<span>
-							{toNormal(plant.estimatedChange)} ({calculatedWeeks} semanas)
+							{calendarFormat(plant.estimatedChange)} ({calculatedWeeks}{' '}
+							semanas)
 						</span>
 					</div>
 					<Edit_icon

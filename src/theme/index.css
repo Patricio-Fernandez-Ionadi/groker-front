@@ -148,11 +148,6 @@ a:visited {
   display: flex;
   gap: 20px;
 }
-.navigation-container .back-button {
-  margin: 5px;
-  width: 30px;
-  height: 30px;
-}
 .navigation-container .navigation {
   transition: background 0.2s ease;
   transition: color 0.2s ease;
@@ -171,10 +166,10 @@ a:visited {
   background: #212121;
 }
 .navigation-container .navigation.light {
-  color: #212121;
+  color: #333;
 }
 .navigation-container .navigation.light a {
-  color: #212121;
+  color: #333;
 }
 .navigation-container .navigation.dark {
   color: #f5f5f5;
@@ -201,6 +196,26 @@ a:visited {
 .navigation-container .navigation .theme-switch div {
   padding-right: 12px;
   padding-top: 17px;
+}
+.navigation-container .navigation .navigation-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.navigation-container .navigation .navigation-list li {
+  padding: 0 10px;
+  height: 40px;
+  line-height: 40px;
+}
+.navigation-container .navigation .navigation-list li a {
+  color: inherit;
+}
+.navigation-container .navigation .navigation-list li:hover {
+  background-color: #09a4af;
+}
+.navigation-container .navigation .navigation-list li:hover a {
+  color: #333;
 }
 
 .app-container {
@@ -229,7 +244,26 @@ a:visited {
   color: #f5f5f5;
 }
 .app-container .header {
+  transition: background 0.2s ease;
   padding: 10px;
+  height: 100px;
+  position: sticky;
+  z-index: 2;
+  top: 0;
+  display: flex;
+  gap: 20px;
+}
+.app-container .header.light {
+  background: #0b686e;
+}
+.app-container .header.dark {
+  background: #373737;
+}
+.app-container .header .back-button {
+  color: inherit;
+  margin: 5px;
+  width: 30px;
+  height: 30px;
 }
 
 main {
@@ -417,12 +451,19 @@ main {
   padding: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   border-radius: 3px;
+  width: 100%;
 }
 .plant-history-component.light {
   background: #fff;
 }
 .plant-history-component.dark {
   background: #373737;
+}
+.plant-history-component.light {
+  box-shadow: 0 0 5px 1px rgba(33, 33, 33, 0.2);
+}
+.plant-history-component.dark {
+  box-shadow: 0 0 5px 1px rgba(245, 245, 245, 0.3);
 }
 .plant-history-component h2 {
   text-align: center;
@@ -544,6 +585,7 @@ main {
   background: #e78437;
   position: sticky;
   top: 0;
+  z-index: 0;
 }
 .inventory-table-component .table-head,
 .inventory-table-component .table-row {
@@ -670,6 +712,12 @@ main {
 }
 .field-section .field-edit-mode.dark a {
   color: #f5f5f5;
+}
+.field-section .field-edit-mode .groker-date {
+  width: 80%;
+}
+.field-section .field-edit-mode .groker-date:has(input:focus) {
+  border-color: #007d85;
 }
 .field-section .field-edit-mode .input-label {
   transition: background 0.2s ease;
@@ -1228,199 +1276,5 @@ input[type=number]::-webkit-inner-spin-button {
   padding: 5px 10px;
 }
 .genetic-list ul li .delete-button:hover {
-  background-color: #f44336;
-}
-
-/* para cuando se cree un package independiente */
-.groker__input-label {
-  transition: background 0.2s ease;
-  position: absolute;
-  top: -8px;
-  left: 10px;
-  padding: 0 5px;
-  font-size: 12px;
-  font-weight: normal;
-}
-.groker__input-label.light {
-  background: #f5f5f5;
-}
-.groker__input-label.dark {
-  background: #373737;
-}
-
-.groker__input-field {
-  transition: color 0.2s ease;
-  width: 80%;
-  background: transparent;
-  border: 1px solid #c2c2c2;
-  border-radius: 3px;
-  font-size: 16px;
-  height: 100%;
-  padding: 10px;
-  outline: none;
-}
-.groker__input-field.light {
-  color: #212121;
-}
-.groker__input-field.light a {
-  color: #212121;
-}
-.groker__input-field.dark {
-  color: #f5f5f5;
-}
-.groker__input-field.dark a {
-  color: #f5f5f5;
-}
-.groker__input-field:focus {
-  border-color: #007d85;
-}
-.groker__input-field.dark option {
-  background: #373737;
-}
-.groker__input-field .custom-date-input,
-.groker__input-field .custom-date-button {
-  color: inherit;
-  cursor: pointer;
-  height: 100%;
-  border: none;
-}
-.groker__input-field .custom-date-input {
-  background: transparent;
-  width: 90%;
-  font-size: inherit;
-  outline: none;
-}
-.groker__input-field .custom-date-button {
-  width: 10%;
-  background: none;
-}
-
-.groker__btn {
-  transition: background 0.2s ease;
-  transition: color 0.2s ease;
-  padding: 5px;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-}
-.groker__btn.light {
-  background: #007d85;
-}
-.groker__btn.dark {
-  background: #eb6400;
-}
-.groker__btn.light {
-  color: #333;
-}
-.groker__btn.light a {
-  color: #333;
-}
-.groker__btn.dark {
-  color: #f5f5f5;
-}
-.groker__btn.dark a {
-  color: #f5f5f5;
-}
-.groker__btn:hover {
-  transition: background 0.2s ease;
-}
-.groker__btn:hover.light {
-  background: #eb6400;
-}
-.groker__btn:hover.dark {
-  background: #007d85;
-}
-
-/* Estilo base para el contenedor del label */
-/* Estilo base para el contenedor del toggle */
-.groker__toggle-switch {
-  position: relative;
-  display: inline-block;
-  width: 50px; /* Ancho del toggle */
-  height: 24px; /* Altura del toggle */
-}
-
-/* Esconde el checkbox real */
-.groker__toggle-switch input[type=checkbox] {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-/* Estilo del slider (la parte visible del toggle) */
-.groker__slider {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc; /* Color cuando está desactivado */
-  border-radius: 12px; /* Bordes redondeados para darle forma ovoide */
-  cursor: pointer;
-  transition: 0.3s; /* Transición suave */
-}
-
-/* Efecto al activar el toggle */
-.groker__toggle-switch input[type=checkbox]:checked + .groker__slider {
-  background-color: #007d85; /* Color cuando está activado */
-}
-
-/* Punto que se mueve dentro del toggle */
-.groker__slider::before {
-  position: absolute;
-  content: "";
-  height: 18px;
-  width: 18px;
-  left: 3px;
-  bottom: 3px;
-  background-color: white; /* Color del punto */
-  border-radius: 50%; /* Forma circular */
-  transition: 0.3s; /* Transición suave */
-}
-
-/* Mover el punto hacia la derecha cuando está activado */
-.groker__toggle-switch input[type=checkbox]:checked + .groker__slider::before {
-  transform: translateX(26px); /* Distancia que se mueve el punto */
-}
-
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-.modal-overlay .modal-content {
-  transition: background 0.2s ease;
-  padding: 20px;
-  border-radius: 3px;
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-.modal-overlay .modal-content.light {
-  background: #f5f5f5;
-}
-.modal-overlay .modal-content.dark {
-  background: #373737;
-}
-.modal-overlay .modal-content .modal-actions {
-  margin-top: 15px;
-  display: flex;
-  justify-content: space-between;
-}
-.modal-overlay .modal-content .modal-actions .cancel-button,
-.modal-overlay .modal-content .modal-actions .confirm-button {
-  padding: 8px 16px;
-  font-size: 14px;
-}
-.modal-overlay .modal-content .modal-actions .cancel-button {
-  background-color: #d32f2f;
-}
-.modal-overlay .modal-content .modal-actions .cancel-button:hover {
   background-color: #f44336;
 }/*# sourceMappingURL=index.css.map */

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
-import { Arrow_left } from 'Groker/icons'
+import { Arrow_left } from 'groker/icons'
 
 export const BackButton = ({ route, size, color }) => {
 	return (

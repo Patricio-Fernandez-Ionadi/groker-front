@@ -1,8 +1,10 @@
 .plant-history-component {
 	@include useThemeBg($white_light, $black_light);
+	@include useThemeShadow($black, $white);
 	padding: 20px;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 	border-radius: $border_radius;
+	width: $full;
 	h2 {
 		text-align: center;
 	}

@@ -46,6 +46,12 @@
 		@include useThemeText($black, $white);
 		gap: 10px;
 		position: relative;
+		.groker-date {
+			width: 80%;
+			&:has(input:focus) {
+				border-color: $primary;
+			}
+		}
 
 		.input-label {
 			@include useThemeBg($white, $black-light);

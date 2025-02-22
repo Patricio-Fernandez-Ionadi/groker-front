@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate, useParams } from 'react-router'
-import { Button } from 'Groker/components'
-import { Chevron_left_icon, Chevron_right_icon } from 'Groker/icons'
+import { Button } from 'groker/components'
+import { Chevron_left, Chevron_right } from 'groker/icons'
 import { routes, useTheme } from '@/app'
 
 import { PlantHistory, usePlants, usePlantsActions } from '../../'
@@ -74,11 +74,11 @@ export function PlantInfo() {
 					}}
 				>
 					<Button onEvent={handlePrevPlant} theme={theme}>
-						<Chevron_left_icon size={iconSize} />
+						<Chevron_left size={iconSize} />
 					</Button>
 					<h1 id="plant-info-title">Información de la Planta</h1>
 					<Button onEvent={handleNextPlant} theme={theme}>
-						<Chevron_right_icon size={iconSize} />
+						<Chevron_right size={iconSize} />
 					</Button>
 				</header>
 

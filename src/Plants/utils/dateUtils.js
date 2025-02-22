@@ -1,4 +1,4 @@
-import { toISO } from 'Groker/date'
+import { isoFormat } from 'groker/date'
 
 /**
  * Calcula la fecha estimada de cambio o corte de una planta segun la fecha de ingreso.
@@ -42,5 +42,5 @@ export const culateEstimatedChangeFromNow = (currentStage) => {
 		newChangeDate = todayDate.setDate(todayDate.getDate() + 28) // 4 weeks
 	}
 
-	return toISO(newChangeDate)
+	return isoFormat(newChangeDate)
 }

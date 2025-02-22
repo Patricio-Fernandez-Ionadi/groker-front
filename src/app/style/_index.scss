@@ -10,7 +10,20 @@
 	flex-direction: column;
 	min-height: $vh;
 	.header {
+		@include useThemeBg($primary_dark, $black_light);
 		padding: 10px;
+		height: 100px;
+		position: sticky;
+		z-index: 2;
+		top: 0;
+		display: flex;
+		gap: 20px;
+		.back-button {
+			color: inherit;
+			margin: 5px;
+			width: 30px;
+			height: 30px;
+		}
 	}
 }
 

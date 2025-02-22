@@ -1,23 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link, useLocation } from 'react-router'
+import { DarkMode_icon, LightMode_icon } from 'groker/icons'
+import { ToggleSwitch } from 'groker/components'
 
 import { useTheme } from '../../../context/ThemeContext'
 
-import { BurguerIcon } from './BurguerIcon'
-import { BackButton } from './BackButton'
-
 import { routes } from '../../../utils/routes'
-import { ToggleSwitch } from '../../../modules/components/toggleswitch/ToggleSwitch'
-import { Dark_icon, Light_icon } from 'Groker/icons'
 
-export const Navigation = () => {
-	const [isOpen, setIsOpen] = useState(false)
+export const Navigation = ({ isOpen, closeNav }) => {
 	const { toggleTheme, isDarkMode, theme } = useTheme()
 
 	const location = useLocation()
-	const prevRoute = location.state?.from
-
-	const isBackAvailable = location.pathname !== routes.home.path && prevRoute
 
 	const sendFromLocation = {
 		from: location.pathname,
@@ -25,33 +18,13 @@ export const Navigation = () => {
 
 	return (
 		<div className="navigation-container">
-			<div>
-				<div className={`burguer-button ${theme}`}>
-					<BurguerIcon toggle={isOpen} onEvent={() => setIsOpen(!isOpen)} />
-				</div>
-
-				<div className="back-button">
-					{isBackAvailable ? (
-						<BackButton
-							route={prevRoute}
-							size={30}
-							color={`${theme === 'light' ? '#212121' : '#f5f5f5'}`}
-						/>
-					) : null}
-				</div>
-			</div>
-
-			<Link to={routes.home.path}>
-				<h1>Gestión de Inventario de Cultivos</h1>
-			</Link>
-
 			<nav className={`navigation ${isOpen ? 'open' : ''} ${theme}`}>
 				<div className="theme-switch">
 					<div>
 						{theme === 'dark' ? (
-							<Light_icon size={25} color={'#ff9800'} />
+							<LightMode_icon size={25} color={'#ff9800'} />
 						) : (
-							<Dark_icon size={25} />
+							<DarkMode_icon size={25} />
 						)}
 					</div>
 					<ToggleSwitch onEvent={toggleTheme} switcher={isDarkMode} />
@@ -61,7 +34,7 @@ export const Navigation = () => {
 						<Link
 							to={routes.home.path}
 							state={sendFromLocation}
-							onClick={(e) => setIsOpen(false)}
+							onClick={closeNav}
 						>
 							Inicio
 						</Link>
@@ -70,7 +43,7 @@ export const Navigation = () => {
 						<Link
 							to={routes.plants.path}
 							state={sendFromLocation}
-							onClick={(e) => setIsOpen(false)}
+							onClick={closeNav}
 						>
 							Inventario
 						</Link>
@@ -79,7 +52,7 @@ export const Navigation = () => {
 						<Link
 							to={routes.products.path}
 							state={sendFromLocation}
-							onClick={(e) => setIsOpen(false)}
+							onClick={closeNav}
 						>
 							Productos
 						</Link>

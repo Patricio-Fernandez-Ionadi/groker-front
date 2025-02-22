@@ -1,7 +1,7 @@
 import React from 'react'
-import { Button, DateInput } from 'Groker/components'
-import { toNormal, toISO, toYYYYMMDD, today } from 'Groker/date'
-import { Cloud_arrow_up, Edit_icon } from 'Groker/icons'
+import { Button, DateInput } from 'groker/components'
+import { calendarFormat, isoFormat, inputsFormat, today } from 'groker/date'
+import { Cloud_arrow_up, Edit_icon } from 'groker/icons'
 
 import { useTheme } from '@/app'
 import { useProductsActions } from '@/Products'
@@ -17,7 +17,7 @@ export function WateringField({ edit, plant, iconSize }) {
 	const { theme } = useTheme()
 	const wateringDateRef = React.useRef(null)
 	const [selectedDate, setSelectedDate] = React.useState(
-		toYYYYMMDD(plant.lastWatered)
+		inputsFormat(plant.lastWatered)
 	)
 
 	// WIP
@@ -46,7 +46,7 @@ export function WateringField({ edit, plant, iconSize }) {
 				- no se pueden agregar productos duplicados (deben editarse y gestionar el stock en consecuencia)
 				- si un producto se edita con amount 0 ademas de gestionar el stok se debe quitar el producto (se considera eliminado)
 			*/
-			const newWateringDate = toISO(wateringDateRef.current.value)
+			const newWateringDate = isoFormat(wateringDateRef.current.value)
 
 			const updatedPlant = {
 				...plant,
@@ -86,7 +86,7 @@ export function WateringField({ edit, plant, iconSize }) {
 							change={(e) => setSelectedDate(e.target.value)}
 							click={() => wateringDateRef.current.showPicker()}
 							defaultValue={selectedDate}
-							toShowValue={toNormal(selectedDate)}
+							toShowValue={calendarFormat(selectedDate)}
 							iconSize={iconSize}
 							ref={wateringDateRef}
 							label="Ultimo Riego"
@@ -120,7 +120,7 @@ export function WateringField({ edit, plant, iconSize }) {
 				<div className="field-view-mode">
 					<div>
 						<label className={`field-label`}>Ultimo Riego</label>
-						<span>{toNormal(plant.lastWatered)}</span>
+						<span>{calendarFormat(plant.lastWatered)}</span>
 					</div>
 					<Edit_icon
 						size={iconSize}
@@ -138,7 +138,7 @@ export function WateringField({ edit, plant, iconSize }) {
 				Último riego:{' '}
 				<input
 					type="date"
-					defaultValue={toYYYYMMDD(plant.lastWatered) || today}
+					defaultValue={inputsFormat(plant.lastWatered) || today}
 					// onChange={handleWateringEdition}
 					ref={wateringDateRef}
 				/>

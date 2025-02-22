@@ -1,7 +1,7 @@
 import React from 'react'
-import { TextInput, Button } from 'Groker/components'
+import { TextInput, Button } from 'groker/components'
+import { Cloud_arrow_up, Edit_icon } from 'groker/icons'
 
-import { Cloud_arrow_up, Edit_icon } from 'Groker/icons'
 import { useTheme } from '@/app'
 import { usePlantsActions, updateSimpleEvents } from '@/Plants'
 

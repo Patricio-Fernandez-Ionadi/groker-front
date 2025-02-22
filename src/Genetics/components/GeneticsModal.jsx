@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import { Button } from 'Groker/components'
+import { Button } from 'groker'
 import { useTheme } from '../../app/context/ThemeContext'
 
 import { AddGenetic } from './AddGenetic'

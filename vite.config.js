@@ -19,15 +19,6 @@ export default defineConfig({
 	resolve: {
 		alias: {
 			'@': path.resolve(__dirname, './src'),
-			'Groker/date': path.resolve(__dirname, './src/app/modules/date/dates.js'),
-			'Groker/components': path.resolve(
-				__dirname,
-				'./src/app/modules/components/index.js'
-			),
-			'Groker/icons': path.resolve(
-				__dirname,
-				'./src/app/modules/icons/Icons.jsx'
-			),
 		},
 	},
 	server: {

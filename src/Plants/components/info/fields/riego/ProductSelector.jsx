@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Button } from 'Groker/components'
+import { Button } from 'groker/components'
 import { useTheme } from '@/app'
 import { useProducts } from '@/Products'
 

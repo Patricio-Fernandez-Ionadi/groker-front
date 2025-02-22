@@ -3,14 +3,9 @@
 	top: 0;
 	display: flex;
 	gap: 20px;
-	.back-button {
-		margin: 5px;
-		width: 30px;
-		height: 30px;
-	}
 	.navigation {
 		@include useThemeBg($white, $black);
-		@include useThemeText($black, $white);
+		@include useThemeText($text, $white);
 		@include useThemeShadow($black, $primary);
 		height: $vh;
 		width: 230px;
@@ -32,6 +27,26 @@
 			div {
 				padding-right: 12px;
 				padding-top: 17px;
+			}
+		}
+		.navigation-list {
+			list-style: none;
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+			li {
+				padding: 0 10px;
+				height: 40px;
+				line-height: 40px;
+				a {
+					color: inherit;
+				}
+				&:hover {
+					background-color: $primary_light;
+					a {
+						color: $text;
+					}
+				}
 			}
 		}
 	}
