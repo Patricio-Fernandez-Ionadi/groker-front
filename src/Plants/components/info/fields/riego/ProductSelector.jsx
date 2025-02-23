@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { Button, Selector, TextInput } from 'groker/components'
 import { useTheme } from '@/app'
 import { useProducts } from '@/Products'
-// import { TextInput } from 'groker'
 
 export function ProductSelector({ edit, eventData }) {
 	const { products } = useProducts()
@@ -29,7 +28,6 @@ export function ProductSelector({ edit, eventData }) {
 	const filteredAvailableProducts = products
 		.filter((p) => !selectedProducts.some((sp) => sp.product._id === p._id))
 		.map((p) => p.name)
-	// console.log(filteredAvailableProducts)
 
 	const addProductField = () => {
 		if (newProduct.product && newProduct.productAmount) {
