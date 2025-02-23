@@ -26,8 +26,8 @@ export const ProductList = () => {
 		selectProduct(product)
 	}
 
-	const [productToDelete, setProductToDelete] = useState(null) // Estado para el producto a eliminar
-	const [isModalOpen, setIsModalOpen] = useState(false) // Estado para el modal
+	const [productToDelete, setProductToDelete] = useState(null)
+	const [isModalOpen, setIsModalOpen] = useState(false)
 
 	const handleDeleteProduct = (productId) => {
 		const product = products.find((p) => p._id === productId)

@@ -1,62 +1,36 @@
 import React from 'react'
-import { Button, ToggleSwitch, AlertModal } from 'groker/components'
+import {
+	Button,
+	ToggleSwitch,
+	AlertModal,
+	ConfirmModal,
+} from 'groker/components'
 import { inputsFormat, today } from 'groker/date'
-import { useTheme } from '@/app'
+import { useTheme, routes } from '@/app'
 import {
 	usePlantsActions,
 	updateNoteEvents,
 	updateSimpleEvents,
 } from '@/Plants'
+import { useNavigate } from 'react-router'
 
 export function NotesField({ edit, plant }) {
-	const { updatePlant } = usePlantsActions()
+	const { updatePlant, deletePlant } = usePlantsActions()
 	const { theme } = useTheme()
 	const { state, update } = edit
+	const navigate = useNavigate()
 
-	const [observationClicks, setObservationClicks] = React.useState(0)
-	const [showAlert, setShowAlert] = React.useState(false)
-	const [alertMessage, setAlertMessage] = React.useState('')
-
-	const areaRef = React.useRef(null)
-
-	// Buscar notas previas
+	// Registro de la fecha
 	const todayEntry = plant.history.find((entry) => {
 		const entryDate = inputsFormat(entry.date)
 		const todayDate = inputsFormat(today)
 		return entryDate === todayDate
 	})
 
-	const noteEvent = todayEntry?.events.find((event) => event.type === 'note')
-	const notes = noteEvent?.details || []
-
-	const handleAddNote = () => {
-		if (!state.note) {
-			update({ ...state, note: true })
-		} else {
-			if (areaRef.current.value === '') return
-
-			const plantToSave = {
-				...plant,
-				history: updateNoteEvents(plant, 'note', {
-					id: Date.now(),
-					note: areaRef.current.value,
-				}),
-			}
-			updatePlant(plantToSave)
-
-			update({ ...state, note: false })
-		}
-	}
-
-	// Eliminar una nota específica
-	const handleDeleteNote = (noteId) => {
-		const plantToSave = {
-			...plant,
-			history: updateNoteEvents(plant, 'note', { id: noteId }, 'delete'),
-		}
-		updatePlant(plantToSave)
-	}
-
+	// Under Observation states
+	const [observationClicks, setObservationClicks] = React.useState(0)
+	const [showAlert, setShowAlert] = React.useState(false)
+	const [alertMessage, setAlertMessage] = React.useState('')
 	const handleCloseAlert = () => {
 		setShowAlert(false)
 	}
@@ -110,6 +84,58 @@ export function NotesField({ edit, plant }) {
 
 		updatePlant(plantToSave)
 		setObservationClicks((prev) => prev + 1)
+	}
+
+	// Delete Plant states
+	const [plantToDelete, setPlantToDelete] = React.useState(null)
+	const [isModalOpen, setIsModalOpen] = React.useState(false)
+	const handleDeletePlant = () => {
+		setPlantToDelete(plant)
+		setIsModalOpen(true)
+	}
+	const confirmDelete = () => {
+		if (plantToDelete) {
+			deletePlant(plantToDelete._id)
+			setIsModalOpen(false)
+			setPlantToDelete(null)
+			navigate(routes.home.path)
+		}
+	}
+	const closeModal = () => {
+		setIsModalOpen(false)
+		setPlantToDelete(null)
+	}
+
+	const areaRef = React.useRef(null)
+
+	// Buscar notas previas
+	const noteEvent = todayEntry?.events.find((event) => event.type === 'note')
+	const notes = noteEvent?.details || []
+	const handleAddNote = () => {
+		if (!state.note) {
+			update({ ...state, note: true })
+		} else {
+			if (areaRef.current.value === '') return
+
+			const plantToSave = {
+				...plant,
+				history: updateNoteEvents(plant, 'note', {
+					id: Date.now(),
+					note: areaRef.current.value,
+				}),
+			}
+			updatePlant(plantToSave)
+
+			update({ ...state, note: false })
+		}
+	}
+	// Eliminar una nota específica
+	const handleDeleteNote = (noteId) => {
+		const plantToSave = {
+			...plant,
+			history: updateNoteEvents(plant, 'note', { id: noteId }, 'delete'),
+		}
+		updatePlant(plantToSave)
 	}
 
 	return (
@@ -179,9 +205,26 @@ export function NotesField({ edit, plant }) {
 					>
 						Añadir una nota
 					</Button>
+					<Button
+						onEvent={handleDeletePlant}
+						aria-label="Eliminar Planta"
+						theme={theme}
+						className="delete-plant-button"
+					>
+						Eliminar Planta
+					</Button>
 				</div>
 			)}
+			{/* Modal de confirmación de eliminación */}
+			<ConfirmModal
+				isOpen={isModalOpen}
+				onClose={closeModal}
+				onConfirm={confirmDelete}
+				message={`¿Estás seguro de que deseas eliminar esta planta "${plant?.name}"?`}
+				theme={theme}
+			/>
 
+			{/* Modal de alerta underObservation */}
 			<AlertModal
 				isOpen={showAlert}
 				message={alertMessage}

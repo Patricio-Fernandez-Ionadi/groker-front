@@ -5,27 +5,28 @@ import { Cloud_arrow_up, Edit_icon } from 'groker/icons'
 import { useTheme } from '@/app'
 import { usePlantsActions, updateSimpleEvents } from '@/Plants'
 
+const setElementState = (name, state) => {
+	setTimeout(() => {
+		document.getElementsByName(name)[0][state]()
+	}, 0)
+}
+
 export const NameField = ({ edit, plant, iconSize }) => {
 	const { updatePlant } = usePlantsActions()
 	const { theme } = useTheme()
 	const { state, update } = edit
-	const nameRef = React.useRef(null)
+	const [name, setName] = React.useState(plant.name)
 
 	const handleNameEdition = () => {
 		if (!state.name) {
 			update({ ...state, name: true })
-			setTimeout(() => {
-				nameRef.current.focus()
-				nameRef.current.select()
-			}, 0)
+			setElementState('name', 'focus')
+			setElementState('name', 'select')
 		} else {
-			let updatedPlant = { ...plant, name: nameRef.current.value }
+			if (plant.name === name) return
+			let updatedPlant = { ...plant, name }
 
-			const updatedHistory = updateSimpleEvents(
-				updatedPlant,
-				'name',
-				nameRef.current.value
-			)
+			const updatedHistory = updateSimpleEvents(updatedPlant, 'name', name)
 
 			const plantToSave = {
 				...updatedPlant,
@@ -43,10 +44,10 @@ export const NameField = ({ edit, plant, iconSize }) => {
 				<div className={`field-edit-mode ${theme}`}>
 					<TextInput
 						label="Nombre"
-						defaultValue={plant.name}
+						defaultValue={name}
 						name="name"
-						ref={nameRef}
 						theme={theme}
+						onChangeEvent={(e) => setName(e.target.value)}
 					/>
 					<div className="field-actions">
 						<Cloud_arrow_up

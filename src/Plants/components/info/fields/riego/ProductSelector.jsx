@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
-import { Button } from 'groker/components'
+import { Button, Selector, TextInput } from 'groker/components'
 import { useTheme } from '@/app'
 import { useProducts } from '@/Products'
+// import { TextInput } from 'groker'
 
 export function ProductSelector({ edit, eventData }) {
 	const { products } = useProducts()
@@ -25,6 +26,10 @@ export function ProductSelector({ edit, eventData }) {
 		const { name, value } = e.target
 		setNewProduct((prev) => ({ ...prev, [name]: value }))
 	}
+	const filteredAvailableProducts = products
+		.filter((p) => !selectedProducts.some((sp) => sp.product._id === p._id))
+		.map((p) => p.name)
+	// console.log(filteredAvailableProducts)
 
 	const addProductField = () => {
 		if (newProduct.product && newProduct.productAmount) {
@@ -71,36 +76,26 @@ export function ProductSelector({ edit, eventData }) {
 
 			{showAddProduct && (
 				<div className={`field-edit-mode product-selection-form ${theme}`}>
-					<select
-						name="product"
-						value={newProduct.product}
-						onChange={handleProductChange}
-						aria-label="Seleccionar producto"
-					>
-						<option value="">Seleccionar producto</option>
-						{products
-							.filter(
-								(p) => !selectedProducts.some((sp) => sp.product._id === p._id)
-							)
-							.map((p) => (
-								<option key={p._id} value={p._id}>
-									{p.name}
-								</option>
-							))}
-					</select>
-					<input
-						type="number"
-						name="productAmount"
-						value={newProduct.productAmount}
-						onChange={handleProductChange}
-						placeholder="Cant. de producto (ml)"
-						aria-label="Cantidad de producto"
+					<Selector
+						list={filteredAvailableProducts}
+						onChangeEvent={handleProductChange}
+						theme={theme}
 					/>
+					<TextInput
+						type="number"
+						onChangeEvent={handleProductChange}
+						aria-label="Cantidad de producto"
+						placeholder="Cant. de producto (ml)"
+						name="productAmount"
+						defaultValue={newProduct.productAmount}
+						className="product-amount-input"
+					/>
+					{/* <input /> */}
 					<div className="field-actions">
 						<Button
 							onEvent={addProductField}
 							aria-label="Confirmar producto"
-							className="primary"
+							// className="primary"
 							theme={theme}
 						>
 							Confirmar
@@ -108,7 +103,7 @@ export function ProductSelector({ edit, eventData }) {
 						<Button
 							onEvent={() => setShowAddProduct(false)}
 							aria-label="Cancelar edición"
-							className="secondary"
+							// className="secondary"
 							theme={theme}
 						>
 							Cancelar

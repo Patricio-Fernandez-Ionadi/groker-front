@@ -682,9 +682,6 @@ main {
   /* Modo visualización */
   /* Notas */
   /* Selector de productos */
-  /* Campos avanzados de riego */
-  /* Productos añadidos */
-  /* Toggle final pot */
 }
 .field-section .field-view-mode,
 .field-section .field-edit-mode {
@@ -811,8 +808,15 @@ main {
   width: 100%;
   height: 40px;
 }
-.field-section .field-view-mode .notes {
-  background: red;
+.field-section .field-view-mode.notes {
+  display: flex;
+  flex-direction: row;
+}
+.field-section .field-view-mode.notes .delete-plant-button {
+  background: #f44336;
+}
+.field-section .field-view-mode.notes .delete-plant-button:hover {
+  background: #ea1c0d;
 }
 .field-section .notes,
 .field-section .product-selector {
@@ -855,7 +859,6 @@ main {
 }
 .field-section .notes .field-actions button {
   width: 100px;
-  padding: 10px;
 }
 .field-section .notes .field-actions button:nth-child(3) {
   background: #f44336;
@@ -894,60 +897,35 @@ main {
 }
 .field-section .product-selection-form {
   gap: 0;
-  height: 60px;
 }
-.field-section .product-selection-form select {
-  flex: 3;
-  background: transparent;
-  color: inherit;
-  border: 1px solid #c2c2c2;
-  border-radius: 3px 0 0 3px;
-  font-size: inherit;
-  outline: none;
-}
-.field-section .product-selection-form select:focus {
-  border-color: #007d85;
-}
-.field-section .product-selection-form input {
-  flex: 1;
-  background: transparent;
-  color: inherit;
-  border: 1px solid #c2c2c2;
-  border-radius: 0 3px 3px 0;
-  outline: none;
-  font-size: inherit;
-  padding-left: 10px;
-  margin-right: 5px;
-}
-.field-section .product-selection-form input:focus {
-  border-color: #007d85;
-}
-.field-section .product-selection-form .field-actions {
+.field-section .field-actions {
   gap: 2px;
 }
-.field-section .product-selection-form .field-actions button {
+.field-section .field-actions button {
   height: 30px;
   padding: 5px 10px;
 }
-.field-section .product-selection-form .field-actions button:nth-child(2) {
+.field-section .field-actions button:nth-child(2) {
   background: #f44336;
 }
-.field-section .product-selection-form .field-actions button:nth-child(2):hover {
+.field-section .field-actions button:nth-child(2):hover {
   background: #ea1c0d;
 }
-.field-section .product-selection-form.dark select option {
+.field-section.dark select option {
   background: #373737;
 }
-.field-section .watering-advanced-fields {
+
+/* Campos avanzados de riego */
+.watering-advanced-fields {
   margin: 5px 0;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-areas: "water water" "ph ec";
   gap: 5px;
 }
-.field-section .watering-advanced-fields .amount-field input,
-.field-section .watering-advanced-fields .ph-field input,
-.field-section .watering-advanced-fields .ec-field input {
+.watering-advanced-fields .amount-field input,
+.watering-advanced-fields .ph-field input,
+.watering-advanced-fields .ec-field input {
   width: 100%;
   height: 60px;
   background: transparent;
@@ -957,24 +935,26 @@ main {
   color: inherit;
   font-size: inherit;
 }
-.field-section .watering-advanced-fields .amount-field input:focus,
-.field-section .watering-advanced-fields .ph-field input:focus,
-.field-section .watering-advanced-fields .ec-field input:focus {
+.watering-advanced-fields .amount-field input:focus,
+.watering-advanced-fields .ph-field input:focus,
+.watering-advanced-fields .ec-field input:focus {
   border-color: #007d85;
 }
-.field-section .watering-advanced-fields .amount-field {
+.watering-advanced-fields .amount-field {
   grid-area: water;
 }
-.field-section .watering-advanced-fields .ph-field {
+.watering-advanced-fields .ph-field {
   grid-area: ph;
 }
-.field-section .watering-advanced-fields .ec-field {
+.watering-advanced-fields .ec-field {
   grid-area: ec;
 }
-.field-section .watering-products-added {
+
+/* Productos añadidos */
+.watering-products-added {
   margin-top: 15px;
 }
-.field-section .watering-products-added .watering-product-item {
+.watering-products-added .watering-product-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -982,17 +962,19 @@ main {
   border-radius: 3px;
   margin-bottom: 10px;
 }
-.field-section .watering-products-added .watering-product-item span {
+.watering-products-added .watering-product-item span {
   margin-right: 10px;
 }
-.field-section .watering-products-added .watering-product-item .watering-product-remove {
+.watering-products-added .watering-product-item .watering-product-remove {
   background: #f44336;
   font-size: 14px;
 }
-.field-section .watering-products-added .watering-product-item .watering-product-remove:hover {
+.watering-products-added .watering-product-item .watering-product-remove:hover {
   background: #ea1c0d;
 }
-.field-section .final-pot-toggle {
+
+/* Toggle final pot */
+.final-pot-toggle {
   height: 40px;
   display: flex;
   align-items: center;

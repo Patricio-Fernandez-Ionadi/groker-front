@@ -10,8 +10,6 @@ const apiUrl =
 		? process.env.VITE_API_URL_LOCAL
 		: process.env.VITE_API_URL
 
-console.log('API URL:', apiUrl)
-
 // https://vitejs.dev/config/
 export default defineConfig({
 	plugins: [react()],

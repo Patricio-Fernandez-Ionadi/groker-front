@@ -18,13 +18,11 @@ export const EntryDateField = ({ edit, plant, iconSize }) => {
 		inputsFormat(plant.entryDate)
 	)
 
-	const entryDateRef = React.useRef(null)
-
 	const handleDateEdition = () => {
 		if (!state.entryDate) {
 			update({ ...state, entryDate: true })
 		} else {
-			const newDate = isoFormat(entryDateRef.current.value)
+			const newDate = isoFormat(selectedDate)
 
 			let updatedPlant = { ...plant, entryDate: newDate }
 
@@ -71,12 +69,10 @@ export const EntryDateField = ({ edit, plant, iconSize }) => {
 					<DateInput
 						theme={theme}
 						onChangeEvent={(e) => setSelectedDate(e.target.value)}
-						defaultValue={selectedDate}
-						toShowValue={calendarFormat(selectedDate)}
 						iconSize={iconSize}
-						ref={entryDateRef}
 						label="Fecha de ingreso"
 						className="groker-date"
+						defaultValue={inputsFormat(plant.entryDate)}
 					/>
 					<div className="field-actions">
 						<Cloud_arrow_up

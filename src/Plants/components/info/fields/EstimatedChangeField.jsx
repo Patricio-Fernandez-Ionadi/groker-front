@@ -9,7 +9,6 @@ import { usePlantsActions, updateSimpleEvents } from '@/Plants'
 
 export function EstimatedChangeField({ plant, edit, iconSize }) {
 	const { updatePlant } = usePlantsActions()
-	const changeRef = React.useRef(null)
 	const { theme } = useTheme()
 	const { state, update } = edit
 	const [selectedDate, setSelectedDate] = React.useState(
@@ -20,7 +19,7 @@ export function EstimatedChangeField({ plant, edit, iconSize }) {
 		if (!state.estimatedChange) {
 			update({ ...state, estimatedChange: true })
 		} else {
-			const newCahngeDate = isoFormat(changeRef.current.value)
+			const newCahngeDate = isoFormat(selectedDate)
 
 			let updatedPlant = { ...plant, estimatedChange: newCahngeDate }
 
@@ -41,6 +40,7 @@ export function EstimatedChangeField({ plant, edit, iconSize }) {
 		}
 	}
 
+	// extraer de weeksUntil > groker/date
 	const calculateWeeksUntilChange = (endDate) => {
 		const start = new Date()
 		const end = new Date(endDate)
@@ -61,14 +61,12 @@ export function EstimatedChangeField({ plant, edit, iconSize }) {
 					<DateInput
 						theme={theme}
 						onChangeEvent={(e) => setSelectedDate(e.target.value)}
-						defaultValue={selectedDate}
-						toShowValue={calendarFormat(selectedDate)}
 						iconSize={iconSize}
-						ref={changeRef}
 						label={
 							plant.stage === 'flowering' ? 'Fecha de corte' : 'Cambio estimado'
 						}
 						className="groker-date"
+						defaultValue={selectedDate}
 					/>
 
 					<div className="field-actions">
