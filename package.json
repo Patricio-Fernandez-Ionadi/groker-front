@@ -12,7 +12,7 @@
 	"dependencies": {
 		"@reduxjs/toolkit": "2.5.1",
 		"dotenv": "16.4.7",
-		"groker": "^1.5.1",
+		"groker": "^1.5.2",
 		"react": "18.3.1",
 		"react-dom": "18.3.1",
 		"react-redux": "9.2.0",

@@ -1,15 +1,9 @@
 import React from 'react'
-import { TextInput, Button } from 'groker/components'
+import { TextInput, Button, setElementState } from 'groker/components'
 import { Cloud_arrow_up, Edit_icon } from 'groker/icons'
 
 import { useTheme } from '@/app'
 import { usePlantsActions, updateSimpleEvents } from '@/Plants'
-
-const setElementState = (name, state) => {
-	setTimeout(() => {
-		document.getElementsByName(name)[0][state]()
-	}, 0)
-}
 
 export const NameField = ({ edit, plant, iconSize }) => {
 	const { updatePlant } = usePlantsActions()

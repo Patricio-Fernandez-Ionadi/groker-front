@@ -1,6 +1,11 @@
 import React from 'react'
 import { Button, DateInput } from 'groker/components'
-import { calendarFormat, inputsFormat, isoFormat } from 'groker/date'
+import {
+	calendarFormat,
+	inputsFormat,
+	isoFormat,
+	weeksUntil,
+} from 'groker/date'
 import { Cloud_arrow_up, Edit_icon } from 'groker/icons'
 
 import { useTheme } from '@/app'
@@ -40,16 +45,7 @@ export function EstimatedChangeField({ plant, edit, iconSize }) {
 		}
 	}
 
-	// extraer de weeksUntil > groker/date
-	const calculateWeeksUntilChange = (endDate) => {
-		const start = new Date()
-		const end = new Date(endDate)
-		const diffInMs = end - start // Diferencia en milisegundos
-		const msInWeek = 1000 * 60 * 60 * 24 * 7 // Milisegundos en una semana
-		const weeks = diffInMs / msInWeek
-		return Math.round(weeks) // Redondea hacia abajo para obtener semanas completas
-	}
-	const calculatedWeeks = calculateWeeksUntilChange(plant.estimatedChange)
+	const calculatedWeeks = weeksUntil(plant.estimatedChange)
 
 	return (
 		<section
