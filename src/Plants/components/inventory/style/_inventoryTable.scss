@@ -3,6 +3,7 @@
 	max-height: 600px;
 	overflow: hidden scroll;
 	grid-area: inventoryTable;
+	width: auto;
 
 	p {
 		border-right: 1px solid $white_dark;
@@ -24,6 +25,9 @@
 			width: 70px;
 		}
 		&:nth-child(5) {
+			width: 100px;
+		}
+		&:nth-child(6) {
 			width: 100px;
 		}
 		&:last-child {
@@ -51,12 +55,18 @@
 			&.selected {
 				@include useThemeBg($secondary, $primary);
 			}
+			&.watering-due {
+				background: rgba($warning, 0.5);
+			}
 
 			&:last-child {
 				border-radius: 0 0 $border_radius $border_radius;
 			}
 			&:nth-child(even) {
 				background-color: rgba($white_dark, 0.1);
+				&.watering-due {
+					background: rgba($warning, 0.5);
+				}
 			}
 			&:hover {
 				background-color: $primary_light;

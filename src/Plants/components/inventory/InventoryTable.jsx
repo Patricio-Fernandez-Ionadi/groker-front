@@ -24,6 +24,24 @@ export const InventoryTable = ({ theme }) => {
 
 	if (!plants) return <p>...Cargando</p>
 
+	const isUpdateDue = (toCheck) => {
+		return (
+			new Date(toCheck) <=
+			new Date(new Date().setDate(new Date().getDate() - 3))
+		)
+	}
+	// console.log(isUpdateDue({ estimatedChange: '2025-02-20' }))
+	// isUpdateDue(plants[0])
+
+	const selectedStyles = (p) =>
+		selectedPlant && selectedPlant._id === p._id ? `selected` : ''
+
+	const wateringPendStyles = (p) =>
+		isUpdateDue(p.lastWatered) ? 'watering-due' : ''
+
+	const rowClasses = (p) =>
+		`table-row ${selectedStyles(p)} ${wateringPendStyles(p)} ${theme}`
+
 	return (
 		<>
 			<div className="inventory-table-component">
@@ -34,17 +52,14 @@ export const InventoryTable = ({ theme }) => {
 					<p>Periodo</p>
 					<p>Cambio de Ciclo</p>
 					<p>Ultimo Riego</p>
+					<p>Revision</p>
 				</div>
 				<div className="table-body">
 					{plants.map((each, idx) => (
 						<div
 							key={each._id}
 							onClick={() => handlePlantSelection(each)}
-							className={`table-row ${
-								selectedPlant && selectedPlant._id === each._id
-									? `selected ${theme}`
-									: ''
-							}`}
+							className={`${rowClasses(each)}`}
 						>
 							<p>{idx + 1}</p>
 							<p>{each.name}</p>
@@ -52,6 +67,12 @@ export const InventoryTable = ({ theme }) => {
 							<p>{abbreviate(translateField(each.stage), 3)}.</p>
 							<p>{calendarFormat(each.estimatedChange)}</p>
 							<p>{calendarFormat(each.lastWatered)}</p>
+							<p>
+								{isUpdateDue(each.lastWatered) && '💦'}
+								{isUpdateDue(each.estimatedChange) && '🌱'}
+								{each.flags.underObservation && '👁️'}
+							</p>
+							<p></p>
 						</div>
 					))}
 				</div>

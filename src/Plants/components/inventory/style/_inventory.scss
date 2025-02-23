@@ -1,9 +1,11 @@
 .inventory-component {
 	width: 100%;
 	display: grid;
-	grid-template-columns: 2fr 1fr;
 	gap: 20px;
-	grid-template-areas: 'inventoryTable inventoryDetails';
+	// grid-template-columns: 2fr 1fr;
+	// grid-template-areas: 'inventoryTable inventoryDetails';
+	grid-template-columns: 1fr;
+	grid-template-areas: 'inventoryDetails' 'inventoryTable';
 
 	.inventory-table-container {
 		@include useThemeBg($white, $black_light);

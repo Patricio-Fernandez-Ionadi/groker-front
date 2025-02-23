@@ -498,9 +498,9 @@ main {
 .inventory-component {
   width: 100%;
   display: grid;
-  grid-template-columns: 2fr 1fr;
   gap: 20px;
-  grid-template-areas: "inventoryTable inventoryDetails";
+  grid-template-columns: 1fr;
+  grid-template-areas: "inventoryDetails" "inventoryTable";
 }
 .inventory-component .inventory-table-container {
   transition: background 0.2s ease;
@@ -552,6 +552,7 @@ main {
   max-height: 600px;
   overflow: hidden scroll;
   grid-area: inventoryTable;
+  width: auto;
   /* Estilo para la barra de desplazamiento en navegadores basados en WebKit (Chrome, Safari) */
 }
 .inventory-table-component p {
@@ -574,6 +575,9 @@ main {
   width: 70px;
 }
 .inventory-table-component p:nth-child(5) {
+  width: 100px;
+}
+.inventory-table-component p:nth-child(6) {
   width: 100px;
 }
 .inventory-table-component p:last-child {
@@ -605,11 +609,17 @@ main {
 .inventory-table-component .table-body .table-row.selected.dark {
   background: #007d85;
 }
+.inventory-table-component .table-body .table-row.watering-due {
+  background: rgba(255, 152, 0, 0.5);
+}
 .inventory-table-component .table-body .table-row:last-child {
   border-radius: 0 0 3px 3px;
 }
 .inventory-table-component .table-body .table-row:nth-child(even) {
   background-color: rgba(194, 194, 194, 0.1);
+}
+.inventory-table-component .table-body .table-row:nth-child(even).watering-due {
+  background: rgba(255, 152, 0, 0.5);
 }
 .inventory-table-component .table-body .table-row:hover {
   background-color: #09a4af;
