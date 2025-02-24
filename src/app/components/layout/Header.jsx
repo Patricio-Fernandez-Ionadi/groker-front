@@ -24,7 +24,13 @@ export function Header() {
 				</div>
 
 				<div className="back-button">
-					{isBackAvailable ? <BackButton route={prevRoute} size={30} /> : null}
+					{isBackAvailable ? (
+						<BackButton
+							route={prevRoute}
+							size={30}
+							color={theme === 'dark' ? '#fafafa' : '#333'}
+						/>
+					) : null}
 				</div>
 			</div>
 
