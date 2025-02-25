@@ -8,6 +8,7 @@ import { Header } from './components/layout/Header'
 import { usePlants } from '../Plants'
 import { Router } from './Router'
 import { InventorySkeleton } from '@/Plants/components/inventory/InventorySkeleton'
+import { GoTopButton } from './components/layout/navigation/GoTopButton'
 
 export const App = () => {
 	const { theme } = useTheme()
@@ -28,6 +29,7 @@ export const App = () => {
 				<aside>{isGeneticModalOpen && <GeneticsModal />}</aside>
 			)}
 			<Router />
+			<GoTopButton />
 		</div>
 	)
 }

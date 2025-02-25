@@ -25,7 +25,6 @@ export function Minerales() {
 			}
 		}
 	}, [])
-	console.log(sections)
 
 	/* SEARCHBAR */
 	const [query, setQuery] = React.useState('')
