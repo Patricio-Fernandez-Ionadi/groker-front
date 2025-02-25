@@ -12,7 +12,19 @@ export function Header() {
 
 	const [isOpen, setIsOpen] = React.useState(false)
 	const location = useLocation()
-	const prevRoute = location.state?.from
+	let prevRoute = location.state?.from
+
+	// Si existe el state, guardarlo en sessionStorage
+	React.useEffect(() => {
+		if (prevRoute) {
+			sessionStorage.setItem('prevRoute', prevRoute)
+		}
+	}, [prevRoute])
+
+	// Si no existe en el estado actual, intentar recuperar de sessionStorage
+	if (!prevRoute) {
+		prevRoute = sessionStorage.getItem('prevRoute')
+	}
 
 	const isBackAvailable = location.pathname !== routes.home.path && prevRoute
 
