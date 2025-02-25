@@ -1,11 +1,13 @@
 import React from 'react'
 import { Routes, Route } from 'react-router'
 
-import { routes } from './index'
+import { ProductList } from '@/Products'
+import { AddPlant, Inventory, PlantInfo } from '@/Plants'
+import { Minerales } from '@/Carencias'
 
-import { AddPlant, Inventory, PlantInfo, Detail } from '../Plants'
-import { ProductList } from '../Products'
 import { RouteNotFound } from './components/layout/RouteNotFound'
+
+import { routes } from './index'
 
 export const Router = () => {
 	return (
@@ -18,6 +20,7 @@ export const Router = () => {
 				<Route path={routes.plantDetail.path} element={<PlantInfo />} />
 			</Route>
 			<Route path={routes.products.path} element={<ProductList />} />
+			<Route path={routes.minerales.path} element={<Minerales />} />
 			<Route path="*" element={<RouteNotFound />} />
 		</Routes>
 	)

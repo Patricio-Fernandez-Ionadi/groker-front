@@ -1,0 +1,860 @@
+{
+	"sections": [
+		{
+			"id": "nitrogeno",
+			"title": "Nitrógeno",
+			"content": [
+				{
+					"type": "paragraph",
+					"text": "El nitrógeno cumple una función muy importante en los cultivos. Contribuye a la fotosíntesis y la formación de proteínas, e incluso se encuentra en el ADN de las plantas. Sin la cantidad adecuada de este elemento, las plantas crecen atrofiadas y producen cosechas mediocres."
+				},
+				{
+					"type": "section",
+					"title": "El nitrógeno: un macronutriente primario",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "Los nutrientes de las plantas se dividen en dos grandes categorías: macronutrientes y micronutrientes. Como sugieren sus nombres, los macronutrientes son necesarios en grandes cantidades para el buen funcionamiento de las plantas, mientras que los micronutrientes se necesitan en pequeñas cantidades."
+						},
+						{
+							"type": "paragraph",
+							"text": "El nitrógeno pertenece a la categoría de macronutrientes, junto con el fósforo y el potasio. Las plantas de marihuana lo necesitan en grandes cantidades a lo largo del cultivo para formar proteínas, ADN y enzimas importantes que impulsan reacciones químicas. Si proporcionas cantidades abundantes de nitrógeno, las plantas crecerán rápidamente y producirán grandes cosechas; pero si no aportas suficiente, empezarán a mostrar síntomas de deficiencia de nitrógeno y su crecimiento se verá afectado."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Función del nitrógeno en las plantas",
+					"content": [
+						{
+							"type": "list",
+							"items": [
+								"Componente principal de la clorofila: la molécula de clorofila es la base de la fotosíntesis, que es el mecanismo que usan las plantas para aprovechar la luz solar y convertir el dióxido de carbono atmosférico en carbohidratos. El nitrógeno ayuda a formar las moléculas de clorofila; sin este nutriente, no habría clorofila.",
+								"Parte esencial de los aminoácidos: el nitrógeno juega un papel fundamental en la formación de los aminoácidos. Estas minúsculas moléculas, conocidas como monómeros, son los bloques de construcción de las proteínas, que son compuestos poliméricos mucho más grandes. Las proteínas realizan muchas funciones fisiológicas importantes, desde catalizar reacciones químicas hasta contribuir a la función inmunitaria.",
+								"Componente del ATP: el nitrógeno participa en la formación del adenosín trifosfato (ATP). Esta molécula es fundamental en la obtención de energía celular y sustenta todas las reacciones activas, desde los procesos metabólicos hasta la expresión génica.",
+								"Forma ácidos nucleicos: el nitrógeno forma parte de los ácidos nucleicos ADN y ARN. Ambas moléculas son fundamentales para la vida, ya que el ADN posee la información genética necesaria para construir componentes biológicos, y el ARN transmite esa información a las zonas de la célula que construyen proteínas."
+							]
+						},
+						{
+							"type": "image",
+							"title": "Exceso y carencia",
+							"src": "./src/Carencias/assets/N/excess-deficiency-nitrogen.webp"
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Síntomas de la deficiencia de nitrógeno",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "La deficiencia de nitrógeno en el cannabis produce una serie de síntomas que indican la falta de este nutriente."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Crecimiento atrofiado",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "La falta de nitrógeno puede afectar negativamente el crecimiento de las plantas durante todas las fases del cultivo. A diferencia de los humanos y animales, que tienen una matriz extracelular formada por proteínas, las plantas están compuestas estructuralmente por polímeros de carbohidratos. Pero el nitrógeno juega un papel crucial en el crecimiento de las plantas, ya que interviene en la fotosíntesis y en muchas reacciones químicas que requieren proteínas. La falta de nitrógeno puede hacer que las plantas pierdan vigor y se queden atrofiadas y pequeñas en comparación con plantas sanas."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Hojas amarillentas",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "El amarilleamiento de las hojas más viejas de la planta es un síntoma habitual de la deficiencia de nitrógeno. Dado que el nitrógeno es un nutriente móvil, las plantas pueden moverlo a las zonas de la planta donde más se necesita, concretamente a los brotes nuevos. En caso de una deficiencia de este nutriente, las plantas se llevan el nitrógeno de las hojas más viejas, dejándolas sin cantidades suficientes para crear moléculas de clorofila, lo que provoca el amarilleamiento de las hojas."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Hojas de color verde claro",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "Antes de volverse completamente amarillas, las hojas más viejas adquieren un color verde claro, lo que también se debe a la inhibición de la producción de clorofila. Los bajos niveles de este pigmento verde modifican tanto la química interna de las hojas como su aspecto físico externo."
+						},
+						{
+							"type": "image",
+							"title": "",
+							"src": "./src/Carencias/assets/N/palegreen-yellowleaves-desktop_3.jpg"
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Hojas más pequeñas",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "La deficiencia de nitrógeno no solo provoca un crecimiento atrofiado, sino también una reducción del tamaño de las hojas. La fotosíntesis convierte el carbono gaseoso en materia orgánica dentro de las plantas, que usan esta sustancia para crear su matriz estructural extracelular. Cuando el nivel de clorofila disminuye por falta de nitrógeno, también disminuye la producción de materia orgánica. Como consecuencia, las plantas carecen de los componentes estructurales necesarios para producir hojas grandes, lo que da lugar a hojas más pequeñas y menos funcionales."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Retraso en la floración",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "Muchas hormonas vegetales cumplen funciones importantes en la floración. Las citoquininas y las auxinas ayudan a impulsar la formación y el desarrollo de los cogollos, mientras que la abscisina y el etileno intervienen en la maduración. La vía de señalización del nitrógeno en las plantas contribuye a la producción de hormonas esenciales para la floración, como las citoquininas, las auxinas y el etileno, lo que significa que una carencia de nitrógeno puede ralentizar tanto el desarrollo como la maduración de los cogollos."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Muerte de las ramas de la parte inferior de la planta",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "El traslado de nitrógeno de las partes más viejas de la planta a las zonas más nuevas no solo afecta al color de las hojas viejas. Cuando las reservas de nitrógeno disminuyen considerablemente, las plantas retiran gran cantidad de este nutriente de las partes inferiores de la planta, lo que provoca que las ramas inferiores empiecen a morir. Las hojas, los pecíolos y las ramas se morirán debido a la falta de fotosíntesis y de reacciones químicas vitales que dependen de proteínas vitales."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Causas de la deficiencia de nitrógeno en las plantas de marihuana",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "En cuanto aparezcan estos síntomas, deberás solucionarlo enseguida. Pero antes de ver las soluciones, es necesario conocer la raíz del problema."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Baja capacidad de intercambio catiónico",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "La capacidad de intercambio catiónico (CIC) se refiere a la capacidad del suelo para retener iones cargados positivamente, llamados cationes. El nitrógeno está presente en el suelo en varias formas, como el amonio (un catión cargado positivamente) y el nitrato (un anión cargado negativamente). Las plantas que prefieren una tierra más ácida, como el cannabis, prefieren absorber el nitrógeno en forma de amonio. Por tanto, conviene que la tierra tenga una carga eléctrica neta negativa, basándose en la siguiente lógica: dos sustancias con carga negativa se repelen mutuamente, mientras que una sustancia con carga negativa y otra con carga positiva se atraen entre sí."
+						},
+						{
+							"type": "paragraph",
+							"text": "Varios materiales del suelo poseen una carga eléctrica neta negativa, como la arcilla y la materia orgánica. Unos niveles adecuados de ambas sustancias aumentan la CIC de la tierra, dado que retienen el amonio y otros cationes, impidiendo que se pierdan por lixiviación. Una vez retenidos, las plantas pueden separarlos y absorberlos mediante la liberación al suelo de cationes de hidrógeno con una carga positiva más fuerte que los cationes de amonio y, por tanto, con mayor capacidad para unirse a superficies cargadas negativamente."
+						},
+						{
+							"type": "paragraph",
+							"text": "Una CIC óptima significa que las raíces de las plantas pueden acceder adecuadamente a las formas iónicas del nitrógeno en el suelo. En cambio, una tierra que carezca de arcilla y materia orgánica tendrá una CIC deficiente; este tipo de tierra no es capaz de retener el amonio que se pierde por lixiviación, lo que deja a las plantas de cannabis en desventaja, haciendo que sean más propensas a sufrir una carencia de nitrógeno."
+						},
+						{
+							"type": "image",
+							"title": "",
+							"src": "./src/Carencias/assets/N/cannabis-roots_3.jpg"
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Falta de vida microbiana",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "El nitrógeno no solo está presente en la tierra en forma de cationes unidos a ciertos materiales del suelo. También hay grandes cantidades de nitrógeno en los cuerpos de muchas especies de microbios que viven dentro y alrededor de las raíces de las plantas. Estos seres forman parte de la red trófica del suelo, una serie de cadenas alimentarias entrelazadas que permiten el ciclo de los nutrientes, incluido el nitrógeno. ¿Pero cómo acceden las plantas al nitrógeno encerrado en los microbios?"
+						},
+						{
+							"type": "paragraph",
+							"text": "Para que las plantas de cannabis puedan acceder a este nitrógeno, es necesario que la red trófica del suelo sea dinámica y funcional. En una tierra viva llena de los organismos adecuados, estos nutrientes serán procesados hasta convertirlos en amonio, listo para ser usado por las plantas. Por ejemplo, los nematodos se alimentan de las bacterias del suelo y excretan el exceso de amonio al suelo, listo para unirse a las partículas cargadas negativamente."
+						},
+						{
+							"type": "paragraph",
+							"text": "Pero las plantas no se limitan a esperar a que se desarrolle este proceso, sino que actúan directamente para asegurarse una buena recompensa de estos procesos naturales. Gran parte de los azúcares que producen las plantas durante la fotosíntesis se dirigen hacia la zona radicular, con la única finalidad de atraer a las bacterias que necesitan para acceder al nitrógeno. Tener bacterias cerca significa que los nematodos que liberan nitrógeno, y otras criaturas, no andan muy lejos."
+						},
+						{
+							"type": "paragraph",
+							"text": "Además, las raíces de las plantas consumen células bacterianas a través del ciclo de rizofagia[1], a veces con la ayuda de algas del suelo que actúan como una especie de taxi para llevar las bacterias a las raíces. Después, unos procesos químicos complejos descomponen las bacterias internalizadas para obtener nitrógeno, antes de liberarlas de nuevo al suelo para que recojan más nitrógeno para la planta."
+						},
+						{
+							"type": "paragraph",
+							"text": "Como puedes ver, los microbios del suelo juegan un papel clave para ayudar a las plantas a acceder a los nutrientes. Cuando la biodiversidad del suelo se reduce debido al uso de fertilizantes y pesticidas químicos, así como por el labrado del suelo, las plantas también se ven afectadas. Y en ocasiones esto da lugar a una deficiencia de nitrógeno."
+						},
+						{
+							"type": "image",
+							"title": "",
+							"src": "./src/Carencias/assets/N/living-soil.jpg"
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Alteraciones de pH",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "El pH se refiere a la cantidad de cationes de hidrógeno presentes en el suelo; las altas concentraciones dan lugar a condiciones ácidas, mientras que las bajas dan lugar a condiciones alcalinas. La marihuana prefiere un pH ligeramente ácido en torno a 6,0 (una condición química en la cual el nitrógeno existe en forma de amonio). Las tierras ligeramente alcalinas convierten el amonio en el anión nitrato, que las plantas de cannabis pueden usar como fuente de nitrógeno."
+						},
+						{
+							"type": "paragraph",
+							"text": "Sin embargo, los pH extremos pueden mermar la capacidad de las plantas de cannabis para absorber nitrógeno. Por ejemplo, un pH excesivamente bajo puede provocar un bloqueo del amonio al causar toxicidad por aluminio y manganeso. Además, las grandes fluctuaciones de pH pueden alterar el equilibrio de la vida microbiana, lo que a su vez reduce el acceso a los suministros de nitrógeno."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Cómo tratar la deficiencia de nitrógeno en las plantas de cannabis",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "Ahora ya conoces las posibles causas de la carencia de nitrógeno en la marihuana, por lo que sabes exactamente qué variables debes alterar para restablecer el equilibrio de la tierra. Pero además de manipular la bioquímica del suelo, hay algunas soluciones rápidas que pueden tratar la deficiencia de nitrógeno a nivel superficial."
+						},
+						{
+							"type": "list",
+							"items": [
+								"Aplica nutrientes iónicos en la tierra: Si tus plantas empiezan a tener hojas amarillas y ramas muertas, entendemos que hayas entrado en pánico. Pero antes de ver cómo resolver el problema a largo plazo, vamos a darte un par de soluciones de acción rápida. Para empezar, tendrás que conseguir abono sintético nitrogenado. Aunque esto se contradice con el consejo que hemos dado antes sobre la biodiversidad del suelo, te ayudará a asegurarte la cosecha. Simplemente aplícalo alrededor de la base de las plantas siguiendo las instrucciones del producto, y verás cómo los síntomas empiezan a remitir.",
+								"Aplica un pulverizador foliar rico en nitrógeno: Si tu planta está en muy mal estado, puedes usar un pulverizador foliar rico en nitrógeno. Por suerte, para este método no necesitas usar fertilizantes sintéticos. Las hojas de marihuana tienen muchos poros diminutos llamados estomas, que usan para absorber el carbono atmosférico y liberar agua y oxígeno. Estos poros también son una forma rápida de aportar nutrientes a las plantas. Consigue una botella de abono líquido de algas o emulsión de pescado y aplícalo sobre las hojas con un pulverizador, siguiendo las instrucciones del producto.",
+								"Ajusta el pH del suelo: Con un medidor de pH puedes saber rápidamente el nivel de acidez o alcalinidad de la tierra. Si el pH no es adecuado, puedes modificarlo usando productos para subir o bajar el pH. A largo plazo, también puedes corregir el pH usando productos naturales; el compost, el musgo de turba y las virutas de madera reducen el pH, mientras que la cal dolomítica puede aumentarlo."
+							]
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Cómo prevenir la deficiencia de nitrógeno al cultivar marihuana",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "Ahora que conoces algunas soluciones rápidas importantes, puedes hacer ciertos cambios en tus métodos de cultivo para evitar que se produzca una deficiencia de nitrógeno en el futuro."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Mejora la biología del suelo",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "Para mejorar la biología del suelo hay que adoptar dos enfoques diferentes: el prebiótico (alimentar a los microbios que ya están presentes en la tierra) y el probiótico (inocular nuevos microbios en el suelo). El enfoque prebiótico consiste en añadir material que sirva de alimento para los microbios. Tanto la materia orgánica muerta como las raíces vivas son una fuente de carbono y refuerzan la vida microbiana. Puedes usar los siguientes materiales:"
+						},
+						{
+							"type": "list",
+							"items": [
+								"Mantillo muerto: compost, paja, virutas de madera bien descompuestas, estiércol, hojas secas",
+								"Mantillo vivo: trébol blanco, trébol carmesí, lechugas, espinacas, calabazas",
+								"Cultivos de cobertura: habas, alfalfa, guisantes, rábanos, trébol"
+							]
+						},
+						{
+							"type": "paragraph",
+							"text": "Y para inocular la tierra con microbios nuevos, puedes hacer lo siguiente:"
+						},
+						{
+							"type": "list",
+							"items": [
+								"Poner una capa de compost sobre la tierra, que haga de mantillo durante todo el ciclo de cultivo.",
+								"Pulverizar té de compost sobre las hojas a lo largo del ciclo de cultivo.",
+								"Añadir hongos micorrícicos a la tierra al sembrar y trasplantar",
+								"Añadir hongos trichoderma a la tierra al sembrar y trasplantar",
+								"Añadir rizobacterias a la tierra al sembrar y trasplantar"
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "potasio",
+			"title": "Potasio",
+			"content": [
+				{
+					"type": "paragraph",
+					"text": "El potasio desempeña un papel fundamental en la salud de las plantas de marihuana. Este compuesto activa enzimas clave, ayuda a las plantas a mantener una estructura fuerte y a transportar agua y nutrientes. Cuando los niveles de potasio descienden o ciertos factores del suelo impiden su absorción, las plantas enferman rápidamente."
+				},
+				{
+					"type": "paragraph",
+					"text": "Descubre la función del potasio en las plantas de marihuana, qué ocurre si no reciben suficiente, y cómo corregir y prevenir su deficiencia."
+				},
+				{
+					"type": "section",
+					"title": "El papel del potasio en el cultivo de marihuana",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "Al igual que los humanos, nuestras amigas las plantas también necesitan altos niveles de potasio no solo para crecer, sino también para sobrevivir. En lo que respecta a la fisiología humana, el potasio (representado por el símbolo K) nos mantiene vivos al normalizar nuestra presión arterial y controlar la cantidad de líquido que hay en nuestras células. En tu valioso cultivo de marihuana, este nutriente desempeña un papel igualmente importante, ya que controla muchas funciones de las plantas, como el crecimiento celular, el movimiento del agua, el transporte de nutrientes y las respuestas al estrés."
+						},
+						{
+							"type": "image",
+							"title": "",
+							"src": "./src/Carencias/assets/K/potassium-deficiency-stages_1.webp"
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Potasio: Un macronutriente esencial para el cannabis",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "Si alguna vez has seguido una dieta o te has obsesionado con ir al gimnasio, sabrás qué macronutrientes y micronutrientes necesita el cuerpo humano para funcionar correctamente. Las proteínas, los carbohidratos y las grasas son los macronutrientes que utilizamos para obtener energía y fuerza, mientras que los micronutrientes como el zinc y el hierro llevan a cabo funciones clave a nivel celular. Las plantas de marihuana también tienen su propia forma de utilizar los macronutrientes y micronutrientes que necesitan para desarrollarse adecuadamente."
+						},
+						{
+							"type": "paragraph",
+							"text": "El potasio es un importante compuesto dentro de la categoría de macronutrientes primarios de las plantas, junto con el nitrógeno y el fósforo. Las plantas necesitan una gran cantidad de este elemento para crecer adecuadamente. Sin los niveles adecuados, enseguida desarrollan signos de deficiencia, influyendo en su tamaño, productividad y salud general."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Función del potasio en las plantas de marihuana",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "Dado que es un macronutriente, es lógico que el potasio tenga un papel fundamental en la fisiología de las plantas. Este elemento les permite respirar, realizar la fotosíntesis y crecer. Descubre las principales funciones del potasio en las plantas de cannabis:"
+						},
+						{
+							"type": "list",
+							"items": [
+								"Regula la apertura estomática: No se puede ver a simple vista, pero las hojas de marihuana están llenas de unas diminutas aberturas llamadas estomas. Las células guarda son las encargadas de abrir y cerrar estos poros en función de las necesidades de la planta y de ciertas variables ambientales. Los iones de potasio son los responsables de la turgencia de las células y, por lo tanto, de controlar su capacidad para abrirse y cerrarse. Al hacerlo, este mineral permite que las plantas permanezcan turgentes y lleven a cabo el intercambio de gases.",
+								"Activa las enzimas ATP: Las plantas necesitan unos niveles adecuados de potasio para activar las enzimas implicadas en varias reacciones químicas clave, como la síntesis del trifosfato de adenosina (ATP). Al ser la unidad de intercambio celular, el ATP favorece muchos procesos celulares importantes. Por lo tanto, el potasio garantiza un suministro constante de ATP que permite a las plantas absorber nutrientes, crear metabolitos secundarios y respirar.",
+								"Osmorregulación: Las plantas necesitan una presión osmótica óptima para mantener una estructura firme y turgente. Esto les permite desarrollarse en vertical hacia la luz, mantenerse erguidas en climas adversos, y soportar el peso de sus grandes colas resinosas durante la floración. Como parte clave de la osmorregulación, el potasio controla el transporte de agua a través de las membranas celulares, evitando el marchitamiento y manteniendo la integridad estructural de la planta.",
+								"Síntesis de proteínas y almidones: El potasio sustenta las enzimas responsables de la síntesis tanto de proteínas como de almidones. Las proteínas activan ciertos elementos clave de las células vegetales, como las enzimas, y ayudan a llevar a cabo una gran variedad de procesos, como la biosíntesis, la fotosíntesis y el transporte. En cambio, los almidones son moléculas de carbohidratos grandes y complejas que sirven como depósitos de energía celular."
+							]
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Deficiencia de potasio en la marihuana: Señales y síntomas",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "Como acabas de leer, las plantas dependen en gran medida del potasio; tanto es así que es imprescindible que haya un suministro abundante y constante de este nutriente. Hay varios motivos por los que las plantas a veces no pueden absorber suficiente potasio. Cuando esto ocurre, podrían desarrollar los siguientes síntomas de deficiencia."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Amarilleamiento de las hojas",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "En primer lugar, la carencia de potasio en el cannabis produce un amarilleamiento de las hojas. En general, este síntoma solo afecta las hojas inferiores. Conocida como clorosis, esta apariencia amarilla se produce cuando las plantas trasladan el potasio de las hojas más maduras a las que se encuentran en la parte superior del dosel, en un esfuerzo por priorizar los brotes más nuevos."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Puntas de hojas marrones",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "Cuando las plantas de marihuana no reciben suficiente potasio, las puntas de las hojas se vuelven marrones. Este mineral es el principal catión[2] tanto del floema como del xilema, las redes vasculares que bombean agua y nutrientes en los tejidos vegetales. El potasio representa el catión principal tanto en el floema como en el xilema, que son las principales redes vasculares que bombean agua y nutrientes a través de los tejidos de la planta. Al ser las zonas más alejadas del xilema y el floema del tallo principal, las puntas de las hojas son las primeras que dejan de recibir los suministros más importantes."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Retraso en el crecimiento",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "Los dos problemas que hemos visto en las secciones anteriores afectan de forma directa al desarrollo de las plantas. Las hojas que se vuelven amarillas pierden la capacidad de realizar la fotosíntesis, lo que significa que las plantas producirán menos energía. Y lo mismo ocurre con las hojas con las puntas dañadas. La restricción del transporte de agua y nutrientes también contribuye a la falta de vigor y crecimiento. Por último, la reducción en la síntesis de proteínas y almidones ralentiza las cosas a nivel celular."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Tallos débiles",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "La deficiencia de K en el cannabis también afecta a ciertos componentes anatómicos importantes, que son los responsables de mantener la estructura de la planta, como el tallo principal, las ramas y los pecíolos. El potasio les ayuda a conservar la turgencia al fortalecer las paredes celulares y controlar las dinámicas del fluido celular.La deficiencia de potasio en la marihuana también afecta a importantes compuestos anatómicos responsables de mantener la estructura, es decir, el tallo principal, las ramas y los pecíolos. En el mejor de los casos, esto afectará al transporte vascular; y en el peor, podría hacer que los tallos y ramas se partan."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Desarrollo deficiente de los cogollos",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "Si has cultivado marihuana, sabrás que esta planta necesita grandes concentraciones de potasio y fósforo al comienzo de la fase de floración. El potasio juega un papel fundamental en el desarrollo de las flores. Sin unos niveles adecuados, las flores no desarrollan y se quedan más pequeñas, menos densas y menos resinosas."
+						},
+						{
+							"type": "image",
+							"title": "",
+							"src": "./src/Carencias/assets/K/Potassium-Deficiency-Characteristics_1.jpg"
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Causas de la carencia de potasio en las plantas de marihuana",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "Si tus plantas de cannabis tienen deficiencia de potasio, tendrás que averiguar la causa. Si no sabes a qué se debe, perderás el tiempo intentando corregirla a tientas. Sigue leyendo para descubrir las principales causas de la deficiencia de potasio:"
+						},
+						{
+							"type": "list",
+							"items": [
+								"Baja capacidad de intercambio catiónico (CIC): algunas zonas del suelo retienen el potasio y evitan que se filtre. Tanto la arcilla como el material orgánico tienen una carga neta negativa. Al ser un ion positivo (es decir, un catión), el potasio se une a esas zonas. Unos niveles óptimos de arcilla y material orgánico mejorarán la CIC del suelo. Pero si ambos elementos están ausentes, el potasio no tendrá nada a lo que unirse, y abandonará el sustrato junto con el agua de escorrentía sin beneficiar a las plantas.",
+								"Rutina de fertilización deficiente: muchos abonos ecológicos y sintéticos contienen altos niveles de potasio. Pero si no se administran correctamente, no proporcionarán a las plantas suficiente K para que lleven a cabo funciones fisiológicas con las que mantener a raya los síntomas de deficiencia.",
+								"Ausencia de organismos que solubilicen el potasio: el potasio puede adoptar varias formas en el suelo. Las plantas acceden de inmediato a la forma iónica de este mineral que se adhiere a las partículas del sustrato y del material orgánico. Algunos microbios convierten las formas de potasio disponibles en formas no disponibles que las plantas no pueden absorber. Afortunadamente, se sabe que las especies de bacterias solubilizadoras de potasio segregan ácidos orgánicos y liberan potasio ligado. Sin embargo, cuando el suelo tiene un contenido bajo de biología beneficiosa el potasio permanece bloqueado y fuera del alcance de las plantas de marihuana.",
+								"Desequilibrio del pH: el pH del suelo representa el nivel de acidez o alcalinidad de un medio de cultivo. En general, las plantas de marihuana prefieren un pH ligeramente ácido (de alrededor de 6), ya que con este valor no tendrán problemas para absorber el potasio. Pero si la acidez aumenta, la disponibilidad del potasio disminuirá. Por ejemplo, un pH de 5 puede causar una reducción del 50% en la disponibilidad del potasio, lo que se traducirá en síntomas graves de deficiencia.",
+								"Compactación del suelo: la estructura general del suelo determina el grado de absorción de nutrientes por parte de las plantas. Los sustratos sueltos, aireados y húmedos potencian la salud de las raíces, lo que permite que crezcan mucho y encuentren los iones con mayor facilidad. En cambio, un suelo denso y compactado carece de oxígeno, espacio y drenaje, lo que afecta negativamente a la salud, el tamaño y la función de los sistemas radiculares, y a su capacidad para transferir unos niveles adecuados de potasio y otros iones a las plantas.",
+								"Estrés por sequía: el agua sustenta una gran cantidad de funciones fisiológicas fundamentales para las plantas. Las olas de calor en exterior y los programas de riego deficientes en interior pueden dar lugar a un entorno seco. La falta de agua afecta a la absorción y acumulación de nutrientes. Las plantas también necesitan un riego adecuado para distribuir el potasio a todos los tejidos vegetales."
+							]
+						},
+						{
+							"type": "image",
+							"title": "",
+							"src": "./src/Carencias/assets/K/cannabis-potassium-deficiency_1.webp"
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Cómo corregir la deficiencia de potasio en las plantas de cannabis",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "Ya conoces las principales causas de la deficiencia de potasio en las plantas de marihuana, así que vamos a ver el siguiente paso. Una vez que sepas de qué problema se trata, podrás tomar una decisión informada y eficaz en lo que respecta al tratamiento. A continuación, descubrirás cómo abordar rápidamente la deficiencia de potasio."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Aplica nutrientes iónicos directamente en las raíces",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "En general, se aconseja evitar las sales nutritivas iónicas, ya que a largo plazo perjudican el delicado equilibrio de la vida del suelo. Sin embargo, hacen maravillas a la hora de combatir los síntomas de la deficiencia de potasio en las plantas de marihuana. Compra un bote de fertilizante rico en potasio y aplícalo siguiendo las instrucciones del envase, hasta que desaparezcan los síntomas."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Aplica un aerosol foliar rico en potasio",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "¿Te acuerdas de los estomas que hemos visto antes? Pues resulta que esas pequeñas aberturas son una de las formas más rápidas de suministrar fertilizantes a las plantas. Aplica un aerosol foliar sintético rico en potasio para combatir rápidamente los síntomas de deficiencia. También puedes usar alternativas naturales, como jugo de frutas fermentadas, que proporcionará buenos niveles tanto de potasio como de bacterias beneficiosas a las partes aéreas de la planta."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Ajusta el pH del suelo",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "Si tus plantas se enfrentan a una deficiencia de potasio, es muy probable que se deba a que el pH del sustrato está fuera del rango ideal y sea demasiado ácido. Lo primero que debes hacer es realizar un lavado de raíces con varios litros de agua y esperar a que el suelo se drene. A continuación, aplica una solución para el pH siguiendo las instrucciones del producto, hasta que su valor sea de alrededor de 6."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Cómo prevenir la deficiencia de potasio en un cultivo de cannabis",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "Después de rescatar tus plantas con las técnicas anteriores, te ahorrarás mucho trabajo y preocupaciones futuras con las siguientes estrategias de prevención. Descubre varios métodos sencillos para evitar que la deficiencia de K aparezca de nuevo."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Mejora la biología del suelo",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "Una biología saludable del suelo se consigue mediante la diversidad. Los sustratos con gran variedad de especies microbianas darán lugar a comunidades equilibradas y a ciclos depredador-presa óptimos. En cambio, la ausencia de diversidad influirá en esos ciclos naturales y ofrecerá a los patógenos y organismos perjudiciales la oportunidad de reproducirse."
+						},
+						{
+							"type": "paragraph",
+							"text": "Las cubiertas vegetales, el mantillo y el té de compost sirven como sustento a los organismos del suelo y proporcionan el hábitat y los alimentos necesarios para que surjan muchas especies. De hecho, algunos de estos organismos convertirán el K soluble en insoluble. Sin embargo, para liberar potasio y hacerlo accesible para las plantas de marihuana, una comunidad saludable debe contener los tipos adecuados de microbios [4] (incluidas bacterias, hongos y actinomicetos)."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Perfecciona tu rutina de fertilización",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "Tanto si abonas tus plantas con fertilizantes ecológicos como sintéticos, deberás asegurarte de administrar la cantidad correcta en los intervalos adecuados. Los productos embotellados vienen con valores de N-P-K (nitrógeno-fósforo-potasio), indicaciones y programas detallados para facilitar una aplicación ideal. Si tus plantas siguen presentando síntomas de deficiencia mientras usas un fertilizante casero que carezca de esos ratios precisos, pásate a una fórmula comercial hasta que encuentres la mejor rutina de fertilización para tu propia solución."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Mide del pH del suelo con frecuencia",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "Convierte la medición del pH en una parte más de tu rutina de cultivo. Al igual que compruebas si el suelo está seco, buscas señales de plagas y enfermedades, y procuras que tus plantas estén bien abonadas, deberás acostumbrarte a medir el pH cada dos semanas. Una medición frecuente ayuda a detectar las fluctuaciones y a evitar que las cosas se descontrolen. Utiliza un medidor de pH sencillo para medir muestras de suelo y garantizar que tus plantas crezcan con el rango de pH adecuado."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Crea tu propio compost",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "El compost casero es muy eficaz para combatir la carencia de potasio por dos motivos. En primer lugar, un compost elaborado correctamente en casa será casi siempre mejor que cualquier producto de un centro de jardinería en lo que respecta a fertilidad. También contendrá mucha más vida, como especies de microbios que ayudan a ciclar el potasio acumulado en el suelo. Por no mencionar que ahorrarás un montón de dinero si te acostumbras a compostar todos tus desechos, en lugar de enviarlos al vertedero."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": ""
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Practica el cultivo sin labranza para evitar la compactación del suelo",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "Ciertas prácticas agrícolas ayudan a conservar la salud, estructura y composición del suelo. La siembra directa o labranza cero mejora el sustrato con el paso del tiempo, y da como resultado un medio de cultivo más aireado, compuesto de agregados estables y con una mayor capacidad para retener el agua, a la vez que permite un buen drenaje. Esta técnica de cultivo ayuda a reducir la compactación del suelo, lo que promueve el desarrollo de unas raíces sanas y funcionales, capaces de absorber todo el potasio que esté disponible a su alrededor."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Riega con frecuencia para evitar el estrés por sequía",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "Hay muchas formas de mantener la tierra húmeda para potenciar la absorción y el transporte de potasio. Si solo tienes un par de plantas, puedes regarlas a mano. Pero si tu cultivo es muy grande, plantéate instalar un sistema de riego por goteo para que las raíces de tus plantas estén constantemente húmedas. Esto no solo reducirá el estrés abiótico y mantendrá los microbios con vida, sino que además proporcionará nutrientes esenciales a tus plantas durante toda la temporada."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Potasio: Un nutriente vital desde la fase de plántula hasta la floración",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "Acabas de ampliar tus conocimientos sobre el cultivo de cannabis. Ya conoces la importancia del potasio para la fisiología de las plantas, y lo que ocurre cuando estas no reciben una cantidad suficiente. También eres consciente de las causas de su deficiencia y sabes cómo corregirla rápidamente. Pero lo más importante es que ahora serás capaz de evitar este problema en el futuro. ¡Te deseamos muchos años de cultivos sin deficiencias!"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "fosforo",
+			"title": "Fósforo",
+			"content": [
+				{
+					"type": "section",
+					"title": "",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "El fósforo es un nutriente fundamental para el crecimiento y desarrollo de las plantas de marihuana. Sin él, tu cultivo no llegará muy lejos. Conocer la función del fósforo te ayudará a determinar la mejor forma de aplicarlo y a identificar si tus plantas están recibiendo la cantidad que necesitan."
+						},
+						{
+							"type": "image",
+							"title": "",
+							"src": "./src/Carencias/assets/P/phosphorus-cannabis-deficiency.webp"
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Fósforo: Un macronutriente básico para la marihuana",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "En el mundo del cultivo de hierba, el fósforo es lo que se conoce como un macronutriente. Los macronutrientes son nutrientes claves que las plantas de cannabis necesitan en grandes cantidades y sin los cuales no podrían sobrevivir. La marihuana necesita tres macronutrientes:"
+						},
+						{
+							"type": "list",
+							"items": ["Nitrógeno (N)", "Fósforo (P)", "Potasio (K)"]
+						},
+						{
+							"type": "paragraph",
+							"text": "Cuando se administran juntos, se expresan en proporciones con la forma NPK. Es necesario entender este ratio, ya que se suele encontrar en prácticamente todos los abonos para el cannabis, y sin esa información, sería muy complicado fertilizar tus plantas."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Función del fósforo en las plantas de cannabis",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "El fósforo se considera el segundo macronutriente más importante para la marihuana (después del nitrógeno) e interviene en las siguientes funciones de la planta:"
+						},
+						{
+							"type": "list",
+							"items": [
+								"Transferencia de energía: facilita el transporte de energía dentro de la planta, permitiendo que lleve a cabo sus funciones esenciales.",
+								"Fotosíntesis: sin este macronutriente no tendría lugar la fotosíntesis, que es el proceso mediante el cual las plantas convierten los ingredientes crudos en azúcares que utilizan para crecer.",
+								"Síntesis de ADN y ARN: la síntesis continua de ADN y ARN es fundamental para que los organismos produzcan nuevas células y sigan creciendo y desarrollándose.",
+								"Desarrollo radicular: especialmente en las primeras etapas del cultivo, el fósforo facilita el desarrollo radicular, ayudando a que la planta se fortalezca.",
+								"Formación de flores y frutos: el fósforo desempeña un papel clave en la producción de los cogollos, y por lo tanto, se necesita una mayor cantidad al final de la floración."
+							]
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Marihuana y carencia de fósforo: Señales y síntomas",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "Una deficiencia de fósforo es bastante fácil de identificar y corregir. La detección temprana evita que se descontrole y garantiza que las plantas recuperen la salud lo antes posible."
+						},
+						{
+							"type": "image",
+							"title": "",
+							"src": "./src/Carencias/assets/P/phosphorus-deficiency.webp"
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Retraso en el crecimiento",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "Si las plantas no reciben suficiente fósforo dejarán de crecer. Durante la fase vegetativa, esto se suele manifestar en un retraso en el desarrollo vertical. Durante la floración, la deficiencia de fósforo será menos obvia, pero se reflejará en una producción de cogollos más escasa."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Hojas de color verde oscuro o morado",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "Al principio, las hojas maduras adquirirán una tonalidad verde oscura, y más adelante azulada/morada (no debe confundirse con los fenotipos que se vuelven morados con el frío). Este es uno de los primeros síntomas de la falta de fósforo y debe corregirse, o de lo contrario empezarán a aparecer manchas cobrizas parecidas a quemaduras."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Rizado de las hojas",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "Con el tiempo, las puntas y los bordes de las hojas de aspecto quemado comenzarán a rizarse. Esto significa que la deficiencia de fósforo ha progresado bastante, así que lo mejor es evitar que tus plantas lleguen a ese punto."
+						},
+						{
+							"type": "image",
+							"title": "",
+							"src": "./src/Carencias/assets/P/phosphorus-deficioncies-cannabis_1.jpg"
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Tallos rojizos o morados",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "Aparte de las hojas, el color de las ramas y los tallos también puede cambiar si no hay suficiente fósforo. Lo más probable es que adquieran un aspecto azulado o morado, como si estuvieran magullados."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Tallos y ramas débiles",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "A medida que las células continúen degradándose, la estructura de las plantas se debilitará y los tallos y ramas se volverán más frágiles. Puede que se rompan fácilmente o que se quiebren bajo el peso de los cogollos."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Menor producción",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "Por último, si la deficiencia no se corrige, afectará a la cosecha, y a veces de forma grave. El fósforo es esencial para el desarrollo de los cogollos, por lo que su deficiencia se reflejará en la producción final."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Menor producción de resina",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "La falta de fósforo no solo afecta de forma negativa al volumen de los cogollos, sino también a la producción de resina; por lo que además de conseguir una cosecha más escasa, será menos potente."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Causas de la deficiencia de fósforo en el cultivo de marihuana",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "En los cultivos de cannabis, la deficiencia de fósforo puede tener varias causas, y conviene que te familiarices con ellas para poder prevenirla y tratarla:"
+						},
+						{
+							"type": "list",
+							"items": [
+								"Rutina de fertilización deficiente: La causa más habitual es una fertilización inadecuada. Puede que estés usando un abono de mala calidad o que lo estés administrando en cantidades muy pequeñas. También es posible que estés fertilizando tus plantas con demasiada frecuencia con abonos sintéticos, y causándoles un bloqueo de nutrientes (luego veremos más sobre esto). La marihuana crece mejor cuando recibe los nutrientes adecuados en el momento ideal.",
+								"Ausencia de vida microbiana: La ausencia de microbios beneficiosos, como los hongos micorrícicos, puede afectar a la capacidad de las plantas para absorber el fósforo y otros nutrientes. Es posible que tu sustrato carezca de vida porque no era el adecuado desde el principio, o porque has estado utilizando fertilizantes de baja calidad.",
+								"Desequilibrio del pH: Esta es otra de las principales causas de una deficiencia de fósforo. Tanto si el pH es demasiado alto como demasiado bajo, las raíces de las plantas tendrán dificultades para absorber el fósforo y otros nutrientes.",
+								"Suelo anegado: Un sustrato empapado no es sano para las raíces, que lucharán para sobrevivir y con el tiempo morirán. El suelo permanentemente encharcado causa deficiencia de fósforo y otros problemas.",
+								"Daños o estrés en las raíces: Si la raíz tiene problemas como, por ejemplo, patógenos, la parte aérea de la planta también sufrirá."
+							]
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Cómo corregir una deficiencia de fósforo en las plantas de marihuana",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "La deficiencia de fósforo se puede corregir de varias formas, pero a veces, es mejor utilizar un enfoque múltiple. Una advertencia: ¡tampoco te pases! porque aunque pueda parecer la mejor solución, solo te dará más problemas."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Aplicar nutrientes iónicos directamente en las raíces",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "Los nutrientes iónicos son fácilmente absorbidos por las raíces y pueden funcionar como un remedio rápido, lo que significa que tus plantas recuperarán la salud muy pronto."
+						},
+						{
+							"type": "paragraph",
+							"text": "Pero estos nutrientes no son adecuados para usarlos a largo plazo, ya que pueden causar sobrefertilización y dañar el suelo."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Aplica un espray foliar rico en fósforo",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "Los aerosoles foliares son ideales para corregir deficiencias, ya que actúan rápido y no dañan el sustrato ni las raíces. Se aplican directamente sobre las hojas, que los absorben a través de unos pequeños poros llamados estomas. Los resultados pueden verse en solo 48 horas desde la aplicación."
+						},
+						{
+							"type": "paragraph",
+							"text": "Los espráis foliares ricos en fósforo pueden llevar fósforo sintético o, si buscas una opción ecológica, extracto de pescado. La agricultura natural coreana (KNF) es un método de cultivo holístico inspirado en la naturaleza, que mejora el crecimiento de las plantas y reduce el impacto ambiental negativo de la agricultura y la horticultura. Esta práctica utiliza jugo de frutas fermentadas (FFJ) para crear aerosoles foliares nutritivos."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Regula el pH del suelo",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "Si el pH del suelo está por debajo de 6 o por encima de 7, las raíces de tus plantas tendrán dificultades para absorber grandes cantidades de fósforo. Si detectas una deficiencia, comprueba el pH del sustrato o del agua de escorrentía con un medidor de pH. Si está fuera de ese rango, aplica una solución para aumentarlo o reducirlo (que puedes comprar o elaborar en casa con ingredientes ácidos/alcalinos). Simplemente riega el suelo con la solución adecuada hasta que el agua de escorrentía esté dentro del rango de pH correcto. *** linkear a info de PH ***"
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Cómo prevenir la deficiencia de fósforo en el cultivo de marihuana",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "Cuando planifiques y lleves a cabo tu cultivo de marihuana, deberás abonar las plantas de forma adecuada y prevenir las carencias desde el principio (te ahorrarás muchos problemas)."
+						},
+						{
+							"type": "paragraph",
+							"text": "Aquí tienes cómo mantenerlo todo en orden para evitar la deficiencia de fósforo."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Mejora la biología del suelo",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "Como ya hemos mencionado, los microbios beneficiosos que habitan en la rizosfera (la zona que rodea las raíces de las plantas) pueden influir de forma positiva en la manera en que las plantas absorben los nutrientes. Los hongos micorrícicos forman una relación simbiótica con las raíces y, a cambio de obtener azúcares, absorben los nutrientes del suelo y se los proporcionan a las plantas en una forma más sencilla."
+						},
+						{
+							"type": "paragraph",
+							"text": "El mejoramiento del suelo con estos microbios ofrece muchas ventajas, como una mejor absorción de nutrientes y menos probabilidades de que se produzcan infecciones. Se cree que el silicio es bueno para los hongos micorrícicos y, por lo tanto, podría mejorar aún más la tasa de absorción de fósforo de las plantas de cannabis; si puedes, añádelo a tu suelo."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Perfecciona tu rutina de fertilización",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "Abonar adecuadamente es una de las mejores formas de prevenir la sobrefertilización. Esto se consigue principalmente siguiendo las instrucciones del envase. Pero a medida que vayas adquiriendo más experiencia en el cultivo, podrás dejar de usar fertilizantes comerciales o suplementar un abono básico con otros métodos."
+						},
+						{
+							"type": "paragraph",
+							"text": "Estos métodos pueden ser ecológicos (tanto comerciales como caseros) o adicionales, como aplicar un aerosol foliar con jugo de frutas fermentadas para proporcionar a tus plantas más nutrientes sin causarles bloqueo ni dañar la rizosfera."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Mide con frecuencia el pH del suelo",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "Comprobar con frecuencia el pH del suelo es una buena práctica de cultivo, ya que si se descontrola, podrían surgir todo tipo de problemas. El pH del suelo y de los fertilizantes se puede medir fácilmente con un medidor de pH. Mide también el agua de drenaje que sale del fondo de tus macetas para asegurarte de que se encuentre dentro del rango apropiado (6-7 en tierra)."
+						},
+						{
+							"type": "paragraph",
+							"text": "Como ya hemos dicho, si está fuera de ese rango, aplica productos especiales para aumentar o reducir el pH."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Crea tu propio compost",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "Elaborar tu propio compost es una excelente forma de fertilizar tus plantas con un suministro constante de abono ecológico y fértil. El compost es rico tanto en nutrientes ecológicos como en microbios beneficiosos, y ambos previenen las deficiencias de nutrientes."
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Deja de usar fertilizantes sintéticos",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "Aunque los fertilizantes sintéticos son útiles en una emergencia, es mejor evitarlos. Han sido muy populares en el pasado, pero ahora sabemos que suelen hacer más daño que bien."
+						},
+						{
+							"type": "paragraph",
+							"text": "Para empezar, es muy fácil aplicarlos en exceso, lo que puede dificultar que las plantas absorban los nutrientes (un problema que es bastante complicado de solucionar). En segundo lugar, destruyen el microbioma del suelo y limitan la acción de los microbios beneficiosos, lo que a su vez reduce la capacidad de las plantas para absorber nutrientes y aumenta las probabilidades de que desarrollen enfermedades."
+						},
+						{
+							"type": "image",
+							"title": "",
+							"src": "./src/Carencias/assets/P/Organic-fertiliser.jpg"
+						}
+					]
+				},
+				{
+					"type": "section",
+					"title": "Fósforo: Un mineral importante desde la raíz hasta los cogollos",
+					"content": [
+						{
+							"type": "paragraph",
+							"text": "La deficiencia de fósforo se refleja primero en un crecimiento más lento de las plantas y una ligera decoloración de las hojas, y más adelante en unas hojas rizadas y en un menor desarrollo y producción. Si se detecta a tiempo, se puede corregir fácilmente con uno de los métodos descritos en este artículo. La buena noticia es que es fácil de tratar. Y si actúas rápido, no dejará secuelas."
+						}
+					]
+				}
+			]
+		}
+	]
+}

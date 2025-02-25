@@ -1,0 +1,42 @@
+.search_bar {
+	font-size: 18px;
+	padding: 10px;
+	margin-bottom: 20px;
+	width: 100%;
+	max-width: 400px;
+	border-radius: 4px;
+	border: 1px solid #ccc;
+	outline: none;
+}
+
+.article_container_single {
+	border-radius: $border_radius;
+	padding: 10px;
+	background-color: $black_light;
+	margin-bottom: 50px;
+}
+
+.article_container {
+	margin-bottom: 20px;
+	padding: 20px;
+}
+.article_title {
+	font-size: 24px;
+	margin-bottom: 10px;
+}
+.article_p {
+	font-size: 16px;
+	margin-bottom: 10px;
+}
+.article_img {
+	max-width: 100%;
+	height: auto;
+	margin-top: 10px;
+}
+.article_list {
+	padding-left: 20px;
+}
+.article_list_item {
+	font-size: 16px;
+	margin-bottom: 5px;
+}
