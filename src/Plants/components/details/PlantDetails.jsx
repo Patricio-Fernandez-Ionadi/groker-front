@@ -4,13 +4,14 @@ import { calendarFormat } from 'groker/date'
 import { Button } from 'groker/components'
 import { Eye } from 'groker/icons'
 
-import { routes, useTheme } from '@/app'
+import { routes, useTheme, usePath } from '@/app'
 
 import { translateField, usePlants } from '@/Plants'
 
 export const PlantDetails = () => {
 	const { selectedPlant } = usePlants()
 	const { theme } = useTheme()
+	const path = usePath()
 
 	return (
 		<>
@@ -19,7 +20,7 @@ export const PlantDetails = () => {
 				<Button className="plant-details-button" theme={theme}>
 					<Link
 						to={routes.plantDetail.buildPath(selectedPlant._id)}
-						state={{ from: location.pathname }}
+						state={{ from: path }}
 					>
 						Ver más sobre esta planta
 					</Link>
