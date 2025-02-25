@@ -426,6 +426,12 @@ input[type='number']::-webkit-inner-spin-button {
 		}
 
 		.field-edit-mode {
+			.groker-date {
+				width: 100%;
+				&:has(input:focus) {
+					border-color: $primary;
+				}
+			}
 			.field-actions {
 				flex-direction: row;
 				justify-content: space-around;

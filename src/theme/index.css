@@ -260,7 +260,6 @@ a:visited {
   background: #373737;
 }
 .app-container .header .back-button {
-  color: inherit;
   margin: 5px;
   width: 30px;
   height: 30px;
@@ -278,7 +277,6 @@ main {
 
 @media (max-width: 769px) {
   .header {
-    flex-direction: column;
     align-items: flex-start;
   }
   .header h1 {
@@ -580,8 +578,11 @@ main {
 .inventory-table-component p:nth-child(6) {
   width: 100px;
 }
+.inventory-table-component p:nth-child(7) {
+  width: 100px;
+}
 .inventory-table-component p:last-child {
-  width: 80px;
+  flex: 1;
   border-right: none;
 }
 .inventory-table-component .table-head {
@@ -609,16 +610,13 @@ main {
 .inventory-table-component .table-body .table-row.selected.dark {
   background: #007d85;
 }
-.inventory-table-component .table-body .table-row.watering-due {
-  background: rgba(255, 152, 0, 0.5);
-}
 .inventory-table-component .table-body .table-row:last-child {
   border-radius: 0 0 3px 3px;
 }
 .inventory-table-component .table-body .table-row:nth-child(even) {
   background-color: rgba(194, 194, 194, 0.1);
 }
-.inventory-table-component .table-body .table-row:nth-child(even).watering-due {
+.inventory-table-component .table-body .table-row.watering-due {
   background: rgba(255, 152, 0, 0.5);
 }
 .inventory-table-component .table-body .table-row:hover {
@@ -642,7 +640,7 @@ main {
     width: 280px;
     max-height: 400px;
   }
-  .inventory-table-component p:nth-child(3), .inventory-table-component p:nth-child(4), .inventory-table-component p:nth-child(5) {
+  .inventory-table-component p:nth-child(3), .inventory-table-component p:nth-child(4), .inventory-table-component p:nth-child(5), .inventory-table-component p:nth-child(6), .inventory-table-component p:nth-child(8) {
     display: none;
   }
   .inventory-table-component p:nth-child(2), .inventory-table-component p:nth-child(6) {
@@ -1046,6 +1044,12 @@ input[type=number]::-webkit-inner-spin-button {
   }
   .field-section .field-view-mode div label {
     margin-right: 5px;
+  }
+  .field-section .field-edit-mode .groker-date {
+    width: 100%;
+  }
+  .field-section .field-edit-mode .groker-date:has(input:focus) {
+    border-color: #007d85;
   }
   .field-section .field-edit-mode .field-actions {
     flex-direction: row;

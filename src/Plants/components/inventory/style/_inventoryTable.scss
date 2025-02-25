@@ -30,8 +30,12 @@
 		&:nth-child(6) {
 			width: 100px;
 		}
+		&:nth-child(7) {
+			width: 100px;
+		}
 		&:last-child {
-			width: 80px;
+			// width: 80px;
+			flex: 1;
 			border-right: none;
 		}
 	}
@@ -55,18 +59,14 @@
 			&.selected {
 				@include useThemeBg($secondary, $primary);
 			}
-			&.watering-due {
-				background: rgba($warning, 0.5);
-			}
-
 			&:last-child {
 				border-radius: 0 0 $border_radius $border_radius;
 			}
 			&:nth-child(even) {
 				background-color: rgba($white_dark, 0.1);
-				&.watering-due {
-					background: rgba($warning, 0.5);
-				}
+			}
+			&.watering-due {
+				background: rgba($warning, 0.5);
 			}
 			&:hover {
 				background-color: $primary_light;
@@ -100,7 +100,9 @@
 		p {
 			&:nth-child(3),
 			&:nth-child(4),
-			&:nth-child(5) {
+			&:nth-child(5),
+			&:nth-child(6),
+			&:nth-child(8) {
 				display: none;
 			}
 			&:nth-child(2),

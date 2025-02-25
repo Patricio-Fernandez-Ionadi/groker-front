@@ -1,7 +1,9 @@
 import React, { useContext } from 'react'
+import { Link } from 'react-router'
 import { calendarFormat } from 'groker/date'
+import { Button } from 'groker/components'
 
-import { FormContext } from '@/app'
+import { FormContext, routes } from '@/app'
 
 import { usePlantsActions, translateField, usePlants } from '@/Plants'
 
@@ -53,6 +55,7 @@ export const InventoryTable = ({ theme }) => {
 					<p>Cambio de Ciclo</p>
 					<p>Ultimo Riego</p>
 					<p>Revision</p>
+					<p>Acciones</p>
 				</div>
 				<div className="table-body">
 					{plants.map((each, idx) => (
@@ -71,8 +74,20 @@ export const InventoryTable = ({ theme }) => {
 								{isUpdateDue(each.lastWatered) && '💦'}
 								{isUpdateDue(each.estimatedChange) && '🌱'}
 								{each.flags.underObservation && '👁️'}
+								{!isUpdateDue(each.lastWatered) &&
+									!isUpdateDue(each.estimatedChange) &&
+									!each.flags.underObservation &&
+									'-'}
 							</p>
-							<p></p>
+							<p>
+								{selectedPlant && selectedPlant._id === each._id ? (
+									<Button theme={theme}>
+										<Link to={routes.plantDetail.buildPath(each._id)}>
+											Editar
+										</Link>
+									</Button>
+								) : null}
+							</p>
 						</div>
 					))}
 				</div>
