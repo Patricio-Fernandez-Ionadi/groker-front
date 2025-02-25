@@ -1,9 +1,10 @@
 .inventory-table-component {
-	margin-top: 10px;
+	margin: 10px auto;
 	max-height: 600px;
 	overflow: hidden scroll;
 	grid-area: inventoryTable;
 	width: auto;
+	max-width: 730px;
 
 	p {
 		border-right: 1px solid $white_dark;
