@@ -7,6 +7,7 @@ import { GeneticsModal, GenModalContext, useGenetics } from '../Genetics'
 import { Header } from './components/layout/Header'
 import { usePlants } from '../Plants'
 import { Router } from './Router'
+import { InventorySkeleton } from '@/Plants/components/inventory/InventorySkeleton'
 
 export const App = () => {
 	const { theme } = useTheme()
@@ -17,7 +18,7 @@ export const App = () => {
 	const { isGeneticModalOpen } = React.useContext(GenModalContext)
 
 	if (!geneticsState.loaded && !productsState.loaded && !plantsState.loaded) {
-		return <div>CARGANDO APP...</div>
+		return <InventorySkeleton />
 	}
 
 	return (
