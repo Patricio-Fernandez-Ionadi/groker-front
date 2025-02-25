@@ -9,6 +9,11 @@
 					"text": "El nitrógeno cumple una función muy importante en los cultivos. Contribuye a la fotosíntesis y la formación de proteínas, e incluso se encuentra en el ADN de las plantas. Sin la cantidad adecuada de este elemento, las plantas crecen atrofiadas y producen cosechas mediocres."
 				},
 				{
+					"type": "image",
+					"title": "",
+					"src": "https://www.royalqueenseeds.es/img/cms/Nitrogen-Deficiency.jpg"
+				},
+				{
 					"type": "section",
 					"title": "El nitrógeno: un macronutriente primario",
 					"content": [
@@ -37,8 +42,8 @@
 						},
 						{
 							"type": "image",
-							"title": "Exceso y carencia",
-							"src": "./src/Carencias/assets/N/excess-deficiency-nitrogen.webp"
+							"title": "",
+							"src": "https://www.royalqueenseeds.es/img/cms/excess-deficiency-nitrogen.jpg"
 						}
 					]
 				},
@@ -83,7 +88,7 @@
 						{
 							"type": "image",
 							"title": "",
-							"src": "./src/Carencias/assets/N/palegreen-yellowleaves-desktop_3.jpg"
+							"src": "https://www.royalqueenseeds.es/img/cms/palegreen-yellowleaves-desktop_3.jpg"
 						}
 					]
 				},
@@ -146,7 +151,7 @@
 						{
 							"type": "image",
 							"title": "",
-							"src": "./src/Carencias/assets/N/cannabis-roots_3.jpg"
+							"src": "https://www.royalqueenseeds.es/img/cms/cannabis-roots_3.jpg"
 						}
 					]
 				},
@@ -177,7 +182,7 @@
 						{
 							"type": "image",
 							"title": "",
-							"src": "./src/Carencias/assets/N/living-soil.jpg"
+							"src": "https://www.royalqueenseeds.es/img/cms/living-soil.jpg"
 						}
 					]
 				},
@@ -559,7 +564,7 @@
 						{
 							"type": "image",
 							"title": "",
-							"src": "./src/Carencias/assets/P/phosphorus-cannabis-deficiency.webp"
+							"src": "https://www.royalqueenseeds.es/img/cms/phosphorus-cannabis-deficiency.jpg"
 						}
 					]
 				},
@@ -612,7 +617,7 @@
 						{
 							"type": "image",
 							"title": "",
-							"src": "./src/Carencias/assets/P/phosphorus-deficiency.webp"
+							"src": "https://www.royalqueenseeds.es/img/cms/phosphorus-deficiency.jpg"
 						}
 					]
 				},
@@ -647,7 +652,7 @@
 						{
 							"type": "image",
 							"title": "",
-							"src": "./src/Carencias/assets/P/phosphorus-deficioncies-cannabis_1.jpg"
+							"src": "https://www.royalqueenseeds.es/img/cms/phosphorus-deficioncies-cannabis_1.jpg"
 						}
 					]
 				},
@@ -840,7 +845,7 @@
 						{
 							"type": "image",
 							"title": "",
-							"src": "./src/Carencias/assets/P/Organic-fertiliser.jpg"
+							"src": "https://www.royalqueenseeds.es/img/cms/Organic-fertiliser.jpg"
 						}
 					]
 				},
