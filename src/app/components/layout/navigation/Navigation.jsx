@@ -17,6 +17,13 @@ export const Navigation = ({ isOpen, closeNav }) => {
 
 	const [isCarenciasOpen, setIsCarenciasOpen] = React.useState(false)
 
+	document.addEventListener('click', (e) => {
+		if (e.clientX > 230 && isOpen) {
+			closeNav()
+			setIsCarenciasOpen(false)
+		}
+	})
+
 	return (
 		<div className="navigation-container">
 			<nav className={`navigation ${isOpen ? 'open' : ''} ${theme}`}>
@@ -58,36 +65,29 @@ export const Navigation = ({ isOpen, closeNav }) => {
 							Productos
 						</Link>
 					</li>
-					<li>
-						<Link
-							to={routes.minerales.path}
-							onClick={() => setIsCarenciasOpen(!isCarenciasOpen)}
-						>
-							Carencias/Excesos
-						</Link>
-						{isCarenciasOpen && (
-							<ul className="sub_list">
-								<li>
-									<a href="#nitrogeno">Nitrógeno</a>
-								</li>
-								<li>
-									<a href="#potasio">Potasio</a>
-								</li>
-								<li>
-									<a href="#fosforo">Fósforo</a>
-								</li>
-								{/* <li>
-									<a href="#calcio">Calcio</a>
-								</li>
-								<li>
-									<a href="#manganeso">Manganeso</a>
-								</li>
-								<li>
-									<a href="#magnesio">Magnesio</a>
-								</li> */}
-							</ul>
-						)}
-					</li>
+					<ul>
+						<li>
+							<Link
+								to={routes.minerales.path}
+								onClick={() => setIsCarenciasOpen(!isCarenciasOpen)}
+							>
+								Carencias/Excesos
+							</Link>
+							{isCarenciasOpen && (
+								<ul className="sub_list">
+									<li>
+										<a href="#nitrogeno">Nitrógeno</a>
+									</li>
+									<li>
+										<a href="#potasio">Potasio</a>
+									</li>
+									<li>
+										<a href="#fosforo">Fósforo</a>
+									</li>
+								</ul>
+							)}
+						</li>
+					</ul>
 				</ul>
 			</nav>
 		</div>

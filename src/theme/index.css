@@ -204,20 +204,40 @@ a:visited {
   gap: 10px;
 }
 .navigation-container .navigation .navigation-list li {
-  padding: 0 10px;
+  padding-left: 10px;
   height: 40px;
   line-height: 40px;
 }
 .navigation-container .navigation .navigation-list li a {
   color: inherit;
+  display: inline-block;
+  width: 100%;
 }
 .navigation-container .navigation .navigation-list li:hover {
   background-color: #09a4af;
 }
-.navigation-container .navigation .navigation-list li:hover a {
-  color: #333;
+.navigation-container .navigation .sub_list {
+  list-style: none;
+  animation: desplegar 0.3s ease-out;
+}
+.navigation-container .navigation .sub_list li {
+  width: 100%;
+  margin-bottom: 5px;
+}
+.navigation-container .navigation .sub_list li a {
+  font-size: 16px;
 }
 
+@keyframes desplegar {
+  from {
+    max-height: 0;
+    opacity: 0;
+  }
+  to {
+    max-height: 500px;
+    opacity: 1;
+  }
+}
 .app-container {
   transition: background 0.2s ease;
   transition: color 0.2s ease;
@@ -282,6 +302,12 @@ main {
   height: 40px;
   width: 40px;
   border-radius: 50%;
+  background: #09a4af;
+  border: none;
+  transform: rotate(90deg);
+}
+.go-top-button svg {
+  color: #f5f5f5;
 }
 
 @media (max-width: 769px) {
@@ -806,7 +832,7 @@ main {
   background: #f44336;
 }
 .field-section .field-edit-mode .field-actions button:nth-child(3):hover {
-  background: #ea1c0d;
+  background: rgb(234.1839622642, 27.9622641509, 12.8160377358);
 }
 .field-section .field-view-mode {
   align-items: center;
@@ -834,7 +860,7 @@ main {
   background: #f44336;
 }
 .field-section .field-view-mode.notes .delete-plant-button:hover {
-  background: #ea1c0d;
+  background: rgb(234.1839622642, 27.9622641509, 12.8160377358);
 }
 .field-section .notes,
 .field-section .product-selector {
@@ -882,7 +908,7 @@ main {
   background: #f44336;
 }
 .field-section .notes .field-actions button:nth-child(3):hover {
-  background: #ea1c0d;
+  background: rgb(234.1839622642, 27.9622641509, 12.8160377358);
 }
 .field-section .notes .notes-list {
   list-style: none;
@@ -896,7 +922,7 @@ main {
   margin-bottom: 5px;
 }
 .field-section .notes .notes-list li:nth-child(even) {
-  background: gainsboro;
+  background: rgb(219.5, 219.5, 219.5);
 }
 .field-section .notes .notes-list li:last-child {
   margin-bottom: 0;
@@ -908,10 +934,10 @@ main {
   background: #f44336;
 }
 .field-section .notes .notes-list li button:hover {
-  background: #ea1c0d;
+  background: rgb(234.1839622642, 27.9622641509, 12.8160377358);
 }
 .field-section .notes .notes-list.dark li:nth-child(even) {
-  background: #515151;
+  background: rgb(80.5, 80.5, 80.5);
 }
 .field-section .product-selection-form {
   gap: 0;
@@ -927,7 +953,7 @@ main {
   background: #f44336;
 }
 .field-section .field-actions button:nth-child(2):hover {
-  background: #ea1c0d;
+  background: rgb(234.1839622642, 27.9622641509, 12.8160377358);
 }
 .field-section.dark select option {
   background: #373737;
@@ -988,7 +1014,7 @@ main {
   font-size: 14px;
 }
 .watering-products-added .watering-product-item .watering-product-remove:hover {
-  background: #ea1c0d;
+  background: rgb(234.1839622642, 27.9622641509, 12.8160377358);
 }
 
 /* Toggle final pot */
@@ -1148,13 +1174,13 @@ input[type=number]::-webkit-inner-spin-button {
   background-color: #2f89fc;
 }
 .product-list-container .products-grid .product-card .edit-button:hover {
-  background-color: #046df4;
+  background-color: rgb(3.5260663507, 109.308056872, 244.4739336493);
 }
 .product-list-container .products-grid .product-card .delete-button {
   background-color: #f44336;
 }
 .product-list-container .products-grid .product-card .delete-button:hover {
-  background-color: #ea1c0d;
+  background-color: rgb(234.1839622642, 27.9622641509, 12.8160377358);
 }
 
 .add-product-form {
@@ -1299,8 +1325,14 @@ input[type=number]::-webkit-inner-spin-button {
 .article_container_single {
   border-radius: 3px;
   padding: 10px;
-  background-color: #373737;
+  transition: background 0.2s ease;
   margin-bottom: 50px;
+}
+.article_container_single.light {
+  background: #0b686e;
+}
+.article_container_single.dark {
+  background: #373737;
 }
 
 .article_container {

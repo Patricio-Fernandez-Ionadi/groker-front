@@ -12,7 +12,7 @@
 .article_container_single {
 	border-radius: $border_radius;
 	padding: 10px;
-	background-color: $black_light;
+	@include useThemeBg($primary_dark, $black_light);
 	margin-bottom: 50px;
 }
 

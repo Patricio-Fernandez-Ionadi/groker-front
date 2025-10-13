@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from 'groker/components'
+import { Chevron_left } from 'groker/icons'
 
 export const GoTopButton = () => {
 	const [isActive, setIsActive] = React.useState(false)
@@ -39,9 +39,9 @@ export const GoTopButton = () => {
 	return (
 		<>
 			{isActive ? (
-				<Button onEvent={handleGoTop} className="go-top-button">
-					^
-				</Button>
+				<button onClick={handleGoTop} className="go-top-button">
+					<Chevron_left size={28}/>
+				</button>
 			) : (
 				<span></span>
 			)}
