@@ -3,6 +3,32 @@
 	cursor: not-allowed;
 }
 
+.flex {
+	display: flex;
+	&-row{
+		flex-direction: row;
+	}
+	&-col {
+		flex-direction: column;
+	}
+}
+
+.jjc {
+	justify-content: center;
+}
+.aic {
+	align-items: center;
+}
+.p-5{
+	padding: 5px;
+}
+.p-10{
+	padding: 10px;
+}
+.p-16{
+	padding: 16px;
+}
+
 @media (max-width: $medium) {
 	.non-mobile {
 		display: none;

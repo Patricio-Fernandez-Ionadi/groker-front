@@ -4,18 +4,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import { store_loadPlants } from '../store/plantsAsyncActions'
 
 export function usePlants() {
-	const dispatch = useDispatch()
-	const plantsStore = useSelector((state) => state.plantsStore)
+  const dispatch = useDispatch()
+  const plantsStore = useSelector((state) => state.plantsStore)
 
-	useEffect(() => {
-		if (!plantsStore.loaded) {
-			dispatch(store_loadPlants())
-		}
-	}, [])
+  useEffect(() => {
+    if (!plantsStore.loaded) {
+      dispatch(store_loadPlants())
+    }
+  }, [])
 
-	return {
-		plants: plantsStore.plants,
-		selectedPlant: plantsStore.selectedPlant,
-		selectedIndex: plantsStore.selectedIndex,
-	}
+  const { plants, selectedPlant, selectedIndex } = plantsStore
+  return { plants, selectedPlant, selectedIndex }
 }
