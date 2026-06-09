@@ -27,16 +27,34 @@ export const productsSlice = createSlice({
 			products: action.payload,
 			loaded: true,
 		}))
+		builder.addCase(store_loadProducts.rejected, (state, action) => {
+			console.error(
+				'Error al cargar productos:',
+				action.payload || action.error.message
+			)
+		})
 		builder.addCase(store_addProduct.fulfilled, (state, action) => ({
 			...state,
 			products: [...state.products, action.payload],
 		}))
+		builder.addCase(store_addProduct.rejected, (state, action) => {
+			console.error(
+				'Error al agregar producto:',
+				action.payload || action.error.message
+			)
+		})
 		builder.addCase(store_deleteProduct.fulfilled, (state, action) => ({
 			...state,
 			products: state.products.filter(
 				(product) => product._id !== action.payload._id
 			),
 		}))
+		builder.addCase(store_deleteProduct.rejected, (state, action) => {
+			console.error(
+				'Error al eliminar producto:',
+				action.payload || action.error.message
+			)
+		})
 		builder.addCase(store_updateProduct.fulfilled, (state, action) => ({
 			...state,
 			products: state.products.map((product) => {
@@ -47,6 +65,12 @@ export const productsSlice = createSlice({
 				}
 			}),
 		}))
+		builder.addCase(store_updateProduct.rejected, (state, action) => {
+			console.error(
+				'Error al actualizar producto:',
+				action.payload || action.error.message
+			)
+		})
 		builder.addCase(store_updateStock.fulfilled, (state, action) => ({
 			...state,
 			products: state.products.map((product) => {
@@ -57,6 +81,12 @@ export const productsSlice = createSlice({
 				}
 			}),
 		}))
+		builder.addCase(store_updateStock.rejected, (state, action) => {
+			console.error(
+				'Error al actualizar stock:',
+				action.payload || action.error.message
+			)
+		})
 	},
 })
 

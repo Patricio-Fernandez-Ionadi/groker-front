@@ -3,36 +3,33 @@ import { api_addGenetic, api_deleteGenetic, api_getGenetics } from '../index'
 
 export const loadGenetics = createAsyncThunk(
 	'geneticsStore/loadGenetics',
-	async () => {
+	async (_, { rejectWithValue }) => {
 		try {
-			const data = await api_getGenetics()
-			return data
+			return await api_getGenetics()
 		} catch (error) {
-			throw new Error('Las genéticas no pudieron ser cargadas', error)
+			return rejectWithValue('Las genéticas no pudieron ser cargadas')
 		}
 	}
 )
 
 export const addNewGenetic = createAsyncThunk(
 	'geneticsStore/addNewGenetic',
-	async (newGenetic) => {
+	async (newGenetic, { rejectWithValue }) => {
 		try {
-			const data = await api_addGenetic(newGenetic)
-			return data
+			return await api_addGenetic(newGenetic)
 		} catch (error) {
-			throw new Error('La genética no pudo ser agregada', error)
+			return rejectWithValue('La genética no pudo ser agregada')
 		}
 	}
 )
 
 export const deleteGenetic = createAsyncThunk(
 	'geneticsStore/deleteGenetic',
-	async (id) => {
+	async (id, { rejectWithValue }) => {
 		try {
-			const data = await api_deleteGenetic(id)
-			return data
+			return await api_deleteGenetic(id)
 		} catch (error) {
-			throw new Error('La genética no pudo ser eliminada', error)
+			return rejectWithValue('La genética no pudo ser eliminada')
 		}
 	}
 )

@@ -8,65 +8,51 @@ import {
 
 export const store_loadProducts = createAsyncThunk(
 	'productsStore/loadProducts',
-	async () => {
+	async (_, { rejectWithValue }) => {
 		try {
-			const data = await api_getProducts()
-			return data
+			return await api_getProducts()
 		} catch (error) {
-			throw new Error('Los productos no pudieron ser cargados', error)
+			return rejectWithValue('Los productos no pudieron ser cargados')
 		}
 	}
 )
 
 export const store_addProduct = createAsyncThunk(
 	'productsStore/addProduct',
-	async (newProduct) => {
+	async (newProduct, { rejectWithValue }) => {
 		try {
-			const data = await api_addProduct(newProduct)
-			return data
+			return await api_addProduct(newProduct)
 		} catch (error) {
-			throw new Error(
-				'El producto no pudo ser agregado (productsActions)',
-				error
-			)
+			return rejectWithValue('El producto no pudo ser agregado')
 		}
 	}
 )
 
 export const store_updateProduct = createAsyncThunk(
 	'productsStore/editProduct',
-	async (updatedProduct) => {
+	async (updatedProduct, { rejectWithValue }) => {
 		try {
-			const data = await api_editProduct(updatedProduct)
-			return data
+			return await api_editProduct(updatedProduct)
 		} catch (error) {
-			throw new Error(
-				'El producto no pudo ser editado (productsActions)',
-				error
-			)
+			return rejectWithValue('El producto no pudo ser editado')
 		}
 	}
 )
 
 export const store_deleteProduct = createAsyncThunk(
 	'productsStore/deleteProduct',
-	async (id) => {
+	async (id, { rejectWithValue }) => {
 		try {
-			const data = await api_deleteProduct(id)
-			return data
+			return await api_deleteProduct(id)
 		} catch (error) {
-			throw new Error(
-				'El producto no pudo ser eliminado (productsActions)',
-				error
-			)
+			return rejectWithValue('El producto no pudo ser eliminado')
 		}
 	}
 )
 
-// PARTE RELEVANTE PARA EL TEMA A TRATAR
 export const store_updateStock = createAsyncThunk(
 	'productsStore/updateStock',
-	async ({ productId, difference }, { getState }) => {
+	async ({ productId, difference }, { getState, rejectWithValue }) => {
 		const { productsStore } = getState()
 
 		const productToUpdate = productsStore.products.find(
@@ -74,27 +60,18 @@ export const store_updateStock = createAsyncThunk(
 		)
 
 		if (!productToUpdate) {
-			throw new Error(`Producto con ID ${productId} no encontrado.`)
+			return rejectWithValue(`Producto con ID ${productId} no encontrado.`)
 		}
 
-		const newStock = productToUpdate.stock + difference // Calcular el nuevo stock
+		const newStock = productToUpdate.stock + difference
 
 		try {
-			// console.log('Updating stock for product:', productId)
-			// console.log('Stock difference:', difference)
-			// console.log('Product before update:', productToUpdate)
-			// console.log('New stock:', newStock)
-
-			const data = await api_editProduct({
+			return await api_editProduct({
 				...productToUpdate,
 				stock: newStock,
 			})
-			return data
 		} catch (error) {
-			throw new Error(
-				'Error al actualizar el stock en la base de datos (productsActions)',
-				error
-			)
+			return rejectWithValue('Error al actualizar el stock en la base de datos')
 		}
 	}
 )

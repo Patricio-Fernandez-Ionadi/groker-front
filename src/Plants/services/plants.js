@@ -1,58 +1,50 @@
 import config from '../../app/utils/config'
 
 export const api_getPlants = async () => {
-	try {
-		const response = await fetch(`${config.apiUrl}/api/plants`)
-		const data = await response.json()
-		return data
-	} catch (error) {
-		console.error('Error al obtener plantas:', error)
+	const response = await fetch(`${config.apiUrl}/api/plants`)
+	if (!response.ok) {
+		throw new Error('Error al obtener plantas')
 	}
+	return response.json()
 }
 
 export const api_addPlant = async (plantData) => {
-	try {
-		const response = await fetch(`${config.apiUrl}/api/plants`, {
-			method: 'POST',
+	const response = await fetch(`${config.apiUrl}/api/plants`, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(plantData),
+	})
+	if (!response.ok) {
+		throw new Error('Error al agregar planta')
+	}
+	return response.json()
+}
+
+export const api_deletePlant = async (plantId) => {
+	const response = await fetch(`${config.apiUrl}/api/plants/${plantId}`, {
+		method: 'DELETE',
+	})
+	if (!response.ok) {
+		throw new Error('Error al eliminar planta')
+	}
+	return response.json()
+}
+
+export const api_updatePlant = async (plantData) => {
+	const response = await fetch(
+		`${config.apiUrl}/api/plants/${plantData._id}`,
+		{
+			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify(plantData),
-		})
-		const data = await response.json()
-		return data
-	} catch (error) {
-		console.error('Error al agregar planta:', error)
+		}
+	)
+	if (!response.ok) {
+		throw new Error('Error al editar planta')
 	}
-}
-
-export const api_deletePlant = async (plantId) => {
-	try {
-		const response = await fetch(`${config.apiUrl}/api/plants/${plantId}`, {
-			method: 'DELETE',
-		})
-		const data = await response.json()
-		return data
-	} catch (error) {
-		console.error('Error al eliminar planta:', error)
-	}
-}
-
-export const api_updatePlant = async (plantData) => {
-	try {
-		const response = await fetch(
-			`${config.apiUrl}/api/plants/${plantData._id}`,
-			{
-				method: 'PUT',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify(plantData),
-			}
-		)
-		const data = await response.json()
-		return data
-	} catch (error) {
-		console.error('Error al editar planta:', error)
-	}
+	return response.json()
 }

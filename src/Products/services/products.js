@@ -1,59 +1,50 @@
 import config from '../../app/utils/config'
 
 export const api_getProducts = async () => {
-	try {
-		const response = await fetch(`${config.apiUrl}/api/products`)
-		const data = await response.json()
-		return data
-	} catch (error) {
-		console.error('Error al obtener productos:', error)
+	const response = await fetch(`${config.apiUrl}/api/products`)
+	if (!response.ok) {
+		throw new Error('Error al obtener productos')
 	}
+	return response.json()
 }
 
 export const api_addProduct = async (productData) => {
-	try {
-		const response = await fetch(`${config.apiUrl}/api/products`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(productData),
-		})
-		const data = await response.json()
-		return data
-	} catch (error) {
-		console.error('Error al agregar producto:', error)
-		throw error
+	const response = await fetch(`${config.apiUrl}/api/products`, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(productData),
+	})
+	if (!response.ok) {
+		throw new Error('Error al agregar producto')
 	}
+	return response.json()
 }
 
 export const api_editProduct = async (updatedProduct) => {
-	try {
-		const response = await fetch(
-			`${config.apiUrl}/api/products/${updatedProduct._id}`,
-			{
-				method: 'PUT',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify(updatedProduct),
-			}
-		)
-		const data = await response.json()
-		return data
-	} catch (error) {
-		console.error('Error al editar producto:', error)
+	const response = await fetch(
+		`${config.apiUrl}/api/products/${updatedProduct._id}`,
+		{
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(updatedProduct),
+		}
+	)
+	if (!response.ok) {
+		throw new Error('Error al editar producto')
 	}
+	return response.json()
 }
 
 export const api_deleteProduct = async (productId) => {
-	try {
-		const response = await fetch(`${config.apiUrl}/api/products/${productId}`, {
-			method: 'DELETE',
-		})
-		const data = await response.json()
-		return data
-	} catch (error) {
-		console.error('Error al eliminar producto:', error)
+	const response = await fetch(`${config.apiUrl}/api/products/${productId}`, {
+		method: 'DELETE',
+	})
+	if (!response.ok) {
+		throw new Error('Error al eliminar producto')
 	}
+	return response.json()
 }
