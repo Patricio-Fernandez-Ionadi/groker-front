@@ -1,3 +1,4 @@
+import { useCallback } from 'react'
 import { useDispatch } from 'react-redux'
 
 import { setSelectedProduct } from '../store/productsSlice'
@@ -14,35 +15,48 @@ import {
 export function useProductsActions() {
 	const dispatch = useDispatch()
 
-	const selectProduct = (product) => {
-		dispatch(setSelectedProduct(product))
-	}
+	const selectProduct = useCallback(
+		(product) => {
+			dispatch(setSelectedProduct(product))
+		},
+		[dispatch]
+	)
 
-	const unselectProduct = () => {
+	const unselectProduct = useCallback(() => {
 		dispatch(setSelectedProduct(null))
-	}
+	}, [dispatch])
 
-	const addNewProduct = (newProduct) => {
-		dispatch(store_addProduct(newProduct))
-	}
+	const addNewProduct = useCallback(
+		(newProduct) => {
+			dispatch(store_addProduct(newProduct))
+		},
+		[dispatch]
+	)
 
-	const editProduct = (id) => {
-		dispatch(store_updateProduct(id))
-	}
+	const editProduct = useCallback(
+		(id) => {
+			dispatch(store_updateProduct(id))
+		},
+		[dispatch]
+	)
 
-	const deleteProduct = (id) => {
-		dispatch(store_deleteProduct(id))
-	}
+	const deleteProduct = useCallback(
+		(id) => {
+			dispatch(store_deleteProduct(id))
+		},
+		[dispatch]
+	)
 
-	const updateProductStock = (previousProducts, newProducts) => {
-		// Calcular la diferencia de stock
-		const stockDifferences = calculateStockDifference(
-			previousProducts,
-			newProducts
-		)
-		// Aplicar cambios de stock antes de actualizar la planta
-		applyStockDifferences(stockDifferences, dispatch)
-	}
+	const updateProductStock = useCallback(
+		(previousProducts, newProducts) => {
+			const stockDifferences = calculateStockDifference(
+				previousProducts,
+				newProducts
+			)
+			applyStockDifferences(stockDifferences, dispatch)
+		},
+		[dispatch]
+	)
 
 	return {
 		selectProduct,

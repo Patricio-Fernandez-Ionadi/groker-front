@@ -1,9 +1,12 @@
 import React from 'react'
-import { usePlants, PlantDetails, InventoryDetails } from '@/Plants'
+import { usePlants } from '@/Plants'
 
 import { useTheme } from '@/app'
 
-export const Detail = () => {
+import { PlantDetails } from '../details/PlantDetails'
+import { InventoryDetails } from '../inventory/InventoryDetails'
+
+const Detail = React.memo(() => {
 	const { theme } = useTheme()
 	const { selectedPlant } = usePlants()
 
@@ -12,4 +15,8 @@ export const Detail = () => {
 			{selectedPlant ? <PlantDetails /> : <InventoryDetails />}
 		</section>
 	)
-}
+})
+
+Detail.displayName = 'Detail'
+
+export { Detail }

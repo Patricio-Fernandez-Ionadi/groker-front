@@ -1,19 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import { Chevron_left } from 'groker/icons'
 
 export const GoTopButton = () => {
-	const [isActive, setIsActive] = React.useState(false)
+	const [isActive, setIsActive] = useState(false)
 
-	const showButton = (e) => {
-		if (e.target.scrollingElement.scrollTop > 300) {
-			setIsActive(true)
-		} else {
-			setIsActive(false)
+	useEffect(() => {
+		const handleScroll = () => {
+			if (document.scrollingElement.scrollTop > 300) {
+				setIsActive(true)
+			} else {
+				setIsActive(false)
+			}
 		}
-	}
-	window.onscroll = showButton
 
-	const scrollToTop = (duration) => {
+		window.addEventListener('scroll', handleScroll, { passive: true })
+		return () => window.removeEventListener('scroll', handleScroll)
+	}, [])
+
+	const scrollToTop = useCallback((duration) => {
 		if (document.scrollingElement.scrollTop === 0) return
 
 		const totalScrollDistance = document.scrollingElement.scrollTop
@@ -31,7 +35,7 @@ export const GoTopButton = () => {
 			window.requestAnimationFrame(step)
 		}
 		window.requestAnimationFrame(step)
-	}
+	}, [])
 	const handleGoTop = () => {
 		scrollToTop(500)
 	}

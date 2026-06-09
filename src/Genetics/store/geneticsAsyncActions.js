@@ -30,7 +30,7 @@ export const deleteGenetic = createAsyncThunk(
 	async (id) => {
 		try {
 			const data = await api_deleteGenetic(id)
-			dispatch({ type: 'DELETE_GENETIC', payload: data })
+			return data
 		} catch (error) {
 			throw new Error('La genética no pudo ser eliminada', error)
 		}

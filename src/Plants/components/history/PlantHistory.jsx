@@ -4,7 +4,7 @@ import { useTheme } from '@/app'
 
 import { usePlants, translateField } from '@/Plants'
 
-export const PlantHistory = () => {
+const PlantHistory = React.memo(() => {
 	const { selectedPlant } = usePlants()
 	const { theme } = useTheme()
 
@@ -61,7 +61,7 @@ export const PlantHistory = () => {
 				return (
 					<>
 						<p>
-							Último riego: {calendarFormat(date)} 💧
+							Último riego: {calendarFormat(date)} 💧
 							{details.amount && details.amount !== 0 && (
 								<span> {details.amount / 1000}Lts</span>
 							)}
@@ -115,4 +115,8 @@ export const PlantHistory = () => {
 				))}
 		</section>
 	)
-}
+})
+
+PlantHistory.displayName = 'PlantHistory'
+
+export { PlantHistory }

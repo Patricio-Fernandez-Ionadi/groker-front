@@ -5,7 +5,7 @@ import { Button } from 'groker'
 import { deleteGenetic } from '../index'
 import { useTheme } from '@/app'
 
-export function GeneticList() {
+const GeneticList = React.memo(() => {
 	const dispatch = useDispatch()
 	const { genetics } = useSelector((state) => state.geneticsStore)
 	const { theme } = useTheme()
@@ -37,4 +37,8 @@ export function GeneticList() {
 			</ul>
 		</div>
 	)
-}
+})
+
+GeneticList.displayName = 'GeneticList'
+
+export { GeneticList }

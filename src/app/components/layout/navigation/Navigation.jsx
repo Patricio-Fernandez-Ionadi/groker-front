@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link, useLocation } from 'react-router'
 import { DarkMode_icon, LightMode_icon } from 'groker/icons'
 import { ToggleSwitch } from 'groker/components'
@@ -17,12 +17,19 @@ export const Navigation = ({ isOpen, closeNav }) => {
 
 	const [isCarenciasOpen, setIsCarenciasOpen] = React.useState(false)
 
-	document.addEventListener('click', (e) => {
-		if (e.clientX > 230 && isOpen) {
-			closeNav()
-			setIsCarenciasOpen(false)
+	useEffect(() => {
+		if (!isOpen) return
+
+		const handleClickOutside = (e) => {
+			if (e.clientX > 230) {
+				closeNav()
+				setIsCarenciasOpen(false)
+			}
 		}
-	})
+
+		document.addEventListener('click', handleClickOutside)
+		return () => document.removeEventListener('click', handleClickOutside)
+	}, [isOpen, closeNav])
 
 	return (
 		<div className="navigation-container">

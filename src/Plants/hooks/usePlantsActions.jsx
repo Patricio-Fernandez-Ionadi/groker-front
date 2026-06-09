@@ -1,60 +1,75 @@
-import React from 'react'
+import { useCallback } from 'react'
 import { useDispatch } from 'react-redux'
 
 import { setPlantByIndex, setPlantSelected } from '../store/plantsSlice'
 import {
-  store_addPlant,
-  store_deletePlantById,
-  store_loadPlants,
-  store_updatePlant,
+	store_addPlant,
+	store_deletePlantById,
+	store_loadPlants,
+	store_updatePlant,
 } from '../store/plantsAsyncActions'
 import { usePlants } from './usePlants'
 
 export function usePlantsActions() {
-  const dispatch = useDispatch()
-  const { plants } = usePlants()
+	const dispatch = useDispatch()
+	const { plants } = usePlants()
 
-  const selectPlant = (plant) => {
-    dispatch(setPlantSelected(plant))
-  }
+	const selectPlant = useCallback(
+		(plant) => {
+			dispatch(setPlantSelected(plant))
+		},
+		[dispatch]
+	)
 
-  const selectPlantByIndex = (index) => {
-    dispatch(setPlantByIndex(index))
-  }
+	const selectPlantByIndex = useCallback(
+		(index) => {
+			dispatch(setPlantByIndex(index))
+		},
+		[dispatch]
+	)
 
-  const unselectPlant = () => {
-    dispatch(setPlantSelected(null))
-  }
+	const unselectPlant = useCallback(() => {
+		dispatch(setPlantSelected(null))
+	}, [dispatch])
 
-  const deletePlant = (id) => {
-    dispatch(store_deletePlantById(id))
-  }
+	const deletePlant = useCallback(
+		(id) => {
+			dispatch(store_deletePlantById(id))
+		},
+		[dispatch]
+	)
 
-  const addNewPlant = async (newPlant) => {
-    await dispatch(store_addPlant(newPlant))
+	const addNewPlant = useCallback(
+		async (newPlant) => {
+			await dispatch(store_addPlant(newPlant))
+			dispatch(store_loadPlants())
+		},
+		[dispatch]
+	)
 
-    // actualizacion de plantas para tener el .populate('genetics') de la api
-    dispatch(store_loadPlants())
-  }
+	const updatePlant = useCallback(
+		async (plant) => {
+			await dispatch(store_updatePlant(plant))
+			dispatch(store_loadPlants())
+			dispatch(setPlantSelected(plant))
+		},
+		[dispatch]
+	)
 
-  const updatePlant = async (plant) => {
-    await dispatch(store_updatePlant(plant))
-    // actualizacion de plantas para tener el .populate('genetics') de la api
-    dispatch(store_loadPlants())
-    selectPlant(plant)
-  }
+	const getPlantById = useCallback(
+		(plantId) => {
+			return plants.find((p) => p._id === plantId)
+		},
+		[plants]
+	)
 
-  const getPlantById = (plantId) => {
-    return plants.find((p) => p._id === plantId)
-  }
-
-  return {
-    selectPlant,
-    unselectPlant,
-    deletePlant,
-    addNewPlant,
-    updatePlant,
-    getPlantById,
-    selectPlantByIndex,
-  }
+	return {
+		selectPlant,
+		unselectPlant,
+		deletePlant,
+		addNewPlant,
+		updatePlant,
+		getPlantById,
+		selectPlantByIndex,
+	}
 }

@@ -7,7 +7,7 @@ import { AddProduct } from './AddProduct'
 
 import { useProducts, useProductsActions } from '../'
 
-export const ProductList = () => {
+const ProductList = React.memo(() => {
 	const {
 		isAddProductFormOpen,
 		toggleAddProductForm,
@@ -31,21 +31,21 @@ export const ProductList = () => {
 
 	const handleDeleteProduct = (productId) => {
 		const product = products.find((p) => p._id === productId)
-		setProductToDelete(product) // Guarda el producto a eliminar
-		setIsModalOpen(true) // Abre el modal
+		setProductToDelete(product)
+		setIsModalOpen(true)
 	}
 
 	const confirmDelete = () => {
 		if (productToDelete) {
 			deleteProduct(productToDelete._id)
-			setIsModalOpen(false) // Cierra el modal
-			setProductToDelete(null) // Limpia el estado
+			setIsModalOpen(false)
+			setProductToDelete(null)
 		}
 	}
 
 	const closeModal = () => {
-		setIsModalOpen(false) // Cierra el modal
-		setProductToDelete(null) // Limpia el estado
+		setIsModalOpen(false)
+		setProductToDelete(null)
 	}
 
 	return (
@@ -122,7 +122,6 @@ export const ProductList = () => {
 					</div>
 				))}
 			</div>
-			{/* Modal de confirmación */}
 			<ConfirmModal
 				isOpen={isModalOpen}
 				onClose={closeModal}
@@ -132,4 +131,8 @@ export const ProductList = () => {
 			/>
 		</div>
 	)
-}
+})
+
+ProductList.displayName = 'ProductList'
+
+export { ProductList }
